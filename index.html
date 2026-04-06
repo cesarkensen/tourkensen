@@ -6,9 +6,6 @@
     <title>vende tus redes tour 2026 como kensen.</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           [GLOBAL] ESTILOS DE COMPUTADOR (NO TOCAR)
-           ========================================= */
         :root {
             --yellow: #F4BF3A;
             --white: #FFFFFF;
@@ -21,6 +18,8 @@
             padding: 0;
             text-transform: lowercase;
             font-family: 'Helvetica Neue', 'Inter', sans-serif;
+            /* SEPARACIÓN ENTRE LETRAS -60 (Aproximado en px para este tamaño) */
+            letter-spacing: -3px; 
         }
 
         body {
@@ -31,20 +30,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* FONO: Centrado y cubriendo todo */
+            /* FONO: Ajustado al ALTO completo siempre */
             background-image: url('poster_oficial_grande2.jpg');
-            background-size: cover;
-            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
             background-attachment: fixed;
             position: relative;
         }
 
-        /* Overlay para legibilidad en cualquier pantalla */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
             z-index: 1;
         }
 
@@ -55,136 +54,95 @@
             max-width: 1400px;
             padding: 40px;
             display: flex;
-            /* En PC mandamos el texto a la derecha para no tapar la cara */
             justify-content: flex-end; 
             align-items: center;
         }
 
         .content-box {
             text-align: right;
-            max-width: 650px;
+            max-width: 800px;
         }
 
-        .title {
-            color: var(--yellow);
-            font-size: clamp(45px, 8vw, 85px);
+        /* [1] BLOQUE DE TÍTULO */
+        .title-container { margin-bottom: 40px; line-height: 0.75; }
+        
+        .t-small { font-size: clamp(18px, 2vw, 28px); letter-spacing: -1px; }
+        .t-italic { font-style: italic; }
+        
+        .t-massive {
+            font-size: clamp(55px, 11vw, 125px);
             font-weight: 900;
-            line-height: 0.85;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
+            display: block;
         }
 
+        /* [2] LISTA DE CIUDADES */
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Separación PC */
+            gap: 4px; /* Separación entre líneas menor */
         }
 
         .tour-item {
             text-decoration: none;
             color: var(--white);
-            font-size: clamp(24px, 4vw, 42px);
+            font-size: clamp(22px, 3.8vw, 38px);
             font-weight: 700;
             display: flex;
             justify-content: flex-end;
             align-items: baseline;
-            transition: color 0.2s;
+            transition: color 0.1s;
         }
 
-        .tour-item:hover { color: var(--yellow); }
+        /* HOVER TOTAL A AMARILLO */
+        .tour-item:hover, .tour-item:hover .day { color: var(--yellow) !important; }
 
-        .month { opacity: 0.6; margin-right: 8px; }
-        .day { color: var(--yellow); margin-right: 15px; }
-        .city { font-weight: 900; }
+        .month { opacity: 0.6; margin-right: 8px; color: var(--white); }
+        .day { color: var(--white); margin-right: 15px; } /* Blanco por defecto ahora */
+        .city { font-weight: 900; color: var(--white); }
         .flag { margin-left: 10px; font-size: 0.8em; }
 
-        .status-agotada {
-            opacity: 0.3;
-            text-decoration: line-through;
-            pointer-events: none;
-        }
-        .label-agotada { font-size: 0.6em; margin-right: 15px; opacity: 0.8; text-decoration: none; display: inline-block;}
+        .status-agotada { opacity: 0.2; text-decoration: line-through; pointer-events: none; }
 
+        /* [3] WHATSAPP */
         .whatsapp {
             display: block;
-            margin-top: 40px;
-            font-size: clamp(18px, 3vw, 32px);
+            margin-top: 45px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 900;
+            font-size: clamp(18px, 2.5vw, 28px);
+        }
+        .whatsapp:hover .wa-link { color: var(--yellow); }
+
+        /* [4] CRÉDITOS */
+        .credits-box {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+            color: var(--white);
+        }
+        .credits-box a {
             color: var(--white);
             text-decoration: none;
             font-weight: 900;
+            transition: color 0.2s;
         }
-        .whatsapp:hover { color: var(--yellow); }
+        .credits-box a:hover { color: var(--yellow); }
 
-        /* Frase prefix de whatsapp para control de tamaño */
-        .whatsapp-prefix { font-weight: 700; } 
-
-        /* Clases de utilidad para control de visualización */
-        .desktop-hide { display: none; }
-        .mobile-hide { display: block; }
-
-        /* FOOTER PC: Absoluto abajo a la derecha */
         footer {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             right: 40px;
-            text-align: right;
             z-index: 10;
-            font-size: 14px;
-            opacity: 0.6;
-            color: var(--white);
         }
-        .highlight { color: var(--yellow); font-weight: 900; }
 
-        /* =========================================
-           [MOBILE] AJUSTES EXCLUSIVOS PARA CELULAR
-           ========================================= */
+        /* MÓVIL */
         @media (max-width: 768px) {
-            body { 
-                background-position: 35% center; /* Ajuste fono */
-                overflow-x: hidden; /* Evita scroll raro */
-            }
-            body::before {
-                background: rgba(0,0,0,0.6); /* Overlay más fuerte */
-            }
-
-            /* 1. Alineación a la DERECHA absoluta en celular */
-            .main-wrapper { 
-                justify-content: flex-end; 
-                padding: 20px;
-                width: 100%;
-            }
-            .content-box { 
-                text-align: right; 
-                margin-left: auto;
-                margin-right: 0;
-                width: calc(100% - 20px); /* Un pequeño margen a la izquierda */
-            }
-
-            .tour-item { justify-content: flex-end; }
-
-            /* 2. "para más información:" dos puntos más pequeño */
-            .whatsapp-prefix {
-                font-size: 0.8em; /* 20% más pequeño relativo al tamaño clamp */
-                display: block; /* Stackeado arriba para mejor alineación derecha */
-            }
-
-            /* 4. Separación entre ciudades MENOR */
-            .tour-list { gap: 2px; } /* Compactado al máximo */
-
-            /* 3. Mover Créditos al final (después del whatsapp) */
-            /* Ocultamos footer PC */
-            footer.mobile-hide { display: none !important; }
-
-            /* Mostramos créditos inline (estilo moved after whatsapp in HTML) */
-            .desktop-hide.credits-inline {
-                display: block !important;
-                margin-top: 30px;
-                text-align: right;
-                font-size: 14px;
-                opacity: 0.6;
-                color: var(--white);
-            }
-            .credits-inline p { margin-bottom: 5px; }
+            body { background-position: left center; }
+            .main-wrapper { justify-content: flex-end; padding: 20px; }
+            .content-box { text-align: right; }
+            footer { display: none; }
+            .tour-list { gap: 1px; }
         }
     </style>
 </head>
@@ -192,36 +150,98 @@
 
     <div class="main-wrapper">
         <div class="content-box">
-            <h1 class="title">vende tus redes<br>tour 2026<br>como kensen.</h1>
+            
+            <div class="title-container">
+                <span class="t-small t-italic">tour 2026</span><br>
+                <span class="t-massive">vende</span>
+                <span class="t-massive">tus redes</span>
+                <span class="t-small">como kensen.</span>
+            </div>
 
             <div class="tour-list">
                 <div class="tour-item status-agotada">
-                    <span class="label-agotada">agotada</span>
                     <span class="month">mar</span><span class="day">27</span>
                     <span class="city">caracas <span class="flag">🇻🇪</span></span>
                 </div>
 
-                <a href="TU_LINK" class="tour-item">
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
                     <span class="month">abr</span><span class="day">18</span>
                     <span class="city">caracas <span class="flag">🇻🇪</span></span>
                 </a>
 
-                <a href="https://wa.me/584242133500" class="whatsapp">
-                    <span class="whatsapp-prefix">para más información:</span> whatsapp +58 424 213.3500
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">may</span><span class="day">09</span>
+                    <span class="city">valencia <span class="flag">🇻🇪</span></span>
                 </a>
 
-                <div class="desktop-hide credits-inline">
-                    <p>producción general: <span class="highlight">medio palo llc + hi protection</span></p>
-                    <p>dirección: <span class="highlight">césar kensen</span></p>
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">may</span><span class="day">23</span>
+                    <span class="city">lechería <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">may</span><span class="day">30</span>
+                    <span class="city">maracay <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">jun</span><span class="day">20</span>
+                    <span class="city">barquisimeto <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">jul</span><span class="day">04</span>
+                    <span class="city">altos mir. <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">jul</span><span class="day">18</span>
+                    <span class="city">pto ordaz <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">ago</span><span class="day">15</span>
+                    <span class="city">el tigre <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">sep</span><span class="day">05</span>
+                    <span class="city">san cristóbal <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">oct</span><span class="day">17</span>
+                    <span class="city">margarita <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">nov</span><span class="day">07</span>
+                    <span class="city">maracaibo <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="TU_LINK_TICKETPLATE" class="tour-item">
+                    <span class="month">nov</span><span class="day">14</span>
+                    <span class="city">maturín <span class="flag">🇻🇪</span></span>
+                </a>
+
+                <a href="https://wa.me/584242133500" class="whatsapp">
+                    <span>más información:</span> <span class="wa-link">whatsapp +58 424 213.3500</span>
+                </a>
+
+                <div class="credits-box">
+                    producción: 
+                    <a href="https://www.instagram.com/mediopalocrea/" target="_blank">medio palo llc</a> + 
+                    <a href="https://www.instagram.com/hiprotection/" target="_blank">hiprotection</a>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <footer class="mobile-hide">
-        <p>producción general: <span class="highlight">medio palo llc + hi protection</span></p>
-        <p>dirección: <span class="highlight">césar kensen</span></p>
+    <footer class="credits-box">
+        producción: 
+        <a href="https://www.instagram.com/mediopalocrea/" target="_blank">medio palo llc</a> + 
+        <a href="https://www.instagram.com/hiprotection/" target="_blank">hiprotection</a>
     </footer>
 
 </body>
