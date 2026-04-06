@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vende tus redes como kensen. - Tour 2026</title>
+    <title>vende tus redes como kensen - TOUR 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,269 +17,138 @@
             margin: 0;
             padding: 0;
             text-transform: lowercase;
-            /* Priorizamos Helvetica Neue Bold, luego el Google Font Inter */
             font-family: 'Helvetica Neue', 'Inter', sans-serif;
         }
 
         body {
             background-color: var(--black-absolute);
             color: var(--white-hueso);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
-            font-weight: 700; /* Bold por defecto */
+            font-weight: 700;
+            /* EL PÓSTER: Siempre completo de fondo, ajustado al alto */
+            background-image: url('poster_oficial_grande.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-attachment: fixed;
         }
 
-        /* [A] CAPA HERO: PÓSTER INMERSIVO */
-        .poster-hero {
-            position: relative;
+        .content-layer {
             width: 100%;
-            height: 100vh; /* Ocupa toda la pantalla */
-            background-image: url('poster_oficial_grande.jpg'); /* Tu póster completo con el rostro */
-            background-size: cover;
-            background-position: center left; /* Alineado para mostrar el rostro */
-            z-index: 1;
-        }
-
-        /* [B] CAPA DE CONTENIDO: PUNTOS DE VENTA */
-        .content-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            padding: 60px 80px 40px 80px;
+            max-width: 1400px;
+            padding: 60px 5% 40px 5%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-end; /* Todo a la derecha */
-            z-index: 5;
+            align-items: flex-end; /* Alineación a la derecha */
             text-align: right;
-            pointer-events: none; /* No bloquea el hover de la lista */
+            z-index: 5;
         }
 
-        /* TÍTULOS GIGANTES AMARILLOS */
+        /* TÍTULO ACTUALIZADO */
         .title-block {
             color: var(--yellow-old);
-            font-size: 70px; /* Grande como en el póster */
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 20px;
-            max-width: 600px;
+            font-size: clamp(40px, 5vw, 70px);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
         }
 
-        /* LISTA DE FECHAS (The Index) */
         .tour-list {
-            pointer-events: auto; /* Habilitamos clicks en la lista */
             width: 100%;
-            max-width: 600px;
-            margin-top: 40px;
-            font-size: 35px; /* Tamaño del póster */
-            line-height: 1.2;
-        }
-
-        /* ESTILO DE CADA LÍNEA (Enlace) */
-        .tour-list a {
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            text-decoration: none;
-            color: inherit; /* Hereda color blanco */
-            transition: color 0.2s, text-shadow 0.2s;
-            margin-bottom: 5px;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        /* HOVER DE ÉLITE */
+        /* LINKS EN BLANCO POR DEFAULT */
+        .tour-list a {
+            display: block;
+            text-decoration: none;
+            color: var(--white-hueso); 
+            font-size: clamp(25px, 3vw, 40px);
+            transition: color 0.2s ease;
+        }
+
+        /* HOVER: SOLO AMARILLO, SIN RESPLANDOR */
         .tour-list a:hover {
             color: var(--yellow-old);
-            text-shadow: 0 0 10px var(--yellow-old);
         }
 
-        /* COMPONENTES DE LA LÍNEA */
-        .list-status { margin-right: 15px; } /* Tachado de agotada */
-        .list-status-txt { margin-right: 15px; color: var(--white-hueso); opacity: 0.5; } /* "agotada" */
-        
-        .list-date-block { display: flex; align-items: baseline; font-weight: 800;}
-        .list-month { color: var(--white-hueso); opacity: 0.7; margin-right: 5px; }
-        .list-day { color: var(--yellow-old); margin-right: 15px;}
-        
-        .list-city { display: flex; align-items: center; font-weight: 900;}
-        .list-flag { font-size: 25px; margin-left: 10px; } /* Bandera */
+        .list-date-block { display: inline-block; margin-right: 15px; }
+        .list-month { opacity: 0.6; margin-right: 5px; }
+        .list-day { color: var(--yellow-old); }
+        .list-city { font-weight: 900; }
 
-        /* FECHA AGOTADA (Especial) */
+        /* FECHA QUE YA PASÓ: Baja opacidad y tachado */
         .agotada {
-            opacity: 0.5;
+            opacity: 0.3;
             text-decoration: line-through;
-        }
-        .agotada:hover {
-            color: inherit;
-            text-shadow: none;
-            text-decoration: line-through;
+            pointer-events: none;
         }
 
-        /* ENLACE DE WHATSAPP (Final de lista) */
+        /* WHATSAPP */
         .whatsapp-contact {
-            display: block;
-            margin-top: 60px; /* Mucho aire */
-            font-size: 30px;
-            font-weight: 900;
+            margin-top: 50px;
+            font-size: clamp(20px, 2vw, 30px);
             color: var(--white-hueso);
             text-decoration: none;
-            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-bottom 0.2s;
         }
         .whatsapp-contact:hover {
             color: var(--yellow-old);
+            border-bottom: 2px solid var(--yellow-old);
         }
 
-        /* [C] PIE DE PÁGINA (CRÉDITOS ELITE STYLE) */
+        /* CRÉDITOS ACTUALIZADOS */
         footer {
-            margin-top: auto; /* Al final de la página */
-            padding: 20px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-            line-height: 1.5;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
             width: 100%;
-            text-align: right; /* Alineado a la derecha */
-            z-index: 10;
+            padding: 40px 5%;
+            text-align: right;
+            opacity: 0.5;
+            font-size: 14px;
         }
-        .credit-line { margin-bottom: 5px; }
         .highlight { color: var(--yellow-old); font-weight: 900; }
-
     </style>
 </head>
 <body>
 
-    <div class="poster-hero"></div>
-
-    <div class="content-overlay">
-        
+    <div class="content-layer">
         <div class="title-block">
-            vende tus redes<br>tour 2026<br>como kensen.
+            vende tus redes<br>como kensen -<br>TOUR 2026
         </div>
 
         <div class="tour-list">
-            
-            <a href="TU_LINK_TICKETPLATE_CARACAS_1" class="agotada">
-                <span class="list-status">
-                    <span class="list-status-txt">agotada</span>
-                    <span class="list-date-block">
-                        <span class="list-month">mar</span>
-                        <span class="list-day">27</span>
-                    </span>
-                    <span class="list-city">caracas<span class="list-flag">🇻🇪</span></span>
-                </span>
+            <a href="#" class="agotada">
+                <span class="list-date-block"><span class="list-month">mar</span><span class="list-day">27</span></span>
+                <span class="list-city">caracas 🇻🇪</span>
             </a>
 
-            <a href="TU_LINK_TICKETPLATE_CARACAS_2">
-                <span class="list-date-block">
-                    <span class="list-month">abr</span>
-                    <span class="list-day">18</span>
-                </span>
-                <span class="list-city">caracas<span class="list-flag">🇻🇪</span></span>
+            <a href="TU_LINK_TICKETPLATE">
+                <span class="list-date-block"><span class="list-month">abr</span><span class="list-day">18</span></span>
+                <span class="list-city">caracas 🇻🇪</span>
             </a>
 
-            <a href="TU_LINK_TICKETPLATE_VALENCIA">
-                <span class="list-date-block">
-                    <span class="list-month">may</span>
-                    <span class="list-day">09</span>
-                </span>
-                <span class="list-city">valencia<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_LECHERIA">
-                <span class="list-date-block">
-                    <span class="list-month">may</span>
-                    <span class="list-day">23</span>
-                </span>
-                <span class="list-city">lechería<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_MARACAY">
-                <span class="list-date-block">
-                    <span class="list-month">may</span>
-                    <span class="list-day">30</span>
-                </span>
-                <span class="list-city">maracay<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_BARQUISIMETO">
-                <span class="list-date-block">
-                    <span class="list-month">jun</span>
-                    <span class="list-day">20</span>
-                </span>
-                <span class="list-city">barquisimeto<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_ALTOSMIR">
-                <span class="list-date-block">
-                    <span class="list-month">jul</span>
-                    <span class="list-day">04</span>
-                </span>
-                <span class="list-city">altos mir.<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_PTOORDAZ">
-                <span class="list-date-block">
-                    <span class="list-month">jul</span>
-                    <span class="list-day">18</span>
-                </span>
-                <span class="list-city">pto ordaz<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_ELTIGRE">
-                <span class="list-date-block">
-                    <span class="list-month">ago</span>
-                    <span class="list-day">15</span>
-                </span>
-                <span class="list-city">el tigre<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_SANCRISTOBAL">
-                <span class="list-date-block">
-                    <span class="list-month">sep</span>
-                    <span class="list-day">05</span>
-                </span>
-                <span class="list-city">san cristóbal<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_MARGARITA">
-                <span class="list-date-block">
-                    <span class="list-month">oct</span>
-                    <span class="list-day">17</span>
-                </span>
-                <span class="list-city">margarita<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_MARACAIBO">
-                <span class="list-date-block">
-                    <span class="list-month">nov</span>
-                    <span class="list-day">07</span>
-                </span>
-                <span class="list-city">maracaibo<span class="list-flag">🇻🇪</span></span>
-            </a>
-
-            <a href="TU_LINK_TICKETPLATE_MATURIN">
-                <span class="list-date-block">
-                    <span class="list-month">nov</span>
-                    <span class="list-day">14</span>
-                </span>
-                <span class="list-city">maturín<span class="list-flag">🇻🇪</span></span>
+            <a href="TU_LINK_TICKETPLATE">
+                <span class="list-date-block"><span class="list-month">may</span><span class="list-day">09</span></span>
+                <span class="list-city">valencia 🇻🇪</span>
             </a>
 
             <a href="https://wa.me/584242133500" class="whatsapp-contact">
-                para más información: Whatsapp +58 424 213.3500
+                Para más información: Whatsapp +58 424 213.3500
             </a>
-
         </div>
-
-        <footer>
-            <div class="credit-line">producción general: <span class="highlight">High Protection × Medio Palo LLC</span></div>
-            <div class="credit-line">dirección: <span class="highlight">César Kensen</span></div>
-        </footer>
-
     </div>
+
+    <footer>
+        <div class="credit-line">producción general: <span class="highlight">Medio Palo LLC + Hi Protection</span></div>
+        <div class="credit-line">dirección: <span class="highlight">César Kensen</span></div>
+    </footer>
 
 </body>
 </html>
