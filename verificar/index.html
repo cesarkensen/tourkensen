@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Certificado | César Kensen</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { border: 1px solid #333; padding: 40px; text-align: center; max-width: 400px; width: 90%; border-radius: 2px; }
+        h1 { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; color: #666; }
+        .status { font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; }
+        .valid { color: #00ff00; }
+        .invalid { color: #ff0000; }
+        .data { border-top: 1px solid #222; margin-top: 20px; padding-top: 20px; text-align: left; font-size: 0.9rem; line-height: 1.6; }
+        .data b { color: #aaa; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
+        .loader { border: 2px solid #333; border-top: 2px solid #fff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Autenticación Kensen</h1>
+        <div id="loader" class="loader"></div>
+        <div id="result" style="display:none;">
+            <div id="status-text" class="status"></div>
+            <div id="student-data" class="data"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbzvVmzTPprXysOF7Zq7s2lHIny-fgbM2-fhuPzFCOUItx795eVKgF5BXNwMIGLHtLJk/exec"; 
+        const urlParams = new URLSearchParams(window.location.search);
+        const certId = urlParams.get('id');
+
+        if (!certId) {
+            showError("ID NO PROPORCIONADO");
+        } else {
+            fetch(`${API_URL}?id=${certId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('result').style.display = 'block';
+                    
+                    if (data.status === "valido") {
+                        document.getElementById('status-text').innerText = "✅ CERTIFICADO VÁLIDO";
+                        document.getElementById('status-text').classList.add('valid');
+                        document.getElementById('student-data').innerHTML = `
+                            <p><b>Participante:</b><br>${data.nombre}</p>
+                            <p><b>Programa:</b><br>${data.evento}</p>
+                            <p><b>Ubicación:</b><br>${data.ciudad}</p>
+                            <p><b>Fecha:</b><br>${data.fecha}</p>
+                            <p><b>ID:</b><br>${certId}</p>
+                        `;
+                    } else {
+                        showError("CERTIFICADO NO ENCONTRADO");
+                    }
+                })
+                .catch(err => showError("ERROR DE CONEXIÓN"));
+        }
+
+        function showError(msg) {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('status-text').innerText = `❌ ${msg}`;
+            document.getElementById('status-text').classList.add('invalid');
+        }
+    </script>
+</body>
+</html>
