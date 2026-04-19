@@ -1,26 +1,69 @@
-function doGet(e) {
-  const idBusca = (e.parameter.id || "").trim().toLowerCase();
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  const data = sheet.getDataRange().getValues();
-  
-  // Buscamos en la Columna AF (Índice 31)
-  for (var i = 1; i < data.length; i++) {
-    // Limpiamos el ID de la celda para comparar
-    let idCelda = String(data[i][31]).trim().toLowerCase(); 
-    
-    if (idCelda === idBusca && idBusca !== "") { 
-      const respuesta = {
-        status: "valido",
-        nombre: data[i][4],     // Columna E
-        evento: "Masterclass Vende Tus Redes",
-        ciudad: data[i][27],    // Columna AB
-        fecha: data[i][28]      // Columna AC
-      };
-      return ContentService.createTextOutput(JSON.stringify(respuesta))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-  }
-  
-  return ContentService.createTextOutput(JSON.stringify({status: "no_encontrado"}))
-    .setMimeType(ContentService.MimeType.JSON);
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Kensen | Autenticidad Elite</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { border: 1px solid #222; padding: 40px; text-align: center; max-width: 400px; width: 90%; border-radius: 4px; background: #050505; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; color: #444; }
+        .status { font-size: 1.4rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; }
+        .valid { color: #00ff88; }
+        .invalid { color: #ff3333; }
+        .data { border-top: 1px solid #111; margin-top: 20px; padding-top: 20px; text-align: left; font-size: 0.9rem; line-height: 1.8; color: #eee; }
+        .data b { color: #666; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; display: block; margin-bottom: -5px; }
+        .loader { border: 2px solid #111; border-top: 2px solid #fff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Validación de Certificado</h1>
+        <div id="loader" class="loader"></div>
+        <div id="result" style="display:none;">
+            <div id="status-text" class="status"></div>
+            <div id="student-data" class="data"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "https://script.google.com/macros/s/AKfycbxhXHTF0wsKMbJQuypm9lrTTWJafW9S335ky9WaQIkpoPqVGB-xpRWxrAmTJAXpIyGD/exec"; 
+        const urlParams = new URLSearchParams(window.location.search);
+        const certId = urlParams.get('id');
+
+        if (!certId) {
+            showError("ID NO PROPORCIONADO");
+        } else {
+            fetch(`${API_URL}?id=${certId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('result').style.display = 'block';
+                    
+                    if (data.status === "valido") {
+                        document.getElementById('status-text').innerText = "✅ Autenticidad Confirmada";
+                        document.getElementById('status-text').classList.add('valid');
+                        document.getElementById('student-data').innerHTML = `
+                            <p><b>Participante</b>${data.nombre}</p>
+                            <p><b>Evento</b>${data.evento}</p>
+                            <p><b>Ubicación</b>${data.ciudad}</p>
+                            <p><b>Fecha de Emisión</b>${data.fecha}</p>
+                            <p><b>Token de Seguridad</b>${certId}</p>
+                        `;
+                    } else {
+                        showError("CERTIFICADO NO VÁLIDO");
+                    }
+                })
+                .catch(err => showError("ERROR DE COMUNICACIÓN"));
+        }
+
+        function showError(msg) {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('status-text').innerText = `❌ ${msg}`;
+            document.getElementById('status-text').classList.add('invalid');
+        }
+    </script>
+</body>
+</html>
