@@ -3,67 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación Kensen | Autenticidad Elite</title>
+    <title>Verificación de Certificado | Medio Palo LLC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { border: 1px solid #222; padding: 40px; text-align: center; max-width: 400px; width: 90%; border-radius: 4px; background: #050505; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; color: #444; }
-        .status { font-size: 1.4rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; }
-        .valid { color: #00ff88; }
-        .invalid { color: #ff3333; }
-        .data { border-top: 1px solid #111; margin-top: 20px; padding-top: 20px; text-align: left; font-size: 0.9rem; line-height: 1.8; color: #eee; }
-        .data b { color: #666; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; display: block; margin-bottom: -5px; }
-        .loader { border: 2px solid #111; border-top: 2px solid #fff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        :root {
+            --pink: #E94E77;
+            --black: #1A1A1A;
+            --gray: #F4F4F4;
+            --success: #27AE60;
+            --error: #EB5757;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f0f0;
+            /* Sutil textura de papel */
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--black);
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            border-top: 8px solid var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* El detalle del banner lateral que tiene tu certificado */
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 8px;
+            background: linear-gradient(to bottom, #7B2FF7, #E94E77, #2F80ED);
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 1.8rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--pink);
+            display: block;
+        }
+
+        .status-box {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            display: none; /* Se activa con JS */
+            border: 2px solid transparent;
+        }
+
+        .status-box.valid {
+            display: block;
+            background: #eafff2;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .status-box.invalid {
+            display: block;
+            background: #fff0f0;
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .status-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .status-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .data-grid {
+            margin-top: 20px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #777;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .value {
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        .loader {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 25px; }
+            h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Validación de Certificado</h1>
-        <div id="loader" class="loader"></div>
-        <div id="result" style="display:none;">
-            <div id="status-text" class="status"></div>
-            <div id="student-data" class="data"></div>
-        </div>
+
+<div class="container">
+    <div id="loading" class="loader">
+        <p>Verificando credenciales...</p>
     </div>
 
-    <script>
-        const API_URL = "https://script.google.com/macros/s/AKfycbzLMDnjkGx5r7kJ1vCLbRoVpv5fNEQ-nJrO_EnVGAyaWAc4Irq5Fzeulq7Mf42Ob6Tp/exec"; 
+    <div id="content" style="display: none;">
+        <h1>Validación de <span>Autenticidad</span></h1>
+
+        <div id="statusBox" class="status-box">
+            <span id="statusIcon" class="status-icon"></span>
+            <span id="statusText" class="status-text"></span>
+        </div>
+
+        <div class="data-grid" id="dataGrid">
+            <div class="data-item">
+                <span class="label">Participante</span>
+                <span class="value" id="valNombre">---</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Evento</span>
+                <span class="value" id="valEvento">---</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Ubicación</span>
+                <span class="value" id="valCiudad">---</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Fecha Emisión</span>
+                <span class="value" id="valFecha">---</span>
+            </div>
+            <div class="data-item">
+                <span class="label">Token ID</span>
+                <span class="value" id="valID" style="color: var(--pink);">---</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            Verificación oficial de Medio Palo LLC.<br>
+            Este documento está protegido por el Sistema Kensen de autenticación digital.
+        </div>
+    </div>
+</div>
+
+<script>
+    // TU URL DE GOOGLE APPS SCRIPT
+    const API_URL = "https://script.google.com/macros/s/AKfycbzLMDnjkGx5r7kJ1vCLbRoVpv5fNEQ-nJrO_EnVGAyaWAc4Irq5Fzeulq7Mf42Ob6Tp/exec";
+
+    async function verificar() {
         const urlParams = new URLSearchParams(window.location.search);
-        const certId = urlParams.get('id');
+        const id = urlParams.get('id');
 
-        if (!certId) {
-            showError("ID NO PROPORCIONADO");
-        } else {
-            fetch(`${API_URL}?id=${certId}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('loader').style.display = 'none';
-                    document.getElementById('result').style.display = 'block';
-                    
-                    if (data.status === "valido") {
-                        document.getElementById('status-text').innerText = "✅ Autenticidad Confirmada";
-                        document.getElementById('status-text').classList.add('valid');
-                        document.getElementById('student-data').innerHTML = `
-                            <p><b>Participante</b>${data.nombre}</p>
-                            <p><b>Evento</b>${data.evento}</p>
-                            <p><b>Ubicación</b>${data.ciudad}</p>
-                            <p><b>Fecha de Emisión</b>${data.fecha}</p>
-                            <p><b>Token de Seguridad</b>${certId}</p>
-                        `;
-                    } else {
-                        showError("CERTIFICADO NO VÁLIDO");
-                    }
-                })
-                .catch(err => showError("ERROR DE COMUNICACIÓN"));
+        if (!id) {
+            showError("No se proporcionó un ID de certificado.");
+            return;
         }
 
-        function showError(msg) {
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('status-text').innerText = `❌ ${msg}`;
-            document.getElementById('status-text').classList.add('invalid');
+        try {
+            const response = await fetch(`${API_URL}?id=${id}`);
+            const data = await response.json();
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            if (data.status === "valido") {
+                showSuccess(data, id);
+            } else {
+                showError("El certificado no existe en nuestros registros.");
+            }
+        } catch (error) {
+            showError("Error de conexión con el servidor.");
         }
-    </script>
+    }
+
+    function showSuccess(data, id) {
+        const box = document.getElementById('statusBox');
+        box.classList.add('valid');
+        document.getElementById('statusIcon').innerHTML = '✅';
+        document.getElementById('statusText').innerText = 'Autenticidad Confirmada';
+        
+        document.getElementById('valNombre').innerText = data.nombre;
+        document.getElementById('valEvento').innerText = data.evento;
+        document.getElementById('valCiudad').innerText = data.ciudad;
+        document.getElementById('valFecha').innerText = data.fecha;
+        document.getElementById('valID').innerText = id.toUpperCase();
+    }
+
+    function showError(msg) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
+        const box = document.getElementById('statusBox');
+        box.classList.add('invalid');
+        document.getElementById('statusIcon').innerHTML = '❌';
+        document.getElementById('statusText').innerText = 'Validación Fallida';
+        
+        document.getElementById('dataGrid').innerHTML = `<p style="text-align:center; padding: 20px; font-weight:700;">${msg}</p>`;
+    }
+
+    window.onload = verificar;
+</script>
+
 </body>
 </html>
