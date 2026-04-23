@@ -3,369 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vende tus redes tour 2026 como kensen.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+    <title>Masterclass Cesar Kensen | Próximas Fechas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           [GLOBAL] CONFIGURACIÓN DE ELITE (PC/MÓVIL)
-           ========================================= */
         :root {
-            --yellow: #F4BF3A;
-            --white: #FFFFFF;
-            --black: #000000;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            text-transform: lowercase;
-            /* Prioridad absoluta a Helvetica Neue Bold, luego fallback */
-            font-family: 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
-            font-weight: 800; /* Bold/Heavy */
-            /* 2. ESPACIADO ENTRE LETRAS -40 (0.04em aprox -1.5px) */
-            letter-spacing: -1.5px;
+            --pink: #E94E77;
+            --fuchsia-sold: #9D005D; /* Fucsia intenso y oscuro */
+            --black: #1A1A1A;
+            --gray: #F4F4F4;
         }
 
         body {
-            background-color: var(--black);
-            color: var(--white);
-            min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden; /* Evita scroll horizontal */
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f0f0;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            min-height: 100vh;
+            color: var(--black);
         }
 
-        /* [1] EL PÓSTER DE FONDO (PRECISIÓN TÁCTICA L/T) */
-        .background-poster {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-image: url('poster_oficial_grande2.jpg'); 
-            /* 1. Pegado al LEFT y TOP, completo sin corte (contain) */
-            background-size: contain; 
-            background-repeat: no-repeat;
-            background-position: left top;
-            z-index: 1;
-        }
-
-        /* Capa de oscurecimiento sutil para legibilidad en PC */
-        .background-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 2;
-        }
-
-        /* [B] CAPA DE CONTENIDO: CENTRADO ABSOLUTO (PC-DERECHA / MÓVIL-DERECHA) */
-        .main-wrapper {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 1400px;
+        .container {
+            background: white;
+            width: 95%;
+            max-width: 500px;
             padding: 40px;
-            display: flex;
-            justify-content: flex-end; /* Alineación PC a la derecha */
-            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            border-top: 8px solid var(--black);
+            position: relative;
+            overflow: hidden;
         }
 
-        .content-box {
-            text-align: right; /* Alineación general */
-            max-width: 750px; /* Un poco más ancho para los títulos nuevos */
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 8px;
+            background: linear-gradient(to bottom, #7B2FF7, #E94E77, #2F80ED);
         }
 
-        /* [A] BLOQUE DE TÍTULO (DENSIDAD SUIZA) */
-        .title-container {
-            margin-bottom: 40px;
-            line-height: 0.75; /* Interlineado ultra denso */
-            pointer-events: auto;
-        }
-
-        /* 3. "tour 2026" y "como kensen" MÁS GRANDES */
-        .t-small {
-            font-size: clamp(24px, 3.5vw, 42px); /* Bump de tamaño */
-            letter-spacing: -1px; /* Tracking menos agresivo aquí */
-        }
-        
-        /* 3. "tour 2026" en itálica */
-        .t-italic {
-            font-style: italic;
-            color: var(--yellow);
-        }
-
-        /* "vende" y "tus redes" MASIVOS */
-        .t-massive {
-            font-size: clamp(65px, 11vw, 135px);
+        h1 {
             font-weight: 900;
+            font-size: 1.8rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--pink);
             display: block;
-            color: var(--white);
         }
 
-        /* 3. "como kensen" NO itálica, mismo tamaño que "tour 2026" */
-        .t-kensen {
-            color: var(--white);
-        }
-
-        /* [2] LISTA DE CIUDADES (COMPLETAS Y COMPACTAS) */
-        .tour-list {
-            pointer-events: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 4px; /* Separación menor entre líneas */
-        }
-
-        .tour-item {
-            text-decoration: none;
-            color: var(--white);
-            font-size: clamp(25px, 4vw, 45px); /* Tamaño responsive */
+        .subtitle {
+            font-size: 0.9rem;
             font-weight: 700;
-            display: flex;
-            justify-content: flex-end;
-            align-items: baseline;
-            transition: color 0.1s;
+            color: #777;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
 
-        /* 4. HOVER TOTAL A AMARILLO (Mes, Día, Ciudad) */
-        .tour-item:hover, .tour-item:hover .day { color: var(--yellow) !important; }
+        .data-grid {
+            margin-top: 20px;
+        }
 
-        /* 4. Fechas, mes y ciudad de color blanco por defecto */
-        .month { opacity: 0.6; margin-right: 8px; color: var(--white); }
-        .day { color: var(--white); margin-right: 15px; } 
-        .city { font-weight: 900; color: var(--white); }
-        .flag { margin-left: 10px; font-size: 0.8em; } /* Conserva bandera emoji */
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.3s ease;
+        }
 
-        /* FECHA AGOTADA: Baja opacidad y tachado */
-        .status-agotada {
-            opacity: 0.2;
+        /* Hover solo para los que tienen link */
+        a.data-item:hover {
+            padding-left: 5px;
+            background: rgba(233, 78, 119, 0.05);
+        }
+
+        .data-item.sold-out-row {
+            cursor: default;
+            pointer-events: none; /* Deshabilita el click */
+        }
+
+        .label {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .strikethrough {
             text-decoration: line-through;
-            pointer-events: none; /* No clickeable */
+            color: #bbb;
         }
 
-        /* [3] WHATSAPP Y CRÉDITOS */
-        .whatsapp-credits-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-top: 50px; /* Mucho aire */
-        }
-
-        /* Enlace de WhatsApp técnico */
-        .whatsapp {
-            text-decoration: none;
-            color: var(--white);
+        .sold-out-tag {
+            color: var(--fuchsia-sold);
+            font-size: 0.75rem;
             font-weight: 900;
-            font-size: clamp(18px, 2.8vw, 32px);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* Alineación derecha */
+            margin-left: 8px;
+            vertical-align: middle;
         }
-        
-        /* 5. "más información:" excelente tamaño y blanco completo */
-        .wa-prefix {
-            color: var(--white);
+
+        .value {
             font-weight: 700;
-        }
-
-        /* 5. "whatsapp +58 424 213.3500" mismo tamaño, blanco por defecto */
-        .wa-link {
-            color: var(--white);
-            transition: color 0.2s;
-        }
-
-        /* 5. "whatsapp..." cambia a amarillo en hover */
-        .whatsapp:hover .wa-link {
-            color: var(--yellow);
-        }
-
-        /* 6. "producción:" y links interactivos */
-        .credits-box {
-            margin-top: 30px;
-            font-size: clamp(12px, 1.5vw, 18px);
-            opacity: 0.8;
-            color: var(--white);
+            font-size: 0.9rem;
             text-align: right;
-        }
-        
-        .credits-box a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 900;
-            transition: color 0.2s;
-        }
-        
-        /* HOVER DE LINKS DE PRODUCCIÓN */
-        .credits-box a:hover {
-            color: var(--yellow);
+            color: var(--pink);
         }
 
-        /* Clases de utilidad */
-        .desktop-hide { display: none; }
-        .mobile-hide { display: block; }
-
-        /* [C] FOOTER PC: Fijo abajo a la derecha */
-        footer.mobile-hide {
-            position: fixed;
-            bottom: 30px;
-            right: 40px;
-            z-index: 10;
+        .sold-out-row .value {
+            color: #bbb;
         }
 
-        /* =========================================
-           [MOBILE] AJUSTES EXCLUSIVOS PARA CELULAR
-           ========================================= */
-        @media (max-width: 768px) {
-            body { 
-                background-position: left center; /* Ajuste fono */
-                overflow-x: hidden; 
-            }
-            .background-overlay {
-                background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
-            }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.4;
+        }
 
-            /* 1. Alineación a la DERECHA absoluta en celular */
-            .main-wrapper { 
-                justify-content: flex-end; 
-                padding: 20px;
-                width: 100%;
-                padding-bottom: 80px; /* Aire para el footer moved */
-            }
-            .content-box { 
-                text-align: right; 
-                margin-left: auto;
-                margin-right: 0;
-                width: calc(100% - 20px); 
-            }
+        .wa-icon {
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
 
-            .tour-item { justify-content: flex-end; }
-            
-            /* Compactación de la lista en celular */
-            .tour-list { gap: 1px; }
-
-            /* 3. Mover Créditos al final (después del whatsapp) */
-            footer.mobile-hide { display: none !important; } /* Ocultamos footer PC */
-
-            /* Mostramos créditos inline (después del whatsapp en HTML) */
-            .whatsapp-credits-group .credits-box.desktop-hide {
-                display: block !important;
-                margin-top: 30px;
-                font-size: 14px;
-                opacity: 0.8;
-                text-align: right;
-                width: 100%;
-                color: var(--white);
-            }
+        @media (max-width: 480px) {
+            .container { padding: 25px; }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="background-poster"></div>
-    <div class="background-overlay"></div>
+<div class="container">
+    <div id="content">
+        <h1>Vende tus redes <span>Masterclass</span></h1>
+        <p class="subtitle">Selecciona tu ciudad para inscribirte</p>
 
-    <div class="main-wrapper">
-        <div class="content-box">
+        <div class="data-grid">
             
-            <div class="title-container">
-                <span class="t-small t-italic">tour 2026</span><br>
-                <span class="t-massive">vende</span>
-                <span class="t-massive">tus redes</span>
-                <span class="t-small t-kensen">como kensen.</span>
+            <div class="data-item sold-out-row">
+                <span class="label strikethrough">Caracas <span class="sold-out-tag">SOLD OUT</span></span>
+                <span class="value">11 ABRIL</span>
             </div>
 
-            <div class="tour-list">
-                <div class="tour-item status-agotada">
-                    <span class="label-agotada desktop-hide">agotada</span>
-                    <span class="month">mar</span><span class="day">27</span>
-                    <span class="city">caracas <span class="flag">🇻🇪</span></span>
-                </div>
-
-                <a href="https://cinepiccandelaria.com/es-AR/programacion/893" class="tour-item">
-                    <span class="month">abr</span><span class="day">18</span>
-                    <span class="city">caracas <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">may</span><span class="day">09</span>
-                    <span class="city">valencia <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">may</span><span class="day">23</span>
-                    <span class="city">lechería <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">may</span><span class="day">30</span>
-                    <span class="city">maracay <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">jun</span><span class="day">20</span>
-                    <span class="city">barquisimeto <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">jul</span><span class="day">04</span>
-                    <span class="city">altos mir. <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">jul</span><span class="day">18</span>
-                    <span class="city">pto ordaz <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">ago</span><span class="day">15</span>
-                    <span class="city">el tigre <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">sep</span><span class="day">05</span>
-                    <span class="city">san cristóbal <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">oct</span><span class="day">17</span>
-                    <span class="city">margarita <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">nov</span><span class="day">07</span>
-                    <span class="city">maracaibo <span class="flag">🇻🇪</span></span>
-                </a>
-
-                <a href="TU_LINK" class="tour-item">
-                    <span class="month">nov</span><span class="day">14</span>
-                    <span class="city">maturín <span class="flag">🇻🇪</span></span>
-                </a>
+            <div class="data-item sold-out-row">
+                <span class="label strikethrough">Caracas <span class="sold-out-tag">SOLD OUT</span></span>
+                <span class="value">18 ABRIL</span>
             </div>
 
-            <div class="whatsapp-credits-group">
-                
-                <a href="https://wa.me/584242133500" class="whatsapp">
-                    <span class="wa-prefix">más información:</span> 
-                    <span class="wa-link">whatsapp +58 424 213.3500</span>
-                </a>
+            <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20BARQUISIMETO%20REDES%20por%20favor%20❤️‍🔥" class="data-item" target="_blank">
+                <span class="label">Barquisimeto</span>
+                <span class="value">26 ABRIL 🔥</span>
+            </a>
 
-                <div class="credits-box desktop-hide">
-                    producción: 
-                    <a href="https://www.instagram.com/mediopalocrea/" target="_blank">medio palo llc</a> + 
-                    <a href="https://www.instagram.com/hiprotection/" target="_blank">hiprotection</a>
-                </div>
+            <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20VALENCIA%20REDES%20por%20favor%20❤️‍🔥" class="data-item" target="_blank">
+                <span class="label">Valencia</span>
+                <span class="value">09 MAYO 🔥</span>
+            </a>
 
-            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 Medio Palo LLC. Todos los derechos reservados.<br>
+            Desarrollado con el CODEX Kensen.
         </div>
     </div>
-
-    <footer class="mobile-hide credits-box">
-        producción: 
-        <a href="https://www.instagram.com/mediopalocrea/" target="_blank">medio palo llc</a> + 
-        <a href="https://www.instagram.com/hiprotection/" target="_blank">hiprotection</a>
-    </footer>
+</div>
 
 </body>
 </html>
