@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación de Certificado | Medio Palo LLC</title>
+    <title>Masterclass Cesar Kensen | Próximas Fechas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --pink: #E94E77;
+            --fuchsia-sold: #9D005D; /* Fucsia intenso y oscuro */
             --black: #1A1A1A;
             --gray: #F4F4F4;
-            --success: #27AE60;
-            --error: #EB5757;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #f0f0f0;
-            /* Sutil textura de papel */
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
             margin: 0;
             display: flex;
@@ -29,7 +27,7 @@
 
         .container {
             background: white;
-            width: 90%;
+            width: 95%;
             max-width: 500px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -39,7 +37,6 @@
             overflow: hidden;
         }
 
-        /* El detalle del banner lateral que tiene tu certificado */
         .container::after {
             content: "";
             position: absolute;
@@ -52,7 +49,7 @@
             font-weight: 900;
             font-size: 1.8rem;
             line-height: 1.1;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: -1px;
         }
@@ -62,38 +59,11 @@
             display: block;
         }
 
-        .status-box {
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 30px;
-            display: none; /* Se activa con JS */
-            border: 2px solid transparent;
-        }
-
-        .status-box.valid {
-            display: block;
-            background: #eafff2;
-            border-color: var(--success);
-            color: var(--success);
-        }
-
-        .status-box.invalid {
-            display: block;
-            background: #fff0f0;
-            border-color: var(--error);
-            color: var(--error);
-        }
-
-        .status-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .status-text {
+        .subtitle {
+            font-size: 0.9rem;
             font-weight: 700;
-            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
@@ -104,30 +74,53 @@
         .data-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
+            align-items: center;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.3s ease;
         }
 
-        .data-item:last-child {
-            border-bottom: none;
+        /* Hover solo para los que tienen link */
+        a.data-item:hover {
+            padding-left: 5px;
+            background: rgba(233, 78, 119, 0.05);
+        }
+
+        .data-item.sold-out-row {
+            cursor: default;
+            pointer-events: none; /* Deshabilita el click */
         }
 
         .label {
-            font-weight: 700;
-            color: #777;
+            font-weight: 900;
             text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .strikethrough {
+            text-decoration: line-through;
+            color: #bbb;
+        }
+
+        .sold-out-tag {
+            color: var(--fuchsia-sold);
             font-size: 0.75rem;
+            font-weight: 900;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
         .value {
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-align: right;
+            color: var(--pink);
         }
 
-        .loader {
-            text-align: center;
-            padding: 40px;
+        .sold-out-row .value {
+            color: #bbb;
         }
 
         .footer {
@@ -136,6 +129,11 @@
             color: #aaa;
             text-align: center;
             line-height: 1.4;
+        }
+
+        .wa-icon {
+            font-size: 1.2rem;
+            margin-left: 10px;
         }
 
         @media (max-width: 480px) {
@@ -147,105 +145,40 @@
 <body>
 
 <div class="container">
-    <div id="loading" class="loader">
-        <p>Verificando credenciales...</p>
-    </div>
+    <div id="content">
+        <h1>Vende tus redes <span>Masterclass</span></h1>
+        <p class="subtitle">Selecciona tu ciudad para inscribirte</p>
 
-    <div id="content" style="display: none;">
-        <h1>Validación de <span>Autenticidad</span></h1>
+        <div class="data-grid">
+            
+            <div class="data-item sold-out-row">
+                <span class="label strikethrough">Caracas <span class="sold-out-tag">SOLD OUT</span></span>
+                <span class="value">11 ABRIL</span>
+            </div>
 
-        <div id="statusBox" class="status-box">
-            <span id="statusIcon" class="status-icon"></span>
-            <span id="statusText" class="status-text"></span>
-        </div>
+            <div class="data-item sold-out-row">
+                <span class="label strikethrough">Caracas <span class="sold-out-tag">SOLD OUT</span></span>
+                <span class="value">18 ABRIL</span>
+            </div>
 
-        <div class="data-grid" id="dataGrid">
-            <div class="data-item">
-                <span class="label">Participante</span>
-                <span class="value" id="valNombre">---</span>
-            </div>
-            <div class="data-item">
-                <span class="label">Evento</span>
-                <span class="value" id="valEvento">---</span>
-            </div>
-            <div class="data-item">
-                <span class="label">Ubicación</span>
-                <span class="value" id="valCiudad">---</span>
-            </div>
-            <div class="data-item">
-                <span class="label">Fecha Emisión</span>
-                <span class="value" id="valFecha">---</span>
-            </div>
-            <div class="data-item">
-                <span class="label">Token ID</span>
-                <span class="value" id="valID" style="color: var(--pink);">---</span>
-            </div>
+            <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20BARQUISIMETO%20REDES%20por%20favor%20❤️‍🔥" class="data-item" target="_blank">
+                <span class="label">Barquisimeto</span>
+                <span class="value">26 ABRIL 🔥</span>
+            </a>
+
+            <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20VALENCIA%20REDES%20por%20favor%20❤️‍🔥" class="data-item" target="_blank">
+                <span class="label">Valencia</span>
+                <span class="value">09 MAYO 🔥</span>
+            </a>
+
         </div>
 
         <div class="footer">
-            Verificación oficial de Medio Palo LLC.<br>
-            Este documento está protegido por el Sistema Kensen de autenticación digital.
+            © 2026 Medio Palo LLC. Todos los derechos reservados.<br>
+            Desarrollado con el CODEX Kensen.
         </div>
     </div>
 </div>
-
-<script>
-    // TU URL DE GOOGLE APPS SCRIPT
-    const API_URL = "https://script.google.com/macros/s/AKfycbzLMDnjkGx5r7kJ1vCLbRoVpv5fNEQ-nJrO_EnVGAyaWAc4Irq5Fzeulq7Mf42Ob6Tp/exec";
-
-    async function verificar() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
-
-        if (!id) {
-            showError("No se proporcionó un ID de certificado.");
-            return;
-        }
-
-        try {
-            const response = await fetch(`${API_URL}?id=${id}`);
-            const data = await response.json();
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-
-            if (data.status === "valido") {
-                showSuccess(data, id);
-            } else {
-                showError("El certificado no existe en nuestros registros.");
-            }
-        } catch (error) {
-            showError("Error de conexión con el servidor.");
-        }
-    }
-
-    function showSuccess(data, id) {
-        const box = document.getElementById('statusBox');
-        box.classList.add('valid');
-        document.getElementById('statusIcon').innerHTML = '✅';
-        document.getElementById('statusText').innerText = 'Autenticidad Confirmada';
-        
-        document.getElementById('valNombre').innerText = data.nombre;
-        document.getElementById('valEvento').innerText = data.evento;
-        document.getElementById('valCiudad').innerText = data.ciudad;
-        document.getElementById('valFecha').innerText = data.fecha;
-        document.getElementById('valID').innerText = id.toUpperCase();
-    }
-
-    function showError(msg) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        
-        const box = document.getElementById('statusBox');
-        box.classList.add('invalid');
-        document.getElementById('statusIcon').innerHTML = '❌';
-        document.getElementById('statusText').innerText = 'Validación Fallida';
-        
-        document.getElementById('dataGrid').innerHTML = `<p style="text-align:center; padding: 20px; font-weight:700;">${msg}</p>`;
-    }
-
-    window.onload = verificar;
-</script>
 
 </body>
 </html>
