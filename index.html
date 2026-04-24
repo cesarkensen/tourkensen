@@ -20,10 +20,10 @@
             background-color: var(--black);
             margin: 0;
             color: var(--white);
-            /* IMAGEN COMPLETA: Ajustada para no cortarse */
+            /* IMAGEN COMPLETA: Fija a la izquierda */
             background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%), url('poster_oficial_grande2.jpg');
             background-repeat: no-repeat;
-            background-size: contain; /* Mantiene la imagen completa */
+            background-size: contain;
             background-position: left center;
             background-attachment: fixed;
             min-height: 100vh;
@@ -71,7 +71,7 @@
         .date-list {
             display: flex;
             flex-direction: column;
-            gap: 2px; /* SEPARACIÓN MÍNIMA */
+            gap: 2px;
         }
 
         .date-row {
@@ -80,15 +80,14 @@
             align-items: baseline;
             text-decoration: none;
             color: var(--white);
-            font-size: 2.2rem; /* CIUDADES MUCHO MÁS GRANDES */
+            font-size: 2.2rem; 
             font-weight: 900;
             text-transform: uppercase;
             padding: 2px 0;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            line-height: 0.9; /* REDUCCIÓN DE SEPARACIÓN ENTRE LÍNEAS */
+            line-height: 0.9;
         }
 
-        /* ANIMACIÓN HOVER */
         .date-row:not(.sold-out):hover {
             transform: translateX(-20px);
             color: var(--gold);
@@ -126,17 +125,30 @@
             opacity: 0.6;
         }
 
+        /* CONFIGURACIÓN MÓVIL (RIGHT ALIGNED) */
         @media (max-width: 1024px) {
             body { 
-                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('poster_oficial_grande2.jpg');
-                background-position: top center;
+                /* En móvil usamos cover para que tu cara impacte de fondo */
+                background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)), url('poster_oficial_grande2.jpg');
+                background-position: center left;
                 background-size: cover;
-                justify-content: center;
+                justify-content: flex-end; /* Mantenemos el contenido a la derecha */
             }
-            .tour-container { max-width: 100%; text-align: center; align-items: center; }
-            h1 { font-size: 3.5rem; }
-            .date-row { justify-content: center; font-size: 1.8rem; }
-            .city { text-align: center; }
+            .tour-container { 
+                max-width: 100%; 
+                padding: 40px 25px;
+                text-align: right; /* Todo el texto a la derecha */
+                align-items: flex-end; 
+                background: rgba(0,0,0,0.3); /* Capa extra para legibilidad */
+            }
+            h1 { font-size: 3.2rem; }
+            h1 span { font-size: 1.8rem; }
+            .date-row { 
+                justify-content: flex-end; 
+                font-size: 1.8rem; 
+            }
+            .city { text-align: right; margin-left: 15px; }
+            .day-month { min-width: 80px; font-size: 1.1rem; }
         }
     </style>
 </head>
