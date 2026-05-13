@@ -20,7 +20,6 @@
             background-color: var(--black);
             margin: 0;
             color: var(--white);
-            /* IMAGEN COMPLETA: Fija a la izquierda */
             background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%), url('poster_oficial_grande2.jpg');
             background-repeat: no-repeat;
             background-size: contain;
@@ -125,21 +124,19 @@
             opacity: 0.6;
         }
 
-        /* CONFIGURACIÓN MÓVIL (RIGHT ALIGNED) */
         @media (max-width: 1024px) {
             body { 
-                /* En móvil usamos cover para que tu cara impacte de fondo */
                 background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)), url('poster_oficial_grande2.jpg');
                 background-position: center left;
                 background-size: cover;
-                justify-content: flex-end; /* Mantenemos el contenido a la derecha */
+                justify-content: flex-end;
             }
             .tour-container { 
                 max-width: 100%; 
                 padding: 40px 25px;
-                text-align: right; /* Todo el texto a la derecha */
+                text-align: right;
                 align-items: flex-end; 
-                background: rgba(0,0,0,0.3); /* Capa extra para legibilidad */
+                background: rgba(0,0,0,0.3);
             }
             h1 { font-size: 3.2rem; }
             h1 span { font-size: 1.8rem; }
@@ -175,24 +172,36 @@
             <span class="sold-out-badge">SOLD OUT</span>
         </div>
 
-        <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20VALENCIA%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">09 MAY</span> <span class="city">VALENCIA</span>
+        <a href="https://www.instagram.com/congresomeme" target="_blank" class="date-row">
+            <span class="day-month">16 MAY</span> <span class="city">MEME VALERA</span>
         </a>
 
-        <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20LECHERIA%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">23 MAY</span> <span class="city">LECHERÍA</span>
+        <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20VALENCIA%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
+            <span class="day-month">23 MAY</span> <span class="city">VALENCIA</span>
         </a>
 
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20MARACAY%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">30 MAY</span> <span class="city">MARACAY</span>
+            <span class="day-month">06 JUN</span> <span class="city">MARACAY</span>
         </a>
 
+        <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20CARACAS%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
+            <span class="day-month">13 JUN</span> <span class="city">CARACAS</span>
+        </a>
+
+        <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20LECHERIA%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
+            <span class="day-month">20 JUN</span> <span class="city">LECHERÍA</span>
+        </a>
+
+        <div class="date-row">
+            <span class="day-month">PRONTO</span> <span class="city">PARAGUANÁ</span>
+        </div>
+
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20BARQUISIMETO%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">20 JUN</span> <span class="city">BARQUISIMETO</span>
+            <span class="day-month">04 JUL</span> <span class="city">BARQUISIMETO</span>
         </a>
 
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20ALTOS%20MIRANDINOS%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">04 JUL</span> <span class="city">ALTOS MIR.</span>
+            <span class="day-month">11 JUL</span> <span class="city">ALTOS MIR.</span>
         </a>
 
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20PUERTO%20ORDAZ%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
@@ -204,7 +213,7 @@
         </a>
 
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20SAN%20CRISTOBAL%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
-            <span class="day-month">05 SEP</span> <span class="city">S. CRISTÓBAL</span>
+            <span class="day-month">29 AGO</span> <span class="city">S. CRISTÓBAL</span>
         </a>
 
         <a href="https://wa.me/584242133500?text=Hola!%20Quiero%20comprar%20mi%20entrada%20para%20el%20Masterclass%20de%20Cesar%20Kensen%20MARGARITA%20REDES%20por%20favor%20❤️‍🔥" class="date-row">
