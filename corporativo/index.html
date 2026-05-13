@@ -20,8 +20,8 @@
             background-color: var(--black);
             margin: 0;
             color: var(--white);
-            /* Mantenemos el fondo icónico */
-            background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,1) 90%), url('poster_oficial_grande2.jpg');
+            /* MISMA CONFIGURACIÓN DE IMAGEN QUE EL HOME */
+            background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%), url('poster_oficial_grande2.jpg');
             background-repeat: no-repeat;
             background-size: contain;
             background-position: left center;
@@ -31,215 +31,215 @@
             justify-content: flex-end; 
         }
 
-        .content-container {
+        .tour-container {
             width: 100%;
-            max-width: 850px;
-            padding: 60px 60px;
+            max-width: 800px; /* Un poco más ancho para el texto corporativo */
+            padding: 40px 60px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: right;
         }
 
         header {
             margin-bottom: 40px;
+            text-align: right;
         }
 
-        .tagline {
+        .tour-tag {
             font-weight: 900;
             color: var(--gold);
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 5px;
-            margin-bottom: 10px;
+            margin: 0;
             text-transform: uppercase;
         }
 
         h1 {
             font-weight: 900;
-            font-size: 3.5rem;
-            line-height: 0.9;
-            margin: 0;
+            font-size: 4rem;
+            line-height: 0.8;
+            margin: 15px 0;
             text-transform: uppercase;
         }
 
         h1 span {
             display: block;
-            color: var(--gold);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--white);
         }
 
         .subtitle {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 400;
             line-height: 1.4;
-            margin-top: 25px;
             max-width: 600px;
             margin-left: auto;
-            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            color: rgba(255,255,255,0.8);
         }
 
-        /* BOTÓN DE DESCARGA */
-        .btn-download {
+        /* BOTÓN DOSSIER */
+        .btn-dossier {
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 25px;
             background-color: var(--gold);
             color: var(--black);
             text-decoration: none;
-            padding: 18px 40px;
+            padding: 15px 35px;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            border-radius: 0;
         }
 
-        .btn-download:hover {
+        .btn-dossier:hover {
             background-color: var(--white);
-            transform: scale(1.05);
+            transform: translateX(-10px);
         }
 
-        /* SECCIONES DE CONTENIDO */
-        .section-block {
-            margin-top: 50px;
+        /* BLOQUES DE CONTENIDO (ESTILO LISTA DE FECHAS) */
+        .content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            margin-top: 20px;
         }
 
-        .question-yellow, .highlight-yellow {
+        .content-block {
+            text-align: right;
+        }
+
+        .label-yellow {
             color: var(--gold);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             text-transform: uppercase;
             line-height: 1.1;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
-        .text-white {
-            font-size: 1.15rem;
-            line-height: 1.6;
+        .desc-white {
+            font-size: 1.1rem;
+            line-height: 1.5;
             color: var(--white);
-            max-width: 650px;
+            max-width: 600px;
             margin-left: auto;
         }
 
         /* LOS 3 PILARES */
-        .pillars-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
+        .pillar-item {
+            margin-top: 15px;
+            border-right: 3px solid var(--gold);
+            padding-right: 15px;
         }
 
-        .pillars-list li {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.4;
-        }
-
-        .pillars-list b {
-            display: block;
+        .pillar-item b {
             color: var(--gold);
             text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            display: block;
+            margin-bottom: 2px;
         }
 
         /* LOGOS */
-        .logo-container {
+        .logo-row {
             display: flex;
             justify-content: flex-end;
-            align-items: center;
-            gap: 40px;
-            margin-top: 20px;
-            opacity: 0.8;
-            filter: brightness(0) invert(1); /* Convierte logos a blanco */
+            gap: 30px;
+            margin-top: 15px;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
         }
 
-        .logo-container img {
-            height: 40px;
+        .logo-row img {
+            height: 30px;
             width: auto;
         }
 
-        .emmy-phrase {
-            margin-top: 40px;
+        footer {
+            margin-top: 50px;
+            text-align: right;
+            font-size: 0.85rem;
             font-weight: 700;
-            font-size: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 20px;
-            letter-spacing: 1px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
         }
 
-        /* MÓVIL */
+        /* AJUSTE MÓVIL */
         @media (max-width: 1024px) {
             body { 
-                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('poster_oficial_grande2.jpg');
+                background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('poster_oficial_grande2.jpg');
                 background-position: center left;
                 background-size: cover;
+                justify-content: flex-end;
             }
-            .content-container { 
-                padding: 40px 30px;
-                align-items: flex-end; 
+            .tour-container { 
+                max-width: 100%; 
+                padding: 40px 25px;
             }
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.1rem; }
-            .question-yellow, .highlight-yellow { font-size: 1.5rem; }
-            .logo-container { gap: 20px; flex-wrap: wrap; }
-            .logo-container img { height: 25px; }
+            h1 { font-size: 2.8rem; }
+            h1 span { font-size: 1.6rem; }
+            .label-yellow { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="content-container">
+<div class="tour-container">
     <header>
-        <p class="tagline">B2B | ESTRATEGIA CORPORATIVA</p>
+        <p class="tour-tag">B2B | ALTO IMPACTO</p>
         <h1>OPTIMIZA LAS VENTAS <span>DE TU EQUIPO CREATIVO</span></h1>
         <p class="subtitle">
             Transforma tu departamento de marketing en una maquinaria de facturación masiva y Estrategia de Alto Impacto. 
             <b>Dictado por un ganador del EMMY.</b>
         </p>
-        <a href="#" class="btn-download">Descargar Dossier</a>
+        <a href="#" class="btn-dossier">Descargar Dossier</a>
     </header>
 
-    <div class="section-block">
-        <div class="question-yellow">
-            ¿Cuántas horas pierde tu equipo en tareas que deben resolverse en segundos?
+    <div class="content-list">
+        
+        <div class="content-block">
+            <div class="label-yellow">¿Cuántas horas pierde tu equipo en tareas que deben resolverse en segundos?</div>
+            <div class="desc-white">
+                Estar en redes no es vender. La mayoría de las marcas solo "hacen ruido".<br>
+                Deja de usar el 'botón azul'. Enseñamos a invertir con retorno real.
+            </div>
         </div>
-        <div class="text-white">
-            Estar en redes no es vender. La mayoría de las marcas solo "hacen ruido".<br>
-            Deja de usar el 'botón azul'. Enseñamos a invertir con retorno real.
-        </div>
-    </div>
 
-    <div class="section-block">
-        <div class="highlight-yellow">La solución: Los 3 Pilares</div>
-        <ul class="pillars-list">
-            <li>
+        <div class="content-block">
+            <div class="label-yellow">La solución: Los 3 Pilares</div>
+            <div class="pillar-item">
                 <b>Ingeniería de Procesos con IA</b>
                 Automatización de flujos de trabajo (Ventas, Finanzas, Contenido).
-            </li>
-            <li>
+            </div>
+            <div class="pillar-item">
                 <b>Estrategia de Contenido de Élite</b>
                 El estándar visual que exigen marcas como Disney o Marvel aplicado a tu negocio.
-            </li>
-            <li>
+            </div>
+            <div class="pillar-item">
                 <b>Meta Ads Avanzado</b>
                 Estructuras de campaña para CEOs, no para aficionados.
-            </li>
-        </ul>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="label-yellow">Un experto trabajando con expertos</div>
+            <div class="logo-row">
+                <img src="logo-disney.png" alt="Disney">
+                <img src="logo-marvel.png" alt="Marvel Studios">
+                <img src="logo-natgeo.png" alt="National Geographic">
+            </div>
+        </div>
+
     </div>
 
-    <div class="section-block">
-        <div class="highlight-yellow">Un experto trabajando con expertos</div>
-        <div class="logo-container">
-            <img src="logo-disney.png" alt="Disney">
-            <img src="logo-marvel.png" alt="Marvel Studios">
-            <img src="logo-natgeo.png" alt="National Geographic">
-        </div>
-        <div class="emmy-phrase">
-            Metodología probada en mercados internacionales y premiada por la Academia de Televisión (EMMY).
-        </div>
-    </div>
-
+    <footer>
+        <p>Metodología probada en mercados internacionales y premiada por la Academia de Televisión (EMMY).</p>
+    </footer>
 </div>
 
 </body>
