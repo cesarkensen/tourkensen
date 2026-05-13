@@ -20,7 +20,6 @@
             background-color: var(--black);
             margin: 0;
             color: var(--white);
-            /* RUTA CORREGIDA: ../ sale de la carpeta corporativo para buscar la foto */
             background-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%), url('../poster_oficial_grande2.jpg');
             background-repeat: no-repeat;
             background-size: contain;
@@ -102,7 +101,7 @@
         .content-list {
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 45px;
             margin-top: 20px;
         }
 
@@ -154,20 +153,72 @@
             width: auto;
         }
 
+        /* PAQUETES ESTILO */
+        .plan-item {
+            margin-top: 25px;
+            text-align: right;
+        }
+        .plan-title {
+            color: var(--gold);
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .plan-sub {
+            color: var(--white);
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+        .plan-ref {
+            color: var(--gold);
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        /* BOTÓN AGENDAR */
+        .btn-agendar {
+            display: inline-block;
+            margin-top: 30px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            padding: 15px 40px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-agendar:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-sub-info {
+            font-size: 0.9rem;
+            color: var(--white);
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .wa-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
         footer {
             margin-top: 50px;
             text-align: right;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 20px;
         }
 
         @media (max-width: 1024px) {
             body { 
-                /* RUTA CORREGIDA TAMBIÉN EN MÓVIL */
                 background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('../poster_oficial_grande2.jpg');
                 background-position: center left;
                 background-size: cover;
@@ -180,6 +231,7 @@
             h1 { font-size: 2.8rem; }
             h1 span { font-size: 1.6rem; }
             .label-yellow { font-size: 1.3rem; }
+            .wa-link { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -231,10 +283,47 @@
             </div>
         </div>
 
+        <div class="content-block">
+            <div class="desc-white">
+                Metodología probada en mercados internacionales y premiada por la Academia de Televisión (EMMY).
+            </div>
+        </div>
+
+        <div class="content-block">
+            <div class="label-yellow">Paquetes para Empresas</div>
+            
+            <div class="plan-item">
+                <div class="plan-title">Plan Team</div>
+                <div class="plan-sub">Para pequeñas empresas (3-5 personas)</div>
+                <div class="plan-ref">Ref 50 por persona</div>
+            </div>
+
+            <div class="plan-item">
+                <div class="plan-title">Plan Business</div>
+                <div class="plan-sub">Para departamentos completos (6 a 12 personas)</div>
+                <div class="plan-ref">Ref 50 por persona (Descuento especial)</div>
+            </div>
+
+            <div class="plan-item">
+                <div class="plan-title">Plan Sponsor</div>
+                <div class="plan-sub">Para Marcas medianas/grandes (15+ personas)</div>
+                <div class="plan-ref">Ref 50 por persona (Descuento especial) + Mención de la marca en el evento como patrocinante</div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <a href="#" class="btn-agendar">Agendar Contacto</a>
+            <p class="btn-sub-info">recibe un precio y atención especial para el evento</p>
+            
+            <a href="https://wa.me/584242133500?text=Me%20interesa%20una%20compra%20de%20Plan%20Corporativo%20para%20el%20Masterclass%20de%20Cesar%20Kensen" class="wa-link">
+                +58 424 213.3500
+            </a>
+        </div>
+
     </div>
 
     <footer>
-        <p>Metodología probada en mercados internacionales y premiada por la Academia de Televisión (EMMY).</p>
+        <p>© 2026 CESAR KENSEN | MEDIO PALO LLC</p>
     </footer>
 </div>
 
