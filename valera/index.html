@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #FFB300;
             --white: #FFFFFF;
             --black: #000000;
         }
@@ -16,40 +15,31 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
+            background-color: var(--white);
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Mantiene tu identidad visual de fondo con una capa oscura para máxima legibilidad del formulario */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('../poster_oficial_grande2.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
-        .form-wrapper {
+        .form-container {
             width: 100%;
             max-width: 750px;
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 179, 0, 0.15);
             padding: 40px;
             margin: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            background-color: var(--white);
         }
 
-        /* Ajustes para el iframe de Tally */
         iframe {
             width: 100%;
-            height: 500px; /* El script de Tally modificará esto dinámicamente */
+            height: 500px; /* El script de Tally ajustará esto dinámicamente */
             border: none;
         }
 
         @media (max-width: 768px) {
-            .form-wrapper {
+            .form-container {
                 padding: 20px;
                 margin: 10px;
             }
@@ -58,9 +48,9 @@
 </head>
 <body>
 
-    <div class="form-wrapper">
+    <div class="form-container">
         <iframe 
-            src="https://tally.so/embed/kdJAOM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+            src="https://tally.so/embed/kdJAOM?alignLeft=1&hideTitle=1&dynamicHeight=1" 
             loading="lazy" 
             title="Formulario de Registro Corporativo">
         </iframe>
