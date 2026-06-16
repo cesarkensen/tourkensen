@@ -36,14 +36,14 @@
         /* LAYOUT ESCRITORIO (PC) - ARQUITECTURA LATERAL       */
         /* ---------------------------------------------------- */
 
-        /* Bloque Izquierdo: Retrato César Kensen */
+        /* Bloque Izquierdo: Retrato César Kensen (Ruta Relativa Segura) */
         .photo-sidebar {
             width: 35%;
             height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            background-image: url('http://cesarkensen.com/direccion-button-color.jpg');
+            background-image: url('direccion-button-color.jpg');
             background-size: cover;
             background-position: left center;
             z-index: 10;
@@ -108,7 +108,7 @@
             padding: 15px;
         }
 
-        /* Contenedores de Imagen - Nombres de archivo corregidos sin tildes */
+        /* Contenedores de Imagen - Rutas Relativas Corregidas */
         .card-bg {
             position: absolute;
             top: 0;
@@ -122,9 +122,9 @@
             filter: grayscale(100%);
         }
 
-        .card-direccion { background-image: url('http://cesarkensen.com/direccion-button-color.jpg'); }
-        .card-cursos { background-image: url('http://cesarkensen.com/cursos-button-color.jpg'); }
-        .card-comedia { background-image: url('http://cesarkensen.com/comedia-button-color.jpg'); }
+        .card-direccion { background-image: url('direccion-button-color.jpg'); }
+        .card-cursos { background-image: url('cursos-button-color.jpg'); }
+        .card-comedia { background-image: url('comedia-button-color.jpg'); }
 
         .kensen-card:hover .card-bg {
             filter: grayscale(0%);
@@ -171,15 +171,15 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--white-pure);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 2px; /* Reducción extrema de separación solicitada */
+            gap: 0px; /* Separación cero para máxima compacidad */
         }
 
         .tour-item {
@@ -188,7 +188,7 @@
             align-items: center;
             text-decoration: none;
             color: var(--white-pure);
-            padding: 4px 0; /* Menos espacio interno por fila */
+            padding: 2px 0; /* Espaciado mínimo interno solicitado */
             transform-origin: right center;
             transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -328,12 +328,12 @@
             }
 
             .tour-list {
-                gap: 4px; /* Un poco más de espacio en móvil para evitar clics accidentales */
+                gap: 4px; /* Separación de seguridad en pantallas táctiles */
             }
 
             .tour-item {
                 justify-content: center;
-                padding: 8px 0;
+                padding: 6px 0;
                 background: rgba(255,255,255,0.02);
                 border-radius: 4px;
                 transform-origin: center center;
@@ -369,7 +369,7 @@
     <div class="content-container">
         
         <header>
-            <img src="http://cesarkensen.com/logo-kensen.png" alt="Cesar Kensen" class="logo-kensen">
+            <img src="logo-kensen.png" alt="Cesar Kensen" class="logo-kensen">
             <div class="brand-subtitle">Elige tu Kensen</div>
         </header>
 
