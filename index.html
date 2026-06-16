@@ -32,11 +32,24 @@
             flex-direction: row;
         }
 
+        /* Estructura para ocultar texto manteniendo indexación SEO limpia */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         /* ---------------------------------------------------- */
         /* LAYOUT ESCRITORIO (PC) - ARQUITECTURA LATERAL       */
         /* ---------------------------------------------------- */
 
-        /* Bloque Izquierdo: Retrato César Kensen (Ruta Relativa Segura) */
+        /* Bloque Izquierdo: Retrato César Kensen */
         .photo-sidebar {
             width: 35%;
             height: 100vh;
@@ -105,10 +118,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 15px;
         }
 
-        /* Contenedores de Imagen - Rutas Relativas Corregidas */
+        /* Contenedores de Imagen con transiciones aceleradas por hardware */
         .card-bg {
             position: absolute;
             top: 0;
@@ -129,33 +141,6 @@
         .kensen-card:hover .card-bg {
             filter: grayscale(0%);
             transform: scale(1.03);
-        }
-
-        /* Textos de las tarjetas con tipografía Anton */
-        .card-title {
-            font-family: var(--font-anton);
-            font-size: 2.8rem;
-            color: var(--white-pure);
-            text-transform: uppercase;
-            line-height: 0.9;
-            position: relative;
-            z-index: 2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            text-align: left;
-        }
-
-        .card-footer-text {
-            font-family: var(--font-outfit);
-            font-weight: 900;
-            font-size: 0.8rem;
-            color: var(--white-pure);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-            text-align: left;
-            margin-top: auto;
         }
 
         /* Sección del TOUR 2026 */
@@ -179,7 +164,7 @@
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 0px; /* Separación cero para máxima compacidad */
+            gap: 0px; /* Separación cero absoluta entre botones */
         }
 
         .tour-item {
@@ -188,7 +173,7 @@
             align-items: center;
             text-decoration: none;
             color: var(--white-pure);
-            padding: 2px 0; /* Espaciado mínimo interno solicitado */
+            padding: 2px 0; /* Espaciado vertical mínimo por fila */
             transform-origin: right center;
             transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -219,7 +204,7 @@
             transition: color 0.25s ease;
         }
 
-        /* Ejecución de efectos simultáneos al hacer Hover */
+        /* Efectos simultáneos al hacer Hover corregidos */
         .tour-item:hover .tour-content-group {
             transform: scale(1.08);
         }
@@ -271,7 +256,6 @@
                 position: relative;
             }
 
-            /* Retrato fijo de fondo al 70% pegado arriba a la izquierda */
             .photo-sidebar {
                 width: 100vw;
                 height: 100vh;
@@ -311,12 +295,6 @@
 
             .kensen-card {
                 aspect-ratio: 16 / 9;
-                align-items: flex-start;
-                text-align: left;
-            }
-
-            .card-title {
-                font-size: 2.2rem;
             }
 
             .tour-wrapper {
@@ -328,7 +306,7 @@
             }
 
             .tour-list {
-                gap: 4px; /* Separación de seguridad en pantallas táctiles */
+                gap: 4px; /* Separación adaptada para evitar clics erróneos en móvil */
             }
 
             .tour-item {
@@ -375,22 +353,28 @@
 
         <nav class="kensen-grid">
             
-            <a href="/direccion" class="kensen-card">
+            <a href="/direccion" class="kensen-card" aria-label="Cesar Kensen - Dirección de Audiovisuales, Producción Cinematográfica, Edición de Video y Estrategia de Marketing Digital">
                 <div class="card-bg card-direccion"></div>
-                <div class="card-title">Dirección</div>
-                <div class="card-footer-text">Edición & Marketing</div>
+                <div class="sr-only">
+                    <h2>Dirección de Audiovisuales y Marketing</h2>
+                    <p>Servicios profesionales de producción creativa, dirección técnica, edición de video de alto impacto y consultoría estratégica de marketing digital por Cesar Kensen.</p>
+                </div>
             </a>
 
-            <a href="/cursos" class="kensen-card">
+            <a href="/cursos" class="kensen-card" aria-label="Cesar Kensen - Cursos Online, Masterclasses de Redes Sociales, Asesorías Personalizadas y Capacitación de Marca Personal">
                 <div class="card-bg card-cursos"></div>
-                <div class="card-title">Cursos</div>
-                <div class="card-footer-text">Cursos & Asesorías</div>
+                <div class="sr-only">
+                    <h2>Cursos, Masterclasses y Asesorías</h2>
+                    <p>Programas de capacitación avanzada, masterclass de videos virales y redes sociales, mentorías privadas y formación profesional en marca personal.</p>
+                </div>
             </a>
 
-            <a href="/comedia" class="kensen-card">
+            <a href="/comedia" class="kensen-card" aria-label="Cesar Kensen - Shows de Stand-Up Comedy, Producción de Podcasts en Vivo y Entretenimiento">
                 <div class="card-bg card-comedia"></div>
-                <div class="card-title">Comedia</div>
-                <div class="card-footer-text">Podcasts & Shows</div>
+                <div class="sr-only">
+                    <h2>Stand-Up Comedy, Shows y Podcasts</h2>
+                    <p>Contenido de entretenimiento, monólogos de comedia en vivo, giras de shows de stand-up internacionales y producción de podcasts por Cesar Kensen.</p>
+                </div>
             </a>
 
         </nav>
