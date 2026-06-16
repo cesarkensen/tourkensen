@@ -43,7 +43,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-image: url('direccion-button-color.jpg'); /* Localización de imagen raíz */
+            background-image: url('direccion-button-color.jpg');
             background-size: cover;
             background-position: left center;
             z-index: 10;
@@ -53,7 +53,7 @@
         .content-container {
             width: 65%;
             margin-left: 35%;
-            padding: 60px 5%;
+            padding: 40px 5% 60px 5%;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -67,7 +67,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .logo-kensen {
@@ -93,7 +93,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .kensen-card {
@@ -108,7 +108,7 @@
             padding: 15px;
         }
 
-        /* Contenedores de Imagen con efecto de escala de grises a color hardware-accelerated */
+        /* Contenedores de Imagen - Nombres de archivo corregidos sin tildes */
         .card-bg {
             position: absolute;
             top: 0;
@@ -122,7 +122,7 @@
             filter: grayscale(100%);
         }
 
-        .card-dirección { background-image: url('direccion-button-color.jpg'); }
+        .card-direccion { background-image: url('direccion-button-color.jpg'); }
         .card-cursos { background-image: url('cursos-button-color.jpg'); }
         .card-comedia { background-image: url('comedia-button-color.jpg'); }
 
@@ -171,15 +171,15 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--white-pure);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 2px; /* Reducción extrema de separación solicitada */
         }
 
         .tour-item {
@@ -188,7 +188,7 @@
             align-items: center;
             text-decoration: none;
             color: var(--white-pure);
-            padding: 8px 0;
+            padding: 4px 0; /* Menos espacio interno por fila */
             transform-origin: right center;
             transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -219,17 +219,17 @@
             transition: color 0.25s ease;
         }
 
-        /* Ejecución de efectos simultáneos corregidos al hacer Hover */
+        /* Ejecución de efectos simultáneos al hacer Hover */
         .tour-item:hover .tour-content-group {
-            transform: scale(1.08); /* Aumenta el tamaño de la fecha y ciudad al unísono */
+            transform: scale(1.08);
         }
 
         .tour-item:hover .tour-city {
-            color: var(--kensen-yellow); /* Solo la ciudad cambia al amarillo de marca */
+            color: var(--kensen-yellow);
         }
 
         .tour-item:hover .tour-date {
-            color: var(--white-pure); /* La fecha se ilumina sutilmente al escalar */
+            color: var(--white-pure);
         }
 
         /* Estado Sold Out */
@@ -246,7 +246,7 @@
         footer {
             width: 100%;
             max-width: 800px;
-            margin-top: 60px;
+            margin-top: 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
             padding-top: 15px;
         }
@@ -327,12 +327,15 @@
                 text-align: center;
             }
 
+            .tour-list {
+                gap: 4px; /* Un poco más de espacio en móvil para evitar clics accidentales */
+            }
+
             .tour-item {
                 justify-content: center;
-                padding: 12px 0;
+                padding: 8px 0;
                 background: rgba(255,255,255,0.02);
                 border-radius: 4px;
-                margin-bottom: 4px;
                 transform-origin: center center;
             }
 
@@ -342,7 +345,7 @@
             }
 
             .tour-item:hover .tour-content-group {
-                transform: scale(1.04); /* Escala controlada en pantallas táctiles */
+                transform: scale(1.04);
             }
 
             .tour-city {
@@ -373,7 +376,7 @@
         <nav class="kensen-grid">
             
             <a href="/direccion" class="kensen-card">
-                <div class="card-bg card-dirección"></div>
+                <div class="card-bg card-direccion"></div>
                 <div class="card-title">Dirección</div>
                 <div class="card-footer-text">Edición & Marketing</div>
             </a>
