@@ -164,7 +164,7 @@
         .tour-list {
             display: flex;
             flex-direction: column;
-            gap: 0px;
+            gap: 0px; 
         }
 
         .tour-item {
@@ -267,7 +267,7 @@
             .content-container {
                 width: 100%;
                 margin-left: 0;
-                padding: 40px 20px;
+                padding: 40px 24px;
                 align-items: center;
                 text-align: center;
                 background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
@@ -283,26 +283,27 @@
                 margin-bottom: 10px;
             }
 
-            /* Rediseño inteligente de la rejilla móvil: 2 columnas para preservar fotos completas */
+            /* Configuración vertical: Ancho completo de pantalla uno tras otro hacia abajo */
             .kensen-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                margin-bottom: 40px;
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 45px;
                 width: 100%;
-                max-width: 500px;
+                max-width: 100%;
             }
 
-            /* Forzamos el formato vertical original (3:4) para evitar recortes de imagen */
+            /* Proporción vertical corregida (4:5) para asegurar visualización completa de imágenes sin recortes */
             .kensen-card {
-                aspect-ratio: 3 / 4; 
+                width: 100%;
+                aspect-ratio: 4 / 5; 
+                border-width: 2px;
             }
 
-            /* Centramos el tercer botón (Comedia) abajo en pantallas móviles */
+            /* Reset de herencia para el tercer botón en flujo vertical continuo */
             .kensen-card:nth-child(3) {
-                grid-column: span 2;
-                max-width: calc(50% - 6px);
-                margin: 0 auto;
-                width: 100%;
+                grid-column: auto;
+                max-width: 100%;
+                margin: 0;
             }
 
             .tour-wrapper {
@@ -312,18 +313,19 @@
             
             .tour-header {
                 text-align: center;
-                margin-bottom: 15px;
+                margin-bottom: 10px;
             }
 
+            /* Reducción estricta de separación de ciudades del TOUR en móvil */
             .tour-list {
-                gap: 6px;
+                gap: 1px;
             }
 
             .tour-item {
                 justify-content: center;
-                padding: 8px 0;
-                background: rgba(255,255,255,0.03);
-                border-radius: 4px;
+                padding: 4px 0; /* Padding hiper-compacto */
+                background: rgba(255,255,255,0.01);
+                border-radius: 2px;
                 transform-origin: center center;
             }
 
