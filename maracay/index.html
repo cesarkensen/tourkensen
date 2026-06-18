@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kensen Weekend | Maracay 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --kensen-yellow: #FFA500;
+            --black-base: #000000;
+            --white-pure: #FFFFFF;
+            --gray-dark: #1A1A1A;
+            --font-anton: 'Anton', sans-serif;
+            --font-outfit: 'Outfit', sans-serif;
+        }
+
+        /* 1. SETUP DE RENDIMIENTO */
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
+
+        /* 2. HEADER & NAVEGACIÓN */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-logo { height: 40px; cursor: pointer; transition: transform 0.3s ease; }
+        .nav-logo:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 20px; font-weight: 900; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .nav-links a { color: white; text-decoration: none; opacity: 0.7; }
+
+        /* 3. HERO PARALLAX (OPTIMIZADO GPU) */
+        .hero-parallax {
+            position: relative; width: 100%; height: 90vh;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            background: #002B5B; /* Fondo azul del diseño */
+        }
+        .parallax-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 130%;
+            object-fit: cover; will-change: transform; transform: translate3d(0,0,0);
+            z-index: 1; opacity: 0.9;
+        }
+        .hero-content {
+            position: relative; z-index: 2; text-align: center; width: 100%;
+        }
+        .hero-title { font-family: var(--font-anton); font-size: 12vw; line-height: 0.9; text-transform: uppercase; }
+
+        /* 4. COUNTDOWN TIMER */
+        .countdown-section { padding: 40px 5%; text-align: center; }
+        .countdown-title { font-weight: 900; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px; }
+        .timer-container { display: flex; justify-content: center; gap: 15px; }
+        .timer-box { background: var(--gray-dark); padding: 15px; min-width: 80px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+        .timer-num { display: block; font-family: var(--font-anton); font-size: 2.5rem; line-height: 1; }
+        .timer-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.6; }
+
+        /* 5. MAIN CTA BUTTONS (IMAGES) */
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px 5%; }
+        .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; border-radius: 10px; }
+        .cta-btn img { width: 100%; display: block; transition: transform 0.5s ease; }
+        .cta-btn:hover img { transform: scale(1.05); }
+
+        /* 6. ACORDEONES (MENÚS DESPLEGABLES) */
+        .section-title-big { padding: 40px 5% 10px; font-family: var(--font-anton); font-size: 2rem; text-transform: uppercase; }
+        .accordion-item { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .accordion-header {
+            width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; border: none; text-align: left; transition: background 0.3s;
+        }
+        .accordion-header h3 { font-family: var(--font-anton); font-size: 1.8rem; text-transform: uppercase; }
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            background: #0a0a0a; padding: 0 5%;
+        }
+        .accordion-item.active .accordion-content { max-height: 2000px; padding: 30px 5%; transition: max-height 1s ease-in-out; }
+
+        /* Colores de las barras del diseño */
+        .bar-public { background-color: #333; }
+        .bar-private { background-color: #444; }
+        .bar-network { background-color: #555; }
+        .bar-comedy { background-color: #222; }
+
+        /* 7. CITY INFO & PROGRESS BAR */
+        .city-info-box { padding: 60px 5%; background: var(--gray-dark); display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+        .city-text h2 { font-family: var(--font-anton); font-size: 3rem; line-height: 1; color: var(--kensen-yellow); }
+        .city-text p { font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .progress-container { text-align: right; }
+        .progress-label { font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
+        .progress-bar-bg { width: 100%; height: 15px; background: #333; border-radius: 10px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: var(--white-pure); border-radius: 10px; transition: width 1.5s ease-out; }
+
+        /* 8. BROCHURE & FOOTER CTA */
+        .brochure-section { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; }
+        .btn-download { background: var(--white-pure); color: black; padding: 15px 30px; text-decoration: none; font-weight: 900; border-radius: 5px; text-transform: uppercase; }
+
+        .footer-buy { padding: 60px 5%; text-align: center; border-top: 1px solid #333; }
+        .footer-buy h2 { font-family: var(--font-anton); font-size: 3rem; margin-bottom: 20px; }
+        .btn-buy-master { 
+            background: var(--white-pure); color: black; padding: 20px 60px; font-size: 1.5rem; 
+            font-family: var(--font-anton); text-decoration: none; border-radius: 5px; display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 18vw; }
+            .cta-grid, .city-info-box { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .timer-container { gap: 8px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="logo-kensen.png" class="nav-logo" onclick="window.location.href='https://cesarkensen.com'">
+        <div class="nav-links">
+            <a href="#">El Evento</a>
+            <a href="#eventos">Cronograma</a>
+            <a href="#precios">Precios</a>
+        </div>
+    </nav>
+
+    <section class="hero-parallax">
+        <img src="hero-kensen-blue.png" class="parallax-img" id="hero-img">
+        <div class="hero-content">
+            <h1 class="hero-title">Kensen<br>Weekend</h1>
+        </div>
+    </section>
+
+    <section class="countdown-section">
+        <p class="countdown-title">Conteo para el evento</p>
+        <div class="timer-container">
+            <div class="timer-box"><span class="timer-num" id="days">00</span><span class="timer-label">Días</span></div>
+            <div class="timer-box"><span class="timer-num" id="hours">00</span><span class="timer-label">Horas</span></div>
+            <div class="timer-box"><span class="timer-num" id="minutes">00</span><span class="timer-label">Min</span></div>
+            <div class="timer-box"><span class="timer-num" id="seconds">00</span><span class="timer-label">Seg</span></div>
+        </div>
+    </section>
+
+    <section class="cta-grid">
+        <button class="cta-btn" onclick="document.getElementById('eventos').scrollIntoView()">
+            <img src="btn-todos-eventos.png" alt="Todos los eventos">
+        </button>
+        <button class="cta-btn">
+            <img src="btn-solo-comedia.png" alt="Solo Comedia">
+        </button>
+    </section>
+
+    <h2 class="section-title-big" id="eventos">Cuáles son los eventos del Kensen Weekend</h2>
+    
+    <div class="accordion-item bar-public">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Masterclass Público</h3>
+            <span>+</span>
+        </button>
+        <div class="accordion-content">
+            <p>Contenido del Masterclass Público... [Pendiente por definir]</p>
+            <button onclick="document.getElementById('precios').scrollIntoView()">PRECIO DEL EVENTO</button>
+        </div>
+    </div>
+
+    <div class="accordion-item bar-private">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Masterclass Privado</h3>
+            <span>+</span>
+        </button>
+        <div class="accordion-content">
+            <p>Contenido del Masterclass Privado... [Pendiente por definir]</p>
+            <button onclick="document.getElementById('precios').scrollIntoView()">PRECIO DEL EVENTO</button>
+        </div>
+    </div>
+
+    <section class="city-info-box">
+        <div class="city-text">
+            <h2>MARACAY <span style="color:white">18 JUL</span></h2>
+            <p>Masterclass Vende tus Redes<br>Supercines Los Aviadores<br>9:00 AM a 1:00 PM</p>
+        </div>
+        <div class="progress-container">
+            <p class="progress-label">Entradas vendidas <span id="percent-text">0</span>%</p>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios">
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Precios de Entradas</h3>
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Contenido de Precios... [Pendiente por definir]</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <h3>Planes de Patrocinios</h3>
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Contenido de Patrocinios... [Pendiente por definir]</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="brochure-section">
+        <h3>Descargar Brochure</h3>
+        <a href="brochure-kensen.pdf" download class="btn-download">Descargar</a>
+    </section>
+
+    <section class="footer-buy">
+        <h2>¿Ya compraste?</h2>
+        <a href="https://wa.me/584242133500?text=Hola!%20Quisiera%20info%20del%20Curso%20REDES%20MARACAY%20de%20Cesar%20Kensen%20⚡" class="btn-buy-master">COMPRAR</a>
+    </section>
+
+    <script>
+        /** 
+         * VARIABLES DE CONTROL (EDITA AQUÍ) 
+         */
+        const CONFIG = {
+            fechaEvento: "July 18, 2026 09:00:00", // Formato: Mes Dia, Año Hora
+            porcentajeVentas: 76 // Solo el número
+        };
+
+        // 1. MOTOR PARALLAX (GPU OPTIMIZED)
+        const heroImg = document.getElementById('hero-img');
+        window.addEventListener('scroll', () => {
+            const speed = 0.4;
+            const yPos = window.pageYOffset * speed;
+            heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+
+        // 2. CUENTA REGRESIVA
+        const countdown = () => {
+            const countDate = new Date(CONFIG.fechaEvento).getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            if (gap > 0) {
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+                document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+            }
+        };
+        setInterval(countdown, 1000);
+
+        // 3. BARRA DE PROGRESO DINÁMICA
+        document.getElementById('percent-text').innerText = CONFIG.porcentajeVentas;
+        setTimeout(() => {
+            document.getElementById('bar-fill').style.width = CONFIG.porcentajeVentas + "%";
+        }, 500);
+
+        // 4. LÓGICA DE ACORDEONES
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
