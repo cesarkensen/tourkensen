@@ -11,6 +11,7 @@
         :root {
             --kensen-yellow: #FFA500;
             --kensen-orange-hover: #ff9c00;
+            --kensen-red: #ff004e;
             --menu-gray: #8f8f8f;
             --black-base: #000000;
             --white-pure: #FFFFFF;
@@ -25,20 +26,20 @@
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
 
         /* ---------------------------------------------------- */
-        /* HEADER & NAVEGACIÓN (FONDO BLANCO CONFIGURADO)       */
+        /* HEADER & NAVEGACIÓN                                  */
         /* ---------------------------------------------------- */
         nav {
             position: fixed; 
             top: 0; 
             width: 100%; 
             z-index: 100;
-            background: rgba(255, 255, 255, 0.95); /* Fondo Blanco Puro con ligera opacidad para el blur */
+            background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px);
             display: flex; 
             justify-content: space-between; 
             align-items: center;
             padding: 20px 5%; 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil oscuro para contraste */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
         }
         
         .nav-logo-link {
@@ -65,7 +66,7 @@
         
         .nav-links a { 
             font-family: var(--font-outfit);
-            font-weight: 300; /* Outfit Light */
+            font-weight: 300; 
             color: var(--menu-gray); 
             text-decoration: none; 
             text-transform: uppercase;
@@ -78,7 +79,7 @@
         
         .nav-links a:hover { 
             color: var(--kensen-orange-hover); 
-            font-weight: 900; /* Pasa a Outfit Black */
+            font-weight: 900; 
         }
 
         /* Spacer para compensar el fixed del menú superior */
@@ -88,22 +89,63 @@
         }
 
         /* ---------------------------------------------------- */
-        /* HERO PARALLAX (OPTIMIZADO GPU)                      */
+        /* NUEVA SECCIÓN: MARACAY-WEEKEND (FONDO BLANCO)        */
         /* ---------------------------------------------------- */
-        .hero-parallax {
-            position: relative; width: 100%; height: 90vh;
-            overflow: hidden; display: flex; align-items: center; justify-content: center;
-            background: #002B5B; 
+        .maracay-weekend {
+            width: 100%;
+            background-color: var(--white-pure);
+            padding: 50px 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
+        .maracay-title {
+            font-family: var(--font-outfit);
+            font-weight: 900; /* Outfit Black */
+            color: var(--kensen-red);
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .weekend-subtitle {
+            font-family: var(--font-anton);
+            color: var(--black-base);
+            font-size: 6rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-top: 5px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* NUEVA SECCIÓN: KENSEN-FOTO (PARALLAX OPTIMIZADO)     */
+        /* ---------------------------------------------------- */
+        .kensen-foto {
+            position: relative; 
+            width: 100vw; 
+            height: 75vh;
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background-color: var(--black-base);
+        }
+        
         .parallax-img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 130%;
-            object-fit: cover; will-change: transform; transform: translate3d(0,0,0);
-            z-index: 1; opacity: 0.9;
+            position: absolute; 
+            top: -15%; /* Margen superior extra para dar rango al movimiento */
+            left: 0; 
+            width: 100%; 
+            height: 130%; /* Altura aumentada para evitar bordes vacíos en scroll */
+            object-fit: cover; 
+            will-change: transform; 
+            transform: translate3d(0,0,0);
+            z-index: 1;
         }
-        .hero-content {
-            position: relative; z-index: 2; text-align: center; width: 100%;
-        }
-        .hero-title { font-family: var(--font-anton); font-size: 12vw; line-height: 0.9; text-transform: uppercase; }
 
         /* ---------------------------------------------------- */
         /* RESTO DE SECCIONES BASE                             */
@@ -166,7 +208,7 @@
                 padding: 12px 20px;
                 position: fixed;
                 top: 0;
-                background: rgba(255, 255, 255, 0.98); /* Asegura opacidad alta en móviles */
+                background: rgba(255, 255, 255, 0.98); 
             }
             
             .nav-links { 
@@ -181,7 +223,25 @@
                 height: 60px; 
             }
 
-            .hero-title { font-size: 18vw; }
+            /* Adaptación Proporcional en Pantallas Celulares */
+            .maracay-weekend {
+                padding: 35px 24px;
+            }
+
+            .maracay-title {
+                font-size: 13vw; /* Ajuste proporcional al ancho de pantalla */
+            }
+
+            .weekend-subtitle {
+                font-size: 16vw; /* Ajuste proporcional al ancho de pantalla */
+                margin-top: 2px;
+            }
+
+            .kensen-foto {
+                height: 50vh; /* Ajuste de altura balanceada en pantallas verticales */
+                width: 100%;
+            }
+
             .cta-grid, .city-info-box { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .timer-container { gap: 8px; }
         }
@@ -203,11 +263,13 @@
     
     <div class="header-spacer"></div>
 
-    <section class="hero-parallax">
-        <img src="hero-kensen-blue.png" class="parallax-img" id="hero-img">
-        <div class="hero-content">
-            <h1 class="hero-title">Kensen<br>Weekend</h1>
-        </div>
+    <section class="maracay-weekend">
+        <h1 class="maracay-title">Maracay</h1>
+        <div class="weekend-subtitle">Kensen Weekend</div>
+    </section>
+
+    <section class="kensen-foto">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
     </section>
 
     <section class="countdown-section">
@@ -305,7 +367,7 @@
 
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
-            const speed = 0.4;
+            const speed = 0.3; /* Velocidad calibrada para el desplazamiento de la imagen */
             const yPos = window.pageYOffset * speed;
             heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
