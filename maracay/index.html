@@ -57,7 +57,7 @@
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 1: MARACAY-WEEKEND (CALIBRACIÓN PC/CEL)      */
+        /* SECCIÓN 1: MARACAY-WEEKEND                           */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%; background-color: var(--white-pure); padding: 15px 0 70px 0; 
@@ -67,7 +67,6 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
-        /* Forzado a UNA SOLA LÍNEA en computadora */
         .weekend-subtitle {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
             font-size: 14.8vw; text-transform: uppercase; line-height: 0.8; margin-top: 5px;
@@ -75,7 +74,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 2: KENSEN-FOTO (PARALLAX + MARCO VARIABLE)   */
+        /* SECCIÓN 2: KENSEN-FOTO (CONTAINER PARALLAX)          */
         /* ---------------------------------------------------- */
         .kensen-foto {
             position: relative; width: 100vw; height: 52.5vh; overflow: hidden; 
@@ -180,7 +179,6 @@
         .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
-        /* Título con tracking -30 (-1.2px) */
         .accordion-bar-header h3 {
             font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
             line-height: 55px; text-transform: uppercase; border: none;
@@ -189,7 +187,6 @@
         .bar-title-light { color: var(--black-base); }
         .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
 
-        /* Flecha triangular activa desde el inicio */
         .arrow-indicator {
             display: inline-block; width: 0; height: 0;
             border-left: 10px solid transparent; border-right: 10px solid transparent;
@@ -208,23 +205,37 @@
 
         .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
         .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
-        .accordion-bar-item.active .accordion-bar-content { max-height: 2000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
+        .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
         
         .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
         .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
-        /* Grids de Contenido */
+        /* ---------------------------------------------------- */
+        /* GRIDS DE CONTENIDO (PÚBLICO, PRIVADO, NETWORKING)    */
+        /* ---------------------------------------------------- */
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
-        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.35); margin-bottom: 25px; display: block; border: none; }
+        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
         
         .vtr-buy-btn {
             width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
             font-size: 2.5rem; text-transform: uppercase; text-align: center; padding: 14px 0; cursor: pointer; 
-            transition: background-color 0.2s; text-decoration: none; display: block; line-height: 1; border: none !important; outline: none !important;
+            transition: background-color 0.2s; text-decoration: none; display: block; line-height: 1; border: none !important;
         }
         .vtr-buy-btn:hover { background-color: #d60042; }
         .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
+
+        /* ELEMENTOS ESPECÍFICOS DE NETWORKING */
+        .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
+        .fucsia-bar-networking {
+            position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
+            color: var(--white-pure); font-family: var(--font-outfit); font-weight: 900; font-size: 1.6rem;
+            text-align: center; padding: 12px 0; text-transform: uppercase; line-height: 1; letter-spacing: 1px;
+        }
+        .access-special-label {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 1.8rem; color: var(--white-pure);
+            text-transform: uppercase; text-align: center; line-height: 1.1; letter-spacing: 0.5px; width: 100%;
+        }
 
         .vtr-right-col { display: flex; flex-direction: column; gap: 32px; border: none; }
         .vtr-block-text { font-family: var(--font-outfit); text-transform: uppercase; line-height: 1.2; }
@@ -236,24 +247,13 @@
         .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; text-transform: uppercase; line-height: 1.3; }
         .vtr-learn-list li strong { font-weight: 900; }
 
-        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px; }
-        .bar-dark-style .vtr-meta-info-block { border-top-color: rgba(255,255,255,0.1); }
+        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; }
         .vtr-meta-item { font-family: var(--font-outfit); text-transform: uppercase; }
         .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
         .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: PRECIOS Y PLANES                            */
-        /* ---------------------------------------------------- */
-        .precios-planes { padding: 85px 5%; background: var(--gray-dark); text-align: center; border: none; }
-
-        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 70px 5%; }
-        .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; }
-        .cta-btn img { width: 100%; display: block; transition: transform 0.5s ease; border-radius: 10px; }
-        .cta-btn:hover img { transform: scale(1.05); }
-
-        /* ---------------------------------------------------- */
-        /* MEDIA QUERIES EXCLUSIVAS MÓVILES (CALIBRACIONES)     */
+        /* MEDIA QUERIES EXCLUSIVAS MÓVILES                     */
         /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
             nav { justify-content: center; padding: 15px 20px; }
@@ -264,7 +264,6 @@
             .maracay-title { font-size: 7.7vw; letter-spacing: -2.2px; }
             .weekend-subtitle { font-size: 23.6vw; white-space: normal; line-height: 0.9; display: block; }
 
-            /* Marco parallax recortado un 40% en altura */
             .kensen-foto { height: 31.5vh; width: 100vw; }
             .parallax-img { height: 150%; top: -25%; }
 
@@ -273,20 +272,21 @@
             .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
 
-            /* Logos producción: Centrados con 10px de margen */
-            .produccion-logos { padding: 25px 0; }
+            .produccion-logos { padding: 25px 0; justify-content: center; }
             .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
             .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
-            .logos-container { position: relative; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
+            .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
             .logos-container img { position: absolute; left: 50%; transform: translateX(-50%); animation: strictMobileFadeCarousel 12s infinite ease-in-out; }
 
-            /* Cronograma Móvil: 2 líneas, márgenes 30/20 */
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
+            
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
 
             .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
-            .vtr-scaled-poster, .vtr-buy-btn { width: 280px; }
+            .vtr-scaled-poster, .vtr-buy-btn, .networking-poster-wrapper { width: 280px; }
             .vtr-buy-btn { font-size: 1.8rem; }
+            .fucsia-bar-networking { font-size: 1.3rem; padding: 10px 0; }
+            .access-special-label { font-size: 1.4rem; }
         }
 
         @keyframes strictMobileFadeCarousel {
@@ -320,7 +320,7 @@
     </section>
 
     <section class="kensen-foto">
-        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen" class="parallax-img" id="hero-img">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
     </section>
 
     <section class="contador-maracay">
@@ -450,7 +450,80 @@
                 </div>
             </div>
 
-            <div class="accordion-bar-item bar-dark-style"><button class="accordion-bar-header" onclick="handleAccordionToggle(this)"><div class="bar-title-block"><div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div><p>oportunidad de contáctos & negocios</p></div></button></div>
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div>
+                        <p>lograr contactos & negocios</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            
+                            <div class="vtr-left-col">
+                                <div class="networking-poster-wrapper">
+                                    <img src="poster-vtr-stacks.png" alt="VTR Networking" class="vtr-scaled-poster">
+                                    <div class="fucsia-bar-networking">EVENTO NETWORKING</div>
+                                </div>
+                                <div class="access-special-label">CON LA COMPRA DEL<br>MASTERCLASS PÚBLICO</div>
+                            </div>
+
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text">
+                                    <span class="black-title">UN NEGOCIO CON ALIANZAS</span>
+                                    <span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span>
+                                </div>
+
+                                <div class="vtr-block-text">
+                                    <span class="light-desc">UN ESPACIO PERFECTO PARA HACER</span>
+                                    <span class="light-desc"><strong>CONTACTOS Y NEGOCIOS</strong></span>
+                                </div>
+
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">PODRÁS:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>CONSEGUIR CONTACTOS PARA <strong>ALIANZAS Y NEGOCIOS FUTUROS</strong></li>
+                                        <li>CONVERSAR CON KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
+                                        <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
+                                    </ul>
+                                </div>
+
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item">
+                                        <span class="meta-label">FECHA:</span>
+                                        <span class="meta-val"><strong>18 DE JULIO</strong> (DESPUÉS DEL MASTERCLASS)</span>
+                                    </div>
+                                    <div class="vtr-meta-item">
+                                        <span class="meta-label">HORA:</span>
+                                        <span class="meta-val">1:00 P.M. A 3:00 P.M.</span>
+                                    </div>
+                                    <div class="vtr-meta-item">
+                                        <span class="meta-label">LUGAR:</span>
+                                        <span class="meta-val"><strong>EN LA SALIDA</strong> DEL EVENTO</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Show de Comedia</h3><span class="arrow-indicator"></span></div>
+                        <p>Show de Cesar Kensen para cerrar el día</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <p style="color: var(--black-base);">Contenido del Show de Comedia... [Pendiente por definir]</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
