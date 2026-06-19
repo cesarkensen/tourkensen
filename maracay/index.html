@@ -88,7 +88,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCÍON 1: MARACAY-WEEKEND                             */
+        /* SECCÍON 1: MARACAY-WEEKEND                           */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%;
@@ -151,7 +151,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 3: CONTADOR-MARACAY (ESCALA +60% & ALINEADO) */
+        /* SECCIÓN 3: CONTADOR-MARACAY                          */
         /* ---------------------------------------------------- */
         .contador-maracay {
             width: 100%;
@@ -179,10 +179,9 @@
             color: var(--kensen-red); 
         }
 
-        /* Layout del Bloque del Reloj Corregido */
         .countdown-layout {
             display: flex;
-            align-items: flex-start; /* Alineado al tope superior de los componentes */
+            align-items: flex-start; 
             justify-content: center;
             gap: 30px;
             width: 100%;
@@ -195,9 +194,9 @@
             font-size: 18pt; 
             text-transform: uppercase;
             text-align: right; 
-            line-height: 1.1; /* Calibración para emular el borde superior de la caja */
+            line-height: 1.1; 
             color: var(--black-base);
-            margin-top: 5px; /* Ajuste milimétrico de tracking vertical */
+            margin-top: 5px; 
         }
 
         .timer-grid-white {
@@ -217,7 +216,6 @@
             color: var(--white-pure); 
             font-family: var(--font-outfit);
             font-weight: 900; 
-            /* Dimensiones y fuente escaladas un 60% más grandes */
             font-size: 28.8pt; 
             width: 104px;
             height: 80px;
@@ -238,7 +236,105 @@
         }
 
         /* ---------------------------------------------------- */
-        /* RESTO DE SECCIONES BASE CON SEPARACIÓN DE 40% EXTRA  */
+        /* NUEVA SECCIÓN 4: POSTERS-OPTIONS (FONDO BLANCO PURO) */
+        /* ---------------------------------------------------- */
+        .posters-options {
+            width: 100%;
+            background-color: var(--white-pure);
+            padding: 70px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* División perfecta por la mitad */
+            gap: 50px;
+            border: none;
+        }
+
+        .option-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .option-side h2 {
+            font-family: var(--font-anton);
+            font-size: 40pt;
+            color: var(--black-base);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px; /* Separación estricta de 10px */
+        }
+
+        /* Configuración específica para el título compuesto derecho */
+        .light-title {
+            font-family: var(--font-outfit);
+            font-weight: 300; /* Outfit Light */
+            font-size: 20pt;
+            display: block;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* Escenario de los Stacks Animados */
+        .poster-stage {
+            position: relative;
+            width: 100%;
+            max-width: 340px;
+            height: 500px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .poster-stage img {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            max-height: 460px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            /* Hardware acceleration setup */
+            will-change: transform, opacity;
+            opacity: 0;
+            transform: translate3d(0, 30px, 0) rotate(0deg);
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+        }
+
+        /* Lógica de capas del lado izquierdo */
+        .poster-stage .img-back-left { z-index: 1; }
+        .poster-stage .img-back-right { z-index: 2; }
+        .poster-stage .img-front-vtr { z-index: 3; }
+
+        /* GATILLO DE ANIMACIÓN SMART POR SCROLL */
+        .posters-options.animate .poster-stage img {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        /* Desfase y rotación milimétrica controlada al activarse */
+        .posters-options.animate .left-stage .img-back-left {
+            transform: translate3d(-25px, -5px, 0) rotate(-18deg);
+            transition-delay: 0.1s;
+        }
+        
+        .posters-options.animate .left-stage .img-back-right {
+            transform: translate3d(25px, 5px, 0) rotate(25deg);
+            transition-delay: 0.15s;
+        }
+
+        .posters-options.animate .left-stage .img-front-vtr {
+            transition-delay: 0s;
+        }
+
+        /* Lado Derecho (Solo un póster, misma animación limpia de subida sin rotar) */
+        .posters-options.animate .right-stage img {
+            transition-delay: 0.05s;
+        }
+
+        /* ---------------------------------------------------- */
+        /* RESTO DE SECCIONES BASE CON SEPARACIÓN ESTÁNDAR      */
         /* ---------------------------------------------------- */
         .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 70px 5%; }
         .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; border-radius: 10px; }
@@ -304,6 +400,12 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
+            /* Reajuste responsivo vertical para los pósters */
+            .posters-options { grid-template-columns: 1fr; gap: 60px; padding: 50px 24px; }
+            .option-side h2 { font-size: 32pt; }
+            .light-title { font-size: 16pt; }
+            .poster-stage { height: 420px; max-width: 280px; }
+
             .cta-grid { padding: 50px 24px; }
             .section-title-big { padding: 50px 24px 15px; }
             .city-info-box { padding: 50px 24px; grid-template-columns: 1fr; gap: 30px; text-align: center; }
@@ -363,6 +465,26 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="posters-options" id="posters-trigger">
+        
+        <div class="option-side">
+            <h2>Todos los eventos</h2>
+            <div class="poster-stage left-stage">
+                <img src="poster-mev-stack.jpg" alt="Curso + Comedia Detrás Izquierda" class="img-back-left">
+                <img src="poster-vv-stack.jpg" alt="Videos Virales Detrás Derecha" class="img-back-right">
+                <img src="poster-vtr-stcak.png" alt="Vende tus Redes Al Frente" class="img-front-vtr">
+            </div>
+        </div>
+
+        <div class="option-side">
+            <h2><span class="light-title">(solo)</span>Comedia</h2>
+            <div class="poster-stage right-stage">
+                <img src="poster-mev-stack.jpg" alt="Solo Comedia Stand Up">
+            </div>
+        </div>
+
     </section>
 
     <section class="cta-grid">
@@ -448,17 +570,33 @@
             porcentajeVentas: 76 
         };
 
+        // 1. MOTOR DE PARALLAX CORREGIDO Y RESTAURADO
         const heroImg = document.getElementById('hero-img');
-
-        function updateParallax() {
+        window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const speed = 0.15;
             const yOffset = scrollTop * speed;
-            heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
-            requestAnimationFrame(updateParallax);
-        }
-        requestAnimationFrame(updateParallax);
+            heroImg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+        });
 
+        // 2. DISPARADOR SMART DE ANIMACIÓN PARA LOS POSTERS
+        const triggerSection = document.getElementById('posters-trigger');
+        const observerOptions = {
+            root: null,
+            threshold: 0.25 /* Se activa cuando el 25% de la sección entra en escena */
+        };
+
+        const postersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    triggerSection.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        postersObserver.observe(triggerSection);
+
+        // 3. CUENTA REGRESIVA RELOJ
         const countdown = () => {
             const countDate = new Date(CONFIG.fechaEvento).getTime();
             const now = new Date().getTime();
