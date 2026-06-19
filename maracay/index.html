@@ -150,9 +150,9 @@
         .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 5 & 5B: LOGOS (PRODUCCIÓN & PATROCINANTES)   */
+        /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
         /* ---------------------------------------------------- */
-        .produccion-logos, .patrocinantes-logos { 
+        .produccion-logos { 
             width: 100%; 
             background-color: var(--black-base); 
             padding: 30px 5%; 
@@ -161,16 +161,120 @@
             align-items: center; 
             border: none; 
         }
-        .patrocinantes-logos {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
         .logos-wrapper { display: flex; align-items: center; justify-content: center; position: relative; width: 100%; max-width: 1200px; }
         .produccion-title { font-family: var(--font-outfit); font-weight: 900; font-size: 1.1rem; color: var(--white-pure); text-transform: uppercase; letter-spacing: 1px; margin-right: 50px; }
         .logos-container { display: flex; align-items: center; gap: 50px; }
         .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 5C: INFO-EVENTO-VENDIDAS (NUEVA)             */
+        /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
+        /* ---------------------------------------------------- */
+        .seccion-eventos-cronograma { width: 100%; background-color: var(--white-pure); margin-top: 5px; padding: 5px 0 30px 0; border: none; }
+        .eventos-main-heading {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 30px; color: var(--black-base); 
+            text-align: center; text-transform: uppercase; letter-spacing: -1px; width: 100%;
+            padding: 0 5%; margin-top: 40px; margin-bottom: 30px; line-height: 1.2; white-space: nowrap; 
+        }
+        .eventos-main-heading span { color: var(--kensen-red); }
+
+        .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
+        .accordion-bar-item { width: 100%; border: none; outline: none; }
+        
+        .accordion-bar-header {
+            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
+            cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
+        }
+        .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
+        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
+        
+        .accordion-bar-header h3 {
+            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
+            line-height: 55px; text-transform: uppercase; border: none;
+        }
+        .bar-title-dark { color: var(--white-pure); } 
+        .bar-title-light { color: var(--black-base); }
+        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
+
+        .arrow-indicator {
+            display: inline-block; width: 0; height: 0;
+            border-left: 10px solid transparent; border-right: 10px solid transparent;
+            border-top: 14px solid currentColor; 
+            margin-top: 5px; will-change: transform; transform: rotate(0deg); 
+            transform-origin: center 7px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+        }
+        .accordion-bar-item.active .arrow-indicator { transform: rotate(-90deg); }
+
+        .bar-dark-style { background-color: var(--black-base); color: var(--white-pure); }
+        .bar-dark-style .arrow-indicator { color: var(--white-pure); }
+        .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); }
+        .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
+        .bar-light-style .arrow-indicator { color: var(--black-base); }
+        .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); }
+
+        .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
+        .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
+        .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
+        
+        .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
+        .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
+
+        /* GRIDS DE CONTENIDO UNIFICADOS */
+        .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
+        .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
+        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
+        
+        .vtr-buy-btn {
+            width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
+            font-size: 2.5rem; text-transform: uppercase; text-align: center; padding: 14px 0; cursor: pointer; 
+            transition: background-color 0.2s; text-decoration: none; display: block; line-height: 1; border: none !important;
+        }
+        .vtr-buy-btn:hover { background-color: #d60042; }
+        .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
+
+        .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
+        .fucsia-bar-networking {
+            position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
+            color: var(--white-pure); font-family: var(--font-outfit); font-weight: 900; font-size: 1.6rem;
+            text-align: center; padding: 12px 0; text-transform: uppercase; line-height: 1; letter-spacing: 1px;
+        }
+        .access-special-label {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 1.8rem; color: var(--white-pure);
+            text-transform: uppercase; text-align: center; line-height: 1.1; letter-spacing: 0.5px; width: 100%;
+        }
+
+        .vtr-right-col { display: flex; flex-direction: column; gap: 32px; border: none; }
+        .vtr-right-col * { text-transform: uppercase; }
+        .vtr-block-text { font-family: var(--font-outfit); line-height: 1.2; }
+        .vtr-block-text .black-title { font-weight: 900; font-size: 24px; display: block; }
+        .vtr-block-text .light-desc { font-weight: 300; font-size: 19px; display: block; margin-top: 4px; }
+        .vtr-block-text .highlight-pink-anton { font-family: var(--font-anton); font-weight: 400; font-size: 32px; color: var(--kensen-red); display: block; margin-bottom: 12px; letter-spacing: 1px; }
+        
+        .vtr-learn-list { display: flex; flex-direction: column; gap: 18px; list-style: none; }
+        .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; line-height: 1.3; }
+        .vtr-learn-list li strong { font-weight: 900; }
+
+        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; }
+        .bar-light-style .vtr-meta-info-block { border-top-color: rgba(0, 0, 0, 0.1); }
+        .vtr-meta-item { font-family: var(--font-outfit); }
+        .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
+        .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 7: PATROCINANTES LOGOS                       */
+        /* ---------------------------------------------------- */
+        .patrocinantes-logos { 
+            width: 100%; 
+            background-color: var(--black-base); 
+            padding: 30px 5%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 8: INFO-EVENTO-VENDIDAS                      */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
             width: 100%;
@@ -250,105 +354,8 @@
         }
         .color-highlight-red { color: var(--kensen-red) !important; }
 
-        /* ---------------------------------------------------- */
-        /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
-        /* ---------------------------------------------------- */
-        .seccion-eventos-cronograma { width: 100%; background-color: var(--white-pure); margin-top: 5px; padding: 5px 0 0 0; border: none; }
-        .eventos-main-heading {
-            font-family: var(--font-outfit); font-weight: 900; font-size: 30px; color: var(--black-base); 
-            text-align: center; text-transform: uppercase; letter-spacing: -1px; width: 100%;
-            padding: 0 5%; margin-top: 40px; margin-bottom: 30px; line-height: 1.2; white-space: nowrap; 
-        }
-        .eventos-main-heading span { color: var(--kensen-red); }
-
-        .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
-        .accordion-bar-item { width: 100%; border: none; outline: none; }
-        
-        .accordion-bar-header {
-            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
-            cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
-        }
-        .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
-        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
-        
-        .accordion-bar-header h3 {
-            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
-            line-height: 55px; text-transform: uppercase; border: none;
-        }
-        .bar-title-dark { color: var(--white-pure); } 
-        .bar-title-light { color: var(--black-base); }
-        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
-
-        .arrow-indicator {
-            display: inline-block; width: 0; height: 0;
-            border-left: 10px solid transparent; border-right: 10px solid transparent;
-            border-top: 14px solid currentColor; 
-            margin-top: 5px; will-change: transform; transform: rotate(0deg); 
-            transform-origin: center 7px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
-        }
-        .accordion-bar-item.active .arrow-indicator { transform: rotate(-90deg); }
-
-        .bar-dark-style { background-color: var(--black-base); color: var(--white-pure); }
-        .bar-dark-style .arrow-indicator { color: var(--white-pure); }
-        .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); }
-        .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
-        .bar-light-style .arrow-indicator { color: var(--black-base); }
-        .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); }
-
-        .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
-        .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
-        .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
-        
-        .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
-        .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
-
-        /* ---------------------------------------------------- */
-        /* GRIDS DE CONTENIDO UNIFICADOS                        */
-        /* ---------------------------------------------------- */
-        .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
-        .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
-        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
-        
-        .vtr-buy-btn {
-            width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
-            font-size: 2.5rem; text-transform: uppercase; text-align: center; padding: 14px 0; cursor: pointer; 
-            transition: background-color 0.2s; text-decoration: none; display: block; line-height: 1; border: none !important;
-        }
-        .vtr-buy-btn:hover { background-color: #d60042; }
-        .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
-
-        .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
-        .fucsia-bar-networking {
-            position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
-            color: var(--white-pure); font-family: var(--font-outfit); font-weight: 900; font-size: 1.6rem;
-            text-align: center; padding: 12px 0; text-transform: uppercase; line-height: 1; letter-spacing: 1px;
-        }
-        .access-special-label {
-            font-family: var(--font-outfit); font-weight: 900; font-size: 1.8rem; color: var(--white-pure);
-            text-transform: uppercase; text-align: center; line-height: 1.1; letter-spacing: 0.5px; width: 100%;
-        }
-
-        .vtr-right-col { display: flex; flex-direction: column; gap: 32px; border: none; }
-        .vtr-block-text { font-family: var(--font-outfit); text-transform: uppercase; line-height: 1.2; }
-        .vtr-block-text .black-title { font-weight: 900; font-size: 24px; display: block; }
-        .vtr-block-text .light-desc { font-weight: 300; font-size: 19px; display: block; margin-top: 4px; }
-        .vtr-block-text .highlight-pink-anton { font-family: var(--font-anton); font-weight: 400; font-size: 32px; color: var(--kensen-red); display: block; margin-bottom: 12px; letter-spacing: 1px; }
-        
-        .vtr-learn-list { display: flex; flex-direction: column; gap: 18px; list-style: none; }
-        .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; text-transform: uppercase; line-height: 1.3; }
-        .vtr-learn-list li strong { font-weight: 900; }
-
-        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; }
-        .bar-light-style .vtr-meta-info-block { border-top-color: rgba(0, 0, 0, 0.1); }
-        .vtr-meta-item { font-family: var(--font-outfit); text-transform: uppercase; }
-        .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
-        .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
-
-        /* ---------------------------------------------------- */
-        /* SECCIÓN: PRECIOS Y PLANES                            */
-        /* ---------------------------------------------------- */
+        /* PRECIOS Y PLANES Y CTAS */
         .precios-planes { padding: 85px 5%; background: var(--gray-dark); text-align: center; border: none; }
-
         .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 70px 5%; }
         .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; }
         .cta-btn img { width: 100%; display: block; transition: transform 0.5s ease; border-radius: 10px; }
@@ -382,20 +389,19 @@
             #container-prod img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
             #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadePatro 12s infinite ease-in-out; }
 
-            /* RESPONSIVE INFO-EVENTO-VENDIDAS (Porcentaje al final) */
+            /* RESPONSIVE INFO-EVENTO-VENDIDAS (Porcentaje al final absoluto) */
             .info-evento-vendidas { padding: 40px 24px; }
             .vendidas-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
             .vendidas-col-info { align-items: center; }
             .vendidas-col-info h4 { font-size: 32px; }
             .vendidas-col-data { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-left: 0; padding-top: 25px; height: auto; }
             .vendidas-number-huge { font-size: 70px; }
-            /* Orden forzado para asegurar que el porcentaje quede al final absoluto */
+            
             .vendidas-grid > :nth-child(1) { order: 1; }
             .vendidas-grid > :nth-child(2) { order: 2; }
             .vendidas-grid > :nth-child(3) { order: 3; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
-            
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
 
             .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
@@ -490,34 +496,6 @@
         </div>
     </section>
 
-    <section class="patrocinantes-logos">
-        <div class="logos-wrapper">
-            <p class="produccion-title">patrocinado por:</p>
-            <div class="logos-container" id="container-patro">
-                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
-                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
-                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
-            </div>
-        </div>
-    </section>
-
-    <section class="info-evento-vendidas">
-        <div class="vendidas-grid">
-            <div class="vendidas-col-info">
-                <div class="vendidas-tag-live">Estado en vivo</div>
-                <h4>Aforo actual del evento</h4>
-                <p>Datos de boletería actualizados hoy mismo en tiempo real</p>
-            </div>
-            <div class="vendidas-col-data">
-                <div class="vendidas-number-huge">142</div>
-                <div class="vendidas-label-sub">Entradas vendidas</div>
-            </div>
-            <div class="vendidas-col-data">
-                <div class="vendidas-number-huge color-highlight-red">71%</div>
-                <div class="vendidas-label-sub">Capacidad total</div>
-            </div>
-        </div>
-    </section>
     <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
         <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
         <div class="cronograma-accordion">
@@ -672,6 +650,35 @@
                 </div>
             </div>
             
+        </div>
+    </section>
+
+    <section class="patrocinantes-logos">
+        <div class="logos-wrapper">
+            <p class="produccion-title">patrocinado por:</p>
+            <div class="logos-container" id="container-patro">
+                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
+            </div>
+        </div>
+    </section>
+
+    <section class="info-evento-vendidas">
+        <div class="vendidas-grid">
+            <div class="vendidas-col-info">
+                <div class="vendidas-tag-live">Estado en vivo</div>
+                <h4>Aforo actual del evento</h4>
+                <p>Datos de boletería actualizados hoy mismo en tiempo real</p>
+            </div>
+            <div class="vendidas-col-data">
+                <div class="vendidas-number-huge">142</div>
+                <div class="vendidas-label-sub">Entradas vendidas</div>
+            </div>
+            <div class="vendidas-col-data">
+                <div class="vendidas-number-huge color-highlight-red">71%</div>
+                <div class="vendidas-label-sub">Capacidad total</div>
+            </div>
         </div>
     </section>
 
