@@ -26,19 +26,19 @@
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
 
         /* ---------------------------------------------------- */
-        /* HEADER & NAVEGACIÓN (CORREGIDO BLANCO PURO)          */
+        /* HEADER: ALTO REDUCIDO 40% Y SIN BORDES               */
         /* ---------------------------------------------------- */
         nav {
             position: fixed; 
             top: 0; 
             width: 100%; 
             z-index: 100;
-            background: #FFFFFF; /* Blanco Puro Absoluto sin opacidades */
+            background: #FFFFFF; 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 20px 5%; 
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+            padding: 12px 5%; /* Reducido de 20px a 12px (40% más pequeño) */
+            border-bottom: none; /* Eliminado cualquier tipo de borde o color inferior */
         }
         
         .nav-logo-link {
@@ -47,7 +47,7 @@
         }
 
         .nav-logo { 
-            height: 45px; 
+            height: 35px; /* Ajuste proporcional al alto del header */
             width: auto;
             cursor: pointer; 
             transition: transform 0.3s ease; 
@@ -81,19 +81,19 @@
             font-weight: 900; 
         }
 
-        /* Spacer para compensar el fixed del menú superior */
+        /* Spacer optimizado para el nuevo alto compacto del header */
         .header-spacer {
-            height: 85px;
+            height: 59px; 
             width: 100%;
         }
 
         /* ---------------------------------------------------- */
-        /* SECCÍON: MARACAY-WEEKEND (DISEÑO IMPONENTE CONDENSADO)*/
+        /* SECCÍON: MARACAY-WEEKEND (90% ANCHO & SEPARACIÓN 15PX)*/
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%;
             background-color: var(--white-pure);
-            padding: 60px 0; /* Padding controlado en los extremos */
+            padding: 15px 0 50px 0; /* Margen superior estrictamente clavado en 15px */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -114,24 +114,23 @@
         .weekend-subtitle {
             font-family: var(--font-anton);
             color: var(--black-base);
-            /* Ocupa el ancho completo restando exactamente los 20px de margen por lado */
-            width: calc(100% - 40px); 
-            max-width: 1400px;
-            font-size: 9.3vw; /* Ajuste dinámico de escala masiva */
+            width: 90vw; /* Forzado al 90% exacto del ancho de la ventana del navegador */
+            font-size: 11.2vw; /* Escala ajustada matemáticamente para cubrir el contenedor */
             text-transform: uppercase;
-            line-height: 0.85;
+            line-height: 0.8;
             margin-top: 5px;
-            letter-spacing: -0.05em; /* Tracking condensado a -50 */
+            letter-spacing: -0.05em; 
             white-space: nowrap;
+            display: block;
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: KENSEN-FOTO (REDUCCIÓN 30% Y PARALLAX ALTO) */
+        /* SECCIÓN: KENSEN-FOTO (NUEVA IMAGEN CONFIGURADA)      */
         /* ---------------------------------------------------- */
         .kensen-foto {
             position: relative; 
             width: 100vw; 
-            height: 52.5vh; /* Reducción exacta del 30% de la altura anterior */
+            height: 52.5vh; 
             overflow: hidden; 
             display: flex; 
             align-items: center; 
@@ -141,10 +140,10 @@
         
         .parallax-img {
             position: absolute; 
-            top: -25%; /* Mayor espacio superior para absorber el desplazamiento veloz */
+            top: -25%; 
             left: 0; 
             width: 100%; 
-            height: 150%; /* Aumentado a 150% para dar rango al efecto dinámico */
+            height: 150%; 
             object-fit: cover; 
             will-change: transform; 
             transform: translate3d(0,0,0);
@@ -209,10 +208,10 @@
         @media (max-width: 1024px) {
             nav {
                 justify-content: center; 
-                padding: 12px 20px;
+                padding: 8px 20px; /* Consistencia de reducción en celulares */
                 position: fixed;
                 top: 0;
-                background: #FFFFFF; /* Consistencia en móvil */
+                background: #FFFFFF; 
             }
             
             .nav-links { 
@@ -220,15 +219,15 @@
             }
 
             .nav-logo { 
-                height: 32px; 
+                height: 24px; 
             }
             
             .header-spacer {
-                height: 60px; 
+                height: 40px; 
             }
 
             .maracay-weekend {
-                padding: 40px 0;
+                padding: 15px 0 35px 0; /* Mantiene la separación de 15px arriba */
             }
 
             .maracay-title {
@@ -236,12 +235,13 @@
             }
 
             .weekend-subtitle {
-                font-size: 9vw; /* Escalado perfecto manteniendo la proporción y los 20px de margen lateral */
+                width: 90vw; /* Asegura el 90% exacto en móviles sin desborde */
+                font-size: 10.8vw; 
                 margin-top: 2px;
             }
 
             .kensen-foto {
-                height: 35vh; /* Reducción proporcional del contenedor en móvil */
+                height: 35vh; 
                 width: 100%;
             }
 
@@ -272,7 +272,7 @@
     </section>
 
     <section class="kensen-foto">
-        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
+        <img src="kensen-foto-vendetusredes.jpg" alt="Cesar Kensen Vende tus Redes" class="parallax-img" id="hero-img">
     </section>
 
     <section class="countdown-section">
@@ -370,7 +370,6 @@
 
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
-            // Factor aumentado a 0.5 para que el movimiento sea notablemente más evidente
             const speed = 0.5; 
             const yPos = window.pageYOffset * speed;
             heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
