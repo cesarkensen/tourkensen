@@ -57,7 +57,7 @@
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 1: MARACAY-WEEKEND                           */
+        /* SECCIÓN 1: MARACAY-WEEKEND (CALIBRACIÓN PC/CEL)      */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%; background-color: var(--white-pure); padding: 15px 0 70px 0; 
@@ -67,6 +67,7 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
+        /* Forzado a UNA SOLA LÍNEA en computadora */
         .weekend-subtitle {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
             font-size: 14.8vw; text-transform: uppercase; line-height: 0.8; margin-top: 5px;
@@ -74,7 +75,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 2: KENSEN-FOTO (CONTAINER PARALLAX BLINDADO) */
+        /* SECCIÓN 2: KENSEN-FOTO (PARALLAX + MARCO VARIABLE)   */
         /* ---------------------------------------------------- */
         .kensen-foto {
             position: relative; width: 100vw; height: 52.5vh; overflow: hidden; 
@@ -172,7 +173,6 @@
         .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
         .accordion-bar-item { width: 100%; border: none; outline: none; }
         
-        /* EXTERMINACIÓN ABSOLUTA DE BORDES GRISES Y CONTORNOS */
         .accordion-bar-header {
             width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
             cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
@@ -180,7 +180,7 @@
         .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
-        /* SEPARACIÓN ENTRE LETRAS FIJADA EN -30 COMPLETO (COMPUTADORA Y MÓVIL) */
+        /* Título con tracking -30 (-1.2px) */
         .accordion-bar-header h3 {
             font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
             line-height: 55px; text-transform: uppercase; border: none;
@@ -189,7 +189,7 @@
         .bar-title-light { color: var(--black-base); }
         .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
 
-        /* FIJACIÓN DE LA FLECHA VECTORIAL ACTIVA DESDE EL INICIO */
+        /* Flecha triangular activa desde el inicio */
         .arrow-indicator {
             display: inline-block; width: 0; height: 0;
             border-left: 10px solid transparent; border-right: 10px solid transparent;
@@ -213,9 +213,10 @@
         .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
         .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
+        /* Grids de Contenido */
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
-        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
+        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.35); margin-bottom: 25px; display: block; border: none; }
         
         .vtr-buy-btn {
             width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
@@ -230,6 +231,7 @@
         .vtr-block-text .black-title { font-weight: 900; font-size: 24px; display: block; }
         .vtr-block-text .light-desc { font-weight: 300; font-size: 19px; display: block; margin-top: 4px; }
         .vtr-block-text .highlight-pink-anton { font-family: var(--font-anton); font-weight: 400; font-size: 32px; color: var(--kensen-red); display: block; margin-bottom: 12px; letter-spacing: 1px; }
+        
         .vtr-learn-list { display: flex; flex-direction: column; gap: 18px; list-style: none; }
         .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; text-transform: uppercase; line-height: 1.3; }
         .vtr-learn-list li strong { font-weight: 900; }
@@ -254,75 +256,34 @@
         /* MEDIA QUERIES EXCLUSIVAS MÓVILES (CALIBRACIONES)     */
         /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
-            /* LOGO HEADER CENTRADO EN LA PANTALLA CELULAR */
             nav { justify-content: center; padding: 15px 20px; }
             .nav-links { display: none; }
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .header-spacer { height: 78px; }
 
-            /* MARACAY -30% DE TAMAÑO Y TRACKING -40 */
             .maracay-title { font-size: 7.7vw; letter-spacing: -2.2px; }
-            
-            /* KENSEN WEEKEND +60% GRANDE EN DOS LÍNEAS CON 10% DE INTERLINEADO */
-            .weekend-subtitle { 
-                font-size: 23.6vw; 
-                white-space: normal; 
-                line-height: 0.9; 
-                display: block;
-            }
+            .weekend-subtitle { font-size: 23.6vw; white-space: normal; line-height: 0.9; display: block; }
 
-            /* MARCO DE FOTO PARALLAX 40% MÁS PEQUEÑO EN ALTURA PERO 100% ANCHO */
+            /* Marco parallax recortado un 40% en altura */
             .kensen-foto { height: 31.5vh; width: 100vw; }
             .parallax-img { height: 150%; top: -25%; }
 
-            .contador-maracay { padding: 50px 24px; }
-            .contador-intro-text { font-size: 14pt; margin-bottom: 20px; }
-            .countdown-layout { flex-direction: column; align-items: center; gap: 15px; }
-            .countdown-side-title { text-align: center; font-size: 16pt; margin-top: 0; }
-            .timer-grid-white { gap: 10px; }
-            .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
-            .time-label-below { font-size: 10pt; }
-
             .posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 10px 24px 50px 24px; }
             .option-side { width: 100%; max-width: 280px; }
-            .title-container { height: auto; margin-bottom: 15px; position: relative; display: block; }
-            .light-title { position: relative; top: 0; left: 0; transform: none; font-size: 14pt; display: block; margin-bottom: 5px; }
-            .option-side h2 { font-size: 32pt; }
-            
             .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
-            .posters-options.animate .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
-            .posters-options.animate .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
-            .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
-            .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
-            .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
 
-            /* LOGOS DE PRODUCCIÓN: CENTRADOS Y CON 10PX DE MARGEN CON LA FRASE */
-            .produccion-logos { padding: 25px 0; justify-content: center; }
+            /* Logos producción: Centrados con 10px de margen */
+            .produccion-logos { padding: 25px 0; }
             .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
             .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
-            .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
+            .logos-container { position: relative; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
             .logos-container img { position: absolute; left: 50%; transform: translateX(-50%); animation: strictMobileFadeCarousel 12s infinite ease-in-out; }
 
-            /* REAJUSTE DE CRONOGRAMA: DOS LÍNEAS CON MÁRGENES DE 30PX TOP Y 20PX BOTTOM */
-            .seccion-eventos-cronograma { padding: 0; }
-            .eventos-main-heading { 
-                font-size: 20px; white-space: normal; 
-                margin-top: 30px; margin-bottom: 20px;
-                max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; 
-            }
-            .eventos-main-heading br { display: block; }
-            
-            /* Título de acordeón móvil mantiene tracking -30 (-1px) */
-            .accordion-bar-header { padding: 25px 6%; gap: 15px; border: none !important; }
+            /* Cronograma Móvil: 2 líneas, márgenes 30/20 */
+            .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
-            .accordion-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
-            
-            .title-inline-wrapper { gap: 8px; border: none; }
-            .arrow-indicator { border-left-width: 6px; border-right-width: 6px; border-top-width: 9px; transform-origin: center 4.5px; }
 
-            .accordion-bar-content { padding: 0 6%; border: none; }
-            .accordion-bar-item.active .accordion-bar-content { padding: 20px 4%; }
             .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
             .vtr-scaled-poster, .vtr-buy-btn { width: 280px; }
             .vtr-buy-btn { font-size: 1.8rem; }
@@ -380,8 +341,8 @@
             <div class="title-container"><h2>Todos los eventos</h2></div>
             <button class="poster-btn-trigger" onclick="smoothScrollFastIn('seccion-eventos-cronograma')">
                 <div class="poster-stage left-stage">
-                    <img src="poster-mev-stacks.png" alt="Detrás Izquierda" class="img-back-left">
-                    <img src="poster-vv-stacks.png" alt="Detrás Derecha" class="img-back-right">
+                    <img src="poster-mev-stacks.png" alt="Detrás" class="img-back-left">
+                    <img src="poster-vv-stacks.png" alt="Detrás" class="img-back-right">
                     <img src="poster-vtr-stacks.png" alt="Frente" class="img-front-vtr">
                 </div>
             </button>
@@ -389,7 +350,7 @@
         <div class="option-side">
             <div class="title-container"><span class="light-title">(solo)</span><h2>Comedia</h2></div>
             <a href="https://cesarkensen.com/comedia-maracay-18jul26" class="poster-link-trigger">
-                <div class="poster-stage right-stage"><img src="poster-mev-stacks.png" alt="Comedia Solo"></div>
+                <div class="poster-stage right-stage"><img src="poster-mev-stacks.png" alt="Solo Comedia"></div>
             </a>
         </div>
     </section>
@@ -407,16 +368,12 @@
 
     <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
         <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
-        
         <div class="cronograma-accordion">
             
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper">
-                            <h3 class="bar-title-dark">Masterclass Público</h3>
-                            <span class="arrow-indicator"></span>
-                        </div>
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Masterclass Público</h3><span class="arrow-indicator"></span></div>
                         <p>hacer dinero con redes sociales</p>
                     </div>
                 </button>
@@ -453,10 +410,7 @@
             <div class="accordion-bar-item bar-light-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper">
-                            <h3 class="bar-title-light">Masterclass Privado</h3>
-                            <span class="arrow-indicator"></span>
-                        </div>
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Masterclass Privado</h3><span class="arrow-indicator"></span></div>
                         <p>volver viral tus redes sociales</p>
                     </div>
                 </button>
@@ -466,29 +420,29 @@
                             <div class="vtr-left-col">
                                 <img src="poster-vv-stacks.png" alt="Videos Virales" class="vtr-scaled-poster">
                                 <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
-                                <p class="vtr-legal-caption" style="color: var(--black-base);">(Hay planes para empresas y precios grupales)</p>
+                                <p class="vtr-legal-caption" style="color: var(--black-base); font-size: 9px;">(HAY PRECIOS ESPECIALES PARA EMPRESAS PATROCINANTES)</p>
                             </div>
-                            <div class="vtr-right-col">
-                                <div class="vtr-block-text" style="color: var(--black-base);">
-                                    <span class="black-title">Un equipo capacitado,</span>
-                                    <span class="black-title">Multiplica los resultados</span>
-                                </div>
-                                <div class="vtr-block-text" style="color: var(--black-base);">
-                                    <span class="light-desc">ENTRENA A TU PERSONAL CON UN <strong>SISTEMA COMPROBADO</strong></span>
-                                    <span class="light-desc">PARA LLEVAR LA <strong>VIRALIDAD ABSOLUTA</strong> A TU PRODUCTO</span>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text">
+                                    <span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span>
+                                    <span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span>
                                 </div>
                                 <div class="vtr-block-text">
-                                    <span class="highlight-pink-anton">Aprenderán a:</span>
-                                    <ul class="vtr-learn-list" style="color: var(--black-base);">
-                                        <li>Dominar algoritmos de <strong>Instagram, TikTok y YouTube Shorts</strong></li>
-                                        <li>Estructura de guiones de <strong>alta retención psicológica</strong></li>
-                                        <li>Flujo técnico optimizado de <strong>edición con inteligencia artificial</strong></li>
+                                    <span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span>
+                                    <span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span>
+                                </div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">APRENDERÁN A:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>IDEAR Y ESCRIBIR <strong>IDEAS PARA GUIONES</strong> CON GANCHOS PODEROSOS</li>
+                                        <li>GRABAR CON TU EQUIPO ACTUAL CON <strong>RETENCIÓN PSICOLÓGICA</strong></li>
+                                        <li>EDITAR VIDEOS CON <strong>CALIDAD CINE</strong> Y DE IMPACTO VIRAL</li>
                                     </ul>
                                 </div>
                                 <div class="vtr-meta-info-block">
-                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val" style="color: var(--black-base);"><strong>18 de Julio</strong> (Sábado)</span></div>
-                                    <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val" style="color: var(--black-base);">2:00 P.M. a 6:00 P.M.</span></div>
-                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val" style="color: var(--black-base);"><strong>Salón de Conferencias</strong> Los Aviadores</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val"><strong>A CONVENIR</strong> (DÍAS PREVIOS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val"><strong>A CONVENIR</strong> (DURACIÓN 4 HORAS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val"><strong>TUS INSTALACIONES</strong></span></div>
                                 </div>
                             </div>
                         </div>
@@ -496,23 +450,7 @@
                 </div>
             </div>
 
-            <div class="accordion-bar-item bar-dark-style">
-                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
-                    <div class="bar-title-block">
-                        <div class="title-inline-wrapper">
-                            <h3 class="bar-title-dark">Evento Networking</h3>
-                            <span class="arrow-indicator"></span>
-                        </div>
-                        <p>oportunidad de contáctos & negocios</p>
-                    </div>
-                </button>
-                <div class="accordion-bar-content">
-                    <div class="accordion-bar-content-inner">
-                        <p>Dinámicas de conexiones comerciales... [Pendiente por definir]</p>
-                    </div>
-                </div>
-            </div>
-            
+            <div class="accordion-bar-item bar-dark-style"><button class="accordion-bar-header" onclick="handleAccordionToggle(this)"><div class="bar-title-block"><div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div><p>oportunidad de contáctos & negocios</p></div></button></div>
         </div>
     </section>
 
@@ -528,27 +466,25 @@
     <script>
         const CONFIG = { fechaEvento: "July 18, 2026 09:00:00" };
 
-        // PARALLAX MOTOR SUTIL
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             heroImg.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
         });
 
-        // TRIGGER POSTERS
         const triggerSection = document.getElementById('posters-trigger');
         const postersObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) triggerSection.classList.add('animate'); });
         }, { threshold: 0.25 });
         postersObserver.observe(triggerSection);
 
-        // MOTOR SCROLL ACELERADO "FAST-IN" CON FRENADO SUTIL LATE CÚBICO
         function smoothScrollFastIn(id) {
             const target = document.getElementById(id);
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 850; 
+            let start = null;
 
             function cubicEaseOut(t, b, c, d) {
                 t /= d; t--;
@@ -567,7 +503,6 @@
 
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
 
-        // RELOJ
         const countdown = () => {
             const gap = new Date(CONFIG.fechaEvento).getTime() - new Date().getTime();
             if (gap > 0) {
