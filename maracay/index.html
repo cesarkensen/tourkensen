@@ -172,7 +172,7 @@
         .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
         .accordion-bar-item { width: 100%; border: none; outline: none; }
         
-        /* ELIMINACIÓN ABSOLUTA DE BORDES EN BOTONES Y ACCIONES */
+        /* EXTERMINACIÓN ABSOLUTA DE BORDES GRISES Y CONTORNOS */
         .accordion-bar-header {
             width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
             cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
@@ -180,20 +180,20 @@
         .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
-        /* SEPARACIÓN ENTRE LETRAS FIJADA EN -30 COMPLETO */
+        /* SEPARACIÓN ENTRE LETRAS FIJADA EN -30 COMPLETO (COMPUTADORA Y MÓVIL) */
         .accordion-bar-header h3 {
-            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; /* Equivale a -30 de software gráfico */
+            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
             line-height: 55px; text-transform: uppercase; border: none;
         }
         .bar-title-dark { color: var(--white-pure); } 
         .bar-title-light { color: var(--black-base); }
         .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
 
-        /* CORRECCIÓN: FLECHA TRIANGULAR CLAVADA DESDE LA CARGA EN COLOR DEL TEXTO */
+        /* FIJACIÓN DE LA FLECHA VECTORIAL ACTIVA DESDE EL INICIO */
         .arrow-indicator {
             display: inline-block; width: 0; height: 0;
             border-left: 10px solid transparent; border-right: 10px solid transparent;
-            border-top: 14px solid currentColor; /* Fuerza presencia activa desde el render inicial */
+            border-top: 14px solid currentColor; 
             margin-top: 5px; will-change: transform; transform: rotate(0deg); 
             transform-origin: center 7px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
         }
@@ -209,7 +209,9 @@
         .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
         .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
         .accordion-bar-item.active .accordion-bar-content { max-height: 2000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
+        
         .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
+        .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
@@ -232,7 +234,8 @@
         .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; text-transform: uppercase; line-height: 1.3; }
         .vtr-learn-list li strong { font-weight: 900; }
 
-        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; }
+        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 24px; }
+        .bar-dark-style .vtr-meta-info-block { border-top-color: rgba(255,255,255,0.1); }
         .vtr-meta-item { font-family: var(--font-outfit); text-transform: uppercase; }
         .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
         .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
@@ -264,7 +267,7 @@
             .weekend-subtitle { 
                 font-size: 23.6vw; 
                 white-space: normal; 
-                line-height: 0.9; /* Representa el 10% del alto del bloque de texto */
+                line-height: 0.9; 
                 display: block;
             }
 
@@ -296,7 +299,7 @@
 
             /* LOGOS DE PRODUCCIÓN: CENTRADOS Y CON 10PX DE MARGEN CON LA FRASE */
             .produccion-logos { padding: 25px 0; justify-content: center; }
-            .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; /* Separación estricta de 10px */}
+            .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
             .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
             .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
             .logos-container img { position: absolute; left: 50%; transform: translateX(-50%); animation: strictMobileFadeCarousel 12s infinite ease-in-out; }
@@ -305,13 +308,12 @@
             .seccion-eventos-cronograma { padding: 0; }
             .eventos-main-heading { 
                 font-size: 20px; white-space: normal; 
-                margin-top: 30px; /* 30px superior */
-                margin-bottom: 20px; /* 20px inferior */
+                margin-top: 30px; margin-bottom: 20px;
                 max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; 
             }
             .eventos-main-heading br { display: block; }
             
-            /* Título de acordeón móvil con tracking -30 (-1px) */
+            /* Título de acordeón móvil mantiene tracking -30 (-1px) */
             .accordion-bar-header { padding: 25px 6%; gap: 15px; border: none !important; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
             .accordion-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
@@ -320,7 +322,7 @@
             .arrow-indicator { border-left-width: 6px; border-right-width: 6px; border-top-width: 9px; transform-origin: center 4.5px; }
 
             .accordion-bar-content { padding: 0 6%; border: none; }
-            .accordion-bar-item.active .accordion-bar-content { padding: 30px 4%; }
+            .accordion-bar-item.active .accordion-bar-content { padding: 20px 4%; }
             .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
             .vtr-scaled-poster, .vtr-buy-btn { width: 280px; }
             .vtr-buy-btn { font-size: 1.8rem; }
@@ -357,7 +359,7 @@
     </section>
 
     <section class="kensen-foto">
-        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen" class="parallax-img" id="hero-img">
     </section>
 
     <section class="contador-maracay">
@@ -407,6 +409,7 @@
         <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
         
         <div class="cronograma-accordion">
+            
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
@@ -446,8 +449,70 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-bar-item bar-light-style"><button class="accordion-bar-header" onclick="handleAccordionToggle(this)"><div class="bar-title-block"><div class="title-inline-wrapper"><h3 class="bar-title-light">Masterclass Privado</h3><span class="arrow-indicator"></span></div><p>volver viral tus redes sociales</p></div></button></div>
-            <div class="accordion-bar-item bar-dark-style"><button class="accordion-bar-header" onclick="handleAccordionToggle(this)"><div class="bar-title-block"><div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div><p>oportunidad de contáctos & negocios</p></div></button></div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-light">Masterclass Privado</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
+                        <p>volver viral tus redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vv-stacks.png" alt="Videos Virales" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base);">(Hay planes para empresas y precios grupales)</p>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text" style="color: var(--black-base);">
+                                    <span class="black-title">Un equipo capacitado,</span>
+                                    <span class="black-title">Multiplica los resultados</span>
+                                </div>
+                                <div class="vtr-block-text" style="color: var(--black-base);">
+                                    <span class="light-desc">ENTRENA A TU PERSONAL CON UN <strong>SISTEMA COMPROBADO</strong></span>
+                                    <span class="light-desc">PARA LLEVAR LA <strong>VIRALIDAD ABSOLUTA</strong> A TU PRODUCTO</span>
+                                </div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">Aprenderán a:</span>
+                                    <ul class="vtr-learn-list" style="color: var(--black-base);">
+                                        <li>Dominar algoritmos de <strong>Instagram, TikTok y YouTube Shorts</strong></li>
+                                        <li>Estructura de guiones de <strong>alta retención psicológica</strong></li>
+                                        <li>Flujo técnico optimizado de <strong>edición con inteligencia artificial</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val" style="color: var(--black-base);"><strong>18 de Julio</strong> (Sábado)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val" style="color: var(--black-base);">2:00 P.M. a 6:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val" style="color: var(--black-base);"><strong>Salón de Conferencias</strong> Los Aviadores</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-dark">Evento Networking</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
+                        <p>oportunidad de contáctos & negocios</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <p>Dinámicas de conexiones comerciales... [Pendiente por definir]</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
@@ -477,19 +542,16 @@
         }, { threshold: 0.25 });
         postersObserver.observe(triggerSection);
 
-        // ALGORITMO SCROLL AVANZADO: BAJA EN PICADA ("FAST-IN") Y SÓLO SE DESACELERA AL LLEGAR ("EASE-OUT")
+        // MOTOR SCROLL ACELERADO "FAST-IN" CON FRENADO SUTIL LATE CÚBICO
         function smoothScrollFastIn(id) {
             const target = document.getElementById(id);
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 900; // Duración recortada para forzar la bajada veloz en picada
-            let start = null;
+            const duration = 850; 
 
-            // Fórmula de desaceleración exponencial cúbica (Cubic Ease-Out pura para frenado final)
             function cubicEaseOut(t, b, c, d) {
-                t /= d;
-                t--;
+                t /= d; t--;
                 return c * (t * t * t + 1) + b;
             }
 
