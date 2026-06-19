@@ -107,9 +107,16 @@
             border: none;
         }
 
-        .price-card-white-bg { background-color: var(--white-pure) !important; }
-        .price-card-white-bg .price-card-header { color: var(--black-base) !important; }
-        .price-card-white-bg .feature-item { color: var(--black-base) !important; }
+        /* FUERZA EL FONDO BLANCO PURO Y TEXTOS NEGROS EN LAS TARJETAS ESPECIFICADAS */
+        .price-card-white-bg { 
+            background-color: var(--white-pure) !important; 
+        }
+        .price-card-white-bg .price-card-header { 
+            color: var(--black-base) !important; 
+        }
+        .price-card-white-bg .feature-item { 
+            color: var(--black-base) !important; 
+        }
 
         .price-card-header {
             font-family: var(--font-anton); font-size: 36px; color: var(--white-pure); text-transform: uppercase; padding: 24px 10px; line-height: 1.1;
@@ -189,7 +196,7 @@
         <div class="cronograma-accordion">
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
-                    <div class="title-inline-wrapper"><h3>Masterclass Público</h3><span class="arrow-indicator"></span></div>
+                    <div class="title-inline-wrapper">Refrescar Cronograma<span class="arrow-indicator"></span></div>
                 </button>
             </div>
         </div>
@@ -237,6 +244,7 @@
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
+                        
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Individual</div>
                             <div class="price-card-amount-box">
@@ -251,6 +259,7 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
+
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Grupal</div>
                             <div class="price-card-amount-box">
@@ -267,6 +276,7 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
+
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Adicional</div>
                             <div class="price-card-amount-box">
@@ -283,6 +293,7 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -296,11 +307,12 @@
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
-                        <div class="price-card">
+                        
+                        <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Plan<br>Alpha</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€390</span>
-                                <span class="price-card-subtext">Incluye</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
                             </div>
                             <div class="price-card-features">
                                 <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
@@ -317,28 +329,30 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-                        <div class="price-card">
-                            <div class="price-card-header" style="color: var(--black-base); background-color: var(--white-pure);">Plan<br>Bravo</div>
+
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Plan<br>Bravo</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€190</span>
-                                <span class="price-card-subtext">Incluye</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
                             </div>
-                            <div class="price-card-features" style="background-color: var(--white-pure); color: var(--black-base);">
-                                <div class="feature-item light" style="color: var(--black-base);">Logo en artes en pantalla, redes y web</div>
-                                <div class="feature-item light" style="color: var(--black-base);">Stand físico + Promotoras + Pendones</div>
-                                <div class="feature-item bold" style="color: var(--black-base);">Dos (2) entradas para Vende Tus Redes como Kensen</div>
-                                <div class="feature-item light" style="color: var(--black-base);">Volantería + Material P.O.P.</div>
-                                <div class="feature-item light" style="color: var(--black-base);">Acceso al Evento Networking</div>
-                                <div class="feature-item bold" style="color: var(--black-base);">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
+                            <div class="price-card-features">
+                                <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
+                                <div class="feature-item light">Stand físico + Promotoras + Pendones</div>
+                                <div class="feature-item bold">Dos (2) entradas para Vende Tus Redes como Kensen</div>
+                                <div class="feature-item light">Volantería + Material P.O.P.</div>
+                                <div class="feature-item light">Acceso al Evento Networking</div>
+                                <div class="feature-item bold">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
                                 <div class="feature-item red-tag">Opcional: compra del Masterclass privado Video Virales como Kensen</div>
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-                        <div class="price-card">
+
+                        <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Plan<br>Charlie</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€90</span>
-                                <span class="price-card-subtext">Incluye</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
                             </div>
                             <div class="price-card-features">
                                 <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
@@ -347,6 +361,7 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
+
                     </div>
                 </div>
             </section>
