@@ -161,7 +161,6 @@
             align-items: center; 
             border: none; 
         }
-        /* Línea divisoria sutil para cuando están juntas */
         .patrocinantes-logos {
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -169,6 +168,87 @@
         .produccion-title { font-family: var(--font-outfit); font-weight: 900; font-size: 1.1rem; color: var(--white-pure); text-transform: uppercase; letter-spacing: 1px; margin-right: 50px; }
         .logos-container { display: flex; align-items: center; gap: 50px; }
         .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 5C: INFO-EVENTO-VENDIDAS (NUEVA)             */
+        /* ---------------------------------------------------- */
+        .info-evento-vendidas {
+            width: 100%;
+            background-color: #0d0d0d;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 60px 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .vendidas-grid {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .vendidas-col-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .vendidas-tag-live {
+            background-color: var(--kensen-red);
+            color: var(--white-pure);
+            font-family: var(--font-outfit);
+            font-weight: 900;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 3px;
+            width: fit-content;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+        .vendidas-col-info h4 {
+            font-family: var(--font-anton);
+            font-size: 42px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--white-pure);
+        }
+        .vendidas-col-info p {
+            font-family: var(--font-outfit);
+            font-weight: 300;
+            font-size: 16px;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .vendidas-col-data {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 20px;
+            height: 100%;
+        }
+        .vendidas-number-huge {
+            font-family: var(--font-anton);
+            font-size: 82px;
+            line-height: 1;
+            color: var(--white-pure);
+        }
+        .vendidas-label-sub {
+            font-family: var(--font-outfit);
+            font-weight: 900;
+            font-size: 13px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+        .color-highlight-red { color: var(--kensen-red) !important; }
 
         /* ---------------------------------------------------- */
         /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
@@ -299,9 +379,20 @@
             .produccion-logos .produccion-title, .patrocinantes-logos .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
             .produccion-logos .logos-container, .patrocinantes-logos .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
             
-            /* Animaciones independientes asignadas por ID para evitar duplicaciones extrañas */
             #container-prod img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
             #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadePatro 12s infinite ease-in-out; }
+
+            /* RESPONSIVE INFO-EVENTO-VENDIDAS (Porcentaje al final) */
+            .info-evento-vendidas { padding: 40px 24px; }
+            .vendidas-grid { grid-template-columns: 1fr; gap: 35px; text-align: center; }
+            .vendidas-col-info { align-items: center; }
+            .vendidas-col-info h4 { font-size: 32px; }
+            .vendidas-col-data { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-left: 0; padding-top: 25px; height: auto; }
+            .vendidas-number-huge { font-size: 70px; }
+            /* Orden forzado para asegurar que el porcentaje quede al final absoluto */
+            .vendidas-grid > :nth-child(1) { order: 1; }
+            .vendidas-grid > :nth-child(2) { order: 2; }
+            .vendidas-grid > :nth-child(3) { order: 3; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             
@@ -410,6 +501,23 @@
         </div>
     </section>
 
+    <section class="info-evento-vendidas">
+        <div class="vendidas-grid">
+            <div class="vendidas-col-info">
+                <div class="vendidas-tag-live">Estado en vivo</div>
+                <h4>Aforo actual del evento</h4>
+                <p>Datos de boletería actualizados hoy mismo en tiempo real</p>
+            </div>
+            <div class="vendidas-col-data">
+                <div class="vendidas-number-huge">142</div>
+                <div class="vendidas-label-sub">Entradas vendidas</div>
+            </div>
+            <div class="vendidas-col-data">
+                <div class="vendidas-number-huge color-highlight-red">71%</div>
+                <div class="vendidas-label-sub">Capacidad total</div>
+            </div>
+        </div>
+    </section>
     <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
         <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
         <div class="cronograma-accordion">
