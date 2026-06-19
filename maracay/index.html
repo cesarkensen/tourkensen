@@ -427,24 +427,23 @@
             width: 100%;
             background-color: var(--white-pure); 
             margin-top: 5px; 
-            /* AJUSTE COMPACTO DE SEPARACIÓN SUPERIOR SOLICITADO */
             padding: 5px 0 0 0; 
             border: none;
         }
 
-        /* Frase introductoria recalibrada: 30px, 5px top, 3px bottom */
+        /* Frase introductoria recalibrada en 2 líneas: 40px arriba, 30px abajo */
         .eventos-main-heading {
             font-family: var(--font-outfit);
             font-weight: 900; 
-            font-size: 30px; /* Tamaño de letra fijado a 30px */
+            font-size: 30px; 
             color: var(--black-base); 
             text-align: center; 
             text-transform: uppercase; 
             letter-spacing: -1px;
             width: 100%;
             padding: 0 5%;
-            margin-top: 5px; /* Separación vertical superior de 5px */
-            margin-bottom: 3px; /* Separación vertical inferior de 3px */
+            margin-top: 40px; /* 40px arriba */
+            margin-bottom: 30px; /* 30px abajo */
             line-height: 1.2;
         }
 
@@ -469,7 +468,7 @@
             width: 100%;
             padding: 40px 10%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Se alinea a la izquierda para pegar los elementos */
             align-items: center;
             cursor: pointer;
             border: none;
@@ -484,17 +483,25 @@
             gap: 4px;
         }
 
-        /* Títulos calibrados: Anton, 70px, tracking -40 (emulado con -1.6px) */
+        /* Títulos calibrados: Anton, 70px, tracking -30 (emulado con -1.2px) */
+        .title-inline-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px; /* Espacio compacto entre el texto y el triángulo */
+            width: auto;
+        }
+
         .accordion-bar-header h3 {
             font-family: var(--font-anton);
-            font-size: 70px; /* Letra fijada a 70px */
-            letter-spacing: -1.6px; /* Separación entre letras de -40 */
+            font-size: 70px; 
+            letter-spacing: -1.2px; /* Separación entre letras de -30 exactos */
             line-height: 55px;
             text-transform: uppercase;
             transition: color 0.3s ease;
+            display: inline-block;
         }
 
-        .bar-title-dark { color: var(--white-pure); } /* Blanco puro obligado */
+        .bar-title-dark { color: var(--white-pure); } 
         .bar-title-light { color: var(--black-base); }
 
         .accordion-bar-header p {
@@ -504,39 +511,31 @@
             color: var(--kensen-red); 
             letter-spacing: -1px; 
             text-transform: uppercase;
+            margin-top: 4px;
         }
 
-        /* FLECHAS MÁS GRANDES Y GRUESAS ALINEADAS AL LADO DERECHO */
+        /* NUEVA FLECHA TRIANGULAR SÓLIDA ADOSADA AL FINAL DEL TEXTO */
         .arrow-indicator {
-            width: 24px; /* Flecha más grande */
-            height: 24px;
             display: inline-block;
-            margin-left: auto; /* Pega la flecha estrictamente alineada al lado derecho */
-            position: relative;
+            width: 0;
+            height: 0;
+            /* Triángulo sólido perfecto mediante bordes CSS */
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 14px solid currentColor; /* Adopta el color del texto nativo o del hover */
+            margin-top: 5px; /* Ajuste milimétrico en el baseline */
             will-change: transform;
             transform: rotate(0deg); 
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: center 7px; /* Eje central de rotación equilibrado */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
         }
 
-        /* Trazo vectorial más grueso (3px) para las flechas */
-        .arrow-indicator::before, .arrow-indicator::after {
-            content: '';
-            position: absolute;
-            background-color: currentColor; 
-            top: 10px;
-            width: 14px;
-            height: 3px; /* Trazo más grueso */
-            border-radius: 1.5px;
-            transition: background-color 0.3s ease;
-        }
-        .arrow-indicator::before { left: -1px; transform: rotate(45deg); transform-origin: calc(100% - 1px) 50%; }
-        .arrow-indicator::after { right: 3px; transform: rotate(-45deg); transform-origin: 1px 50%; }
-
+        /* ANIMACIÓN DE ROTACIÓN: Al abrirse apunta hacia la derecha */
         .accordion-bar-item.active .arrow-indicator {
             transform: rotate(-90deg); 
         }
 
-        /* CONFIGURACIÓN DE CONTRASTES INTERCALADOS */
+        /* CONFIGURACIÓN DE CONTRASTES INTERCALADOS DE ACCIÓN HOVER */
         .bar-dark-style { background-color: var(--black-base); }
         .bar-dark-style .arrow-indicator { color: var(--white-pure); }
         .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); }
@@ -545,7 +544,7 @@
         .bar-light-style .arrow-indicator { color: var(--black-base); }
         .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); }
 
-        /* TEXTOS INTERNOS ALINEADOS A LA IZQUIERDA PERO CENTRADOS EN LA PANTALLA */
+        /* CONTENIDOS INTERNOS CENTRADOS EN PANTALLA */
         .accordion-bar-content {
             max-height: 0;
             overflow: hidden;
@@ -554,10 +553,10 @@
         }
         
         .accordion-bar-content-inner {
-            text-align: left; /* Alineados a la izquierda */
-            margin: 0 auto;  /* Centrados en la pantalla */
+            text-align: left; 
+            margin: 0 auto;  
             width: 100%;
-            max-width: 900px; /* Bloque de lectura centrado óptimo */
+            max-width: 900px; 
         }
 
         .accordion-bar-item.active .accordion-bar-content {
@@ -627,10 +626,6 @@
             .poster-stage img { width: 280px !important; height: 433px !important; }
             .posters-options.animate .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
             .posters-options.animate .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
-            
-            .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
-            .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
-            .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
 
             /* LOGOS CENTRADOS EN CELULAR */
             .produccion-logos { padding: 25px 0; justify-content: center; }
@@ -641,9 +636,9 @@
             /* RESPONSIVE MÓVIL CRONOGRAMA DE EVENTOS */
             .seccion-eventos-cronograma { padding: 20px 0 0 0; }
             .eventos-main-heading { 
-                font-size: 20px; /* Reducción proporcional */
-                margin-top: 5px;
-                margin-bottom: 3px;
+                font-size: 20px; 
+                margin-top: 40px;
+                margin-bottom: 30px;
                 max-width: 280px;
                 margin-left: auto;
                 margin-right: auto;
@@ -652,8 +647,10 @@
             .accordion-bar-header { padding: 25px 6%; gap: 15px; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
             .accordion-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
-            .arrow-indicator { width: 16px; height: 16px; }
-            .arrow-indicator::before, .arrow-indicator::after { width: 9px; top: 6px; height: 2px; }
+            
+            /* Ajuste de escala para el triángulo en móvil */
+            .title-inline-wrapper { gap: 8px; }
+            .arrow-indicator { border-left-width: 6px; border-right-width: 6px; border-top-width: 9px; transform-origin: center 4.5px; }
 
             .accordion-bar-content { padding: 0 6%; }
             .accordion-bar-content-inner { max-width: 100%; }
@@ -758,17 +755,19 @@
     </section>
 
     <section class="seccion-eventos-cronograma">
-        <h2 class="eventos-main-heading">Cuáles son los eventos del <span>Kensen Weekend</span></h2>
+        <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
         
         <div class="cronograma-accordion">
             
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3 class="bar-title-dark">Masterclass Público</h3>
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-dark">Masterclass Público</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>hacer dinero con redes sociales</p>
                     </div>
-                    <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
@@ -780,14 +779,16 @@
             <div class="accordion-bar-item bar-light-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3 class="bar-title-light">Masterclass Privado</h3>
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-light">Masterclass Privado</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>volver viral tus redes sociales</p>
                     </div>
-                    <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
-                        <p>Contenido exclusivo del Masterclass Privado... [Pendiente por definir in War Room]</p>
+                        <p>Contenido exclusivo del Masterclass Privado... [Pendiente por definir en War Room]</p>
                     </div>
                 </div>
             </div>
@@ -795,10 +796,12 @@
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3 class="bar-title-dark">Evento Networking</h3>
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-dark">Evento Networking</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>oportunidad de contáctos & negocios</p>
                     </div>
-                    <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
@@ -810,10 +813,12 @@
             <div class="accordion-bar-item bar-light-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3 class="bar-title-light">Show de Comedia</h3>
+                        <div class="title-inline-wrapper">
+                            <h3 class="bar-title-light">Show de Comedia</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>Show de Cesar Kensen para cerrar el día</p>
                     </div>
-                    <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
