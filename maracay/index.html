@@ -274,16 +274,96 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 8: PLACA CON FONDO FUCSIA LIMPIA             */
+        /* SECCIÓN 8: CLON DE INFO-EVENTO-VENDIDAS (RENOVADO)   */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
             width: 100%;
-            background-color: var(--kensen-red);
-            height: 120px;
+            background-color: var(--kensen-red); /* Fondo fucsia completo de la placa */
+            padding: 50px 8%;
             display: flex;
             justify-content: center;
             align-items: center;
             border: none;
+        }
+        .vendidas-wrapper-block {
+            width: 100%;
+            max-width: 1150px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .vendidas-left-data-panel {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            color: var(--white-pure);
+        }
+        .vendidas-main-heading-panel {
+            font-family: var(--font-outfit);
+            font-weight: 900;
+            font-size: 44px;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .vendidas-tag-masterclass {
+            font-family: var(--font-outfit);
+            font-weight: 300;
+            font-size: 24px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        .vendidas-course-title-panel {
+            font-family: var(--font-outfit);
+            font-weight: 900;
+            font-size: 48px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-top: 6px;
+            letter-spacing: -0.5px;
+        }
+        .vendidas-meta-logistics {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 24px;
+        }
+        .vendidas-logistics-line {
+            font-family: var(--font-outfit);
+            text-transform: uppercase;
+            font-size: 20px;
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+        .vendidas-logistics-line strong {
+            font-weight: 900;
+        }
+        .vendidas-right-counter-panel {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            color: var(--white-pure);
+            text-align: right;
+        }
+        .vendidas-counter-label-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: var(--font-outfit);
+            font-weight: 300;
+            font-size: 26px;
+            text-transform: uppercase;
+            line-height: 1.05;
+            letter-spacing: 0.5px;
+            padding-bottom: 12px;
+        }
+        .vendidas-percentage-huge {
+            font-family: var(--font-anton);
+            font-size: 115px;
+            font-weight: 400;
+            line-height: 0.85;
         }
 
         /* PRECIOS Y PLANES Y CTAS */
@@ -320,7 +400,18 @@
             
             #container-prod img, #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
 
-            .info-evento-vendidas { height: 80px; }
+            /* RESPONSIVE DE LA TARJETA DE RECAUDACIÓN (Porcentaje al final absoluto) */
+            .info-evento-vendidas { padding: 40px 24px; }
+            .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 35px; }
+            .vendidas-left-data-panel { text-align: center; align-items: center; }
+            .vendidas-main-heading-panel { font-size: 32px; }
+            .vendidas-tag-masterclass { font-size: 18px; }
+            .vendidas-course-title-panel { font-size: 34px; }
+            .vendidas-meta-logistics { margin-top: 15px; gap: 4px; }
+            .vendidas-logistics-line { font-size: 16px; }
+            .vendidas-right-counter-panel { flex-direction: column; align-items: center; text-align: center; gap: 0; }
+            .vendidas-counter-label-block { font-size: 20px; padding-bottom: 5px; text-align: center; }
+            .vendidas-percentage-huge { font-size: 82px; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
@@ -577,8 +668,26 @@
         </div>
     </section>
 
-    <section class="info-evento-vendidas"></section>
-
+    <section class="info-evento-vendidas">
+        <div class="vendidas-wrapper-block">
+            <div class="vendidas-left-data-panel">
+                <span class="vendidas-main-heading-panel">Maracay 18 de Julio</span>
+                <span class="vendidas-tag-masterclass">Masterclass</span>
+                <span class="vendidas-course-title-panel">Vende tus redes</span>
+                <div class="vendidas-meta-logistics">
+                    <span class="vendidas-logistics-line"><strong>Lugar:</strong> Supercines Los Aviadores</span>
+                    <span class="vendidas-logistics-line"><strong>Hora:</strong> 9:00 A.M. A 1:00 P.M.</span>
+                </div>
+            </div>
+            <div class="vendidas-right-counter-panel">
+                <div class="vendidas-counter-label-block">
+                    <span>Entradas</span>
+                    <span>Vendidas</span>
+                </div>
+                <div class="vendidas-percentage-huge">76%</div>
+            </div>
+        </div>
+    </section>
     <div class="cta-grid">
         <button class="cta-btn" onclick="smoothScrollFastIn('seccion-eventos-cronograma')"><img src="btn-todos-eventos.png" alt="Todos"></button>
         <button class="cta-btn"><img src="btn-solo-comedia.png" alt="Comedia"></button>
@@ -609,7 +718,6 @@
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 850; 
-            let start = null;
 
             function cubicEaseOut(t, b, c, d) {
                 t /= d; t--;
