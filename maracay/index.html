@@ -156,7 +156,7 @@
         .contador-maracay {
             width: 100%;
             background-color: var(--white-pure);
-            padding: 70px 5%; 
+            padding: 70px 5% 50px 5%; /* Reducido abajo para favorecer el gap de la sección que le sigue */
             color: var(--black-base);
             display: flex;
             flex-direction: column;
@@ -236,15 +236,18 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS (CORRECCIÓN DE ASSETS)    */
+        /* SECCIÓN 4: POSTERS-OPTIONS (ALINEACIONES DE PRECISIÓN)*/
         /* ---------------------------------------------------- */
         .posters-options {
             width: 100%;
             background-color: var(--white-pure);
-            padding: 70px 5%;
+            /* SEPARACIÓN VERTICAL DE SÓLO 10PX CON LA SECCIÓN ANTERIOR */
+            padding: 10px 5% 70px 5%; 
             display: grid;
             grid-template-columns: 1fr 1fr; 
             gap: 50px;
+            /* SE ALINEAN AMBOS LADOS ESTRICTAMENTE DESDE SU TOPE SUPERIOR */
+            align-items: start; 
             border: none;
         }
 
@@ -254,6 +257,17 @@
             align-items: center;
             text-align: center;
             width: 100%;
+            position: relative;
+        }
+
+        /* Bloques contenedores de títulos para clavar el alineamiento horizontal */
+        .title-container {
+            width: 100%;
+            height: 70px; /* Caja fija para balancear el despliegue de títulos */
+            display: flex;
+            align-items: flex-end; /* Fuerza el baseline al fondo de la caja */
+            justify-content: center;
+            margin-bottom: 10px; /* Separación estricta de 10px con el escenario de imagen */
         }
 
         .option-side h2 {
@@ -262,15 +276,18 @@
             color: var(--black-base);
             text-transform: uppercase;
             line-height: 1;
-            margin-bottom: 10px; 
         }
 
+        /* Saca la palabra (solo) del flujo para que no afecte la alineación top */
         .light-title {
             font-family: var(--font-outfit);
             font-weight: 300; 
             font-size: 20pt;
-            display: block;
             text-transform: uppercase;
+            position: absolute;
+            top: 0; /* Queda arriba y fuera de la alineación principal */
+            left: 50%;
+            transform: translateX(-50%);
             line-height: 1;
         }
 
@@ -279,10 +296,9 @@
             width: 100%;
             max-width: 340px;
             height: 500px;
-            margin-top: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Alinea los posters arriba en la caja del escenario */
         }
 
         .poster-stage img {
@@ -299,18 +315,18 @@
             transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
 
-        /* Control estricto de capas indexadas (Z-Index) */
+        /* Control de capas indexadas (Z-Index) */
         .poster-stage .img-back-left { z-index: 1; }
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* GATILLO SCROLL */
+        /* GATILLO SCROLL ANIMATE */
         .posters-options.animate .poster-stage img {
             opacity: 1;
             transform: translate3d(0, 0, 0) rotate(0deg);
         }
 
-        /* Desfase en abanico izquierdo corregido */
+        /* Desfase en abanico izquierdo con coordenadas GPU */
         .posters-options.animate .left-stage .img-back-left {
             transform: translate3d(-25px, -5px, 0) rotate(-18deg);
             transition-delay: 0.1s;
@@ -397,10 +413,12 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
-            .posters-options { grid-template-columns: 1fr; gap: 60px; padding: 50px 24px; }
+            /* Reajuste responsivo vertical móvil */
+            .posters-options { grid-template-columns: 1fr; gap: 60px; padding: 10px 24px 50px 24px; }
+            .title-container { height: auto; margin-bottom: 5px; position: relative; display: block; }
+            .light-title { position: relative; top: 0; left: 0; transform: none; font-size: 14pt; display: block; margin-bottom: 2px; }
             .option-side h2 { font-size: 32pt; }
-            .light-title { font-size: 16pt; }
-            .poster-stage { height: 420px; max-width: 280px; }
+            .poster-stage { height: 420px; max-width: 280px; align-items: flex-start; }
 
             .cta-grid { padding: 50px 24px; }
             .section-title-big { padding: 50px 24px 15px; }
@@ -466,7 +484,9 @@
     <section class="posters-options" id="posters-trigger">
         
         <div class="option-side">
-            <h2>Todos los eventos</h2>
+            <div class="title-container">
+                <h2>Todos los eventos</h2>
+            </div>
             <div class="poster-stage left-stage">
                 <img src="poster-mev-stack.png" alt="Curso + Comedia Detrás Izquierda" class="img-back-left">
                 <img src="poster-vv-stack.png" alt="Videos Virales Detrás Derecha" class="img-back-right">
@@ -475,7 +495,10 @@
         </div>
 
         <div class="option-side">
-            <h2><span class="light-title">(solo)</span>Comedia</h2>
+            <div class="title-container">
+                <span class="light-title">(solo)</span>
+                <h2>Comedia</h2>
+            </div>
             <div class="poster-stage right-stage">
                 <img src="poster-mev-stack.png" alt="Solo Comedia Stand Up">
             </div>
