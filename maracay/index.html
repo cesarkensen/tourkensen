@@ -83,7 +83,7 @@
         .precios-main-title-block h2 { font-family: var(--font-anton); font-size: 3.5rem; color: var(--black-base); text-transform: uppercase; letter-spacing: 1px; }
 
         .precios-accordion-container { width: 100%; background-color: var(--black-base); display: flex; flex-direction: column; }
-        .precios-accordion-bar { width: 100%; background-color: var(--black-base); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .precios-accordion-bar, .precios-accordion-bar-named { width: 100%; background-color: var(--black-base); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         .precios-bar-header h3 { color: var(--white-pure); }
         .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; }
 
@@ -237,7 +237,6 @@
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
-                        
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Individual</div>
                             <div class="price-card-amount-box">
@@ -252,7 +251,6 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Grupal</div>
                             <div class="price-card-amount-box">
@@ -269,7 +267,6 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                         <div class="price-card price-card-white-bg">
                             <div class="price-card-header">Entrada<br>Adicional</div>
                             <div class="price-card-amount-box">
@@ -286,12 +283,11 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                     </div>
                 </div>
             </div>
 
-            <div class="precios-accordion-bar">
+            <section class="precios-accordion-bar-named" id="precios-planes">
                 <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
                         <div class="title-inline-wrapper"><h3>Planes de Patrocinios</h3><span class="arrow-indicator"></span></div>
@@ -300,7 +296,6 @@
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
-                        
                         <div class="price-card">
                             <div class="price-card-header">Plan<br>Alpha</div>
                             <div class="price-card-amount-box">
@@ -322,7 +317,6 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                         <div class="price-card">
                             <div class="price-card-header" style="color: var(--black-base); background-color: var(--white-pure);">Plan<br>Bravo</div>
                             <div class="price-card-amount-box">
@@ -340,7 +334,6 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                         <div class="price-card">
                             <div class="price-card-header">Plan<br>Charlie</div>
                             <div class="price-card-amount-box">
@@ -354,38 +347,15 @@
                             </div>
                             <button class="price-card-buy-btn">COMPRAR</button>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </section>
 
         </section>
     </section>
 
-    <div class="cta-grid">
-        <button class="cta-btn" onclick="smoothScrollFastIn('seccion-eventos-cronograma')"><img src="btn-todos-eventos.png" alt="Todos"></button>
-        <button class="cta-btn"><img src="btn-solo-comedia.png" alt="Comedia"></button>
-    </div>
-
     <script>
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
-        function smoothScrollFastIn(id) {
-            const target = document.getElementById(id);
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 850; 
-            let start = null;
-            function cubicEaseOut(t, b, c, d) { t /= d; t--; return c * (t * t * t + 1) + b; }
-            function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
-                const run = cubicEaseOut(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
-            requestAnimationFrame(animation);
-        }
     </script>
 </body>
 </html>
