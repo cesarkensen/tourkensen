@@ -150,7 +150,7 @@
         .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 5: PRIDUCCIÓN LOGOS                          */
+        /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
         /* ---------------------------------------------------- */
         .produccion-logos { 
             width: 100%; 
@@ -274,114 +274,122 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 8: CLON DE INFO-EVENTO-VENDIDAS (CALIBRADA)  */
+        /* SECCIÓN 8: INFO-EVENTO-VENDIDAS (CALIBRACIÓN BRECHA) */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
-            width: 100%;
-            background-color: var(--kensen-red);
-            padding: 55px 5%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
+            width: 100%; background-color: var(--kensen-red); padding: 55px 5%; 
+            display: flex; justify-content: center; align-items: center; border: none;
         }
         .vendidas-wrapper-block {
-            width: 100%;
-            max-width: 1050px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px; /* Separación estricta de 30px entre los dos bloques */
+            width: 100%; max-width: 1050px; display: flex; justify-content: center; align-items: center;
+            gap: 40px; /* Separación recalibrada a 40px de lado a lado */
         }
-        
-        /* Bloque Izquierdo: Todo Alineado a la Derecha */
         .vendidas-left-data-panel {
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            align-items: flex-end;
-            color: var(--white-pure);
-            flex: 1;
+            display: flex; flex-direction: column; text-align: right; align-items: flex-end; color: var(--white-pure); flex: 1;
         }
-        .vendidas-main-heading-panel {
-            font-family: var(--font-outfit);
-            text-transform: uppercase;
-            font-size: 42px;
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-        .vendidas-main-heading-panel .weight-black {
-            font-weight: 900;
-        }
-        .vendidas-main-heading-panel .weight-light {
-            font-weight: 300;
-        }
-        .vendidas-tag-masterclass {
-            font-family: var(--font-outfit);
-            font-weight: 300;
-            font-size: 22px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-top: 6px;
-            letter-spacing: 0.5px;
-        }
-        .vendidas-course-title-panel {
-            font-family: var(--font-outfit);
-            font-weight: 900;
-            font-size: 46px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-top: 4px;
-            letter-spacing: -0.5px;
-        }
-        .vendidas-meta-logistics {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-top: 22px;
-        }
-        .vendidas-logistics-line {
-            font-family: var(--font-outfit);
-            font-weight: 300;
-            text-transform: uppercase;
-            font-size: 19px;
-            line-height: 1.1;
-            letter-spacing: 0.5px;
-        }
-        /* Color Negro Puro (#000000) para las palabras clave */
-        .vendidas-logistics-line span.label-black {
-            font-weight: 900;
-            color: #000000;
-        }
+        .vendidas-main-heading-panel { font-family: var(--font-outfit); text-transform: uppercase; font-size: 42px; line-height: 1; letter-spacing: -1px; }
+        .vendidas-main-heading-panel .weight-black { font-weight: 900; }
+        .vendidas-main-heading-panel .weight-light { font-weight: 300; }
+        .vendidas-tag-masterclass { font-family: var(--font-outfit); font-weight: 300; font-size: 22px; text-transform: uppercase; line-height: 1; margin-top: 6px; letter-spacing: 0.5px; }
+        .vendidas-course-title-panel { font-family: var(--font-outfit); font-weight: 900; font-size: 46px; text-transform: uppercase; line-height: 1; margin-top: 4px; letter-spacing: -0.5px; }
+        .vendidas-meta-logistics { display: flex; flex-direction: column; gap: 5px; margin-top: 22px; }
+        .vendidas-logistics-line { font-family: var(--font-outfit); font-weight: 300; text-transform: uppercase; font-size: 19px; line-height: 1.1; letter-spacing: 0.5px; }
+        .vendidas-logistics-line span.label-black { font-weight: 900; color: #000000; }
         
-        /* Bloque Derecho: Todo Alineado a la Izquierda y Vertical */
         .vendidas-right-counter-panel {
+            display: flex; flex-direction: column; align-items: flex-start; justify-content: center; color: var(--white-pure); text-align: left; flex: 1;
+        }
+        /* Separación entre el porcentaje y la etiqueta superior duplicada */
+        .vendidas-counter-label-block {
+            font-family: var(--font-outfit); font-weight: 300; font-size: 24px; text-transform: uppercase; line-height: 1.1; letter-spacing: 0.5px;
+            margin-bottom: 24px; /* Duplicado para separar con fuerza */
+        }
+        .vendidas-percentage-huge { font-family: var(--font-anton); font-size: 120px; font-weight: 400; line-height: 0.8; }
+
+        /* ---------------------------------------------------- */
+        /* NUEVA SECCIÓN 9: PRECIOS & PATROCINIOS (INTERACTIVA) */
+        /* ---------------------------------------------------- */
+        .precios-planes-wrapper {
+            width: 100%;
+            background-color: var(--black-base);
+            border: none;
+        }
+        /* Encabezado Principal: Fondo blanco puro, letras negras, Anton */
+        .precios-main-title-block {
+            width: 100%;
+            background-color: var(--white-pure);
+            padding: 45px 5%;
+            text-align: center;
+        }
+        .precios-main-title-block h2 {
+            font-family: var(--font-anton);
+            font-size: 3.5rem;
+            color: var(--black-base);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+        /* Bloque de Menús Desplegables (Fondo Negro Puro) */
+        .precios-accordion-container {
+            width: 100%;
+            background-color: var(--black-base);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            color: var(--white-pure);
-            text-align: left;
-            flex: 1;
         }
-        .vendidas-counter-label-block {
+        .precios-accordion-bar {
+            width: 100%;
+            background-color: var(--black-base);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background-color 0.3s ease;
+        }
+        /* Botón disparador sin ningún tipo de borde gris */
+        .precios-bar-header {
+            width: 100%;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            text-align: left;
+            border: none !important;
+            outline: none !important;
+        }
+        .precios-bar-header h3 {
+            font-family: var(--font-anton);
+            font-size: 70px;
+            letter-spacing: -1.2px; /* Tracking -30 */
+            line-height: 55px;
+            color: var(--white-pure);
+            text-transform: uppercase;
+        }
+        .precios-bar-header p {
             font-family: var(--font-outfit);
             font-weight: 300;
-            font-size: 24px;
+            font-size: 25px;
+            color: var(--kensen-red); /* Fucsia */
+            letter-spacing: -1px;
             text-transform: uppercase;
-            line-height: 1.1;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
         }
-        .vendidas-percentage-huge {
-            font-family: var(--font-anton);
-            font-size: 120px;
-            font-weight: 400;
-            line-height: 0.8;
+        /* Contenido Interno Oculto */
+        .precios-bar-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            padding: 0 10%;
+            color: var(--white-pure);
+        }
+        .precios-bar-content-inner {
+            padding: 30px 0 50px 0;
+            font-family: var(--font-outfit);
+            font-size: 1.1rem;
+            text-align: left;
+        }
+        .precios-accordion-bar.active .precios-bar-content {
+            max-height: 1500px;
+            transition: max-height 0.8s ease-in-out;
         }
 
-        /* PRECIOS Y PLANES Y CTAS */
-        .precios-planes { padding: 85px 5%; background: var(--gray-dark); text-align: center; border: none; }
         .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 70px 5%; }
         .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; }
         .cta-btn img { width: 100%; display: block; transition: transform 0.5s ease; border-radius: 10px; }
@@ -414,23 +422,28 @@
             
             #container-prod img, #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
 
-            /* AJUSTE INTEGRAL MÓVIL SOLICITADO: PORCENTAJE ABAJO Y TODO CENTRADO */
+            /* AJUSTE MÓVIL PLACA FUCSIA */
             .info-evento-vendidas { padding: 45px 24px; }
             .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 30px; }
-            
             .vendidas-left-data-panel { text-align: center; align-items: center; width: 100%; }
             .vendidas-main-heading-panel { font-size: 32px; }
             .vendidas-tag-masterclass { font-size: 18px; }
             .vendidas-course-title-panel { font-size: 34px; }
             .vendidas-meta-logistics { margin-top: 16px; gap: 4px; }
             .vendidas-logistics-line { font-size: 17px; }
-            
             .vendidas-right-counter-panel { text-align: center; align-items: center; width: 100%; }
-            .vendidas-counter-label-block { font-size: 21px; margin-bottom: 5px; }
+            .vendidas-counter-label-block { font-size: 21px; margin-bottom: 10px; text-align: center; }
             .vendidas-percentage-huge { font-size: 90px; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
+
+            /* RESPONSIVE SECCIÓN PRECIOS ACORDEÓN */
+            .precios-main-title-block { padding: 30px 24px; }
+            .precios-main-title-block h2 { font-size: 2.2rem; }
+            .precios-bar-header { padding: 25px 6%; gap: 10px; }
+            .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
+            .precios-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
 
             .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
             .vtr-scaled-poster, .vtr-buy-btn, .networking-poster-wrapper { width: 280px; }
@@ -618,7 +631,7 @@
                                     <span class="highlight-pink-anton">PODRÁS:</span>
                                     <ul class="vtr-learn-list">
                                         <li>CONSEGUIR CONTACTOS PARA <strong>ALIANZAS Y NEGOCIOS FUTUROS</strong></li>
-                                        <li>CONVERSAR CON KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
+                                        <li>CONVERSAR WITH KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
                                         <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
                                     </ul>
                                 </div>
@@ -706,14 +719,54 @@
             </div>
         </div>
     </section>
+
+    <section id="precios-planes" class="precios-planes-wrapper">
+        <div class="precios-main-title-block">
+            <h2>Precios & Patrocinios</h2>
+        </div>
+        
+        <div class="precios-accordion-container">
+            
+            <div class="precios-accordion-bar">
+                <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper">
+                            <h3>Precios de Entradas</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
+                        <p>costo de entradas y precios grupales</p>
+                    </div>
+                </button>
+                <div class="precios-bar-content">
+                    <div class="precios-bar-content-inner">
+                        <p>Tablas de preventa y accesos corporativos... [Pendiente por definir en War Room]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="precios-accordion-bar">
+                <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper">
+                            <h3>Planes de Patrocinios</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
+                        <p>costo de planes para marcas y empresas</p>
+                    </div>
+                </button>
+                <div class="precios-bar-content">
+                    <div class="precios-bar-content-inner">
+                        <p>Paquetes comerciales Bronce, Plata y Oro... [Pendiente por definir en War Room]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
     <div class="cta-grid">
         <button class="cta-btn" onclick="smoothScrollFastIn('seccion-eventos-cronograma')"><img src="btn-todos-eventos.png" alt="Todos"></button>
         <button class="cta-btn"><img src="btn-solo-comedia.png" alt="Comedia"></button>
     </div>
-
-    <section id="precios-planes" class="precios-planes">
-        <h2 style="font-family:var(--font-anton); font-size:3.5rem; color:white; text-transform:uppercase;">Precios y Planes</h2>
-    </section>
 
     <script {nonce}>
         const CONFIG = { fechaEvento: "July 18, 2026 09:00:00" };
@@ -736,7 +789,6 @@
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 850; 
-            let start = null;
 
             function cubicEaseOut(t, b, c, d) {
                 t /= d; t--;
