@@ -22,6 +22,7 @@
 
         /* Reset Operativo */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
 
         /* ---------------------------------------------------- */
@@ -235,7 +236,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS (SEPARACIÓN DE 130PX PC)  */
+        /* SECCIÓN 4: POSTERS-OPTIONS                           */
         /* ---------------------------------------------------- */
         .posters-options {
             width: 100%;
@@ -243,7 +244,6 @@
             padding: 10px 5% 70px 5%; 
             display: flex;
             justify-content: center;
-            /* SEPARACIÓN CONFIGURADA EXACTAMENTE A 130PX EN COMPUTADORA */
             gap: 130px; 
             align-items: start; 
             border: none;
@@ -333,7 +333,6 @@
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* GATILLO SCROLL ANIMATE */
         .posters-options.animate .poster-stage img {
             opacity: 1;
             transform: translate3d(0, 0, 0) rotate(0deg);
@@ -357,7 +356,6 @@
             transition-delay: 0.05s;
         }
 
-        /* MICRO-INTERACCIONES EN HOVER */
         .poster-btn-trigger:hover .left-stage .img-back-left {
             transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02);
         }
@@ -374,6 +372,50 @@
         .poster-link-trigger:hover .right-stage img {
             transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* ---------------------------------------------------- */
+        /* NUEVA SECCIÓN 5: PRODUCCION-LOGOS (FONDO NEGRO)      */
+        /* ---------------------------------------------------- */
+        .produccion-logos {
+            width: 100%;
+            background-color: var(--black-base); /* Fondo negro puro */
+            padding: 30px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+        }
+
+        .logos-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .produccion-title {
+            font-family: var(--font-outfit);
+            font-weight: 900; /* Outfit Black */
+            font-size: 1.1rem;
+            color: var(--white-pure); /* Blanco puro */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            margin-right: 50px; /* Margen derecho estricto de 50px antes de los logos */
+        }
+
+        .logos-container {
+            display: flex;
+            align-items: center;
+            gap: 50px; /* Separación simétrica de 50px entre logos */
+        }
+
+        .logos-container img {
+            height: 45px; /* Altura controlada para alineamiento central limpio */
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         /* ---------------------------------------------------- */
@@ -443,7 +485,6 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
-            /* El canal colapsa de forma fluida ignorando los 130px */
             .posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 10px 24px 50px 24px; }
             .option-side { width: 100%; max-width: 280px; }
             .title-container { height: auto; margin-bottom: 15px; position: relative; display: block; }
@@ -458,6 +499,70 @@
             .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
             .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
             .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
+
+            /* ---------------------------------------------------- */
+            /* REESTRUCTURACIÓN DEL CARRUSEL EN VERSIÓN CELULAR     */
+            /* Lógica matemática de timming: 4s ON, 2s IN, 2s OUT   */
+            /* ---------------------------------------------------- */
+            .produccion-logos {
+                padding: 25px 20px;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
+
+            .logos-wrapper {
+                width: 100%;
+                justify-content: flex-start;
+                height: 45px;
+            }
+
+            .produccion-title {
+                margin-right: 0;
+                font-size: 0.85rem;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 5;
+                background: var(--black-base);
+                padding-right: 15px;
+            }
+
+            .logos-container {
+                position: absolute;
+                left: 160px; /* Desfase estricto a la derecha del texto fijo */
+                top: 0;
+                width: calc(100% - 160px);
+                height: 45px;
+                gap: 0;
+                display: block; /* Se rompe el flex para posicionar en stack absoluto */
+            }
+
+            .logos-container img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 45px;
+                opacity: 0;
+                animation: mobileLogoCarousel 12s infinite ease-in-out;
+            }
+
+            /* Desfase cíclico de delay para simular el carrusel continuo */
+            .logos-container img:nth-child(1) { animation-delay: 0s; }
+            .logos-container img:nth-child(2) { animation-delay: 4s; }
+            .logos-container img:nth-child(3) { animation-delay: 8s; }
+
+            @keyframes mobileLogoCarousel {
+                0% { opacity: 0; transform: scale(0.95); }
+                16.66% { opacity: 1; transform: scale(1); } /* 2s Fundido de entrada */
+                50% { opacity: 1; } /* 4s Permanencia fija en pantalla */
+                66.66% { opacity: 0; transform: scale(1.02); } /* 2s Fundido de salida */
+                100% { opacity: 0; }
+            }
+
+            .cta-grid { padding: 50px 24px; }
+            .section-title-big { padding: 50px 24px 15px; }
+            .city-info-box { padding: 50px 24px; grid-template-columns: 1fr; gap: 30px; text-align: center; }
         }
     </style>
 </head>
@@ -517,7 +622,6 @@
     </section>
 
     <section class="posters-options" id="posters-trigger">
-        
         <div class="option-side">
             <div class="title-container">
                 <h2>Todos los eventos</h2>
@@ -542,7 +646,17 @@
                 </div>
             </a>
         </div>
+    </section>
 
+    <section class="produccion-logos">
+        <div class="logos-wrapper">
+            <p class="produccion-title">Una producción de:</p>
+            <div class="logos-container">
+                <img src="mediopalo-logo.png" alt="Medio Palo Creaciones">
+                <img src="vsmedia-logo.png" alt="VS Media Producciones">
+                <img src="veronicasifontes-logo.png" alt="Verónica Sifontes">
+            </div>
+        </div>
     </section>
 
     <div class="cta-grid">
@@ -628,16 +742,17 @@
             porcentajeVentas: 76 
         };
 
-        // 1. MOTOR DE PARALLAX
         const heroImg = document.getElementById('hero-img');
-        window.addEventListener('scroll', () => {
+
+        function updateParallax() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const speed = 0.15;
             const yOffset = scrollTop * speed;
             heroImg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
-        });
+            requestAnimationFrame(updateParallax);
+        }
+        requestAnimationFrame(updateParallax);
 
-        // 2. DISPARADOR SMART DE ANIMACIÓN POSTERS
         const triggerSection = document.getElementById('posters-trigger');
         const observerOptions = { root: null, threshold: 0.25 };
 
@@ -650,16 +765,14 @@
         }, observerOptions);
         postersObserver.observe(triggerSection);
 
-        // 3. MOTOR DE SCROLL INTERPOLADO PERSONALIZADO (CURVA EASY EASE)
         function smoothScrollToEvents() {
             const target = document.getElementById('eventos');
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 1200; // Duración en milisegundos para apreciar la curva fluida
+            const duration = 1200; 
             let start = null;
 
-            // Ecuación matemática de curva de tiempo Bézier Ease-In-Out
             function easeInOutQuad(t, b, c, d) {
                 t /= d / 2;
                 if (t < 1) return c / 2 * t * t + b;
@@ -677,7 +790,6 @@
             requestAnimationFrame(animation);
         }
 
-        // 4. CUENTA REGRESIVA RELOJ
         const countdown = () => {
             const countDate = new Date(CONFIG.fechaEvento).getTime();
             const now = new Date().getTime();
