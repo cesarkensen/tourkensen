@@ -375,11 +375,11 @@
         }
 
         /* ---------------------------------------------------- */
-        /* NUEVA SECCIÓN 5: PRODUCCION-LOGOS (FONDO NEGRO)      */
+        /* SECCIÓN 5: PRODUCCION-LOGOS                          */
         /* ---------------------------------------------------- */
         .produccion-logos {
             width: 100%;
-            background-color: var(--black-base); /* Fondo negro puro */
+            background-color: var(--black-base); 
             padding: 30px 5%;
             display: flex;
             justify-content: center;
@@ -392,27 +392,29 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            width: 100%;
+            max-width: 1200px;
         }
 
         .produccion-title {
             font-family: var(--font-outfit);
-            font-weight: 900; /* Outfit Black */
+            font-weight: 900; 
             font-size: 1.1rem;
-            color: var(--white-pure); /* Blanco puro */
+            color: var(--white-pure); 
             text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
-            margin-right: 50px; /* Margen derecho estricto de 50px antes de los logos */
+            margin-right: 50px; 
         }
 
         .logos-container {
             display: flex;
             align-items: center;
-            gap: 50px; /* Separación simétrica de 50px entre logos */
+            gap: 50px; 
         }
 
         .logos-container img {
-            height: 45px; /* Altura controlada para alineamiento central limpio */
+            height: 45px; 
             width: auto;
             object-fit: contain;
             display: block;
@@ -501,11 +503,10 @@
             .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
 
             /* ---------------------------------------------------- */
-            /* REESTRUCTURACIÓN DEL CARRUSEL EN VERSIÓN CELULAR     */
-            /* Lógica matemática de timming: 4s ON, 2s IN, 2s OUT   */
+            /* REESTRUCTURACIÓN DE LOGOS EN VERSIÓN CELULAR         */
             /* ---------------------------------------------------- */
             .produccion-logos {
-                padding: 25px 20px;
+                padding: 25px 24px;
                 justify-content: flex-start;
                 overflow: hidden;
             }
@@ -513,12 +514,13 @@
             .logos-wrapper {
                 width: 100%;
                 justify-content: flex-start;
-                height: 45px;
+                height: 55px;
             }
 
+            /* Título fijo a la izquierda, en dos líneas y alineado a la derecha, escala -30% */
             .produccion-title {
                 margin-right: 0;
-                font-size: 0.85rem;
+                font-size: 0.6rem; /* Disminuido un 30% exacto solicitados */
                 position: absolute;
                 left: 0;
                 top: 50%;
@@ -526,37 +528,47 @@
                 z-index: 5;
                 background: var(--black-base);
                 padding-right: 15px;
+                white-space: normal;
+                text-align: right; /* Alineado a la derecha */
+                width: 110px; /* Ancho fijo para forzar el quiebre de dos líneas */
+                line-height: 1.2;
             }
 
             .logos-container {
                 position: absolute;
-                left: 160px; /* Desfase estricto a la derecha del texto fijo */
-                top: 0;
-                width: calc(100% - 160px);
+                left: 125px; /* Ajustado al nuevo ancho del título izquierdo */
+                top: 50%;
+                transform: translateY(-50%);
+                width: calc(100% - 125px);
                 height: 45px;
                 gap: 0;
-                display: block; /* Se rompe el flex para posicionar en stack absoluto */
+                display: block; 
             }
 
+            /* ---------------------------------------------------- */
+            /* ALGORITMO DE FADE-OUT ESTRICTO ANTI-SOLAPAMIENTO     */
+            /* Ciclo de 12s totales: 4s exclusivos para cada logo   */
+            /* ---------------------------------------------------- */
             .logos-container img {
                 position: absolute;
                 top: 0;
                 left: 0;
                 height: 45px;
                 opacity: 0;
-                animation: mobileLogoCarousel 12s infinite ease-in-out;
+                animation: strictMobileFadeCarousel 12s infinite ease-in-out;
             }
 
-            /* Desfase cíclico de delay para simular el carrusel continuo */
             .logos-container img:nth-child(1) { animation-delay: 0s; }
             .logos-container img:nth-child(2) { animation-delay: 4s; }
             .logos-container img:nth-child(3) { animation-delay: 8s; }
 
-            @keyframes mobileLogoCarousel {
+            @keyframes strictMobileFadeCarousel {
+                /* LOGO ACTIVO (0s a 4s) */
                 0% { opacity: 0; transform: scale(0.95); }
-                16.66% { opacity: 1; transform: scale(1); } /* 2s Fundido de entrada */
-                50% { opacity: 1; } /* 4s Permanencia fija en pantalla */
-                66.66% { opacity: 0; transform: scale(1.02); } /* 2s Fundido de salida */
+                8.33% { opacity: 1; transform: scale(1); }    /* 1s fundido entrada */
+                25.00% { opacity: 1; }                        /* 2s permanece estático completo */
+                33.33% { opacity: 0; transform: scale(1.02); } /* 1s fundido salida -> llega a 0 en el seg 4 */
+                /* MUERTE ABSOLUTA MIENTRAS CORREN LOS OTROS LOGOS */
                 100% { opacity: 0; }
             }
 
@@ -650,7 +662,7 @@
 
     <section class="produccion-logos">
         <div class="logos-wrapper">
-            <p class="produccion-title">Una producción de:</p>
+            <p class="produccion-title">una<br>producción de:</p>
             <div class="logos-container">
                 <img src="mediopalo-logo.png" alt="Medio Palo Creaciones">
                 <img src="vsmedia-logo.png" alt="VS Media Producciones">
