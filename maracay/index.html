@@ -41,31 +41,31 @@
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 1: RECALIBRADA - CITY TITLE                  */
+        /* SECCIÓN 1: CALIBRACIÓN DE ESPACIOS (CITY TITLE)      */
         /* ---------------------------------------------------- */
         #city-title {
-            width: 100%; background-color: var(--white-pure); padding: 25px 0 65px 0; 
+            width: 100%; background-color: var(--white-pure); padding: 20px 0 45px 0; 
             text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #city-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
-        /* Forzado estricto a una línea del 90% en computadoras */
+        /* 3 líneas con el mismo tamaño tipográfico al 90% del ancho */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
-            font-size: 7.2vw; text-transform: uppercase; line-height: 0.9; margin-top: 8px;
-            letter-spacing: -0.03em; white-space: nowrap; display: block;
+            font-size: 8vw; text-transform: uppercase; line-height: 0.85; margin-top: 4px;
+            letter-spacing: -0.03em; display: block;
         }
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
-            margin-top: 14px; display: block;
+            margin-top: 8px; display: block;
         }
-        .emmy-badge-line {
+        #author-emmy {
             font-family: var(--font-outfit); font-weight: 300; color: var(--black-base);
             font-size: 1.125rem; text-transform: uppercase; letter-spacing: 2px; line-height: 1;
-            margin-top: 10px; white-space: nowrap; display: block;
+            margin-top: 5px; white-space: nowrap; display: block;
         }
 
         /* ---------------------------------------------------- */
@@ -335,11 +335,11 @@
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .header-spacer { height: 78px; }
             
-            /* Sincronización móvil exclusiva de quiebre en dos líneas solicitado */
+            /* Sincronización móvil con quiebre estricto en tres líneas homogéneas */
             #city-name { font-size: 3.2rem; }
             #main-title { font-size: 11.2vw; white-space: normal; line-height: 0.95; width: 95vw; }
-            #author-name { font-size: 1.6rem; margin-top: 10px; }
-            .emmy-badge-line { font-size: 0.8rem; letter-spacing: 1px; margin-top: 6px; }
+            #author-name { font-size: 1.6rem; margin-top: 6px; }
+            #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 4px; }
 
             .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
             .precios-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
@@ -374,12 +374,12 @@
 
     <section id="city-title">
         <div id="city-name">Maracay</div>
-        <div id="main-title">Mejora tus ganancias y tus redes</div>
+        <div id="main-title">Mejora<br>Tus ganancias<br>Y tus redes</div>
         <div id="author-name">con cesar kensen</div>
-        <span class="emmy-badge-line">ganador del emmy</span>
+        <div id="author-emmy">ganador del emmy</div>
     </section>
     <section class="kensen-foto">
-        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen" class="parallax-img" id="hero-img">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
     </section>
 
     <section class="contador-maracay">
@@ -398,11 +398,168 @@
     <section class="produccion-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">una producción de:</p>
-            <div class="logos-container">
-                <img src="mediopalo-logo.png" alt="Logo 1">
-                <img src="vsmedia-logo.png" alt="Logo 2">
-                <img src="veronicasifontes-logo.png" alt="Logo 3">
+            <div class="logos-container" id="container-prod">
+                <img src="mediopalo-logo.png" alt="Logo 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Logo 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Logo 3" style="animation-delay: 8s;">
             </div>
+        </div>
+    </section>
+
+    <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
+        <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
+        <div class="cronograma-accordion">
+            
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Masterclass Público</h3><span class="arrow-indicator"></span></div>
+                        <p>hacer dinero con redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vtr-stacks.png" alt="VTR" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption">(Hay planes para empresas y precios grupales)</p>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">Un negocio que no factura,</span><span class="black-title">Desaparece</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">Que tu equipo <strong>aprenda un sistema</strong></span><span class="light-desc">para <strong>potenciar tu marca y ventas</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">Aprenderán a:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>Diseñar y posicionar tu <strong>propuesta de valor y modelo de negocio</strong></li>
+                                        <li>Planificar una estrategia de <strong>publicidad Meta Ads</strong></li>
+                                        <li>Integrar en tus procesos la <strong>inteligencia artificial</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val">18 de Julio (Sábado)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val">9:00 A.M. a 1:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val">Supercines Los Aviadores</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Masterclass Privado</h3><span class="arrow-indicator"></span></div>
+                        <p>volver viral tus redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vv-stacks.png" alt="Videos Virales" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base); font-size: 9px;">(HAY PRECIOS ESPECIALES PARA EMPRESAS PATROCINANTES)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span><span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span><span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">APRENDERÁN A:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>IDEAR Y ESCRIBIR <strong>IDEAS PARA GUIONES</strong> CON GANCHOS PODEROSOS</li>
+                                        <li>GRABAR CON TU EQUIPO ACTUAL CON <strong>RETENCIÓN PSICOLÓGICA</strong></li>
+                                        <li>EDITAR VIDEOS CON <strong>CALIDAD CINE</strong> Y DE IMPACTO VIRAL</li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">A CONVENIR (DÍAS PREVIOS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">A CONVENIR (DURACIÓN 4 HORAS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">TUS INSTALACIONES</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div>
+                        <p>lograr contactos & negocios</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <div class="networking-poster-wrapper">
+                                    <img src="poster-vtr-stacks.png" alt="Networking" class="vtr-scaled-poster">
+                                    <div class="fucsia-bar-networking">EVENTO NETWORKING</div>
+                                </div>
+                                <div class="access-special-label">CON LA COMPRA DEL MASTERCLASS PÚBLICO</div>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">UN NEGOCIO CON ALIANZAS</span><span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">UN ESPACIO PERFECTO PARA HACER <strong>CONTACTOS Y NEGOCIOS</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">PODRÁS:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>CONSEGUIR CONTACTOS PARA <strong>ALIANZAS Y NEGOCIOS FUTUROS</strong></li>
+                                        <li>CONVERSAR WITH KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
+                                        <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (DESPUÉS DEL MASTERCLASS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">1:00 P.M. A 3:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">EN LA SALIDA DEL EVENTO</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Show de Comedia</h3><span class="arrow-indicator"></span></div>
+                        <p>Show de Cesar Kensen para cerrar el día</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-mev-stacks.png" alt="Show Comedia" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base);">(HAY PRECIOS ESPECIALES PARA ASISTENTES AL MASTERCLASS PÚBLICO)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">UN SHOW DE COMEDIA ÚNICO</span><span class="black-title">PARA CERRAR EL DÍA CON HUMOR</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">LA OPORTUNIDAD PERFECTA PARA <strong>COMPARTIR FUERA DE LA OFICINA</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">UN SHOW SOBRE:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>RELACIONES ACTUALES <strong>(TRÍOS, INFIDELIDADES, ETC)</strong></li>
+                                        <li>EL CICLO DE LA VIDA <strong>LA COMEDIA ENTRE LA VIDA Y LA MUERTE</strong></li>
+                                        <li>SOBRE SER PADRE DE ADOLESCENTES <strong>E HIJO DE PADRES VIEJOS</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (SÁBADO)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">9:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">RESERVA 3+3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
@@ -410,9 +567,9 @@
         <div class="logos-wrapper">
             <p class="produccion-title">patrocinado por:</p>
             <div class="logos-container" id="container-patro">
-                <img src="mediopalo-logo.png" alt="Patro 1">
-                <img src="vsmedia-logo.png" alt="Patro 2">
-                <img src="veronicasifontes-logo.png" alt="Patro 3">
+                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
             </div>
         </div>
     </section>
@@ -420,7 +577,10 @@
     <section class="info-evento-vendidas">
         <div class="vendidas-wrapper-block">
             <div class="vendidas-left-data-panel">
-                <span class="vendidas-main-heading-panel"><span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span></span>
+                <span class="vendidas-main-heading-panel">
+                    <span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span>
+                </span>
+                <span class="vendidas-tag-masterclass">Masterclass</span>
                 <span class="vendidas-course-title-panel">Vende tus redes</span>
                 <div class="vendidas-meta-logistics">
                     <span class="vendidas-logistics-line"><span class="label-black">Lugar:</span> Supercines Los Aviadores</span>
@@ -428,7 +588,10 @@
                 </div>
             </div>
             <div class="vendidas-right-counter-panel">
-                <div class="vendidas-counter-label-block"><div>Entradas</div><div>Vendidas</div></div>
+                <div class="vendidas-counter-label-block">
+                    <div>Entradas</div>
+                    <div>Vendidas</div>
+                </div>
                 <div class="vendidas-percentage-huge">76%</div>
             </div>
         </div>
