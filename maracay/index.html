@@ -150,7 +150,7 @@
         .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
+        /* SECCIÓN 5: PRIDUCCIÓN LOGOS                          */
         /* ---------------------------------------------------- */
         .produccion-logos { 
             width: 100%; 
@@ -274,12 +274,12 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 8: CLON DE INFO-EVENTO-VENDIDAS (RENOVADO)   */
+        /* SECCIÓN 8: CLON DE INFO-EVENTO-VENDIDAS (CALIBRADA)  */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
             width: 100%;
-            background-color: var(--kensen-red); /* Fondo fucsia completo de la placa */
-            padding: 50px 8%;
+            background-color: var(--kensen-red);
+            padding: 55px 5%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -287,83 +287,97 @@
         }
         .vendidas-wrapper-block {
             width: 100%;
-            max-width: 1150px;
+            max-width: 1050px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 30px; /* Separación estricta de 30px entre los dos bloques */
         }
+        
+        /* Bloque Izquierdo: Todo Alineado a la Derecha */
         .vendidas-left-data-panel {
             display: flex;
             flex-direction: column;
-            text-align: left;
+            text-align: right;
+            align-items: flex-end;
             color: var(--white-pure);
+            flex: 1;
         }
         .vendidas-main-heading-panel {
             font-family: var(--font-outfit);
-            font-weight: 900;
-            font-size: 44px;
             text-transform: uppercase;
+            font-size: 42px;
             line-height: 1;
             letter-spacing: -1px;
+        }
+        .vendidas-main-heading-panel .weight-black {
+            font-weight: 900;
+        }
+        .vendidas-main-heading-panel .weight-light {
+            font-weight: 300;
         }
         .vendidas-tag-masterclass {
             font-family: var(--font-outfit);
             font-weight: 300;
-            font-size: 24px;
+            font-size: 22px;
             text-transform: uppercase;
             line-height: 1;
-            margin-top: 4px;
+            margin-top: 6px;
             letter-spacing: 0.5px;
         }
         .vendidas-course-title-panel {
             font-family: var(--font-outfit);
             font-weight: 900;
-            font-size: 48px;
+            font-size: 46px;
             text-transform: uppercase;
             line-height: 1;
-            margin-top: 6px;
+            margin-top: 4px;
             letter-spacing: -0.5px;
         }
         .vendidas-meta-logistics {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            margin-top: 24px;
+            gap: 5px;
+            margin-top: 22px;
         }
         .vendidas-logistics-line {
             font-family: var(--font-outfit);
+            font-weight: 300;
             text-transform: uppercase;
-            font-size: 20px;
+            font-size: 19px;
             line-height: 1.1;
             letter-spacing: 0.5px;
         }
-        .vendidas-logistics-line strong {
+        /* Color Negro Puro (#000000) para las palabras clave */
+        .vendidas-logistics-line span.label-black {
             font-weight: 900;
+            color: #000000;
         }
+        
+        /* Bloque Derecho: Todo Alineado a la Izquierda y Vertical */
         .vendidas-right-counter-panel {
             display: flex;
-            align-items: flex-end;
-            gap: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
             color: var(--white-pure);
-            text-align: right;
+            text-align: left;
+            flex: 1;
         }
         .vendidas-counter-label-block {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             font-family: var(--font-outfit);
             font-weight: 300;
-            font-size: 26px;
+            font-size: 24px;
             text-transform: uppercase;
-            line-height: 1.05;
+            line-height: 1.1;
             letter-spacing: 0.5px;
-            padding-bottom: 12px;
+            margin-bottom: 2px;
         }
         .vendidas-percentage-huge {
             font-family: var(--font-anton);
-            font-size: 115px;
+            font-size: 120px;
             font-weight: 400;
-            line-height: 0.85;
+            line-height: 0.8;
         }
 
         /* PRECIOS Y PLANES Y CTAS */
@@ -400,18 +414,20 @@
             
             #container-prod img, #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
 
-            /* RESPONSIVE DE LA TARJETA DE RECAUDACIÓN (Porcentaje al final absoluto) */
-            .info-evento-vendidas { padding: 40px 24px; }
-            .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 35px; }
-            .vendidas-left-data-panel { text-align: center; align-items: center; }
+            /* AJUSTE INTEGRAL MÓVIL SOLICITADO: PORCENTAJE ABAJO Y TODO CENTRADO */
+            .info-evento-vendidas { padding: 45px 24px; }
+            .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 30px; }
+            
+            .vendidas-left-data-panel { text-align: center; align-items: center; width: 100%; }
             .vendidas-main-heading-panel { font-size: 32px; }
             .vendidas-tag-masterclass { font-size: 18px; }
             .vendidas-course-title-panel { font-size: 34px; }
-            .vendidas-meta-logistics { margin-top: 15px; gap: 4px; }
-            .vendidas-logistics-line { font-size: 16px; }
-            .vendidas-right-counter-panel { flex-direction: column; align-items: center; text-align: center; gap: 0; }
-            .vendidas-counter-label-block { font-size: 20px; padding-bottom: 5px; text-align: center; }
-            .vendidas-percentage-huge { font-size: 82px; }
+            .vendidas-meta-logistics { margin-top: 16px; gap: 4px; }
+            .vendidas-logistics-line { font-size: 17px; }
+            
+            .vendidas-right-counter-panel { text-align: center; align-items: center; width: 100%; }
+            .vendidas-counter-label-block { font-size: 21px; margin-bottom: 5px; }
+            .vendidas-percentage-huge { font-size: 90px; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
@@ -671,18 +687,20 @@
     <section class="info-evento-vendidas">
         <div class="vendidas-wrapper-block">
             <div class="vendidas-left-data-panel">
-                <span class="vendidas-main-heading-panel">Maracay 18 de Julio</span>
+                <span class="vendidas-main-heading-panel">
+                    <span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span>
+                </span>
                 <span class="vendidas-tag-masterclass">Masterclass</span>
                 <span class="vendidas-course-title-panel">Vende tus redes</span>
                 <div class="vendidas-meta-logistics">
-                    <span class="vendidas-logistics-line"><strong>Lugar:</strong> Supercines Los Aviadores</span>
-                    <span class="vendidas-logistics-line"><strong>Hora:</strong> 9:00 A.M. A 1:00 P.M.</span>
+                    <span class="vendidas-logistics-line"><span class="label-black">Lugar:</span> Supercines Los Aviadores</span>
+                    <span class="vendidas-logistics-line"><span class="label-black">Hora:</span> 9:00 A.M. A 1:00 P.M.</span>
                 </div>
             </div>
             <div class="vendidas-right-counter-panel">
                 <div class="vendidas-counter-label-block">
-                    <span>Entradas</span>
-                    <span>Vendidas</span>
+                    <div>Entradas</div>
+                    <div>Vendidas</div>
                 </div>
                 <div class="vendidas-percentage-huge">76%</div>
             </div>
@@ -697,7 +715,7 @@
         <h2 style="font-family:var(--font-anton); font-size:3.5rem; color:white; text-transform:uppercase;">Precios y Planes</h2>
     </section>
 
-    <script>
+    <script {nonce}>
         const CONFIG = { fechaEvento: "July 18, 2026 09:00:00" };
 
         const heroImg = document.getElementById('hero-img');
@@ -718,6 +736,7 @@
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 850; 
+            let start = null;
 
             function cubicEaseOut(t, b, c, d) {
                 t /= d; t--;
