@@ -30,66 +30,292 @@
         /* HEADER: LOGO PREMIUM                                 */
         /* ---------------------------------------------------- */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            background: #FFFFFF; display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 5%; border: none;
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 100;
+            background: #FFFFFF; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 12px 5%; 
+            border: none;
         }
+        
         .nav-logo-link { display: inline-block; line-height: 0; }
         .nav-logo { height: 60px; width: auto; cursor: pointer; transition: transform 0.3s ease; }
+        .nav-logo:hover { transform: scale(1.03); }
+
         .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
-        .nav-links a { font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+        .nav-links a { 
+            font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); 
+            text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;
+            transition: color 0.2s ease, font-weight 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--kensen-orange-hover); font-weight: 900; }
+
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIONES DE LOGOS                                   */
+        /* SECCIÓN 1: MARACAY-WEEKEND                           */
         /* ---------------------------------------------------- */
-        .produccion-logos, .patrocinantes-logos { width: 100%; background-color: var(--black-base); padding: 30px 5%; display: flex; justify-content: center; align-items: center; border: none; }
-        .patrocinantes-logos { border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .maracay-weekend {
+            width: 100%; background-color: var(--white-pure); padding: 15px 0 70px 0; 
+            text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .maracay-title {
+            font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
+            font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
+        }
+        .weekend-subtitle {
+            font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
+            font-size: 14.8vw; text-transform: uppercase; line-height: 0.8; margin-top: 5px;
+            letter-spacing: -0.05em; white-space: nowrap; display: block;
+        }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 2: KENSEN-FOTO (CONTAINER PARALLAX)          */
+        /* ---------------------------------------------------- */
+        .kensen-foto {
+            position: relative; width: 100vw; height: 52.5vh; overflow: hidden; 
+            display: flex; align-items: center; justify-content: center; background-color: var(--black-base);
+        }
+        .parallax-img {
+            position: absolute; top: -20%; left: 0; width: 100%; height: 140%; 
+            object-fit: cover; will-change: transform; transform: translate3d(0, 0, 0); z-index: 1;
+        }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 3: CONTADOR-MARACAY                          */
+        /* ---------------------------------------------------- */
+        .contador-maracay {
+            width: 100%; background-color: var(--white-pure); padding: 70px 5% 50px 5%; 
+            color: var(--black-base); display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .contador-intro-text {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 18pt; color: var(--black-base);
+            text-transform: uppercase; line-height: 1.3; max-width: 90vw; margin-bottom: 17px; 
+        }
+        .contador-intro-text span { color: var(--kensen-red); }
+        .countdown-layout { display: flex; align-items: flex-start; justify-content: center; gap: 30px; width: 100%; max-width: 900px; }
+        .countdown-side-title {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 18pt; text-transform: uppercase;
+            text-align: right; line-height: 1.1; color: var(--black-base); margin-top: 5px; 
+        }
+        .timer-grid-white { display: flex; gap: 16px; align-items: flex-start; }
+        .time-block { display: flex; flex-direction: column; align-items: center; }
+        .black-number-box {
+            background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit);
+            font-weight: 900; font-size: 28.8pt; width: 104px; height: 80px;
+            display: flex; align-items: center; justify-content: center; border-radius: 6px;
+        }
+        .time-label-below {
+            font-family: var(--font-outfit); font-weight: 300; font-size: 12pt; 
+            color: var(--black-base); text-transform: uppercase; margin-top: 10px; letter-spacing: 1px;
+        }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 4: POSTERS-OPTIONS                           */
+        /* ---------------------------------------------------- */
+        .posters-options {
+            width: 100%; background-color: var(--white-pure); padding: 10px 5% 70px 5%; 
+            display: flex; justify-content: center; gap: 130px; align-items: start; border: none;
+        }
+        .option-side { display: flex; flex-direction: column; align-items: center; text-align: center; width: 407px; position: relative; }
+        .title-container { width: 100%; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-bottom: 50px; position: relative; }
+        .option-side h2 { font-family: var(--font-anton); font-size: 40pt; color: var(--black-base); text-transform: uppercase; line-height: 1; }
+        .light-title {
+            font-family: var(--font-outfit); font-weight: 300; font-size: 20pt; color: #000000; 
+            text-transform: uppercase; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            line-height: 1; margin-bottom: 35px; 
+        }
+        .poster-btn-trigger { background: none; border: none; cursor: pointer; width: 407px; padding: 0; display: block; outline: none; }
+        .poster-link-trigger { text-decoration: none; width: 407px; display: block; }
+        .poster-stage { position: relative; width: 407px; height: 630px; display: flex; justify-content: center; align-items: flex-start; }
+        .poster-stage img {
+            position: absolute; width: 407px !important; height: 630px !important; object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 0;
+            transform: translate3d(0, 30px, 0) rotate(0deg); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+        }
+        .poster-stage .img-back-left { z-index: 1; }
+        .poster-stage .img-back-right { z-index: 2; }
+        .poster-stage .img-front-vtr { z-index: 3; }
+
+        .posters-options.animate .poster-stage img { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+        .posters-options.animate .left-stage .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); transition-delay: 0.1s; }
+        .posters-options.animate .left-stage .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); transition-delay: 0.15s; }
+        .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
+        .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
+        .poster-btn-trigger:hover .left-stage .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
+        /* ---------------------------------------------------- */
+        .produccion-logos { 
+            width: 100%; 
+            background-color: var(--black-base); 
+            padding: 30px 5%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border: none; 
+        }
         .logos-wrapper { display: flex; align-items: center; justify-content: center; position: relative; width: 100%; max-width: 1200px; }
         .produccion-title { font-family: var(--font-outfit); font-weight: 900; font-size: 1.1rem; color: var(--white-pure); text-transform: uppercase; letter-spacing: 1px; margin-right: 50px; }
         .logos-container { display: flex; align-items: center; gap: 50px; }
         .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* ---------------------------------------------------- */
-        /* ACORDEONES COMUNES (CRONOGRAMA & PRECIOS)            */
+        /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
         /* ---------------------------------------------------- */
-        .accordion-bar-header, .precios-bar-header {
-            width: 100%; padding: 40px 10%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; 
+        .seccion-eventos-cronograma { width: 100%; background-color: var(--white-pure); margin-top: 5px; padding: 5px 0 30px 0; border: none; }
+        .eventos-main-heading {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 30px; color: var(--black-base); 
+            text-align: center; text-transform: uppercase; letter-spacing: -1px; width: 100%;
+            padding: 0 5%; margin-top: 40px; margin-bottom: 30px; line-height: 1.2; white-space: nowrap; 
+        }
+        .eventos-main-heading span { color: var(--kensen-red); }
+
+        .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
+        .accordion-bar-item { width: 100%; border: none; outline: none; }
+        
+        .accordion-bar-header {
+            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
             cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
         }
-        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 20px; width: auto; border: none; }
-        .accordion-bar-header h3, .precios-bar-header h3 { font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; text-transform: uppercase; }
+        .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
+        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
-        .arrow-indicator {
-            display: inline-block; width: 0; height: 0; border-left: 12px solid var(--white-pure); border-top: 9px solid transparent; border-bottom: 9px solid transparent; 
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        .accordion-bar-header h3 {
+            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
+            line-height: 55px; text-transform: uppercase; border: none;
         }
+        .bar-title-dark { color: var(--white-pure); } 
+        .bar-title-light { color: var(--black-base); }
+        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
+
+        /* Triángulo adosado al flujo del texto */
+        .arrow-indicator {
+            display: inline-block; width: 0; height: 0;
+            border-left: 12px solid var(--white-pure); border-top: 9px solid transparent; border-bottom: 9px solid transparent; 
+            margin-top: 5px; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .bar-light-style .arrow-indicator { border-left-color: var(--black-base); }
         .active .arrow-indicator { transform: rotate(90deg); }
 
-        /* ---------------------------------------------------- */
-        /* SECCIÓN 8: PLACA INFO VENDIDAS                       */
-        /* ---------------------------------------------------- */
-        .info-evento-vendidas { width: 100%; background-color: var(--kensen-red); padding: 55px 5%; display: flex; justify-content: center; align-items: center; border: none; }
-        .vendidas-wrapper-block { width: 100%; max-width: 1050px; display: flex; justify-content: center; align-items: center; gap: 40px; }
-        .vendidas-left-data-panel { display: flex; flex-direction: column; text-align: right; align-items: flex-end; color: var(--white-pure); flex: 1; }
-        .vendidas-counter-label-block { font-family: var(--font-outfit); font-weight: 300; font-size: 24px; text-transform: uppercase; margin-bottom: 24px; }
-        .vendidas-percentage-huge { font-family: var(--font-anton); font-size: 120px; line-height: 0.8; color: var(--white-pure); }
+        .bar-dark-style { background-color: var(--black-base); color: var(--white-pure); }
+        .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
+        .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
+        .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
+
+        .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
+        .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
+        .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
+        
+        .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
+        .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
+
+        /* GRIDS DE CONTENIDO CRONOGRAMA */
+        .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
+        .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
+        .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
+        
+        .vtr-buy-btn {
+            width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
+            font-size: 2.5rem; text-transform: uppercase; text-align: center; padding: 14px 0; cursor: pointer; 
+            transition: background-color 0.2s; text-decoration: none; display: block; line-height: 1; border: none !important;
+        }
+        .vtr-buy-btn:hover { background-color: #d60042; }
+        .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
+
+        .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
+        .fucsia-bar-networking {
+            position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
+            color: var(--white-pure); font-family: var(--font-outfit); font-weight: 900; font-size: 1.6rem;
+            text-align: center; padding: 12px 0; text-transform: uppercase; line-height: 1; letter-spacing: 1px;
+        }
+        .access-special-label {
+            font-family: var(--font-outfit); font-weight: 900; font-size: 1.8rem; color: var(--white-pure);
+            text-transform: uppercase; text-align: center; line-height: 1.1; letter-spacing: 0.5px; width: 100%;
+        }
+
+        .vtr-right-col { display: flex; flex-direction: column; gap: 32px; border: none; }
+        .vtr-right-col * { text-transform: uppercase; }
+        .vtr-block-text { font-family: var(--font-outfit); line-height: 1.2; }
+        .vtr-block-text .black-title { font-weight: 900; font-size: 24px; display: block; }
+        .vtr-block-text .light-desc { font-weight: 300; font-size: 19px; display: block; margin-top: 4px; }
+        .vtr-block-text .highlight-pink-anton { font-family: var(--font-anton); font-weight: 400; font-size: 32px; color: var(--kensen-red); display: block; margin-bottom: 12px; letter-spacing: 1px; }
+        
+        .vtr-learn-list { display: flex; flex-direction: column; gap: 18px; list-style: none; }
+        .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; line-height: 1.3; }
+        .vtr-learn-list li strong { font-weight: 900; }
+
+        .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; }
+        .bar-light-style .vtr-meta-info-block { border-top-color: rgba(0, 0, 0, 0.1); }
+        .vtr-meta-item { font-family: var(--font-outfit); }
+        .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
+        .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 9: PRECIOS & PATROCINIOS                     */
+        /* SECCIÓN 7: PATROCINANTES LOGOS                       */
+        /* ---------------------------------------------------- */
+        .patrocinantes-logos { 
+            width: 100%; background-color: var(--black-base); padding: 30px 5%; display: flex; justify-content: center; align-items: center; border: none; border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 8: PLACA INFO VENDIDAS (RECALIBRADA)         */
+        /* ---------------------------------------------------- */
+        .info-evento-vendidas {
+            width: 100%; background-color: var(--kensen-red); padding: 55px 5%; display: flex; justify-content: center; align-items: center; border: none;
+        }
+        .vendidas-wrapper-block {
+            width: 100%; max-width: 1050px; display: flex; justify-content: center; align-items: center;
+            gap: 40px; /* Separación recalibrada a 40px */
+        }
+        .vendidas-left-data-panel {
+            display: flex; flex-direction: column; text-align: right; align-items: flex-end; color: var(--white-pure); flex: 1;
+        }
+        .vendidas-main-heading-panel { font-family: var(--font-outfit); text-transform: uppercase; font-size: 42px; line-height: 1; letter-spacing: -1px; }
+        .vendidas-main-heading-panel .weight-black { font-weight: 900; }
+        .vendidas-main-heading-panel .weight-light { font-weight: 300; }
+        .vendidas-tag-masterclass { font-family: var(--font-outfit); font-weight: 300; font-size: 22px; text-transform: uppercase; line-height: 1; margin-top: 6px; letter-spacing: 0.5px; }
+        .vendidas-course-title-panel { font-family: var(--font-outfit); font-weight: 900; font-size: 46px; text-transform: uppercase; line-height: 1; margin-top: 4px; letter-spacing: -0.5px; }
+        .vendidas-meta-logistics { display: flex; flex-direction: column; gap: 5px; margin-top: 22px; }
+        .vendidas-logistics-line { font-family: var(--font-outfit); font-weight: 300; text-transform: uppercase; font-size: 19px; line-height: 1.1; letter-spacing: 0.5px; }
+        .vendidas-logistics-line span.label-black { font-weight: 900; color: #000000; }
+        
+        .vendidas-right-counter-panel {
+            display: flex; flex-direction: column; align-items: flex-start; justify-content: center; color: var(--white-pure); text-align: left; flex: 1;
+        }
+        .vendidas-counter-label-block {
+            font-family: var(--font-outfit); font-weight: 300; font-size: 24px; text-transform: uppercase; line-height: 1.1; letter-spacing: 0.5px;
+            margin-bottom: 24px; /* Separación duplicada */
+        }
+        .vendidas-percentage-huge { font-family: var(--font-anton); font-size: 120px; font-weight: 400; line-height: 0.8; }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN 9: PRECIOS & PATROCINIOS (RENOVADA)          */
         /* ---------------------------------------------------- */
         .precios-planes-wrapper { width: 100%; background-color: var(--black-base); border: none; }
         .precios-main-title-block { width: 100%; background-color: var(--white-pure); padding: 45px 5%; text-align: center; }
-        .precios-main-title-block h2 { font-family: var(--font-anton); font-size: 3.5rem; color: var(--black-base); text-transform: uppercase; letter-spacing: 1px; }
-
+        .precios-main-title-block h2 { font-family: var(--font-anton); font-size: 3.5rem; color: var(--black-base); text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
+        
         .precios-accordion-container { width: 100%; background-color: var(--black-base); display: flex; flex-direction: column; }
-        .precios-accordion-bar, .precios-accordion-bar-named { width: 100%; background-color: var(--black-base); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-        .precios-bar-header h3 { color: var(--white-pure); }
-        .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; }
+        .precios-accordion-bar { width: 100%; background-color: var(--black-base); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        
+        .precios-bar-header {
+            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
+            cursor: pointer; background: none; text-align: left; border: none !important; outline: none !important;
+        }
+        .precios-bar-header h3 { font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; color: var(--white-pure); text-transform: uppercase; }
+        .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; margin-top: 4px; }
+        
+        .precios-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; color: var(--white-pure); }
+        .precios-accordion-bar.active .precios-bar-content { max-height: 3000px; padding: 40px 5% 80px 5%; transition: max-height 0.8s ease-in-out; }
 
-        .precios-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 5%; }
-        .active .precios-bar-content { max-height: 3000px; padding: 40px 5% 80px 5%; }
-
+        /* GRIDS DE TARJETAS DE INVERSIÓN (3 COLUMNAS) */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -98,7 +324,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .price-card {
             background-color: var(--black-base);
             display: flex;
@@ -106,38 +331,69 @@
             text-align: center;
             border: none;
         }
-
-        /* FUERZA EL FONDO BLANCO PURO Y TEXTOS NEGROS EN LAS TARJETAS ESPECIFICADAS */
-        .price-card-white-bg { 
-            background-color: var(--white-pure) !important; 
-        }
-        .price-card-white-bg .price-card-header { 
-            color: var(--black-base) !important; 
-        }
-        .price-card-white-bg .feature-item { 
-            color: var(--black-base) !important; 
-        }
-
         .price-card-header {
-            font-family: var(--font-anton); font-size: 36px; color: var(--white-pure); text-transform: uppercase; padding: 24px 10px; line-height: 1.1;
+            font-family: var(--font-anton);
+            font-size: 36px;
+            color: var(--white-pure);
+            text-transform: uppercase;
+            padding: 24px 10px;
+            line-height: 1.1;
         }
-
         .price-card-amount-box {
-            background-color: var(--kensen-red); padding: 30px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-color: var(--kensen-red);
+            padding: 30px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-
-        .price-card-value { font-family: var(--font-anton); font-size: 110px; color: var(--white-pure); line-height: 0.85; }
-        .price-card-subtext { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; color: var(--white-pure); text-transform: uppercase; margin-top: 10px; }
-        .price-card-features { padding: 40px 20px; flex-grow: 1; display: flex; flex-direction: column; gap: 20px; }
-
-        .feature-item { font-family: var(--font-outfit); text-transform: uppercase; font-size: 16px; line-height: 1.3; color: var(--white-pure); }
+        .price-card-value {
+            font-family: var(--font-anton);
+            font-size: 110px;
+            color: var(--white-pure);
+            line-height: 0.85;
+        }
+        .price-card-subtext {
+            font-family: var(--font-outfit);
+            font-weight: 300;
+            font-size: 18px;
+            color: var(--white-pure);
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .price-card-features {
+            padding: 40px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .feature-item {
+            font-family: var(--font-outfit);
+            text-transform: uppercase;
+            font-size: 16px;
+            line-height: 1.3;
+            color: var(--white-pure);
+        }
         .feature-item.light { font-weight: 300; opacity: 0.85; }
         .feature-item.bold { font-weight: 900; }
-        .feature-item.red-tag { color: var(--kensen-red) !important; font-weight: 900; }
+        .feature-item.red-tag { color: var(--kensen-red); font-weight: 900; }
 
         .price-card-buy-btn {
-            background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton); font-size: 42px; text-transform: uppercase; padding: 16px 0; text-decoration: none;
-            transition: background-color 0.2s; border: none; cursor: pointer; width: 100%; display: block; outline: none; line-height: 1;
+            background-color: var(--kensen-red);
+            color: var(--white-pure);
+            font-family: var(--font-anton);
+            font-size: 42px;
+            text-transform: uppercase;
+            padding: 16px 0;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            display: block;
+            outline: none;
+            line-height: 1;
         }
         .price-card-buy-btn:hover { background-color: #d60042; }
 
@@ -146,22 +402,73 @@
         /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
             nav { justify-content: center; padding: 15px 20px; }
+            .nav-links { display: none; }
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .header-spacer { height: 78px; }
-            
-            .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
-            .precios-bar-header p { font-size: 14px; }
-            .arrow-indicator { border-left-width: 8px; border-top-width: 6px; border-bottom-width: 6px; }
 
-            .pricing-grid { grid-template-columns: 1fr; gap: 40px; }
-            .price-card-value { font-size: 90px; }
-            .price-card-header { font-size: 30px; padding: 18px 5px; }
-            .price-card-buy-btn { font-size: 32px; padding: 14px 0; }
+            .maracay-title { font-size: 7.7vw; letter-spacing: -2.2px; }
+            .weekend-subtitle { font-size: 23.6vw; white-space: normal; line-height: 0.9; display: block; }
+
+            .kensen-foto { height: 31.5vh; width: 100vw; }
+            .parallax-img { height: 150%; top: -25%; }
+
+            .posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 10px 24px 50px 24px; }
+            .option-side { width: 100%; max-width: 280px; }
+            .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
+            .poster-stage img { width: 280px !important; height: 433px !important; }
+
+            .produccion-logos, .patrocinantes-logos { padding: 25px 0; justify-content: center; }
+            .produccion-logos .logos-wrapper, .patrocinantes-logos .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
+            .produccion-logos .produccion-title, .patrocinantes-logos .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
+            .produccion-logos .logos-container, .patrocinantes-logos .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
+            
+            #container-prod img, #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
 
             .info-evento-vendidas { padding: 45px 24px; }
             .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 30px; }
-            .vendidas-left-data-panel { text-align: center; align-items: center; }
+            .vendidas-left-data-panel { text-align: center; align-items: center; width: 100%; }
+            .vendidas-main-heading-panel { font-size: 32px; }
+            .vendidas-tag-masterclass { font-size: 18px; }
+            .vendidas-course-title-panel { font-size: 34px; }
+            .vendidas-meta-logistics { margin-top: 16px; gap: 4px; }
+            .vendidas-logistics-line { font-size: 17px; }
             .vendidas-right-counter-panel { text-align: center; align-items: center; width: 100%; }
+            .vendidas-counter-label-block { font-size: 21px; margin-bottom: 10px; text-align: center; }
+            .vendidas-percentage-huge { font-size: 90px; }
+
+            .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
+            
+            /* RESPONSIVE SECCIÓN PRECIOS ACORDEÓN */
+            .precios-main-title-block { padding: 30px 24px; }
+            .precios-main-title-block h2 { font-size: 2.2rem; }
+            .precios-bar-header { padding: 25px 6%; gap: 10px; }
+            .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
+            .precios-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
+            
+            /* Ajuste de escala para el triángulo adosado en móviles */
+            .arrow-indicator { border-left-width: 9px; border-top-width: 6px; border-bottom-width: 6px; margin-top: 3px; }
+
+            /* Grid Responsivo de Tarjetas de Precios */
+            .pricing-grid { grid-template-columns: 1fr; gap: 35px; }
+            .price-card-value { font-size: 90px; }
+            .price-card-header { font-size: 30px; padding: 18px 5px; }
+            .price-card-buy-btn { font-size: 32px; padding: 14px 0; }
+            .price-card-features { padding: 25px 10px; gap: 15px; }
+            .feature-item { font-size: 15px; }
+
+            .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
+            .vtr-scaled-poster, .vtr-buy-btn, .networking-poster-wrapper { width: 280px; }
+            .vtr-buy-btn { font-size: 1.8rem; }
+            .fucsia-bar-networking { font-size: 1.3rem; padding: 10px 0; }
+            .access-special-label { font-size: 1.4rem; }
+        }
+
+        @keyframes mobileFadeProd {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+            8.33% { opacity: 1; transform: translateX(-50%) scale(1); }    
+            25.00% { opacity: 1; }                        
+            33.33% { opacity: 0; transform: translateX(-50%) scale(1.02); } 
+            100% { opacity: 0; }
         }
     </style>
 </head>
@@ -178,37 +485,225 @@
             <a href="#contacto">Contacto</a>
         </div>
     </nav>
+    
     <div class="header-spacer"></div>
+
+    <section class="maracay-weekend">
+        <h1 class="maracay-title">Maracay</h1>
+        <div class="weekend-subtitle">Kensen<br>Weekend</div>
+    </section>
+
+    <section class="kensen-foto">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
+    </section>
+
+    <section class="contador-maracay">
+        <p class="contador-intro-text">Un fin de semana de <span>capacitación</span> + <span>networking</span> + <span>comedia</span></p>
+        <div class="countdown-layout">
+            <div class="countdown-side-title">conteo<br>para el evento</div>
+            <div class="timer-grid-white">
+                <div class="time-block"><div class="black-number-box" id="days">00</div><span class="time-label-below">Días</span></div>
+                <div class="time-block"><div class="black-number-box" id="hours">00</div><span class="time-label-below">Horas</span></div>
+                <div class="time-block"><div class="black-number-box" id="minutes">00</div><span class="time-label-below">Min</span></div>
+                <div class="time-block"><div class="black-number-box" id="seconds">00</div><span class="time-label-below">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="posters-options" id="posters-trigger">
+        <div class="option-side">
+            <div class="title-container"><h2>Todos los eventos</h2></div>
+            <button class="poster-btn-trigger" onclick="smoothScrollFastIn('seccion-eventos-cronograma')">
+                <div class="poster-stage left-stage">
+                    <img src="poster-mev-stacks.png" alt="Detrás" class="img-back-left">
+                    <img src="poster-vv-stacks.png" alt="Detrás" class="img-back-right">
+                    <img src="poster-vtr-stacks.png" alt="Frente" class="img-front-vtr">
+                </div>
+            </button>
+        </div>
+        <div class="option-side">
+            <div class="title-container"><span class="light-title">(solo)</span><h2>Comedia</h2></div>
+            <a href="https://cesarkensen.com/comedia-maracay-18jul26" class="poster-link-trigger">
+                <div class="poster-stage right-stage"><img src="poster-mev-stacks.png" alt="Solo Comedia"></div>
+            </a>
+        </div>
+    </section>
 
     <section class="produccion-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">una producción de:</p>
-            <div class="logos-container">
-                <img src="mediopalo-logo.png" alt="Logo 1">
-                <img src="vsmedia-logo.png" alt="Logo 2">
-                <img src="veronicasifontes-logo.png" alt="Logo 3">
+            <div class="logos-container" id="container-prod">
+                <img src="mediopalo-logo.png" alt="Logo 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Logo 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Logo 3" style="animation-delay: 8s;">
             </div>
         </div>
     </section>
 
     <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
-        <h2 class="eventos-main-heading">Cuáles son los eventos del <span>Kensen Weekend</span></h2>
+        <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
         <div class="cronograma-accordion">
+            
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
-                    <div class="title-inline-wrapper">Refrescar Cronograma<span class="arrow-indicator"></span></div>
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Masterclass Público</h3><span class="arrow-indicator"></span></div>
+                        <p>hacer dinero con redes sociales</p>
+                    </div>
                 </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vtr-stacks.png" alt="VTR" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption">(Hay planes para empresas y precios grupales)</p>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">Un negocio que no factura,</span><span class="black-title">Desaparece</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">Que tu equipo <strong>aprenda un sistema</strong></span><span class="light-desc">para <strong>potenciar tu marca y ventas</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">Aprenderán a:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>Diseñar y posicionar tu <strong>propuesta de valor y modelo de negocio</strong></li>
+                                        <li>Planificar una estrategia de <strong>publicidad Meta Ads</strong></li>
+                                        <li>Integrar en tus procesos la <strong>inteligencia artificial</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val">18 de Julio (Sábado)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val">9:00 A.M. a 1:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val">Supercines Los Aviadores</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Masterclass Privado</h3><span class="arrow-indicator"></span></div>
+                        <p>volver viral tus redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vv-stacks.png" alt="Videos Virales" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base); font-size: 9px;">(HAY PRECIOS ESPECIALES PARA EMPRESAS PATROCINANTES)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span><span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span><span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">APRENDERÁN A:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>IDEAR Y ESCRIBIR <strong>IDEAS PARA GUIONES</strong> CON GANCHOS PODEROSOS</li>
+                                        <li>GRABAR CON TU EQUIPO ACTUAL CON <strong>RETENCIÓN PSICOLÓGICA</strong></li>
+                                        <li>EDITAR VIDEOS CON <strong>CALIDAD CINE</strong> Y DE IMPACTO VIRAL</li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">A CONVENIR (DÍAS PREVIOS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">A CONVENIR (DURACIÓN 4 HORAS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">TUS INSTALACIONES</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div>
+                        <p>lograr contactos & negocios</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <div class="networking-poster-wrapper">
+                                    <img src="poster-vtr-stacks.png" alt="Networking" class="vtr-scaled-poster">
+                                    <div class="fucsia-bar-networking">EVENTO NETWORKING</div>
+                                </div>
+                                <div class="access-special-label">CON LA COMPRA DEL MASTERCLASS PÚBLICO</div>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">UN NEGOCIO CON ALIANZAS</span><span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">UN ESPACIO PERFECTO PARA HACER <strong>CONTACTOS Y NEGOCIOS</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">PODRÁS:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>CONSEGUIR CONTACTOS PARA <strong>ALIANZAS Y NEGOCIOS FUTUROS</strong></li>
+                                        <li>CONVERSAR WITH KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
+                                        <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (DESPUÉS DEL MASTERCLASS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">1:00 P.M. A 3:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">EN LA SALIDA DEL EVENTO</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Show de Comedia</h3><span class="arrow-indicator"></span></div>
+                        <p>Show de Cesar Kensen para cerrar el día</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-mev-stacks.png" alt="Show Comedia" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base);">(HAY PRECIOS ESPECIALES PARA ASISTENTES AL MASTERCLASS PÚBLICO)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">UN SHOW DE COMEDIA ÚNICO</span><span class="black-title">PARA CERRAR EL DÍA CON HUMOR</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">LA OPORTUNIDAD PERFECTA PARA <strong>COMPARTIR FUERA DE LA OFICINA</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">UN SHOW SOBRE:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>RELACIONES ACTUALES <strong>(TRÍOS, INFIDELIDADES, ETC)</strong></li>
+                                        <li>EL CICLO DE LA VIDA <strong>LA COMEDIA ENTRE LA VIDA Y LA MUERTE</strong></li>
+                                        <li>SOBRE SER PADRE DE ADOLESCENTES <strong>E HIJO DE PADRES VIEJOS</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (SÁBADO)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">9:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">RESERVA 3+3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
 
     <section class="patrocinantes-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">patrocinado por:</p>
-            <div class="logos-container">
-                <img src="mediopalo-logo.png" alt="Logo 1">
-                <img src="vsmedia-logo.png" alt="Logo 2">
-                <img src="veronicasifontes-logo.png" alt="Logo 3">
+            <div class="logos-container" id="container-patro">
+                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
             </div>
         </div>
     </section>
@@ -216,7 +711,10 @@
     <section class="info-evento-vendidas">
         <div class="vendidas-wrapper-block">
             <div class="vendidas-left-data-panel">
-                <span class="vendidas-main-heading-panel"><span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span></span>
+                <span class="vendidas-main-heading-panel">
+                    <span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span>
+                </span>
+                <span class="vendidas-tag-masterclass">Masterclass</span>
                 <span class="vendidas-course-title-panel">Vende tus redes</span>
                 <div class="vendidas-meta-logistics">
                     <span class="vendidas-logistics-line"><span class="label-black">Lugar:</span> Supercines Los Aviadores</span>
@@ -224,28 +722,36 @@
                 </div>
             </div>
             <div class="vendidas-right-counter-panel">
-                <div class="vendidas-counter-label-block"><div>Entradas</div><div>Vendidas</div></div>
+                <div class="vendidas-counter-label-block">
+                    <div>Entradas</div>
+                    <div>Vendidas</div>
+                </div>
                 <div class="vendidas-percentage-huge">76%</div>
             </div>
         </div>
     </section>
 
     <section id="precios-planes" class="precios-planes-wrapper">
-        <div class="precios-main-title-block"><h2>Precios & Patrocinios</h2></div>
+        <div class="precios-main-title-block">
+            <h2>Precios & Patrocinios</h2>
+        </div>
         
-        <section class="precios-accordion-container" id="precios-entradas">
+        <div class="precios-accordion-container">
             
             <div class="precios-accordion-bar">
                 <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Precios de Entradas</h3><span class="arrow-indicator"></span></div>
+                        <div class="title-inline-wrapper">
+                            <h3>Precios de Entradas</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>costo de entradas y precios grupales</p>
                     </div>
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
                         
-                        <div class="price-card price-card-white-bg">
+                        <div class="price-card">
                             <div class="price-card-header">Entrada<br>Individual</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€40</span>
@@ -257,10 +763,10 @@
                                 <div class="feature-item light">Acceso al</div>
                                 <div class="feature-item bold">Evento Networking</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
-                        <div class="price-card price-card-white-bg">
+                        <div class="price-card">
                             <div class="price-card-header">Entrada<br>Grupal</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€30</span>
@@ -274,10 +780,10 @@
                                 <div class="feature-item bold">Evento Networking</div>
                                 <div class="feature-item red-tag">Descuento en entradas para Show de Comedia</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
-                        <div class="price-card price-card-white-bg">
+                        <div class="price-card">
                             <div class="price-card-header">Entrada<br>Adicional</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€20</span>
@@ -291,28 +797,31 @@
                                 <div class="feature-item bold">Evento Networking</div>
                                 <div class="feature-item red-tag">Entradas de obsequio y descuento en entradas para Show de Comedia</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <section class="precios-accordion-bar-named" id="precios-planes">
+            <div class="precios-accordion-bar">
                 <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Planes de Patrocinios</h3><span class="arrow-indicator"></span></div>
+                        <div class="title-inline-wrapper">
+                            <h3>Planes de Patrocinios</h3>
+                            <span class="arrow-indicator"></span>
+                        </div>
                         <p>costo de planes para marcas y empresas</p>
                     </div>
                 </button>
                 <div class="precios-bar-content">
                     <div class="pricing-grid">
                         
-                        <div class="price-card price-card-white-bg">
-                            <div class="price-card-header">Plan<br>Alpha</div>
+                        <div class="price-card">
+                            <div class="price-card-header" style="color: var(--white-pure);">Plan<br>Alpha</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€390</span>
-                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                                <span class="price-card-subtext">Incluye</span>
                             </div>
                             <div class="price-card-features">
                                 <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
@@ -327,50 +836,103 @@
                                 <div class="feature-item light">Volantería + Promotoras en el show de comedia</div>
                                 <div class="feature-item red-tag">Opcional: compra del Masterclass privado Video Virales como Kensen</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
-                        <div class="price-card price-card-white-bg">
-                            <div class="price-card-header">Plan<br>Bravo</div>
-                            <div class="price-card-amount-box">
+                        <div class="price-card">
+                            <div class="price-card-header" style="color: var(--black-base); background-color: var(--white-pure);">Plan<br>Bravo</div>
+                            <div class="price-card-amount-box" style="background-color: var(--kensen-red);">
                                 <span class="price-card-value">€190</span>
-                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                                <span class="price-card-subtext">Incluye</span>
                             </div>
-                            <div class="price-card-features">
-                                <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
-                                <div class="feature-item light">Stand físico + Promotoras + Pendones</div>
-                                <div class="feature-item bold">Dos (2) entradas para Vende Tus Redes como Kensen</div>
-                                <div class="feature-item light">Volantería + Material P.O.P.</div>
-                                <div class="feature-item light">Acceso al Evento Networking</div>
-                                <div class="feature-item bold">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
+                            <div class="price-card-features" style="background-color: var(--white-pure); color: var(--black-base);">
+                                <div class="feature-item light" style="color: var(--black-base);">Logo en artes en pantalla, redes y web</div>
+                                <div class="feature-item light" style="color: var(--black-base);">Stand físico + Promotoras + Pendones</div>
+                                <div class="feature-item bold" style="color: var(--black-base);">Dos (2) entradas para Vende Tus Redes como Kensen</div>
+                                <div class="feature-item light" style="color: var(--black-base);">Volantería + Material P.O.P.</div>
+                                <div class="feature-item light" style="color: var(--black-base);">Acceso al Evento Networking</div>
+                                <div class="feature-item bold" style="color: var(--black-base);">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
                                 <div class="feature-item red-tag">Opcional: compra del Masterclass privado Video Virales como Kensen</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
-                        <div class="price-card price-card-white-bg">
+                        <div class="price-card">
                             <div class="price-card-header">Plan<br>Charlie</div>
                             <div class="price-card-amount-box">
                                 <span class="price-card-value">€90</span>
-                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                                <span class="price-card-subtext">Incluye</span>
                             </div>
                             <div class="price-card-features">
                                 <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
                                 <div class="feature-item light">Volantería + Material P.O.P.</div>
                                 <div class="feature-item bold">Acceso al Evento Networking</div>
                             </div>
-                            <button class="price-card-buy-btn">COMPRAR</button>
+                            <button class="price-card-buy-btn" onclick="smoothScrollFastIn('precios-planes')">COMPRAR</button>
                         </div>
 
                     </div>
                 </div>
-            </section>
+            </div>
 
-        </section>
+        </div>
     </section>
 
-    <script>
+    <div class="cta-grid">
+        <button class="cta-btn" onclick="smoothScrollFastIn('seccion-eventos-cronograma')"><img src="btn-todos-eventos.png" alt="Todos"></button>
+        <button class="cta-btn"><img src="btn-solo-comedia.png" alt="Comedia"></button>
+    </div>
+
+    <script {nonce}>
+        const CONFIG = { fechaEvento: "July 18, 2026 09:00:00" };
+
+        const heroImg = document.getElementById('hero-img');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            heroImg.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
+        });
+
+        const triggerSection = document.getElementById('posters-trigger');
+        const postersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) triggerSection.classList.add('animate'); });
+        }, { threshold: 0.25 });
+        postersObserver.observe(triggerSection);
+
+        function smoothScrollFastIn(id) {
+            const target = document.getElementById(id);
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 850; 
+
+            function cubicEaseOut(t, b, c, d) {
+                t /= d; t--;
+                return c * (t * t * t + 1) + b;
+            }
+
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = cubicEaseOut(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            requestAnimationFrame(animation);
+        }
+
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
+
+        const countdown = () => {
+            const gap = new Date(CONFIG.fechaEvento).getTime() - new Date().getTime();
+            if (gap > 0) {
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day);
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
+                document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
+                document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+            }
+        };
+        setInterval(countdown, 1000);
     </script>
 </body>
 </html>
