@@ -88,7 +88,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCÍON 1: MARACAY-WEEKEND                           */
+        /* SECCÍON 1: MARACAY-WEEKEND                             */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%;
@@ -454,7 +454,7 @@
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const speed = 0.15;
             const yOffset = scrollTop * speed;
-            heroImg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+            heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
             requestAnimationFrame(updateParallax);
         }
         requestAnimationFrame(updateParallax);
