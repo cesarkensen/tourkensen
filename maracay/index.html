@@ -156,7 +156,7 @@
         .contador-maracay {
             width: 100%;
             background-color: var(--white-pure);
-            padding: 70px 5% 50px 5%; /* Reducido abajo para favorecer el gap de la sección que le sigue */
+            padding: 70px 5% 50px 5%; 
             color: var(--black-base);
             display: flex;
             flex-direction: column;
@@ -236,17 +236,15 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS (ALINEACIONES DE PRECISIÓN)*/
+        /* SECCIÓN 4: POSTERS-OPTIONS                           */
         /* ---------------------------------------------------- */
         .posters-options {
             width: 100%;
             background-color: var(--white-pure);
-            /* SEPARACIÓN VERTICAL DE SÓLO 10PX CON LA SECCIÓN ANTERIOR */
             padding: 10px 5% 70px 5%; 
             display: grid;
             grid-template-columns: 1fr 1fr; 
             gap: 50px;
-            /* SE ALINEAN AMBOS LADOS ESTRICTAMENTE DESDE SU TOPE SUPERIOR */
             align-items: start; 
             border: none;
         }
@@ -260,14 +258,15 @@
             position: relative;
         }
 
-        /* Bloques contenedores de títulos para clavar el alineamiento horizontal */
         .title-container {
             width: 100%;
-            height: 70px; /* Caja fija para balancear el despliegue de títulos */
+            height: 70px; 
             display: flex;
-            align-items: flex-end; /* Fuerza el baseline al fondo de la caja */
-            justify-content: center;
-            margin-bottom: 10px; /* Separación estricta de 10px con el escenario de imagen */
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end; 
+            margin-bottom: 10px; 
+            position: relative;
         }
 
         .option-side h2 {
@@ -278,27 +277,47 @@
             line-height: 1;
         }
 
-        /* Saca la palabra (solo) del flujo para que no afecte la alineación top */
+        /* Ajustes tipográficos de precisión para la palabra 'solo' */
         .light-title {
             font-family: var(--font-outfit);
             font-weight: 300; 
-            font-size: 20pt;
+            font-size: 20pt; /* La mitad exacta de los 40pt de Comedia */
+            color: #000000; /* Negro puro estricto */
             text-transform: uppercase;
             position: absolute;
-            top: 0; /* Queda arriba y fuera de la alineación principal */
+            top: 0; 
             left: 50%;
             transform: translateX(-50%);
             line-height: 1;
+            margin-bottom: 2px; /* Separación de 2px respecto a comedia */
+        }
+
+        /* Contenedores Interactivos (Botones Semánticos sin estilos nativos) */
+        .poster-btn-trigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 340px;
+            padding: 0;
+            display: block;
+            outline: none;
+        }
+        
+        .poster-link-trigger {
+            text-decoration: none;
+            width: 100%;
+            max-width: 340px;
+            display: block;
         }
 
         .poster-stage {
             position: relative;
             width: 100%;
-            max-width: 340px;
             height: 500px;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alinea los posters arriba en la caja del escenario */
+            align-items: flex-start; 
         }
 
         .poster-stage img {
@@ -326,7 +345,7 @@
             transform: translate3d(0, 0, 0) rotate(0deg);
         }
 
-        /* Desfase en abanico izquierdo con coordenadas GPU */
+        /* Desfase en abanico izquierdo con nuevos nombres de assets */
         .posters-options.animate .left-stage .img-back-left {
             transform: translate3d(-25px, -5px, 0) rotate(-18deg);
             transition-delay: 0.1s;
@@ -413,7 +432,6 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
-            /* Reajuste responsivo vertical móvil */
             .posters-options { grid-template-columns: 1fr; gap: 60px; padding: 10px 24px 50px 24px; }
             .title-container { height: auto; margin-bottom: 5px; position: relative; display: block; }
             .light-title { position: relative; top: 0; left: 0; transform: none; font-size: 14pt; display: block; margin-bottom: 2px; }
@@ -487,11 +505,13 @@
             <div class="title-container">
                 <h2>Todos los eventos</h2>
             </div>
-            <div class="poster-stage left-stage">
-                <img src="poster-mev-stack.png" alt="Curso + Comedia Detrás Izquierda" class="img-back-left">
-                <img src="poster-vv-stack.png" alt="Videos Virales Detrás Derecha" class="img-back-right">
-                <img src="poster-vtr-stack.png" alt="Vende tus Redes Al Frente" class="img-front-vtr">
-            </div>
+            <button class="poster-btn-trigger" onclick="document.getElementById('eventos').scrollIntoView()">
+                <div class="poster-stage left-stage">
+                    <img src="poster-mev-stacks.png" alt="Curso + Comedia Detrás Izquierda" class="img-back-left">
+                    <img src="poster-vv-stacks.png" alt="Videos Virales Detrás Derecha" class="img-back-right">
+                    <img src="poster-vtr-stacks.png" alt="Vende tus Redes Al Frente" class="img-front-vtr">
+                </div>
+            </button>
         </div>
 
         <div class="option-side">
@@ -499,9 +519,11 @@
                 <span class="light-title">(solo)</span>
                 <h2>Comedia</h2>
             </div>
-            <div class="poster-stage right-stage">
-                <img src="poster-mev-stack.png" alt="Solo Comedia Stand Up">
-            </div>
+            <a href="https://cesarkensen.com/comedia-maracay-18jul26" class="poster-link-trigger">
+                <div class="poster-stage right-stage">
+                    <img src="poster-mev-stacks.png" alt="Solo Comedia Stand Up Maracay">
+                </div>
+            </a>
         </div>
 
     </section>
