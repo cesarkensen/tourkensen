@@ -125,17 +125,29 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: KENSEN-FOTO (PARALLAX NATIVO ANTI-CORTE)    */
+        /* SECCIÓN: KENSEN-FOTO (LIMITADORES MECÁNICOS GPU)     */
         /* ---------------------------------------------------- */
         .kensen-foto {
+            position: relative; 
             width: 100vw; 
             height: 52.5vh; 
-            /* Se inyecta la imagen como fondo fijo en lugar de tag de imagen para blindar los bordes */
-            background-image: url('kensen-foto-vtr.jpg');
-            background-attachment: fixed;
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background-color: var(--black-base);
+        }
+        
+        .parallax-img {
+            position: absolute; 
+            /* Importante: top inicial en 0 para alinear, altura mayor para el recorrido */
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 120%; /* 20% de área oculta segura para moverse de forma sutil */
+            object-fit: cover; 
+            will-change: transform; 
+            transform: translate3d(0, 0, 0);
             z-index: 1;
         }
 
@@ -232,8 +244,6 @@
             .kensen-foto {
                 height: 35vh; 
                 width: 100%;
-                /* iOS y Safari manejan mejor scroll normal en fondos fijos móviles */
-                background-attachment: scroll;
             }
 
             .cta-grid, .city-info-box { grid-template-columns: 1fr; gap: 30px; text-align: center; }
@@ -262,7 +272,9 @@
         <div class="weekend-subtitle">Kensen Weekend</div>
     </section>
 
-    <section class="kensen-foto"></section>
+    <section class="kensen-foto" id="parallax-section">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
+    </section>
 
     <section class="countdown-section">
         <p class="countdown-title">Conteo para el evento</p>
@@ -356,6 +368,37 @@
             fechaEvento: "July 18, 2026 09:00:00", 
             porcentajeVentas: 76 
         };
+
+        const heroImg = document.getElementById('hero-img');
+        const container = document.getElementById('parallax-section');
+
+        function updateParallax() {
+            const containerRect = container.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Verificamos si la sección está dentro de la ventana del navegador
+            if (containerRect.top < window.innerHeight && containerRect.bottom > 0) {
+                // Obtenemos el punto de scroll relativo a la sección
+                const containerOffsetTop = container.offsetTop;
+                const relativeScroll = scrollTop - containerOffsetTop;
+                
+                // Sutil factor de velocidad (0.12). Menos velocidad = menor riesgo de rebasar los bordes
+                const speed = 0.12; 
+                let yPos = relativeScroll * speed;
+                
+                // CÁLCULO DE BLINDAJE: Calculamos el límite máximo que se puede mover la foto sin cortarse
+                const maxMove = heroImg.offsetHeight - container.offsetHeight;
+                
+                // Forzamos a que el movimiento se quede encerrado entre cero y el margen seguro de la imagen
+                yPos = Math.max(0, Math.min(yPos, maxMove));
+                
+                // Inyectamos la transformación directo a la tarjeta gráfica
+                heroImg.style.transform = `translate3d(0, -${yPos}px, 0)`;
+            }
+            requestAnimationFrame(updateParallax);
+        }
+        // Inicializamos el ciclo optimizado de renderizado
+        requestAnimationFrame(updateParallax);
 
         const countdown = () => {
             const countDate = new Date(CONFIG.fechaEvento).getTime();
