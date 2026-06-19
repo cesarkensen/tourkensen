@@ -236,7 +236,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS (MEDIDAS REALES BLINDADAS)*/
+        /* SECCIÓN 4: POSTERS-OPTIONS                           */
         /* ---------------------------------------------------- */
         .posters-options {
             width: 100%;
@@ -244,8 +244,8 @@
             padding: 10px 5% 70px 5%; 
             display: flex;
             justify-content: center;
-            /* SEPARACIÓN ENTRE LADO IZQUIERDO Y DERECHO FIJADA EN 20PX */
-            gap: 20px; 
+            /* SEPARACIÓN ENTRE LADO DERECHO E IZQUIERDO FIJADA EN 30PX PARA COMPUTADOR */
+            gap: 30px; 
             align-items: start; 
             border: none;
         }
@@ -255,21 +255,20 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            /* El ancho se bloquea al tamaño nativo del poster para centrar el bloque */
             width: 407px; 
             position: relative;
         }
 
         .title-container {
             width: 100%;
-            /* Ajuste de contenedor para admitir los textos y márgenes exactos */
-            height: 75px; 
+            /* Caja expandida para asimilar la nueva distancia de 35px de 'solo' */
+            height: 95px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end; 
-            /* SEPARACIÓN VERTICAL ESTRICTA DE 10PX CON LOS POSTERS */
-            margin-bottom: 10px; 
+            /* SEPARACIÓN COMPLETA DE TITULOS CON LAS IMAGENES FIJADA A 50PX */
+            margin-bottom: 50px; 
             position: relative;
         }
 
@@ -281,7 +280,7 @@
             line-height: 1;
         }
 
-        /* Ajustes de precisión para la palabra solo */
+        /* Ajustes tipográficos y espaciado de 'solo' */
         .light-title {
             font-family: var(--font-outfit);
             font-weight: 300; 
@@ -293,11 +292,11 @@
             left: 50%;
             transform: translateX(-50%);
             line-height: 1;
-            /* SEPARACIÓN DE EXACTAMENTE 5PX CON LA PALABRA COMEDIA */
-            margin-bottom: 5px; 
+            /* SEPARACIÓN DE EXACTAMENTE 35PX CON LA PALABRA COMEDIA */
+            margin-bottom: 35px; 
         }
 
-        /* Triggers de Acción */
+        /* Triggers de Acción Estructurales */
         .poster-btn-trigger {
             background: none;
             border: none;
@@ -316,7 +315,6 @@
 
         .poster-stage {
             position: relative;
-            /* DIMENSIONES DE PRODUCCIÓN EXACTAS DEL POSTER */
             width: 407px;
             height: 630px; 
             display: flex;
@@ -326,38 +324,39 @@
 
         .poster-stage img {
             position: absolute;
-            /* Forzado dimensional anti-estiramiento */
             width: 407px !important;
             height: 630px !important;
             object-fit: cover;
-            border-radius: 0px; /* Bordes rectos tipo afiche para asimilar la sombra */
-            /* Sombras calibradas al borde físico exacto */
+            border-radius: 0px; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             will-change: transform, opacity;
             opacity: 0;
             transform: translate3d(0, 30px, 0) rotate(0deg);
-            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+            /* Transición fluida calibrada para las micro-interacciones hover */
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
 
-        /* Control de capas (Z-Index) */
+        /* Capas indexadas */
         .poster-stage .img-back-left { z-index: 1; }
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* GATILLO SCROLL ANIMATE */
+        /* ---------------------------------------------------- */
+        /* DINÁMICA DE ANIMACIÓN 1: CONTROL POR SCROLL (TRANQUILO)*/
+        /* Se restan 5 grados a la inclinación anterior         */
+        /* ---------------------------------------------------- */
         .posters-options.animate .poster-stage img {
             opacity: 1;
             transform: translate3d(0, 0, 0) rotate(0deg);
         }
 
-        /* Desfase en abanico izquierdo con contención de tamaño */
         .posters-options.animate .left-stage .img-back-left {
-            transform: translate3d(-35px, -10px, 0) rotate(-18deg);
+            transform: translate3d(-35px, -10px, 0) rotate(-13deg); /* -18deg + 5deg menos = -13deg */
             transition-delay: 0.1s;
         }
         
         .posters-options.animate .left-stage .img-back-right {
-            transform: translate3d(35px, 10px, 0) rotate(25deg);
+            transform: translate3d(35px, 10px, 0) rotate(20deg); /* 25deg - 5deg menos = 20deg */
             transition-delay: 0.15s;
         }
 
@@ -365,9 +364,33 @@
             transition-delay: 0s;
         }
 
-        /* Lado Derecho */
         .posters-options.animate .right-stage img {
             transition-delay: 0.05s;
+        }
+
+        /* ---------------------------------------------------- */
+        /* DINÁMICA DE ANIMACIÓN 2: CONTROL POR HOVER           */
+        /* Se inyectan las rotaciones exactas con aceleración   */
+        /* ---------------------------------------------------- */
+        
+        /* HOVER LADO IZQUIERDO: Rota 5 grados más inclinados al pasar el cursor */
+        .poster-btn-trigger:hover .left-stage .img-back-left {
+            transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02);
+        }
+
+        .poster-btn-trigger:hover .left-stage .img-back-right {
+            transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02);
+        }
+        
+        .poster-btn-trigger:hover .left-stage .img-front-vtr {
+            transform: translate3d(0, -5px, 0) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* HOVER LADO DERECHO: Rota 5 grados hacia la derecha al pasar el cursor */
+        .poster-link-trigger:hover .right-stage img {
+            transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         /* ---------------------------------------------------- */
@@ -437,17 +460,22 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
-            /* Colapso vertical responsivo móvil */
+            /* Mantiene la separación celular intacta como pediste */
             .posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 10px 24px 50px 24px; }
             .option-side { width: 100%; max-width: 280px; }
-            .title-container { height: auto; margin-bottom: 5px; position: relative; display: block; }
+            .title-container { height: auto; margin-bottom: 15px; position: relative; display: block; }
             .light-title { position: relative; top: 0; left: 0; transform: none; font-size: 14pt; display: block; margin-bottom: 5px; }
             .option-side h2 { font-size: 32pt; }
             
             .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
-            .posters-options.animate .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-18deg); }
-            .posters-options.animate .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(25deg); }
+            .posters-options.animate .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
+            .posters-options.animate .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
+            
+            /* Anula los efectos hover pesados en pantallas táctiles móviles */
+            .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
+            .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
+            .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
         }
     </style>
 </head>
