@@ -22,7 +22,6 @@
 
         /* Reset Operativo */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-        html { scroll-behavior: smooth; }
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
 
         /* ---------------------------------------------------- */
@@ -236,7 +235,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS (SEPARACIÓN COMPUTADOR 70PX)*/
+        /* SECCIÓN 4: POSTERS-OPTIONS (SEPARACIÓN DE 130PX PC)  */
         /* ---------------------------------------------------- */
         .posters-options {
             width: 100%;
@@ -244,8 +243,8 @@
             padding: 10px 5% 70px 5%; 
             display: flex;
             justify-content: center;
-            /* SEPARACIÓN EXACTA DE 70PX ENTRE LADO IZQUIERDO Y DERECHO EN ESCRITORIO */
-            gap: 70px; 
+            /* SEPARACIÓN CONFIGURADA EXACTAMENTE A 130PX EN COMPUTADORA */
+            gap: 130px; 
             align-items: start; 
             border: none;
         }
@@ -358,7 +357,7 @@
             transition-delay: 0.05s;
         }
 
-        /* HOVER INTERACTIVE ACTIONS */
+        /* MICRO-INTERACCIONES EN HOVER */
         .poster-btn-trigger:hover .left-stage .img-back-left {
             transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02);
         }
@@ -444,7 +443,7 @@
             .black-number-box { width: 68px; height: 55px; font-size: 18pt; }
             .time-label-below { font-size: 10pt; }
 
-            /* El canal responsivo móvil colapsa verticalmente sin verse afectado por los 70px */
+            /* El canal colapsa de forma fluida ignorando los 130px */
             .posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 10px 24px 50px 24px; }
             .option-side { width: 100%; max-width: 280px; }
             .title-container { height: auto; margin-bottom: 15px; position: relative; display: block; }
@@ -523,7 +522,7 @@
             <div class="title-container">
                 <h2>Todos los eventos</h2>
             </div>
-            <button class="poster-btn-trigger" onclick="document.getElementById('eventos').scrollIntoView()">
+            <button class="poster-btn-trigger" onclick="smoothScrollToEvents()">
                 <div class="poster-stage left-stage">
                     <img src="poster-mev-stacks.png" alt="Curso + Comedia Detrás Izquierda" class="img-back-left">
                     <img src="poster-vv-stacks.png" alt="Videos Virales Detrás Derecha" class="img-back-right">
@@ -546,14 +545,14 @@
 
     </section>
 
-    <section class="cta-grid">
-        <button class="cta-btn" onclick="document.getElementById('eventos').scrollIntoView()">
+    <div class="cta-grid">
+        <button class="cta-btn" onclick="smoothScrollToEvents()">
             <img src="btn-todos-eventos.png" alt="Todos los eventos">
         </button>
         <button class="cta-btn">
             <img src="btn-solo-comedia.png" alt="Solo Comedia">
         </button>
-    </section>
+    </div>
 
     <h2 class="section-title-big" id="eventos">Cuáles son los eventos del Kensen Weekend</h2>
     
@@ -563,7 +562,7 @@
             <span>+</span>
         </button>
         <div class="accordion-content">
-            <p>Contenido del Masterclass Público... [Pendiente por definir]</p>
+            <p>Contenido del Masterclass Público...</p>
             <button onclick="document.getElementById('precios').scrollIntoView()">PRECIO DEL EVENTO</button>
         </div>
     </div>
@@ -574,7 +573,7 @@
             <span>+</span>
         </button>
         <div class="accordion-content">
-            <p>Contenido del Masterclass Privado... [Pendiente por definir]</p>
+            <p>Contenido del Masterclass Privado...</p>
             <button onclick="document.getElementById('precios').scrollIntoView()">PRECIO DEL EVENTO</button>
         </div>
     </div>
@@ -599,7 +598,7 @@
                 <span>+</span>
             </button>
             <div class="accordion-content">
-                <p>Contenido de Precios... [Pendiente por definir]</p>
+                <p>Contenido de Precios...</p>
             </div>
         </div>
         <div class="accordion-item">
@@ -608,7 +607,7 @@
                 <span>+</span>
             </button>
             <div class="accordion-content">
-                <p>Contenido de Patrocinios... [Pendiente por definir]</p>
+                <p>Contenido de Patrocinios...</p>
             </div>
         </div>
     </section>
@@ -629,22 +628,18 @@
             porcentajeVentas: 76 
         };
 
+        // 1. MOTOR DE PARALLAX
         const heroImg = document.getElementById('hero-img');
-
-        function updateParallax() {
+        window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const speed = 0.15;
             const yOffset = scrollTop * speed;
             heroImg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
-            requestAnimationFrame(updateParallax);
-        }
-        requestAnimationFrame(updateParallax);
+        });
 
+        // 2. DISPARADOR SMART DE ANIMACIÓN POSTERS
         const triggerSection = document.getElementById('posters-trigger');
-        const observerOptions = {
-            root: null,
-            threshold: 0.25 
-        };
+        const observerOptions = { root: null, threshold: 0.25 };
 
         const postersObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -653,9 +648,36 @@
                 }
             });
         }, observerOptions);
-
         postersObserver.observe(triggerSection);
 
+        // 3. MOTOR DE SCROLL INTERPOLADO PERSONALIZADO (CURVA EASY EASE)
+        function smoothScrollToEvents() {
+            const target = document.getElementById('eventos');
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 1200; // Duración en milisegundos para apreciar la curva fluida
+            let start = null;
+
+            // Ecuación matemática de curva de tiempo Bézier Ease-In-Out
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            requestAnimationFrame(animation);
+        }
+
+        // 4. CUENTA REGRESIVA RELOJ
         const countdown = () => {
             const countDate = new Date(CONFIG.fechaEvento).getTime();
             const now = new Date().getTime();
