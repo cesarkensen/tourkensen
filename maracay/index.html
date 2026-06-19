@@ -26,7 +26,7 @@
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); overflow-x: hidden; }
 
         /* ---------------------------------------------------- */
-        /* HEADER: ALTO REDUCIDO 40% Y SIN BORDES               */
+        /* HEADER: ALTO REDUCIDO Y SIN BORDES                   */
         /* ---------------------------------------------------- */
         nav {
             position: fixed; 
@@ -37,8 +37,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            padding: 12px 5%; /* Reducido de 20px a 12px (40% más pequeño) */
-            border-bottom: none; /* Eliminado cualquier tipo de borde o color inferior */
+            padding: 12px 5%; 
+            border-bottom: none; 
         }
         
         .nav-logo-link {
@@ -47,7 +47,7 @@
         }
 
         .nav-logo { 
-            height: 35px; /* Ajuste proporcional al alto del header */
+            height: 35px; 
             width: auto;
             cursor: pointer; 
             transition: transform 0.3s ease; 
@@ -81,19 +81,19 @@
             font-weight: 900; 
         }
 
-        /* Spacer optimizado para el nuevo alto compacto del header */
+        /* Spacer optimizado para el fixed */
         .header-spacer {
             height: 59px; 
             width: 100%;
         }
 
         /* ---------------------------------------------------- */
-        /* SECCÍON: MARACAY-WEEKEND (90% ANCHO & SEPARACIÓN 15PX)*/
+        /* SECCÍON: MARACAY-WEEKEND (TÍTULO EL DOBLE DE TAMAÑO) */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%;
             background-color: var(--white-pure);
-            padding: 15px 0 50px 0; /* Margen superior estrictamente clavado en 15px */
+            padding: 15px 0 50px 0; 
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -114,8 +114,9 @@
         .weekend-subtitle {
             font-family: var(--font-anton);
             color: var(--black-base);
-            width: 90vw; /* Forzado al 90% exacto del ancho de la ventana del navegador */
-            font-size: 11.2vw; /* Escala ajustada matemáticamente para cubrir el contenedor */
+            width: 90vw; 
+            /* Tamaño duplicado a 18.6vw para un impacto visual masivo y agresivo */
+            font-size: 18.6vw; 
             text-transform: uppercase;
             line-height: 0.8;
             margin-top: 5px;
@@ -125,7 +126,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: KENSEN-FOTO (NUEVA IMAGEN CONFIGURADA)      */
+        /* SECCIÓN: KENSEN-FOTO (IMAGEN VTR Y PARALLAX SUAVE)   */
         /* ---------------------------------------------------- */
         .kensen-foto {
             position: relative; 
@@ -140,10 +141,11 @@
         
         .parallax-img {
             position: absolute; 
-            top: -25%; 
+            /* Configuración para absorber el desplazamiento suave de 0.3 */
+            top: -15%; 
             left: 0; 
             width: 100%; 
-            height: 150%; 
+            height: 130%; 
             object-fit: cover; 
             will-change: transform; 
             transform: translate3d(0,0,0);
@@ -208,7 +210,7 @@
         @media (max-width: 1024px) {
             nav {
                 justify-content: center; 
-                padding: 8px 20px; /* Consistencia de reducción en celulares */
+                padding: 8px 20px; 
                 position: fixed;
                 top: 0;
                 background: #FFFFFF; 
@@ -227,7 +229,7 @@
             }
 
             .maracay-weekend {
-                padding: 15px 0 35px 0; /* Mantiene la separación de 15px arriba */
+                padding: 15px 0 35px 0; 
             }
 
             .maracay-title {
@@ -235,8 +237,8 @@
             }
 
             .weekend-subtitle {
-                width: 90vw; /* Asegura el 90% exacto en móviles sin desborde */
-                font-size: 10.8vw; 
+                width: 90vw; 
+                font-size: 17vw; /* Escalado masivo proporcional en móviles sin desborde */
                 margin-top: 2px;
             }
 
@@ -272,7 +274,7 @@
     </section>
 
     <section class="kensen-foto">
-        <img src="kensen-foto-vendetusredes.jpg" alt="Cesar Kensen Vende tus Redes" class="parallax-img" id="hero-img">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
     </section>
 
     <section class="countdown-section">
@@ -370,7 +372,8 @@
 
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
-            const speed = 0.5; 
+            // Factor restablecido a 0.3 para un movimiento suave y sutil
+            const speed = 0.3; 
             const yPos = window.pageYOffset * speed;
             heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
