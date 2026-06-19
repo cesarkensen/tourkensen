@@ -179,6 +179,7 @@
         .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
+        /* Tracking -30 para títulos */
         .accordion-bar-header h3 {
             font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
             line-height: 55px; text-transform: uppercase; border: none;
@@ -211,7 +212,7 @@
         .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
         /* ---------------------------------------------------- */
-        /* GRIDS DE CONTENIDO (PÚBLICO, PRIVADO, NETWORKING)    */
+        /* GRIDS DE CONTENIDO UNIFICADOS                        */
         /* ---------------------------------------------------- */
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
@@ -225,7 +226,7 @@
         .vtr-buy-btn:hover { background-color: #d60042; }
         .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
 
-        /* ELEMENTOS ESPECÍFICOS DE NETWORKING */
+        /* Networking específico */
         .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
         .fucsia-bar-networking {
             position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
@@ -248,9 +249,20 @@
         .vtr-learn-list li strong { font-weight: 900; }
 
         .vtr-meta-info-block { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 24px; }
+        .bar-light-style .vtr-meta-info-block { border-top-color: rgba(0, 0, 0, 0.1); }
         .vtr-meta-item { font-family: var(--font-outfit); text-transform: uppercase; }
         .vtr-meta-item .meta-label { font-weight: 900; color: var(--kensen-red); font-size: 16px; display: block; margin-bottom: 2px; }
         .vtr-meta-item .meta-val { font-weight: 300; font-size: 21px; display: block; }
+
+        /* ---------------------------------------------------- */
+        /* SECCIÓN: PRECIOS Y PLANES                            */
+        /* ---------------------------------------------------- */
+        .precios-planes { padding: 85px 5%; background: var(--gray-dark); text-align: center; border: none; }
+
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 70px 5%; }
+        .cta-btn { position: relative; width: 100%; border: none; background: none; cursor: pointer; overflow: hidden; }
+        .cta-btn img { width: 100%; display: block; transition: transform 0.5s ease; border-radius: 10px; }
+        .cta-btn:hover img { transform: scale(1.05); }
 
         /* ---------------------------------------------------- */
         /* MEDIA QUERIES EXCLUSIVAS MÓVILES                     */
@@ -397,9 +409,9 @@
                                     </ul>
                                 </div>
                                 <div class="vtr-meta-info-block">
-                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val"><strong>18 de Julio</strong> (Sábado)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val">18 de Julio (Sábado)</span></div>
                                     <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val">9:00 A.M. a 1:00 P.M.</span></div>
-                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val"><strong>Supercines</strong> Los Aviadores</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val">Supercines Los Aviadores</span></div>
                                 </div>
                             </div>
                         </div>
@@ -423,14 +435,8 @@
                                 <p class="vtr-legal-caption" style="color: var(--black-base); font-size: 9px;">(HAY PRECIOS ESPECIALES PARA EMPRESAS PATROCINANTES)</p>
                             </div>
                             <div class="vtr-right-col" style="color: var(--black-base);">
-                                <div class="vtr-block-text">
-                                    <span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span>
-                                    <span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span>
-                                </div>
-                                <div class="vtr-block-text">
-                                    <span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span>
-                                    <span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span>
-                                </div>
+                                <div class="vtr-block-text"><span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span><span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span><span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span></div>
                                 <div class="vtr-block-text">
                                     <span class="highlight-pink-anton">APRENDERÁN A:</span>
                                     <ul class="vtr-learn-list">
@@ -440,9 +446,9 @@
                                     </ul>
                                 </div>
                                 <div class="vtr-meta-info-block">
-                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val"><strong>A CONVENIR</strong> (DÍAS PREVIOS)</span></div>
-                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val"><strong>A CONVENIR</strong> (DURACIÓN 4 HORAS)</span></div>
-                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val"><strong>TUS INSTALACIONES</strong></span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">A CONVENIR (DÍAS PREVIOS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">A CONVENIR (DURACIÓN 4 HORAS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">TUS INSTALACIONES</span></div>
                                 </div>
                             </div>
                         </div>
@@ -460,26 +466,16 @@
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
                         <div class="vtr-content-grid">
-                            
                             <div class="vtr-left-col">
                                 <div class="networking-poster-wrapper">
-                                    <img src="poster-vtr-stacks.png" alt="VTR Networking" class="vtr-scaled-poster">
+                                    <img src="poster-vtr-stacks.png" alt="Networking" class="vtr-scaled-poster">
                                     <div class="fucsia-bar-networking">EVENTO NETWORKING</div>
                                 </div>
-                                <div class="access-special-label">CON LA COMPRA DEL<br>MASTERCLASS PÚBLICO</div>
+                                <div class="access-special-label">CON LA COMPRA DEL MASTERCLASS PÚBLICO</div>
                             </div>
-
                             <div class="vtr-right-col">
-                                <div class="vtr-block-text">
-                                    <span class="black-title">UN NEGOCIO CON ALIANZAS</span>
-                                    <span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span>
-                                </div>
-
-                                <div class="vtr-block-text">
-                                    <span class="light-desc">UN ESPACIO PERFECTO PARA HACER</span>
-                                    <span class="light-desc"><strong>CONTACTOS Y NEGOCIOS</strong></span>
-                                </div>
-
+                                <div class="vtr-block-text"><span class="black-title">UN NEGOCIO CON ALIANZAS</span><span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">UN ESPACIO PERFECTO PARA HACER <strong>CONTACTOS Y NEGOCIOS</strong></span></div>
                                 <div class="vtr-block-text">
                                     <span class="highlight-pink-anton">PODRÁS:</span>
                                     <ul class="vtr-learn-list">
@@ -488,23 +484,12 @@
                                         <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
                                     </ul>
                                 </div>
-
                                 <div class="vtr-meta-info-block">
-                                    <div class="vtr-meta-item">
-                                        <span class="meta-label">FECHA:</span>
-                                        <span class="meta-val"><strong>18 DE JULIO</strong> (DESPUÉS DEL MASTERCLASS)</span>
-                                    </div>
-                                    <div class="vtr-meta-item">
-                                        <span class="meta-label">HORA:</span>
-                                        <span class="meta-val">1:00 P.M. A 3:00 P.M.</span>
-                                    </div>
-                                    <div class="vtr-meta-item">
-                                        <span class="meta-label">LUGAR:</span>
-                                        <span class="meta-val"><strong>EN LA SALIDA</strong> DEL EVENTO</span>
-                                    </div>
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (DESPUÉS DEL MASTERCLASS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">1:00 P.M. A 3:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">EN LA SALIDA DEL EVENTO</span></div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -519,7 +504,30 @@
                 </button>
                 <div class="accordion-bar-content">
                     <div class="accordion-bar-content-inner">
-                        <p style="color: var(--black-base);">Contenido del Show de Comedia... [Pendiente por definir]</p>
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-mev-stacks.png" alt="Show Comedia" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base);">(HAY PRECIOS ESPECIALES PARA ASISTENTES AL MASTERCLASS PÚBLICO)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">UN SHOW DE COMEDIA ÚNICO</span><span class="black-title">PARA CERRAR EL DÍA CON HUMOR</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">LA OPORTUNIDAD PERFECTA PARA <strong>COMPARTIR FUERA DE LA OFICINA</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">UN SHOW SOBRE:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>RELACIONES ACTUALES <strong>(TRÍOS, INFIDELIDADES, ETC)</strong></li>
+                                        <li>EL CICLO DE LA VIDA <strong>LA COMEDIA ENTRE LA VIDA Y LA MUERTE</strong></li>
+                                        <li>SOBRE SER PADRE DE ADOLESCENTES <strong>E HIJO DE PADRES VIEJOS</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (SÁBADO)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">9:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">RESERVA 3+3</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -533,7 +541,7 @@
     </div>
 
     <section id="precios-planes" class="precios-planes">
-        <h2 style="font-family:var(--font-anton); font-size:3rem; color:white; text-transform:uppercase;">Precios y Planes</h2>
+        <h2 style="font-family:var(--font-anton); font-size:3.5rem; color:white; text-transform:uppercase;">Precios y Planes</h2>
     </section>
 
     <script>
