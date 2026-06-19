@@ -88,7 +88,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCÍON: MARACAY-WEEKEND (TÍTULO AJUSTADO -20%)      */
+        /* SECCÍON: MARACAY-WEEKEND                             */
         /* ---------------------------------------------------- */
         .maracay-weekend {
             width: 100%;
@@ -115,7 +115,6 @@
             font-family: var(--font-anton);
             color: var(--black-base);
             width: 90vw; 
-            /* Reducido un 20% para balancear la presencia de bloque en pantalla */
             font-size: 14.8vw; 
             text-transform: uppercase;
             line-height: 0.8;
@@ -126,7 +125,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: KENSEN-FOTO (PARALLAX ULTRA SUAVE)          */
+        /* SECCIÓN: KENSEN-FOTO (BLINDAJE DE BORDES ANTI-CORTE) */
         /* ---------------------------------------------------- */
         .kensen-foto {
             position: relative; 
@@ -141,12 +140,12 @@
         
         .parallax-img {
             position: absolute; 
-            /* Configuración de respiro óptima para velocidad de 0.15 */
-            top: -8%; 
+            top: 0; /* Anclaje superior nativo alineado al contenedor */
             left: 0; 
             width: 100%; 
-            height: 115%; 
+            height: 125%; /* Reserva de escala controlada para el movimiento sutil */
             object-fit: cover; 
+            transform-origin: center center;
             will-change: transform; 
             transform: translate3d(0,0,0);
             z-index: 1;
@@ -238,7 +237,7 @@
 
             .weekend-subtitle {
                 width: 90vw; 
-                font-size: 13.5vw; /* Ajuste proporcional del nuevo tamaño reducido en móvil */
+                font-size: 13.5vw; 
                 margin-top: 2px;
             }
 
@@ -273,7 +272,7 @@
         <div class="weekend-subtitle">Kensen Weekend</div>
     </section>
 
-    <section class="kensen-foto">
+    <section class="kensen-foto" id="parallax-trigger">
         <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
     </section>
 
@@ -371,11 +370,20 @@
         };
 
         const heroImg = document.getElementById('hero-img');
+        const container = document.getElementById('parallax-trigger');
+
         window.addEventListener('scroll', () => {
-            // Factor suavizado a 0.15 para un deslizamiento ultra sutil
             const speed = 0.15; 
-            const yPos = window.pageYOffset * speed;
-            heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            // Obtenemos la posición del contenedor respecto a la ventana de visualización
+            const containerRect = container.getBoundingClientRect();
+            const containerTop = containerRect.top;
+
+            // El cálculo solo se ejecuta si el elemento está visible en pantalla para ahorrar GPU
+            if (containerTop < window.innerHeight && containerRect.bottom > 0) {
+                // Desplazamiento inverso basado en la entrada de la sección para proteger el tope superior
+                const yPos = (containerTop) * speed;
+                heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+            }
         });
 
         const countdown = () => {
