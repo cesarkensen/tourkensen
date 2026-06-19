@@ -54,16 +54,23 @@
         /* ACORDEONES COMUNES (CRONOGRAMA & PRECIOS)            */
         /* ---------------------------------------------------- */
         .accordion-bar-header, .precios-bar-header {
-            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
+            width: 100%; padding: 40px 10%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; 
             cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
         }
-        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
+        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 20px; width: auto; border: none; }
         .accordion-bar-header h3, .precios-bar-header h3 { font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; text-transform: uppercase; }
+        
+        /* Triángulos de control dinámicos */
         .arrow-indicator {
-            display: inline-block; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 14px solid currentColor; 
-            margin-top: 5px; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: inline-block; 
+            width: 0; 
+            height: 0; 
+            border-left: 12px solid var(--white-pure); 
+            border-top: 9px solid transparent; 
+            border-bottom: 9px solid transparent; 
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .active .arrow-indicator { transform: rotate(-90deg); }
+        .active .arrow-indicator { transform: rotate(90deg); }
 
         /* ---------------------------------------------------- */
         /* SECCIÓN 8: PLACA INFO VENDIDAS                       */
@@ -75,7 +82,7 @@
         .vendidas-percentage-huge { font-family: var(--font-anton); font-size: 120px; line-height: 0.8; color: var(--white-pure); }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 9: PRECIOS & PATROCINIOS (CLON EXACTO)       */
+        /* SECCIÓN 9: PRECIOS & PATROCINIOS                     */
         /* ---------------------------------------------------- */
         .precios-planes-wrapper { width: 100%; background-color: var(--black-base); border: none; }
         .precios-main-title-block { width: 100%; background-color: var(--white-pure); padding: 45px 5%; text-align: center; }
@@ -83,11 +90,11 @@
 
         .precios-accordion-bar { width: 100%; background-color: var(--black-base); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         .precios-bar-header h3 { color: var(--white-pure); }
-        .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); text-transform: uppercase; margin-top: 4px; }
+        .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; }
 
-        /* TABLA DE PRECIOS INTERNA */
+        /* CONTENIDO DESPLEGABLE */
         .precios-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 5%; }
-        .active .precios-bar-content { max-height: 2500px; padding: 40px 5% 80px 5%; }
+        .active .precios-bar-content { max-height: 3000px; padding: 40px 5% 80px 5%; }
 
         .pricing-grid {
             display: grid;
@@ -184,6 +191,7 @@
             
             .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
             .precios-bar-header p { font-size: 14px; }
+            .arrow-indicator { border-left-width: 8px; border-top-width: 6px; border-bottom-width: 6px; }
 
             .pricing-grid { grid-template-columns: 1fr; gap: 40px; }
             .price-card-value { font-size: 90px; }
@@ -264,6 +272,7 @@
     <section id="precios-planes" class="precios-planes-wrapper">
         <div class="precios-main-title-block"><h2>Precios & Patrocinios</h2></div>
         <div class="precios-accordion-container">
+            
             <div class="precios-accordion-bar">
                 <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="title-inline-wrapper"><h3>Precios de Entradas</h3><span class="arrow-indicator"></span></div>
@@ -320,34 +329,67 @@
                     </div>
                 </div>
             </div>
+
             <div class="precios-accordion-bar">
                 <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="title-inline-wrapper"><h3>Planes de Patrocinios</h3><span class="arrow-indicator"></span></div>
                     <p>costo de planes para marcas y empresas</p>
                 </button>
+                <div class="precios-bar-content">
+                    <div class="pricing-grid">
+                        <div class="price-card">
+                            <div class="price-card-header">Plan<br>Silver</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€150</span>
+                                <span class="price-card-subtext">(Inversión)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item bold">Presencia de Marca</div>
+                                <div class="feature-item light">Mención en el evento</div>
+                                <div class="feature-item light">Colocación de Pendón / Stand Básico</div>
+                                <div class="feature-item red-tag">2 Entradas de Cortesía</div>
+                            </div>
+                            <button class="price-card-buy-btn">PATROCINAR</button>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-card-header">Plan<br>Gold</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€300</span>
+                                <span class="price-card-subtext">(Inversión)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item red-tag">Ubicación Preferencial</div>
+                                <div class="feature-item bold">Logos en Pantalla Gigante</div>
+                                <div class="feature-item light">Stand Comercial Completo</div>
+                                <div class="feature-item light">Post y Story en redes de Producción</div>
+                                <div class="feature-item red-tag">5 Entradas + Descuentos Ext.</div>
+                            </div>
+                            <button class="price-card-buy-btn">PATROCINAR</button>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-card-header">Plan<br>Platinum</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€500</span>
+                                <span class="price-card-subtext">(Inversión)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item red-tag">Patrocinante Principal</div>
+                                <div class="feature-item bold">Activación de Marca en Vivo</div>
+                                <div class="feature-item light">Menciones constantes por animador</div>
+                                <div class="feature-item light">Estrategia de base de datos post-evento</div>
+                                <div class="feature-item red-tag">10 Entradas VIP Premium</div>
+                            </div>
+                            <button class="price-card-buy-btn">PATROCINAR</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
     <script>
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
-        function smoothScrollFastIn(id) {
-            const target = document.getElementById(id);
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 850; 
-            let start = null;
-            function cubicEaseOut(t, b, c, d) { t /= d; t--; return c * (t * t * t + 1) + b; }
-            function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
-                const run = cubicEaseOut(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
-            requestAnimationFrame(animation);
-        }
     </script>
 </body>
 </html>
