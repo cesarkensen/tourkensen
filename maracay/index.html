@@ -421,44 +421,43 @@
         }
 
         /* ---------------------------------------------------- */
-        /* NUEVA SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS         */
+        /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
         /* ---------------------------------------------------- */
         .seccion-eventos-cronograma {
             width: 100%;
-            background-color: var(--white-pure); /* Fondo blanco puro */
-            /* SEPARACIÓN VERTICAL ESTRICTA DE 5PX CON LA SECCIÓN ANTERIOR */
+            background-color: var(--white-pure); 
             margin-top: 5px; 
-            padding: 60px 0 0 0;
+            /* AJUSTE COMPACTO DE SEPARACIÓN SUPERIOR SOLICITADO */
+            padding: 5px 0 0 0; 
             border: none;
         }
 
-        /* Frase introductoria de la sección */
+        /* Frase introductoria recalibrada: 30px, 5px top, 3px bottom */
         .eventos-main-heading {
             font-family: var(--font-outfit);
-            font-weight: 900; /* Outfit Black */
-            font-size: 2.2rem;
-            color: var(--black-base); /* Texto negro base */
-            text-align: center; /* Centrada en todas las versiones */
-            text-transform: uppercase; /* Todas mayúsculas */
+            font-weight: 900; 
+            font-size: 30px; /* Tamaño de letra fijado a 30px */
+            color: var(--black-base); 
+            text-align: center; 
+            text-transform: uppercase; 
             letter-spacing: -1px;
             width: 100%;
             padding: 0 5%;
-            margin-bottom: 50px;
+            margin-top: 5px; /* Separación vertical superior de 5px */
+            margin-bottom: 3px; /* Separación vertical inferior de 3px */
             line-height: 1.2;
         }
 
         .eventos-main-heading span {
-            color: var(--kensen-red); /* Color fucsia oficial */
+            color: var(--kensen-red); 
         }
 
-        /* Contenedor del Acordeón Integrado */
         .cronograma-accordion {
             width: 100%;
             display: flex;
             flex-direction: column;
         }
 
-        /* Estructura Base de cada Barra Menú */
         .accordion-bar-item {
             width: 100%;
             border: none;
@@ -466,10 +465,9 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Header de la Barra Interactiva */
         .accordion-bar-header {
             width: 100%;
-            padding: 40px 8%;
+            padding: 40px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -486,82 +484,85 @@
             gap: 4px;
         }
 
-        /* Títulos: Anton, 50px, tracking -50, interlineado 35px */
+        /* Títulos calibrados: Anton, 70px, tracking -40 (emulado con -1.6px) */
         .accordion-bar-header h3 {
             font-family: var(--font-anton);
-            font-size: 50px;
-            letter-spacing: -2px; /* Ajuste para emular el tracking -50 */
-            line-height: 35px;
+            font-size: 70px; /* Letra fijada a 70px */
+            letter-spacing: -1.6px; /* Separación entre letras de -40 */
+            line-height: 55px;
             text-transform: uppercase;
             transition: color 0.3s ease;
         }
 
-        /* Subtítulos: Outfit Light, 25px, tracking -50, fucsia */
+        .bar-title-dark { color: var(--white-pure); } /* Blanco puro obligado */
+        .bar-title-light { color: var(--black-base); }
+
         .accordion-bar-header p {
             font-family: var(--font-outfit);
-            font-weight: 300; /* Outfit Light */
+            font-weight: 300; 
             font-size: 25px;
-            color: var(--kensen-red); /* Color fucsia */
-            letter-spacing: -1px; /* Tracking compacto -50 */
+            color: var(--kensen-red); 
+            letter-spacing: -1px; 
             text-transform: uppercase;
         }
 
-        /* Mecánica de la Flecha Desplegable por CSS */
+        /* FLECHAS MÁS GRANDES Y GRUESAS ALINEADAS AL LADO DERECHO */
         .arrow-indicator {
-            width: 16px;
-            height: 16px;
+            width: 24px; /* Flecha más grande */
+            height: 24px;
             display: inline-block;
+            margin-left: auto; /* Pega la flecha estrictamente alineada al lado derecho */
             position: relative;
-            /* Aceleración por hardware para rotación smooth */
             will-change: transform;
             transform: rotate(0deg); 
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Dibujo vectorial de la flecha pequeña apuntando hacia abajo */
+        /* Trazo vectorial más grueso (3px) para las flechas */
         .arrow-indicator::before, .arrow-indicator::after {
             content: '';
             position: absolute;
-            background-color: currentColor; /* Hereda el color del texto nativo */
-            top: 4px;
-            width: 10px;
-            height: 2px;
-            border-radius: 1px;
+            background-color: currentColor; 
+            top: 10px;
+            width: 14px;
+            height: 3px; /* Trazo más grueso */
+            border-radius: 1.5px;
             transition: background-color 0.3s ease;
         }
         .arrow-indicator::before { left: -1px; transform: rotate(45deg); transform-origin: calc(100% - 1px) 50%; }
-        .arrow-indicator::after { right: -1px; transform: rotate(-45deg); transform-origin: 1px 50%; }
+        .arrow-indicator::after { right: 3px; transform: rotate(-45deg); transform-origin: 1px 50%; }
 
-        /* ANIMACIÓN DE ROTACIÓN: Al desplegarse apunta a la derecha */
         .accordion-bar-item.active .arrow-indicator {
-            transform: rotate(-90deg); /* Rota hacia la derecha de forma sutil */
+            transform: rotate(-90deg); 
         }
 
-        /* CONFIGURACIÓN INDIVIDUAL DE CONTRASTES INTERCALADOS */
-        
-        /* Barra 1: Fondo negro, texto blanco */
-        .bar-dark-style { background-color: var(--black-base); color: var(--white-pure); }
+        /* CONFIGURACIÓN DE CONTRASTES INTERCALADOS */
+        .bar-dark-style { background-color: var(--black-base); }
         .bar-dark-style .arrow-indicator { color: var(--white-pure); }
-        /* Hover Barra 1: Flecha pasa a fucsia */
         .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); }
 
-        /* Barra 2: Fondo blanco, texto negro */
-        .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
+        .bar-light-style { background-color: var(--white-pure); }
         .bar-light-style .arrow-indicator { color: var(--black-base); }
-        /* Hover Barra 2: Flecha pasa a fucsia */
         .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); }
 
-        /* Contenedor Oculto para la Información Interna (Diseño posterior) */
+        /* TEXTOS INTERNOS ALINEADOS A LA IZQUIERDA PERO CENTRADOS EN LA PANTALLA */
         .accordion-bar-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-            padding: 0 8%;
-            background-color: rgba(0, 0, 0, 0.02);
+            padding: 0 10%;
         }
+        
+        .accordion-bar-content-inner {
+            text-align: left; /* Alineados a la izquierda */
+            margin: 0 auto;  /* Centrados en la pantalla */
+            width: 100%;
+            max-width: 900px; /* Bloque de lectura centrado óptimo */
+        }
+
         .accordion-bar-item.active .accordion-bar-content {
             max-height: 1000px;
-            padding: 30px 8% 50px 8%;
+            padding: 30px 10% 50px 10%;
             transition: max-height 0.8s ease-in-out;
         }
         .bar-dark-style .accordion-bar-content { background-color: #0d0d0d; color: var(--white-pure); }
@@ -626,27 +627,37 @@
             .poster-stage img { width: 280px !important; height: 433px !important; }
             .posters-options.animate .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
             .posters-options.animate .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
+            
+            .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-20px, -5px, 0) rotate(-13deg); }
+            .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(20px, 5px, 0) rotate(20deg); }
+            .poster-link-trigger:hover .right-stage img { transform: translate3d(0, 0, 0) rotate(0deg); }
 
-            /* CORRECCIÓN DE LOGOS CENTRADOS EN CELULAR */
+            /* LOGOS CENTRADOS EN CELULAR */
             .produccion-logos { padding: 25px 0; justify-content: center; }
             .logos-wrapper { width: 290px; justify-content: center; margin: 0 auto; }
             .produccion-title { width: 95px; font-size: 0.58rem; padding-right: 10px; }
             .logos-container { left: 105px; width: calc(100% - 105px); }
 
             /* RESPONSIVE MÓVIL CRONOGRAMA DE EVENTOS */
-            .seccion-eventos-cronograma { padding: 40px 0 0 0; }
-            /* Título en 3 líneas, escala reducida e interlineado de 30% del tamaño */
+            .seccion-eventos-cronograma { padding: 20px 0 0 0; }
             .eventos-main-heading { 
-                font-size: 1.45rem; 
-                line-height: 1.1; /* Proporción de interlineado ultra compacta */
-                max-width: 290px;
-                margin: 0 auto 35px auto;
+                font-size: 20px; /* Reducción proporcional */
+                margin-top: 5px;
+                margin-bottom: 3px;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.1; 
             }
             .accordion-bar-header { padding: 25px 6%; gap: 15px; }
-            .accordion-bar-header h3 { font-size: 26px; line-height: 24px; letter-spacing: -1px; }
+            .accordion-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px; }
             .accordion-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
-            .arrow-indicator { width: 12px; height: 12px; flex-shrink: 0; }
-            .arrow-indicator::before, .arrow-indicator::after { width: 7px; top: 3px; }
+            .arrow-indicator { width: 16px; height: 16px; }
+            .arrow-indicator::before, .arrow-indicator::after { width: 9px; top: 6px; height: 2px; }
+
+            .accordion-bar-content { padding: 0 6%; }
+            .accordion-bar-content-inner { max-width: 100%; }
+            .accordion-bar-item.active .accordion-bar-content { padding: 20px 6% 35px 6%; }
 
             .cta-grid { padding: 50px 24px; }
             .city-info-box { padding: 50px 24px; grid-template-columns: 1fr; gap: 30px; text-align: center; }
@@ -754,52 +765,60 @@
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3>Masterclass Público</h3>
+                        <h3 class="bar-title-dark">Masterclass Público</h3>
                         <p>hacer dinero con redes sociales</p>
                     </div>
                     <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
-                    <p>Contenido estratégico del Masterclass Público... [Pendiente por definir en War Room]</p>
+                    <div class="accordion-bar-content-inner">
+                        <p>Contenido estratégico del Masterclass Público... [Pendiente por definir en War Room]</p>
+                    </div>
                 </div>
             </div>
 
             <div class="accordion-bar-item bar-light-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3>Masterclass Privado</h3>
+                        <h3 class="bar-title-light">Masterclass Privado</h3>
                         <p>volver viral tus redes sociales</p>
                     </div>
                     <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
-                    <p>Contenido exclusivo del Masterclass Privado... [Pendiente por definir en War Room]</p>
+                    <div class="accordion-bar-content-inner">
+                        <p>Contenido exclusivo del Masterclass Privado... [Pendiente por definir in War Room]</p>
+                    </div>
                 </div>
             </div>
 
             <div class="accordion-bar-item bar-dark-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3>Evento Networking</h3>
+                        <h3 class="bar-title-dark">Evento Networking</h3>
                         <p>oportunidad de contáctos & negocios</p>
                     </div>
                     <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
-                    <p>Dinámicas de conexiones comerciales... [Pendiente por definir en War Room]</p>
+                    <div class="accordion-bar-content-inner">
+                        <p>Dinámicas de conexiones comerciales... [Pendiente por definir en War Room]</p>
+                    </div>
                 </div>
             </div>
 
             <div class="accordion-bar-item bar-light-style">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <h3>Show de Comedia</h3>
+                        <h3 class="bar-title-light">Show de Comedia</h3>
                         <p>Show de Cesar Kensen para cerrar el día</p>
                     </div>
                     <span class="arrow-indicator"></span>
                 </button>
                 <div class="accordion-bar-content">
-                    <p>Detalles del libreto stand up... [Pendiente por definir en War Room]</p>
+                    <div class="accordion-bar-content-inner">
+                        <p>Detalles del libreto stand up... [Pendiente por definir en War Room]</p>
+                    </div>
                 </div>
             </div>
 
@@ -894,7 +913,6 @@
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
             const duration = 1200; 
-            let start = null;
 
             function easeInOutQuad(t, b, c, d) {
                 t /= d / 2;
@@ -903,6 +921,7 @@
                 return -c / 2 * (t * (t - 2) - 1) + b;
             }
 
+            let start = null;
             function animation(currentTime) {
                 if (start === null) start = currentTime;
                 const timeElapsed = currentTime - start;
@@ -913,7 +932,6 @@
             requestAnimationFrame(animation);
         }
 
-        /* LOGICA DEL NUEVO ACORDEÓN DE CRONOGRAMA INTERCALADO */
         function handleAccordionToggle(headerButton) {
             const currentItem = headerButton.parentElement;
             currentItem.classList.toggle('active');
