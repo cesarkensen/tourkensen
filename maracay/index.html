@@ -125,29 +125,17 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN: KENSEN-FOTO (BLINDAJE DE BORDES ANTI-CORTE) */
+        /* SECCIÓN: KENSEN-FOTO (PARALLAX NATIVO ANTI-CORTE)    */
         /* ---------------------------------------------------- */
         .kensen-foto {
-            position: relative; 
             width: 100vw; 
             height: 52.5vh; 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            background-color: var(--black-base);
-        }
-        
-        .parallax-img {
-            position: absolute; 
-            top: 0; /* Anclaje superior nativo alineado al contenedor */
-            left: 0; 
-            width: 100%; 
-            height: 125%; /* Reserva de escala controlada para el movimiento sutil */
-            object-fit: cover; 
-            transform-origin: center center;
-            will-change: transform; 
-            transform: translate3d(0,0,0);
+            /* Se inyecta la imagen como fondo fijo en lugar de tag de imagen para blindar los bordes */
+            background-image: url('kensen-foto-vtr.jpg');
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
             z-index: 1;
         }
 
@@ -244,6 +232,8 @@
             .kensen-foto {
                 height: 35vh; 
                 width: 100%;
+                /* iOS y Safari manejan mejor scroll normal en fondos fijos móviles */
+                background-attachment: scroll;
             }
 
             .cta-grid, .city-info-box { grid-template-columns: 1fr; gap: 30px; text-align: center; }
@@ -272,9 +262,7 @@
         <div class="weekend-subtitle">Kensen Weekend</div>
     </section>
 
-    <section class="kensen-foto" id="parallax-trigger">
-        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Evento" class="parallax-img" id="hero-img">
-    </section>
+    <section class="kensen-foto"></section>
 
     <section class="countdown-section">
         <p class="countdown-title">Conteo para el evento</p>
@@ -368,23 +356,6 @@
             fechaEvento: "July 18, 2026 09:00:00", 
             porcentajeVentas: 76 
         };
-
-        const heroImg = document.getElementById('hero-img');
-        const container = document.getElementById('parallax-trigger');
-
-        window.addEventListener('scroll', () => {
-            const speed = 0.15; 
-            // Obtenemos la posición del contenedor respecto a la ventana de visualización
-            const containerRect = container.getBoundingClientRect();
-            const containerTop = containerRect.top;
-
-            // El cálculo solo se ejecuta si el elemento está visible en pantalla para ahorrar GPU
-            if (containerTop < window.innerHeight && containerRect.bottom > 0) {
-                // Desplazamiento inverso basado en la entrada de la sección para proteger el tope superior
-                const yPos = (containerTop) * speed;
-                heroImg.style.transform = `translate3d(0, ${yPos}px, 0)`;
-            }
-        });
 
         const countdown = () => {
             const countDate = new Date(CONFIG.fechaEvento).getTime();
