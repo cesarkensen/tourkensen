@@ -150,9 +150,21 @@
         .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 5: PRODUCCION-LOGOS                          */
+        /* SECCIÓN 5 & 5B: LOGOS (PRODUCCIÓN & PATROCINANTES)   */
         /* ---------------------------------------------------- */
-        .produccion-logos { width: 100%; background-color: var(--black-base); padding: 30px 5%; display: flex; justify-content: center; align-items: center; border: none; }
+        .produccion-logos, .patrocinantes-logos { 
+            width: 100%; 
+            background-color: var(--black-base); 
+            padding: 30px 5%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border: none; 
+        }
+        /* Línea divisoria sutil para cuando están juntas */
+        .patrocinantes-logos {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
         .logos-wrapper { display: flex; align-items: center; justify-content: center; position: relative; width: 100%; max-width: 1200px; }
         .produccion-title { font-family: var(--font-outfit); font-weight: 900; font-size: 1.1rem; color: var(--white-pure); text-transform: uppercase; letter-spacing: 1px; margin-right: 50px; }
         .logos-container { display: flex; align-items: center; gap: 50px; }
@@ -179,7 +191,6 @@
         .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
         
-        /* Tracking -30 para títulos */
         .accordion-bar-header h3 {
             font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; 
             line-height: 55px; text-transform: uppercase; border: none;
@@ -226,7 +237,6 @@
         .vtr-buy-btn:hover { background-color: #d60042; }
         .vtr-legal-caption { font-family: var(--font-outfit); font-weight: 300; font-size: 11px; text-transform: uppercase; margin-top: 12px; opacity: 0.7; text-align: center; }
 
-        /* Networking específico */
         .networking-poster-wrapper { position: relative; width: 325px; margin-bottom: 25px; }
         .fucsia-bar-networking {
             position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--kensen-red);
@@ -284,11 +294,14 @@
             .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
 
-            .produccion-logos { padding: 25px 0; justify-content: center; }
-            .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
-            .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
-            .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
-            .logos-container img { position: absolute; left: 50%; transform: translateX(-50%); animation: strictMobileFadeCarousel 12s infinite ease-in-out; }
+            .produccion-logos, .patrocinantes-logos { padding: 25px 0; justify-content: center; }
+            .produccion-logos .logos-wrapper, .patrocinantes-logos .logos-wrapper { width: 100%; max-width: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; height: auto; gap: 10px; }
+            .produccion-logos .produccion-title, .patrocinantes-logos .produccion-title { margin-right: 0; font-size: 0.65rem; text-align: center; width: 100%; position: relative; left: auto; top: auto; transform: none; background: none; padding-right: 0; }
+            .produccion-logos .logos-container, .patrocinantes-logos .logos-container { position: relative; left: auto; top: auto; transform: none; width: 100%; height: 45px; display: flex; justify-content: center; align-items: center; }
+            
+            /* Animaciones independientes asignadas por ID para evitar duplicaciones extrañas */
+            #container-prod img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
+            #container-patro img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadePatro 12s infinite ease-in-out; }
 
             .eventos-main-heading { font-size: 20px; white-space: normal; margin-top: 30px; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; line-height: 1.1; }
             
@@ -301,7 +314,15 @@
             .access-special-label { font-size: 1.4rem; }
         }
 
-        @keyframes strictMobileFadeCarousel {
+        @keyframes mobileFadeProd {
+            0% { opacity: 0; transform: translateX(-50%) scale(0.95); }
+            8.33% { opacity: 1; transform: translateX(-50%) scale(1); }    
+            25.00% { opacity: 1; }                        
+            33.33% { opacity: 0; transform: translateX(-50%) scale(1.02); } 
+            100% { opacity: 0; }
+        }
+
+        @keyframes mobileFadePatro {
             0% { opacity: 0; transform: translateX(-50%) scale(0.95); }
             8.33% { opacity: 1; transform: translateX(-50%) scale(1); }    
             25.00% { opacity: 1; }                        
@@ -370,10 +391,21 @@
     <section class="produccion-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">una producción de:</p>
-            <div class="logos-container">
+            <div class="logos-container" id="container-prod">
                 <img src="mediopalo-logo.png" alt="Logo 1" style="animation-delay: 0s;">
                 <img src="vsmedia-logo.png" alt="Logo 2" style="animation-delay: 4s;">
                 <img src="veronicasifontes-logo.png" alt="Logo 3" style="animation-delay: 8s;">
+            </div>
+        </div>
+    </section>
+
+    <section class="patrocinantes-logos">
+        <div class="logos-wrapper">
+            <p class="produccion-title">patrocinado por:</p>
+            <div class="logos-container" id="container-patro">
+                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
             </div>
         </div>
     </section>
