@@ -62,12 +62,15 @@
             margin-top: 5px; display: block;
         }
 
-        /* FOTO HEADER */
+        /* FOTO HEADER (CON EFECTO PARALLAX RESTAURADO) */
         #foto-header {
             position: relative; width: 100vw; height: 68.25vh; overflow: hidden; 
             display: flex; align-items: center; justify-content: center; background-color: var(--black-base);
         }
-        #hero-img { position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; will-change: transform; z-index: 1; }
+        #hero-img { 
+            position: absolute; top: -20%; left: 0; width: 100%; height: 140%; object-fit: cover; 
+            will-change: transform; z-index: 1; 
+        }
 
         /* INTRO TEXT */
         #intro-text {
@@ -80,12 +83,14 @@
         .intro-actual-text .w-black { font-weight: 900; }
         .intro-actual-text .fucsia-target { color: var(--kensen-red); }
 
-        /* LOGOS */
+        /* PRODUCCION LOGOS (RESPONSIVE OPTIMIZADO) */
         #produccion-logos { 
-            width: 100%; background-color: var(--black-base); padding: 30px 5%; display: flex; justify-content: center; align-items: center;
+            width: 100%; background-color: var(--black-base); padding: 40px 5%; display: flex; justify-content: center; align-items: center;
         }
-        #produccion-logos .logos-container { display: flex; align-items: center; gap: 50px; }
-        #produccion-logos img { height: 45px; width: auto; object-fit: contain; }
+        #produccion-logos .logos-container { 
+            display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; 
+        }
+        #produccion-logos img { height: 50px; width: auto; object-fit: contain; }
 
         /* POSTERS OPTIONS */
         #posters-options {
@@ -106,33 +111,52 @@
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* Animación inicial recta */
-        #posters-cursos img, #posters-comedia img { transform: translate3d(0,0,0) rotate(0deg); }
-        /* Abanico al entrar en scroll */
+        /* Animación inicial en scroll */
         #posters-options.animate #posters-cursos .img-back-left { transform: rotate(-12deg); }
         #posters-options.animate #posters-cursos .img-back-right { transform: rotate(10deg); }
-        /* Animación Hover */
-        .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-17deg); }
-        .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(35px, 10px, 0) rotate(15deg); }
-        .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -10px, 0) scale(1.03); }
-        .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -10px, 0) rotate(5deg) scale(1.03); }
+        
+        /* CORRECCIÓN: Animación Hover de rotación avanzada en id="posters-cursos" */
+        .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-45px, -15px, 0) rotate(-22deg); }
+        .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(45px, 15px, 0) rotate(18deg); }
+        .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -15px, 0) scale(1.04); }
+        .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -15px, 0) rotate(5deg) scale(1.04); }
 
-        /* EVENTOS DESCRIPCION */
+        /* EVENTOS DESCRIPCION (CRONOGRAMA INTEGRADO) */
         #eventos-descripcion { width: 100%; background-color: var(--white-pure); }
+        .cronograma-accordion { width: 100%; }
+        .accordion-bar-item { border-bottom: 1px solid rgba(143, 143, 143, 0.3); }
         .accordion-bar-header {
             width: 100%; padding: 45px 8%; display: flex; flex-direction: column; align-items: center; 
-            cursor: pointer; background: none; border: none; outline: none;
+            cursor: pointer; background: none; border: none; outline: none; text-align: center;
         }
-        .accordion-bar-header h3 { font-family: var(--font-anton); font-size: 80px; letter-spacing: -1px; line-height: 1; text-transform: uppercase; }
-        .accordion-bar-header h3::after { content: '▼'; font-size: 24px; margin-left: 15px; }
-        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 700; font-size: 20px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; }
+        .accordion-bar-header h3 { font-family: var(--font-anton); font-size: 80px; letter-spacing: -1px; line-height: 1; text-transform: uppercase; transition: color 0.3s ease; }
+        .accordion-bar-header h3::after { content: ' ▼'; font-size: 24px; margin-left: 15px; display: inline-block; transition: transform 0.4s ease; }
+        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 700; font-size: 20px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; letter-spacing: 1px; }
+        
         .bar-dark-style { background-color: var(--black-base); color: var(--white-pure); }
         .bar-dark-style h3 { color: var(--white-pure); }
         .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
-        .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-        .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; }
+        .bar-light-style h3 { color: var(--black-base); }
+        
+        .accordion-bar-content { 
+            max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+            background-color: #F9F9F9;
+        }
+        .bar-dark-style .accordion-bar-content { background-color: #111111; }
+        .accordion-bar-item.active .accordion-bar-content { max-height: 1200px; }
+        .accordion-bar-item.active .accordion-bar-header h3::after { transform: rotate(180deg); }
 
-        /* INFO EVENTO VENDIDAS (DISEÑO VENDIDAS.JPG) */
+        .content-wrapper { padding: 50px 10%; font-family: var(--font-outfit); font-size: 18px; line-height: 1.6; color: #333; }
+        .bar-dark-style .content-wrapper { color: #DDD; }
+        .content-grid { display: flex; gap: 50px; align-items: center; }
+        .content-text { flex: 1; }
+        .content-text h4 { font-size: 28px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; color: var(--kensen-red); }
+        .content-text ul { list-style: none; margin-top: 15px; }
+        .content-text ul li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+        .content-text ul li::before { content: "▪"; color: var(--kensen-red); position: absolute; left: 0; font-size: 22px; line-height: 1; }
+        .content-img { width: 45%; max-width: 500px; height: auto; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+        /* INFO EVENTO VENDIDAS */
         #info-evento-vendidas {
             width: 100%; background-color: var(--kensen-red); padding: 60px 8%; 
             display: flex; justify-content: space-between; align-items: center; border: none;
@@ -140,15 +164,16 @@
         .vendidas-left { color: var(--white-pure); text-align: left; text-transform: uppercase; }
         .vendidas-city-row { font-family: var(--font-outfit); font-weight: 900; font-size: 48px; line-height: 1; letter-spacing: -1px; }
         .vendidas-city-row span { font-weight: 300; }
-        .vendidas-tag { font-family: var(--font-outfit); font-weight: 300; font-size: 24px; margin-top: 5px; }
-        .vendidas-main-title { font-family: var(--font-outfit); font-weight: 900; font-size: 52px; line-height: 1; margin-bottom: 25px; }
+        .vendidas-tag { font-family: var(--font-outfit); font-weight: 300; font-size: 24px; margin-top: 5px; margin-bottom: 15px; }
         .vendidas-meta { font-family: var(--font-outfit); font-size: 22px; line-height: 1.2; }
         .meta-label-black { color: #000; font-weight: 900; display: block; }
         .meta-val-white { font-weight: 900; display: block; margin-bottom: 10px; }
 
         .vendidas-right { color: var(--white-pure); text-align: right; text-transform: uppercase; }
-        .vendidas-label { font-family: var(--font-outfit); font-weight: 300; font-size: 32px; line-height: 1; }
-        .vendidas-percent { font-family: var(--font-anton); font-size: 140px; line-height: 0.8; }
+        /* CORRECCIÓN: vendidas-label a Outfit Black y Negro Puro */
+        .vendidas-label { font-family: var(--font-outfit); font-weight: 900; color: var(--black-base); font-size: 32px; line-height: 1; }
+        /* CORRECCIÓN: Separación top de vendidas-percent a 20px */
+        .vendidas-percent { font-family: var(--font-anton); font-size: 140px; line-height: 0.8; margin-top: 20px; }
 
         /* COUNTDOWN */
         #countdown {
@@ -158,8 +183,12 @@
         #countdown-header { font-family: var(--font-outfit); font-weight: 900; font-size: 22pt; text-transform: uppercase; margin-bottom: 15px; }
         #countdown-header span { color: var(--kensen-red); }
         #countdown-text { font-family: var(--font-outfit); font-weight: 900; font-size: 32pt; text-transform: uppercase; margin-bottom: 40px; }
-        #countdown-clock { display: flex; gap: 20px; }
-        .time-block { display: flex; flex-direction: column; align-items: center; }
+        #countdown-clock { display: flex; justify-content: center; }
+        
+        /* CORRECCIÓN: Separación izquierda de cada time-block a 10px */
+        .time-block { display: flex; flex-direction: column; align-items: center; margin-left: 10px; }
+        .time-block:first-child { margin-left: 0; }
+        
         .black-number-box { 
             background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); 
             font-weight: 900; font-size: 40pt; width: 140px; height: 110px; 
@@ -171,17 +200,22 @@
         #patrocinantes-logos { width: 100%; background-color: var(--black-base); padding: 40px 5%; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); }
         #patrocinantes-logos img { height: 45px; width: auto; filter: grayscale(1) brightness(2); }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 1024px) {
-            #main-title { font-size: 32vw; }
+            /* CORRECCIÓN: font-size a 30vw para versión celular */
+            #main-title { font-size: 30vw; }
             #header-nav { justify-content: center; }
             .nav-links { display: none; }
             .header-spacer { height: 73px; }
             #posters-options { flex-direction: column; align-items: center; gap: 60px; }
             .accordion-bar-header h3 { font-size: 38px; }
+            .content-grid { flex-direction: column; gap: 30px; }
+            .content-img { width: 100%; max-width: 100%; }
             #info-evento-vendidas { flex-direction: column; text-align: center; gap: 40px; }
             .vendidas-left, .vendidas-right { text-align: center; }
             .black-number-box { width: 85px; height: 70px; font-size: 24pt; }
+            #produccion-logos .logos-container { gap: 30px; }
+            #produccion-logos img { height: 35px; }
         }
     </style>
 </head>
@@ -206,23 +240,21 @@
     </section>
 
     <section id="foto-header">
-        <video autoplay loop muted playsinline id="hero-img">
-            <source src="bucle-kensen.mp4" type="video/mp4">
-        </video>
+        <img src="FOTO-HEADER.jpg" alt="Kensen Live" id="hero-img">
     </section>
 
     <section id="intro-text">
         <p class="intro-actual-text">
             <span class="w-light">Aprende el</span> <span class="w-black">sistema para convertir</span> <span class="w-light">tus</span> <span class="w-black fucsia-target">'Likes' en dinero</span><br>
-            <span class="w-light">en solo</span> <span class="w-black">4 horas</span> <span class="w-light">mientras te ríes</span> <span class="w-black fucsia-target">con Cesar Kensen</span>
+            <span class="w-light">en solo</span> <span class="w-black">4 hours</span> <span class="w-light">mientras te ríes</span> <span class="w-black fucsia-target">con Cesar Kensen</span>
         </p>
     </section>
 
     <section id="produccion-logos">
         <div class="logos-container">
-            <img src="mediopalo-logo.png" alt="MP">
-            <img src="vsmedia-logo.png" alt="VS">
-            <img src="veronicasifontes-logo.png" alt="VSI">
+            <img src="mediopalo-logo.png" alt="Mediopalo Crea">
+            <img src="vsmedia-logo.png" alt="VS Media">
+            <img src="veronicasifontes-logo.png" alt="Veronica Sifontes">
         </div>
     </section>
 
@@ -249,22 +281,106 @@
 
     <section id="eventos-descripcion">
         <div class="cronograma-accordion">
+            
             <div class="accordion-bar-item bar-dark-style" id="curso-publico-vtr">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <h3>Curso Público</h3>
-                    <p>hacer dinero con redes sociales</p>
+                    <p>Hacer dinero con redes sociales</p>
                 </button>
                 <div class="accordion-bar-content">
+                    <div class="content-wrapper">
+                        <div class="content-grid">
+                            <div class="content-text">
+                                <h4>Masterclass Vende Tus Redes</h4>
+                                <p>La capacitación definitiva diseñada para dueños de negocios, marcas personales y creadores que necesitan transformar su engagement digital en un motor financiero real y medible.</p>
+                                <ul>
+                                    <li>Estrategias de monetización de audiencias frías y calientes.</li>
+                                    <li>Optimización de embudos y cierres directamente por DM y comentarios.</li>
+                                    <li>Casos de estudio prácticos aplicados al mercado real.</li>
+                                </ul>
+                            </div>
+                            <img src="masterclass publico contenido.jpg" alt="Contenido Curso Público" class="content-img">
+                        </div>
                     </div>
+                </div>
             </div>
+
+            <div class="accordion-bar-item bar-light-style" id="curso-privado-vv">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <h3>Curso Privado</h3>
+                    <p>Producción y retención absoluta de contenido</p>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="content-wrapper">
+                        <div class="content-grid">
+                            <div class="content-text">
+                                <h4>Especialización en Videos Virales</h4>
+                                <p>Una inmersión técnica avanzada y de cupos estrictamente limitados enfocado en la psicología del espectador y algoritmos de distribución masiva.</p>
+                                <ul>
+                                    <li>Técnicas de enganche (Hooks) en los primeros 3 segundos.</li>
+                                    <li>Estructuras de guion de alto impacto y edición con DaVinci Resolve.</li>
+                                    <li>Métricas de retención y análisis minucioso de retención en Meta y TikTok.</li>
+                                </ul>
+                            </div>
+                            <img src="masterclass privado contenido.jpg" alt="Contenido Curso Privado" class="content-img">
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="accordion-bar-item bar-dark-style" id="evento-networking">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <h3>Networking</h3>
+                    <p>Conexión de alto nivel profesional</p>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="content-wrapper">
+                        <div class="content-grid">
+                            <div class="content-text">
+                                <h4>Sala de Conexión y Negocios</h4>
+                                <p>El espacio idóneo para cruzar bases de datos, intercambiar visiones corporativas y cerrar alianzas estratégicas directamente con los actores comerciales más relevantes de la región.</p>
+                                <ul>
+                                    <li>Acceso directo con marcas patrocinantes y aliados de producción.</li>
+                                    <li>Intercambio de contactos calificados y líderes de agencias.</li>
+                                    <li>Mesas redondas de debate de negocios digitales.</li>
+                                </ul>
+                            </div>
+                            <img src="evento networking contenido.jpg" alt="Contenido Networking" class="content-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style" id="show-comedia-mev">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <h3>Show de Comedia</h3>
+                    <p>Stand-Up Mira Esta Vaina</p>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="content-wrapper">
+                        <div class="content-grid">
+                            <div class="content-text">
+                                <h4>Mira Esta Vaina - Live Set</h4>
+                                <p>El cierre magistral del fin de semana. Un show de stand-up crudo, rápido e irreverente donde los procesos humanos y las realidades de la industria digital se transforman en comedia pura.</p>
+                                <ul>
+                                    <li>Monólogos y rutinas completamente originales de César Kensen.</li>
+                                    <li>Análisis humorístico y sin tabúes de la cultura del internet.</li>
+                                    <li>Experiencia inmersiva en vivo con interacción directa con la audiencia.</li>
+                                </ul>
+                            </div>
+                            <img src="show comedia contenido.jpg" alt="Contenido Show Comedia" class="content-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="info-evento-vendidas">
         <div class="vendidas-left">
             <div class="vendidas-city-row">Maracay <span>18 de julio</span></div>
             <div class="vendidas-tag">Masterclass</div>
-            <div class="vendidas-main-title">Vende tus redes</div>
             <div class="vendidas-meta">
                 <span class="meta-label-black">Lugar:</span>
                 <span class="meta-val-white">Supercines Los Aviadores</span>
@@ -298,10 +414,13 @@
     </section>
 
     <script>
-        // MOTOR PARALLAX
+        // MOTOR PARALLAX ACTUALIZADO PARA IMAGEN
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset;
-            document.getElementById('hero-img').style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
+            const img = document.getElementById('hero-img');
+            if (img) {
+                img.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
+            }
         });
 
         // ANIMACION POSTERS
@@ -312,11 +431,27 @@
         }, { threshold: 0.15 });
         postersObserver.observe(document.getElementById('posters-options'));
 
-        function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
+        // CONTROL ACCORDION
+        function handleAccordionToggle(btn) { 
+            const currentItem = btn.parentElement;
+            const accordion = currentItem.parentElement;
+            
+            // Cerrar los otros menús por orden visual
+            const items = accordion.querySelectorAll('.accordion-bar-item');
+            items.forEach(item => {
+                if(item !== currentItem) item.classList.remove('active');
+            });
+
+            currentItem.classList.toggle('active'); 
+        }
 
         function smoothScrollFastIn(id) {
             const target = document.getElementById(id);
-            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            if (target) {
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                // Forzar apertura al hacer clic en el poster
+                target.classList.add('active');
+            }
         }
 
         // MOTOR DEL CONTADOR REGRESIVO (18 de Julio 2026, 9:00 AM Caracas)
@@ -327,10 +462,18 @@
 
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
 
-            document.getElementById('days').innerText = Math.floor(gap / day);
-            document.getElementById('hours').innerText = Math.floor((gap % day) / hour);
-            document.getElementById('minutes').innerText = Math.floor((gap % hour) / minute);
-            document.getElementById('seconds').innerText = Math.floor((gap % minute) / second);
+            if (gap < 0) {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+                return;
+            }
+
+            document.getElementById('days').innerText = String(Math.floor(gap / day)).padStart(2, '0');
+            document.getElementById('hours').innerText = String(Math.floor((gap % day) / hour)).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(Math.floor((gap % hour) / minute)).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(Math.floor((gap % minute) / second)).padStart(2, '0');
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
