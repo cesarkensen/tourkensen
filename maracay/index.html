@@ -111,18 +111,23 @@
         .poster-stage img {
             position: absolute; width: 100% !important; height: 100% !important; object-fit: cover;
             box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 1;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+            transform: translate3d(0, 0, 0) rotate(0deg); 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .poster-stage .img-back-left { z-index: 1; }
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* CORRECCIÓN: Grados de rotación iniciales nativos sin hover solicitados */
-        #posters-cursos .img-back-left { transform: translate3d(0, 0, 0) rotate(-12deg); } /* MEV Stack a la izquierda */
-        #posters-cursos .img-back-right { transform: translate3d(0, 0, 0) rotate(10deg); }  /* VV Stack a la derecha */
-        #posters-cursos .img-front-vtr { transform: translate3d(0, 0, 0) rotate(0deg); }
+        /* Configuración del estado base para la animación retrasada de scroll */
+        #posters-cursos .img-back-left, #posters-cursos .img-back-right, #posters-cursos .img-front-vtr, #posters-comedia img {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
         
-        /* CORRECCIÓN: Comportamiento dinámico optimizado con hover solicitado */
+        /* Ejecución fluida de la animación cuando la clase .animate es inyectada por JS con retraso */
+        #posters-options.animate #posters-cursos .img-back-left { transform: translate3d(-25px, -5px, 0) rotate(-12deg); }
+        #posters-options.animate #posters-cursos .img-back-right { transform: translate3d(25px, 5px, 0) rotate(10deg); }
+        
+        /* Hover interactivo unificado para ambas cajas */
         .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-17deg); }
         .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(35px, 10px, 0) rotate(15deg); }
         .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
@@ -130,26 +135,53 @@
         .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
-        /* id="eventos-descripcion"                             */
+        /* id="eventos-descripcion" CLONADO COMPLETO DE IMAGEN  */
         /* ---------------------------------------------------- */
-        #eventos-descripcion { width: 100%; background-color: var(--white-pure); padding: 5px 0 30px 0; border: none; }
+        #eventos-descripcion { width: 100%; background-color: var(--white-pure); padding: 0; border: none; }
         .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
         .accordion-bar-item { width: 100%; border: none; outline: none; }
         
-        /* Calibración estricta de tracking a -25 en los encabezados */
-        .accordion-bar-header h3 { 
-            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1px; /* tracking -25 */
-            line-height: 55px; text-transform: uppercase; border: none; 
+        .accordion-bar-header {
+            width: 100%; padding: 45px 8%; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            cursor: pointer; background: none; text-align: center; position: relative; border: none !important; outline: none !important;
         }
+        .bar-title-block { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+        
+        /* Tipografías de encabezado Anton clonando EVENTOS.jpg */
+        .accordion-bar-header h3 { 
+            font-family: var(--font-anton); font-size: 80px; letter-spacing: -1px; /* tracking -25 */
+            line-height: 1; text-transform: uppercase; display: inline-flex; align-items: center; gap: 15px;
+        }
+        /* Subtítulos Outfit en Fucsia según EVENTOS.jpg */
+        .accordion-bar-header p { 
+            font-family: var(--font-outfit); font-weight: 700; font-size: 20px; color: var(--kensen-red); 
+            letter-spacing: 0.5px; text-transform: uppercase; margin-top: 8px; line-height: 1;
+        }
+        
+        /* Flecha triangular idéntica al diseño del input visual */
+        .accordion-bar-header h3::after {
+            content: '▼'; font-size: 24px; margin-left: 15px; display: inline-block; vertical-align: middle;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .active .accordion-bar-header h3::after { transform: rotate(180deg); }
 
+        /* Alternancia estricta de barras (Negro / Blanco / Negro / Blanco) */
+        .bar-dark-style { background-color: var(--black-base); }
+        .bar-dark-style .accordion-bar-header h3 { color: var(--white-pure); }
+        .bar-dark-style .accordion-bar-header h3::after { color: var(--white-pure); }
+        
+        .bar-light-style { background-color: var(--white-pure); }
+        .bar-light-style .accordion-bar-header h3 { color: var(--black-base); }
+        .bar-light-style .accordion-bar-header h3::after { color: var(--black-base); }
+
+        /* Contenedores de Despliegue Operativo */
         .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
         .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
         .accordion-bar-item.active .accordion-bar-content { max-height: 3000px; padding: 50px 10%; transition: max-height 0.8s ease-in-out; }
-        
         .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
         .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
-        /* GRIDS INTERNOS DEL CRONOGRAMA REINYECTADOS */
+        /* GRIDS INTERNOS DEL CRONOGRAMA */
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
         .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
@@ -233,8 +265,6 @@
         .precios-main-title-block { width: 100%; background-color: var(--white-pure); padding: 45px 5%; text-align: center; }
         .precios-main-title-block h2 { font-family: var(--font-anton); font-size: 3.5rem; color: var(--black-base); text-transform: uppercase; letter-spacing: 1px; }
         .precios-accordion-container { width: 100%; background-color: var(--black-base); display: flex; flex-direction: column; }
-        
-        /* Calibración estricta de tracking a -25 en cabeceras de inversión */
         .precios-bar-header h3 { color: var(--white-pure); letter-spacing: -1px !important; }
         .precios-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; }
 
@@ -268,7 +298,7 @@
             #city-title { padding-top: 0px; }
             #city-name { font-size: 3.2rem; }
             
-            /* CORRECCIÓN: font-size móvil ajustado a 20vw fijado */
+            /* CELULAR RE-CALIBRADO: id="main-title" fijado en 20vw solicitado */
             #main-title { font-size: 20vw; white-space: normal; line-height: 0.9; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
 
             .web-only { display: none; }
@@ -286,9 +316,14 @@
             .poster-stage img { width: 280px !important; height: 433px !important; }
             .title-container { margin-bottom: 30px; }
 
-            .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px !important; }
+            /* Escala móvil adaptada para los acordeones */
+            .accordion-bar-header { padding: 30px 4%; }
+            .accordion-bar-header h3 { font-size: 38px; letter-spacing: -1px !important; }
+            .accordion-bar-header h3::after { font-size: 16px; margin-left: 8px; }
+            .accordion-bar-header p { font-size: 14px; margin-top: 4px; }
+            
+            .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px !important; }
             .precios-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
-            .arrow-indicator { border-left-width: 8px; border-top-width: 6px; border-bottom-width: 6px; }
 
             .pricing-grid { grid-template-columns: 1fr; gap: 40px; }
             .price-card-value { font-size: 90px; }
@@ -300,7 +335,7 @@
             .vendidas-left-data-panel { text-align: center; align-items: center; width: 100%; }
             .vendidas-right-counter-panel { text-align: center; align-items: center; width: 100%; }
 
-            .vtr-content-grid { grid-template-columns: 1fr; grid-template-columns: 1fr; gap: 35px; justify-items: center; }
+            .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
             .vtr-scaled-poster, .vtr-buy-btn, .networking-poster-wrapper { width: 280px; }
             .vtr-buy-btn { font-size: 1.8rem; }
             .fucsia-bar-networking { font-size: 1.3rem; padding: 10px 0; }
@@ -388,7 +423,7 @@
             <div class="accordion-bar-item bar-dark-style" id="curso-publico-vtr">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Curso Público</h3><span class="arrow-indicator"></span></div>
+                        <h3>Curso Público</h3>
                         <p>hacer dinero con redes sociales</p>
                     </div>
                 </button>
@@ -425,8 +460,8 @@
             <div class="accordion-bar-item bar-light-style" id="curso-privado-vv">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Curso para Empresas</h3><span class="arrow-indicator"></span></div>
-                        <p>volver viral tus redes sociales</p>
+                        <h3>Curso para Empresas</h3>
+                        <p>volver virales tus redes sociales</p>
                     </div>
                 </button>
                 <div class="accordion-bar-content">
@@ -462,8 +497,8 @@
             <div class="accordion-bar-item bar-dark-style" id="evento-networking">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Evento Networking</h3><span class="arrow-indicator"></span></div>
-                        <p>lograr contactos & negocios</p>
+                        <h3>Evento Networking</h3>
+                        <p>lograr contáctos & negocios</p>
                     </div>
                 </button>
                 <div class="accordion-bar-content">
@@ -501,8 +536,8 @@
             <div class="accordion-bar-item bar-light-style" id="show-comedia-mev">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="bar-title-block">
-                        <div class="title-inline-wrapper"><h3>Show de Comedia</h3><span class="arrow-indicator"></span></div>
-                        <p>Show de Cesar Kensen para cerrar el día</p>
+                        <h3>Show de Comedia</h3>
+                        <p>show de cesar kensen para cerrar el día</p>
                     </div>
                 </button>
                 <div class="accordion-bar-content">
@@ -608,7 +643,14 @@
 
         const triggerSection = document.getElementById('posters-options');
         const postersObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) triggerSection.classList.add('animate'); });
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    // CORRECCIÓN: Pausa exacta de 350ms para que el usuario capture la transición abanico
+                    setTimeout(() => {
+                        triggerSection.classList.add('animate');
+                    }, 350);
+                } 
+            });
         }, { threshold: 0.15 });
         postersObserver.observe(triggerSection);
 
