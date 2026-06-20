@@ -40,16 +40,13 @@
         .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
         .nav-links a { font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
         .nav-links a:hover { color: var(--kensen-orange-hover); font-weight: 900; }
-        
-        /* WEB: 64px navbar + 10px de aire nativo */
         .header-spacer { height: 74px; width: 100%; }
 
         /* ---------------------------------------------------- */
         /* id="city-title"                                      */
         /* ---------------------------------------------------- */
         #city-title {
-            width: 100%; background-color: var(--white-pure); 
-            padding: 0px 0 45px 0; 
+            width: 100%; background-color: var(--white-pure); padding: 0px 0 45px 0; 
             text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #city-name {
@@ -57,30 +54,22 @@
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
         
-        /* CAJA CORREGIDA: id="main-title" */
+        /* CAJA CALIBRADA: id="main-title" (WEB NATIVO) */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; max-width: 90vw;
-            font-size: 11vw; text-transform: uppercase; 
-            line-height: 0.9; /* Interlineado 0.9 */
-            margin-top: 5px; /* Separación top 5px */
-            letter-spacing: -0.04em; 
-            display: block; text-align: center;
+            font-size: 11vw; text-transform: uppercase; line-height: 0.9; margin-top: 5px;
+            letter-spacing: -0.04em; display: block; text-align: center;
         }
         
-        /* CAJA CORREGIDA: id="author-name" */
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
-            margin-top: 5px; /* Separación top 5px */
-            display: block;
+            margin-top: 5px; display: block;
         }
-        
-        /* CAJA CORREGIDA: id="author-emmy" */
         #author-emmy {
             font-family: var(--font-outfit); font-weight: 300; color: var(--black-base);
             font-size: 1.125rem; text-transform: uppercase; letter-spacing: 2px; line-height: 1;
-            margin-top: 5px; /* Separación top 5px */
-            white-space: nowrap; display: block;
+            margin-top: 5px; white-space: nowrap; display: block;
         }
 
         /* ---------------------------------------------------- */
@@ -102,10 +91,17 @@
             width: 100%; background-color: var(--white-pure); padding: 30px 5%; text-align: center; border: none;
         }
         .intro-actual-text {
-            font-family: var(--font-outfit); font-weight: 900; font-size: 18pt; color: var(--black-base);
-            text-transform: uppercase; line-height: 1.3; max-width: 900px; margin: 0 auto;
+            font-family: var(--font-outfit); color: var(--black-base);
+            font-size: 18pt; line-height: 1.4; max-width: 1050px; margin: 0 auto;
+            text-transform: uppercase;
         }
-        .intro-actual-text span { color: var(--kensen-red); }
+        /* Clases de control de peso para Outfit */
+        .intro-actual-text .w-light { font-weight: 300; }
+        .intro-actual-text .w-black { font-weight: 900; }
+        .intro-actual-text .fucsia-target { color: var(--kensen-red); }
+        
+        /* Control adaptativo del quiebre web */
+        .web-only { display: inline; }
 
         /* ---------------------------------------------------- */
         /* id="produccion-logos"                                */
@@ -228,17 +224,20 @@
             .nav-logo-link { width: 30vw !important; display: flex; justify-content: center; align-items: center; margin: 0 auto; }
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .nav-links { display: none !important; } 
-            
-            /* MÓVIL: 58px navbar móvil + 15px de separación superior */
             .header-spacer { height: 73px; }
-            #city-title { padding-top: 0px; }
-
-            #city-name { font-size: 3.2rem; }
-            #main-title { font-size: 10vw; white-space: normal; line-height: 0.95; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
             
-            /* Preservación de márgenes táctiles en móvil */
+            #city-title { padding-top: 0px; }
+            #city-name { font-size: 3.2rem; }
+            
+            /* CELULAR MODIFICADO: id="main-title" pasa a 60vw estrictos */
+            #main-title { font-size: 60vw; white-space: normal; line-height: 0.9; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
+            
             #author-name { font-size: 1.6rem; margin-top: 5px; }
             #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 5px; }
+
+            /* Quiebre celular para intro text */
+            .web-only { display: none; }
+            .intro-actual-text { font-size: 15pt; }
 
             #produccion-logos .logos-wrapper { flex-direction: column; align-items: center; gap: 10px; }
             #produccion-logos .produccion-title { margin-right: 0; text-align: center; font-size: 0.65rem; }
@@ -298,8 +297,6 @@
     <section id="city-title">
         <div id="city-name">Maracay</div>
         <div id="main-title">Mejora tus ganancias<br>y tus redes</div>
-        <div id="author-name">con cesar kensen</div>
-        <div id="author-emmy">ganador del emmy</div>
     </section>
 
     <section id="foto-header">
@@ -310,9 +307,11 @@
     </section>
 
     <section id="intro-text">
-        <p class="intro-actual-text">Aprende el sistema para convertir tus <span>'Likes' en dinero</span> en solo 4 horas mientras te ríes <span>con Cesar Kensen</span></p>
+        <p class="intro-actual-text">
+            <span class="w-light">Aprende el</span> <span class="w-black">sistema para convertir</span> <span class="w-light">tus</span> <span class="w-black fucsia-target">'Likes' en dinero</span><br class="web-only">
+            <span class="w-light">en solo</span> <span class="w-black">4 horas</span> <span class="w-light">mientras te ríes</span> <span class="w-black fucsia-target">con Cesar Kensen</span>
+        </p>
     </section>
-
     <section id="produccion-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">una producción de:</p>
