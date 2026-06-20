@@ -57,25 +57,30 @@
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
         
-        /* CAJA MODIFICADA: id="main-title" (WEB CALIBRADO) */
+        /* CAJA CORREGIDA: id="main-title" */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; max-width: 90vw;
             font-size: 11vw; text-transform: uppercase; 
-            line-height: 0.95; /* Interlineado 0.95 */
-            margin-top: 10px; 
-            letter-spacing: -0.04em; /* Letter spacing -0.04em */
+            line-height: 0.9; /* Interlineado 0.9 */
+            margin-top: 5px; /* Separación top 5px */
+            letter-spacing: -0.04em; 
             display: block; text-align: center;
         }
         
+        /* CAJA CORREGIDA: id="author-name" */
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
-            margin-top: 8px; display: block;
+            margin-top: 5px; /* Separación top 5px */
+            display: block;
         }
+        
+        /* CAJA CORREGIDA: id="author-emmy" */
         #author-emmy {
             font-family: var(--font-outfit); font-weight: 300; color: var(--black-base);
             font-size: 1.125rem; text-transform: uppercase; letter-spacing: 2px; line-height: 1;
-            margin-top: 5px; white-space: nowrap; display: block;
+            margin-top: 5px; /* Separación top 5px */
+            white-space: nowrap; display: block;
         }
 
         /* ---------------------------------------------------- */
@@ -224,17 +229,16 @@
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .nav-links { display: none !important; } 
             
-            /* MÓVIL: 58px navbar móvil + 15px de separación superior estrictos */
+            /* MÓVIL: 58px navbar móvil + 15px de separación superior */
             .header-spacer { height: 73px; }
             #city-title { padding-top: 0px; }
 
             #city-name { font-size: 3.2rem; }
-            
-            /* CELULAR: font-size re-ajustado a 10vw, interlineado y tracking aplicados */
             #main-title { font-size: 10vw; white-space: normal; line-height: 0.95; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
             
-            #author-name { font-size: 1.6rem; margin-top: 6px; }
-            #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 4px; }
+            /* Preservación de márgenes táctiles en móvil */
+            #author-name { font-size: 1.6rem; margin-top: 5px; }
+            #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 5px; }
 
             #produccion-logos .logos-wrapper { flex-direction: column; align-items: center; gap: 10px; }
             #produccion-logos .produccion-title { margin-right: 0; text-align: center; font-size: 0.65rem; }
