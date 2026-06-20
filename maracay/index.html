@@ -62,7 +62,7 @@
             margin-top: 5px; display: block;
         }
 
-        /* FOTO HEADER (CON EFECTO PARALLAX RESTAURADO) */
+        /* FOTO HEADER (CON ACTIVO CARGADO kensen-foto-vtr.jpg) */
         #foto-header {
             position: relative; width: 100vw; height: 68.25vh; overflow: hidden; 
             display: flex; align-items: center; justify-content: center; background-color: var(--black-base);
@@ -79,11 +79,15 @@
         .intro-actual-text {
             font-family: var(--font-outfit); color: var(--black-base); font-size: 18pt; line-height: 1.4; max-width: 1050px; margin: 0 auto; text-transform: uppercase;
         }
-        .intro-actual-text .w-light { font-weight: 300; }
-        .intro-actual-text .w-black { font-weight: 900; }
+        .intro-actual-text .w-light { font-weight: 300; display: inline; }
+        .intro-actual-text .w-black { font-weight: 900; display: inline; }
         .intro-actual-text .fucsia-target { color: var(--kensen-red); }
 
-        /* PRODUCCION LOGOS (RESPONSIVE OPTIMIZADO) */
+        /* Control adaptativo de quiebres de línea responsivos */
+        .web-only { display: inline; }
+        .mobile-only { display: none; }
+
+        /* PRODUCCION LOGOS */
         #produccion-logos { 
             width: 100%; background-color: var(--black-base); padding: 40px 5%; display: flex; justify-content: center; align-items: center;
         }
@@ -111,17 +115,15 @@
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* Animación inicial en scroll */
         #posters-options.animate #posters-cursos .img-back-left { transform: rotate(-12deg); }
         #posters-options.animate #posters-cursos .img-back-right { transform: rotate(10deg); }
         
-        /* CORRECCIÓN: Animación Hover de rotación avanzada en id="posters-cursos" */
         .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-45px, -15px, 0) rotate(-22deg); }
         .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(45px, 15px, 0) rotate(18deg); }
         .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -15px, 0) scale(1.04); }
         .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -15px, 0) rotate(5deg) scale(1.04); }
 
-        /* EVENTOS DESCRIPCION (CRONOGRAMA INTEGRADO) */
+        /* EVENTOS DESCRIPCION */
         #eventos-descripcion { width: 100%; background-color: var(--white-pure); }
         .cronograma-accordion { width: 100%; }
         .accordion-bar-item { border-bottom: 1px solid rgba(143, 143, 143, 0.3); }
@@ -129,7 +131,7 @@
             width: 100%; padding: 45px 8%; display: flex; flex-direction: column; align-items: center; 
             cursor: pointer; background: none; border: none; outline: none; text-align: center;
         }
-        .accordion-bar-header h3 { font-family: var(--font-anton); font-size: 80px; letter-spacing: -1px; line-height: 1; text-transform: uppercase; transition: color 0.3s ease; }
+        .accordion-bar-header h3 { font-family: var(--font-anton); font-size: 80px; letter-spacing: -1px; line-height: 1; text-transform: uppercase; }
         .accordion-bar-header h3::after { content: ' ▼'; font-size: 24px; margin-left: 15px; display: inline-block; transition: transform 0.4s ease; }
         .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 700; font-size: 20px; color: var(--kensen-red); text-transform: uppercase; margin-top: 8px; letter-spacing: 1px; }
         
@@ -140,9 +142,9 @@
         
         .accordion-bar-content { 
             max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
-            background-color: #F9F9F9;
         }
         .bar-dark-style .accordion-bar-content { background-color: #111111; }
+        .bar-light-style .accordion-bar-content { background-color: #F9F9F9; }
         .accordion-bar-item.active .accordion-bar-content { max-height: 1200px; }
         .accordion-bar-item.active .accordion-bar-header h3::after { transform: rotate(180deg); }
 
@@ -170,9 +172,7 @@
         .meta-val-white { font-weight: 900; display: block; margin-bottom: 10px; }
 
         .vendidas-right { color: var(--white-pure); text-align: right; text-transform: uppercase; }
-        /* CORRECCIÓN: vendidas-label a Outfit Black y Negro Puro */
         .vendidas-label { font-family: var(--font-outfit); font-weight: 900; color: var(--black-base); font-size: 32px; line-height: 1; }
-        /* CORRECCIÓN: Separación top de vendidas-percent a 20px */
         .vendidas-percent { font-family: var(--font-anton); font-size: 140px; line-height: 0.8; margin-top: 20px; }
 
         /* COUNTDOWN */
@@ -185,7 +185,6 @@
         #countdown-text { font-family: var(--font-outfit); font-weight: 900; font-size: 32pt; text-transform: uppercase; margin-bottom: 40px; }
         #countdown-clock { display: flex; justify-content: center; }
         
-        /* CORRECCIÓN: Separación izquierda de cada time-block a 10px */
         .time-block { display: flex; flex-direction: column; align-items: center; margin-left: 10px; }
         .time-block:first-child { margin-left: 0; }
         
@@ -202,8 +201,8 @@
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 1024px) {
-            /* CORRECCIÓN: font-size a 30vw para versión celular */
-            #main-title { font-size: 30vw; }
+            /* CORRECCIÓN: font-size re-ajustado a 26vw de manera estricta para celulares */
+            #main-title { font-size: 26vw; }
             #header-nav { justify-content: center; }
             .nav-links { display: none; }
             .header-spacer { height: 73px; }
@@ -216,6 +215,11 @@
             .black-number-box { width: 85px; height: 70px; font-size: 24pt; }
             #produccion-logos .logos-container { gap: 30px; }
             #produccion-logos img { height: 35px; }
+
+            /* CORRECCIÓN CELULAR: Activación de los 6 quiebres mecánicos en id="intro-text" */
+            .web-only { display: none; }
+            .mobile-only { display: inline; }
+            .intro-actual-text { font-size: 15pt; line-height: 1.5; }
         }
     </style>
 </head>
@@ -240,13 +244,17 @@
     </section>
 
     <section id="foto-header">
-        <img src="FOTO-HEADER.jpg" alt="Kensen Live" id="hero-img">
+        <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen Live" id="hero-img">
     </section>
 
     <section id="intro-text">
         <p class="intro-actual-text">
-            <span class="w-light">Aprende el</span> <span class="w-black">sistema para convertir</span> <span class="w-light">tus</span> <span class="w-black fucsia-target">'Likes' en dinero</span><br>
-            <span class="w-light">en solo</span> <span class="w-black">4 hours</span> <span class="w-light">mientras te ríes</span> <span class="w-black fucsia-target">con Cesar Kensen</span>
+            <span class="w-light">Aprende el</span><br class="mobile-only">
+            <span class="w-black">sistema para convertir</span><br class="mobile-only">
+            <span class="w-light">tus</span> <span class="w-black fucsia-target">'Likes' en dinero</span><br class="web-only"><br class="mobile-only">
+            <span class="w-light">en solo</span> <span class="w-black">4 horas</span><br class="mobile-only">
+            <span class="w-light">mientras te ríes</span><br class="mobile-only">
+            <span class="w-black fucsia-target">con Cesar Kensen</span>
         </p>
     </section>
 
@@ -294,9 +302,9 @@
                                 <h4>Masterclass Vende Tus Redes</h4>
                                 <p>La capacitación definitiva diseñada para dueños de negocios, marcas personales y creadores que necesitan transformar su engagement digital en un motor financiero real y medible.</p>
                                 <ul>
-                                    <li>Estrategias de monetización de audiencias frías y calientes.</li>
-                                    <li>Optimización de embudos y cierres directamente por DM y comentarios.</li>
-                                    <li>Casos de estudio prácticos aplicados al mercado real.</li>
+                                    <li>Diseñar y posicionar tu <strong>propuesta de valor y modelo de negocio</strong>.</li>
+                                    <li>Planificar una estrategia de <strong>publicidad Meta Ads</strong>.</li>
+                                    <li>Integrar en tus procesos la <strong>inteligencia artificial</strong>.</li>
                                 </ul>
                             </div>
                             <img src="masterclass publico contenido.jpg" alt="Contenido Curso Público" class="content-img">
@@ -315,11 +323,11 @@
                         <div class="content-grid">
                             <div class="content-text">
                                 <h4>Especialización en Videos Virales</h4>
-                                <p>Una inmersión técnica avanzada y de cupos estrictamente limitados enfocado en la psicología del espectador y algoritmos de distribución masiva.</p>
+                                <p>Una inmersión técnica avanzada enfocada en la psicología del espectador y algoritmos de distribución masiva.</p>
                                 <ul>
-                                    <li>Técnicas de enganche (Hooks) en los primeros 3 segundos.</li>
-                                    <li>Estructuras de guion de alto impacto y edición con DaVinci Resolve.</li>
-                                    <li>Métricas de retención y análisis minucioso de retención en Meta y TikTok.</li>
+                                    <li>Idear y escribir <strong>ideas para guiones con ganchos poderosos</strong>.</li>
+                                    <li>Grabar con tu equipo actual <strong>con retención psicológica</strong>.</li>
+                                    <li>Editar videos con <strong>calidad cine</strong> y de <strong>impacto viral</strong>.</li>
                                 </ul>
                             </div>
                             <img src="masterclass privado contenido.jpg" alt="Contenido Curso Privado" class="content-img">
@@ -338,11 +346,11 @@
                         <div class="content-grid">
                             <div class="content-text">
                                 <h4>Sala de Conexión y Negocios</h4>
-                                <p>El espacio idóneo para cruzar bases de datos, intercambiar visiones corporativas y cerrar alianzas estratégicas directamente con los actores comerciales más relevantes de la región.</p>
+                                <p>El espacio idóneo para cruzar visiones corporativas y cerrar alianzas estratégicas directamente con los actores comerciales relevantes.</p>
                                 <ul>
-                                    <li>Acceso directo con marcas patrocinantes y aliados de producción.</li>
-                                    <li>Intercambio de contactos calificados y líderes de agencias.</li>
-                                    <li>Mesas redondas de debate de negocios digitales.</li>
+                                    <li>Conseguir contáctos para <strong>alianzas y negocios futuros</strong>.</li>
+                                    <li>Conversar con Kensen para <strong>ideas y dudas sobre tu negocio</strong>.</li>
+                                    <li>Brindar y compartir: <strong>es un espacio post-evento</strong>.</li>
                                 </ul>
                             </div>
                             <img src="evento networking contenido.jpg" alt="Contenido Networking" class="content-img">
@@ -361,11 +369,11 @@
                         <div class="content-grid">
                             <div class="content-text">
                                 <h4>Mira Esta Vaina - Live Set</h4>
-                                <p>El cierre magistral del fin de semana. Un show de stand-up crudo, rápido e irreverente donde los procesos humanos y las realidades de la industria digital se transforman en comedia pura.</p>
+                                <p>Un show de stand-up crudo, rápido e irreverente donde los procesos humanos y las realidades digitales se transforman en comedia pura.</p>
                                 <ul>
-                                    <li>Monólogos y rutinas completamente originales de César Kensen.</li>
-                                    <li>Análisis humorístico y sin tabúes de la cultura del internet.</li>
-                                    <li>Experiencia inmersiva en vivo con interacción directa con la audiencia.</li>
+                                    <li><strong>Relaciones actuales</strong> (tríos, infidelidades, etc.).</li>
+                                    <li>El ciclo de la vida: <strong>la comedia entre la vida y la muerte</strong>.</li>
+                                    <li>Sobre ser padre de adolescentes <strong>e hijo de padres viejos</strong>.</li>
                                 </ul>
                             </div>
                             <img src="show comedia contenido.jpg" alt="Contenido Show Comedia" class="content-img">
@@ -414,13 +422,11 @@
     </section>
 
     <script>
-        // MOTOR PARALLAX ACTUALIZADO PARA IMAGEN
+        // MOTOR PARALLAX
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset;
             const img = document.getElementById('hero-img');
-            if (img) {
-                img.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
-            }
+            if (img) img.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
         });
 
         // ANIMACION POSTERS
@@ -431,17 +437,11 @@
         }, { threshold: 0.15 });
         postersObserver.observe(document.getElementById('posters-options'));
 
-        // CONTROL ACCORDION
         function handleAccordionToggle(btn) { 
             const currentItem = btn.parentElement;
             const accordion = currentItem.parentElement;
-            
-            // Cerrar los otros menús por orden visual
             const items = accordion.querySelectorAll('.accordion-bar-item');
-            items.forEach(item => {
-                if(item !== currentItem) item.classList.remove('active');
-            });
-
+            items.forEach(item => { if(item !== currentItem) item.classList.remove('active'); });
             currentItem.classList.toggle('active'); 
         }
 
@@ -449,17 +449,15 @@
             const target = document.getElementById(id);
             if (target) {
                 window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-                // Forzar apertura al hacer clic en el poster
                 target.classList.add('active');
             }
         }
 
-        // MOTOR DEL CONTADOR REGRESIVO (18 de Julio 2026, 9:00 AM Caracas)
+        // TIMER RECALIBRADO
         function updateCountdown() {
             const targetDate = new Date("July 18, 2026 09:00:00").getTime();
             const now = new Date().getTime();
             const gap = targetDate - now;
-
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
 
             if (gap < 0) {
@@ -477,6 +475,17 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        function adaptMainTitle() {
+            const titleBox = document.getElementById('main-title');
+            if (window.innerWidth <= 1024) {
+                titleBox.innerHTML = "Mejora<br>tus ganancias<br>y tus redes";
+            } else {
+                titleBox.innerHTML = "Mejora tus ganancias<br>y tus redes";
+            }
+        }
+        window.addEventListener('resize', adaptMainTitle);
+        window.addEventListener('DOMContentLoaded', adaptMainTitle);
     </script>
 </body>
 </html>
