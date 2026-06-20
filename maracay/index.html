@@ -53,14 +53,11 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
-        
-        /* CAJA CALIBRADA: id="main-title" (WEB NATIVO) */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; max-width: 90vw;
             font-size: 11vw; text-transform: uppercase; line-height: 0.9; margin-top: 5px;
             letter-spacing: -0.04em; display: block; text-align: center;
         }
-        
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
@@ -91,16 +88,11 @@
             width: 100%; background-color: var(--white-pure); padding: 30px 5%; text-align: center; border: none;
         }
         .intro-actual-text {
-            font-family: var(--font-outfit); color: var(--black-base);
-            font-size: 18pt; line-height: 1.4; max-width: 1050px; margin: 0 auto;
-            text-transform: uppercase;
+            font-family: var(--font-outfit); color: var(--black-base); font-size: 18pt; line-height: 1.4; max-width: 1050px; margin: 0 auto; text-transform: uppercase;
         }
-        /* Clases de control de peso para Outfit */
         .intro-actual-text .w-light { font-weight: 300; }
         .intro-actual-text .w-black { font-weight: 900; }
         .intro-actual-text .fucsia-target { color: var(--kensen-red); }
-        
-        /* Control adaptativo del quiebre web */
         .web-only { display: inline; }
 
         /* ---------------------------------------------------- */
@@ -115,34 +107,36 @@
         #produccion-logos .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* ---------------------------------------------------- */
-        /* id="posters-options"                                 */
+        /* id="posters-options" (CALIBRADO TOP 5px)             */
         /* ---------------------------------------------------- */
         #posters-options {
-            width: 100%; background-color: var(--white-pure); padding: 40px 5% 70px 5%; 
+            width: 100%; background-color: var(--white-pure); 
+            padding: 5px 5% 70px 5%; /* Separación top 5px */
             display: flex; justify-content: center; gap: 130px; align-items: start; border: none;
         }
         .option-side { display: flex; flex-direction: column; align-items: center; text-align: center; width: 407px; position: relative; }
-        .title-container { width: 100%; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-bottom: 50px; position: relative; }
+        
+        /* Reducción estricta de separación a 5px entre título y arte */
+        .title-container { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 5px; position: relative; }
         .option-side h2 { font-family: var(--font-anton); font-size: 40pt; color: var(--black-base); text-transform: uppercase; line-height: 1; }
+        
         .poster-btn-trigger { background: none; border: none; cursor: pointer; width: 407px; padding: 0; display: block; outline: none; }
-        .poster-link-trigger { text-decoration: none; width: 407px; display: block; }
         .poster-stage { position: relative; width: 407px; height: 630px; display: flex; justify-content: center; align-items: flex-start; }
         .poster-stage img {
-            position: absolute; width: 407px !important; height: 630px !important; object-fit: cover;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 0;
-            transform: translate3d(0, 30px, 0) rotate(0deg); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+            position: absolute; width: 100% !important; height: 100% !important; object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 1; /* Forzado de opacidad base para render instantáneo */
+            transform: translate3d(0, 0, 0) rotate(0deg); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
         .poster-stage .img-back-left { z-index: 1; }
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        #posters-options.animate .poster-stage img { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
-        #posters-options.animate .left-stage .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); transition-delay: 0.1s; }
-        #posters-options.animate .left-stage .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); transition-delay: 0.15s; }
-        .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
-        .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
-        .poster-btn-trigger:hover .left-stage .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        #posters-options.animate #posters-cursos .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); }
+        #posters-options.animate #posters-cursos .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); }
+        .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
+        .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
+        .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
         /* id="eventos-descripcion"                             */
@@ -229,13 +223,12 @@
             #city-title { padding-top: 0px; }
             #city-name { font-size: 3.2rem; }
             
-            /* CELULAR MODIFICADO: id="main-title" pasa a 60vw estrictos */
-            #main-title { font-size: 60vw; white-space: normal; line-height: 0.9; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
+            /* CELULAR MODIFICADO: id="main-title" pasa a 30vw estrictos */
+            #main-title { font-size: 30vw; white-space: normal; line-height: 0.9; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
             
             #author-name { font-size: 1.6rem; margin-top: 5px; }
             #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 5px; }
 
-            /* Quiebre celular para intro text */
             .web-only { display: none; }
             .intro-actual-text { font-size: 15pt; }
 
@@ -244,9 +237,9 @@
             #produccion-logos .logos-container { width: 100%; height: 45px; display: flex; justify-content: center; }
             #produccion-logos .logos-container img { position: absolute; left: 50%; transform: translateX(-50%); animation: mobileFadeProd 12s infinite ease-in-out; }
 
-            #posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 40px 24px; }
+            #posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 5px 24px 40px 24px; }
             .option-side { width: 100%; max-width: 280px; }
-            .poster-btn-trigger, .poster-link-trigger, .poster-stage { width: 280px; height: 433px; }
+            .poster-btn-trigger, .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
 
             .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px !important; }
@@ -312,6 +305,7 @@
             <span class="w-light">en solo</span> <span class="w-black">4 horas</span> <span class="w-light">mientras te ríes</span> <span class="w-black fucsia-target">con Cesar Kensen</span>
         </p>
     </section>
+
     <section id="produccion-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">una producción de:</p>
@@ -327,21 +321,22 @@
         <div class="option-side">
             <div class="title-container"><h2>Sobre el curso</h2></div>
             <button class="poster-btn-trigger" onclick="smoothScrollFastIn('eventos-descripcion')">
-                <div class="poster-stage left-stage">
-                    <img src="poster-mev-stacks.png" alt="MEV" class="img-back-left">
-                    <img src="poster-vv-stacks.png" alt="VV" class="img-back-right">
-                    <img src="poster-vtr-stacks.png" alt="VTR" class="img-front-vtr">
+                <div class="poster-stage" id="posters-cursos">
+                    <img src="poster-mev-stacks.png" alt="MEV Stack" class="img-back-left">
+                    <img src="poster-vv-stacks.png" alt="VV Stack" class="img-back-right">
+                    <img src="poster-vtr-stacks.png" alt="VTR Stack" class="img-front-vtr">
                 </div>
             </button>
         </div>
         <div class="option-side">
             <div class="title-container"><h2>Sobre la comedia</h2></div>
-            <a href="https://cesarkensen.com/comedia-maracay-18jul26" class="poster-link-trigger">
-                <div class="poster-stage right-stage"><img src="poster-mev-stacks.png" alt="MEV Solo"></div>
-            </a>
+            <button class="poster-btn-trigger" onclick="smoothScrollFastIn('show-comedia-trigger')">
+                <div class="poster-stage" id="posters-comedia">
+                    <img src="poster-mev-stacks.png" alt="MEV Solo">
+                </div>
+            </button>
         </div>
     </section>
-
     <section id="eventos-descripcion">
         <div class="cronograma-accordion">
             <div class="accordion-bar-item bar-dark-style">
@@ -359,7 +354,8 @@
                     <div class="title-inline-wrapper"><h3>Evento Networking</h3><span class="arrow-indicator"></span></div>
                 </button>
             </div>
-            <div class="accordion-bar-item bar-light-style">
+            
+            <div class="accordion-bar-item bar-light-style" id="show-comedia-trigger">
                 <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
                     <div class="title-inline-wrapper"><h3>Show de Comedia</h3><span class="arrow-indicator"></span></div>
                 </button>
@@ -435,6 +431,13 @@
             heroImg.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
         });
 
+        // Detonador de la animación de entrada para los posters
+        const triggerSection = document.getElementById('posters-options');
+        const postersObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) triggerSection.classList.add('animate'); });
+        }, { threshold: 0.15 });
+        postersObserver.observe(triggerSection);
+
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
 
         function smoothScrollFastIn(id) {
@@ -451,6 +454,11 @@
                 const run = cubicEaseOut(timeElapsed, startPosition, distance, duration);
                 window.scrollTo(0, run);
                 if (timeElapsed < duration) requestAnimationFrame(animation);
+                
+                // Si el destino es el acordeón de comedia, forzar su apertura al llegar
+                if (timeElapsed >= duration && id === 'show-comedia-trigger') {
+                    target.classList.add('active');
+                }
             }
             requestAnimationFrame(animation);
         }
