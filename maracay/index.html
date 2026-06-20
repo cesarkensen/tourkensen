@@ -43,7 +43,7 @@
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 1: CITY TITLE (RECALIBRADA DE AIRE VISUAL)   */
+        /* SECCIÓN 1: CITY TITLE                                */
         /* ---------------------------------------------------- */
         #city-title {
             width: 100%; background-color: var(--white-pure); padding: 20px 0 45px 0; 
@@ -53,11 +53,16 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
+        
+        /* CAJA MODIFICADA: id="main-title" */
+        /* Escalado un 40% mayor para ocupar estrictamente el 90% del ancho de pantalla */
         #main-title {
-            font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
-            font-size: 8vw; text-transform: uppercase; line-height: 1.02; margin-top: 4px;
-            letter-spacing: -0.03em; display: block;
+            font-family: var(--font-anton); color: var(--black-base); 
+            width: 90vw; max-width: 90vw;
+            font-size: 11.2vw; text-transform: uppercase; line-height: 1.02; margin-top: 4px;
+            letter-spacing: -0.03em; display: block; text-align: center;
         }
+        
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
@@ -111,41 +116,6 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 4: POSTERS-OPTIONS                           */
-        /* ---------------------------------------------------- */
-        .posters-options {
-            width: 100%; background-color: var(--white-pure); padding: 10px 5% 70px 5%; 
-            display: flex; justify-content: center; gap: 130px; align-items: start; border: none;
-        }
-        .option-side { display: flex; flex-direction: column; align-items: center; text-align: center; width: 407px; position: relative; }
-        .title-container { width: 100%; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-bottom: 50px; position: relative; }
-        .option-side h2 { font-family: var(--font-anton); font-size: 40pt; color: var(--black-base); text-transform: uppercase; line-height: 1; }
-        .light-title {
-            font-family: var(--font-outfit); font-weight: 300; font-size: 20pt; color: #000000; 
-            text-transform: uppercase; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            line-height: 1; margin-bottom: 35px; 
-        }
-        .poster-btn-trigger { background: none; border: none; cursor: pointer; width: 407px; padding: 0; display: block; outline: none; }
-        .poster-link-trigger { text-decoration: none; width: 407px; display: block; }
-        .poster-stage { position: relative; width: 407px; height: 630px; display: flex; justify-content: center; align-items: flex-start; }
-        .poster-stage img {
-            position: absolute; width: 407px !important; height: 630px !important; object-fit: cover;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 0;
-            transform: translate3d(0, 30px, 0) rotate(0deg); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
-        }
-        .poster-stage .img-back-left { z-index: 1; }
-        .poster-stage .img-back-right { z-index: 2; }
-        .poster-stage .img-front-vtr { z-index: 3; }
-
-        .posters-options.animate .poster-stage img { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
-        .posters-options.animate .left-stage .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); transition-delay: 0.1s; }
-        .posters-options.animate .left-stage .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); transition-delay: 0.15s; }
-        .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
-        .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
-        .poster-btn-trigger:hover .left-stage .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-
-        /* ---------------------------------------------------- */
         /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
         /* ---------------------------------------------------- */
         .produccion-logos { 
@@ -177,7 +147,6 @@
         .title-inline-wrapper { display: inline-flex; align-items: center; gap: 20px; width: auto; border: none; }
         .accordion-bar-header h3, .precios-bar-header h3 { font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; text-transform: uppercase; }
         
-        /* Triángulos dinámicos unificados */
         .arrow-indicator {
             display: inline-block; width: 0; height: 0; border-left: 12px solid var(--white-pure); border-top: 9px solid transparent; border-bottom: 9px solid transparent; 
             margin-top: 5px; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -189,7 +158,7 @@
         .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
         .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
         .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
-        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
+        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; margin-top: 4px; }
 
         .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
         .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
@@ -245,7 +214,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 8: PLACA INFO VENDIDAS                       */
+        /* SECCIÓN 8: INFO-EVENTO-VENDIDAS                      */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
             width: 100%; background-color: var(--kensen-red); padding: 55px 5%; display: flex; justify-content: center; align-items: center; border: none;
