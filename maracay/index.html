@@ -41,26 +41,32 @@
         .nav-links a { font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
         .nav-links a:hover { color: var(--kensen-orange-hover); font-weight: 900; }
         
-        /* CALIBRACIÓN DE SEPARACIÓN INMEDIATA (10px estricto tras navbar de 64px) */
+        /* WEB: 64px navbar + 10px de aire nativo */
         .header-spacer { height: 74px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* id="city-title" (COMPACTADO SUPERIOR A 10px)          */
+        /* id="city-title"                                      */
         /* ---------------------------------------------------- */
         #city-title {
             width: 100%; background-color: var(--white-pure); 
-            padding: 0px 0 45px 0; /* Removido padding superior para usar la precisión del spacer */
+            padding: 0px 0 45px 0; 
             text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #city-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
+        
+        /* CAJA AJUSTADA: id="main-title" (WEB NATIVO) */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; max-width: 90vw;
-            font-size: 11.2vw; text-transform: uppercase; line-height: 1.02; margin-top: 4px;
-            letter-spacing: -0.03em; display: block; text-align: center;
+            font-size: 11.2vw; text-transform: uppercase; 
+            line-height: 0.8; /* Interlineado 0.8 */
+            margin-top: 10px; /* Separación top 10px */
+            letter-spacing: -0.05em; /* Letter spacing -0.05em */
+            display: block; text-align: center;
         }
+        
         #author-name {
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
@@ -218,11 +224,15 @@
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .nav-links { display: none !important; } 
             
-            /* Ajuste compensatorio de espaciador en móviles (58px navbar móvil + 10px aire) */
-            .header-spacer { height: 68px; }
+            /* MÓVIL: 58px navbar móvil + 15px de separación superior estrictos solicitados */
+            .header-spacer { height: 73px; }
+            #city-title { padding-top: 0px; }
 
             #city-name { font-size: 3.2rem; }
-            #main-title { font-size: 13.8vw; white-space: normal; line-height: 1.02; width: 95vw; max-width: 95vw; }
+            
+            /* CELULAR: font-size al doble de grande (27.6vw) y 95% de ancho de pantalla */
+            #main-title { font-size: 27.6vw; white-space: normal; line-height: 0.8; width: 95vw; max-width: 95vw; }
+            
             #author-name { font-size: 1.6rem; margin-top: 6px; }
             #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 4px; }
 
@@ -296,7 +306,7 @@
     </section>
 
     <section id="intro-text">
-        <p class="intro-actual-text">Aprende el sistema para convertir tus <span>'Likes' en dinero</span> en solo 4 horas mientras te ríes <span>con Cesar Kensen</span></p>
+        <p class="intro-actual-text">Aprende el sistema para convertir tus <span>'Likes' en dinero</span> en solo 4 hours mientras te ríes <span>con Cesar Kensen</span></p>
     </section>
 
     <section id="produccion-logos">
