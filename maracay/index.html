@@ -53,23 +53,10 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
-        
-        /* CAJA CORREGIDA: id="main-title" (WEB) */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; max-width: 90vw;
             font-size: 11vw; text-transform: uppercase; line-height: 0.9; margin-top: 5px;
             letter-spacing: -0.04em; display: block; text-align: center;
-        }
-        
-        #author-name {
-            font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
-            font-size: 2.25rem; text-transform: uppercase; letter-spacing: -0.8px; line-height: 1;
-            margin-top: 5px; display: block;
-        }
-        #author-emmy {
-            font-family: var(--font-outfit); font-weight: 300; color: var(--black-base);
-            font-size: 1.125rem; text-transform: uppercase; letter-spacing: 2px; line-height: 1;
-            margin-top: 5px; white-space: nowrap; display: block;
         }
 
         /* ---------------------------------------------------- */
@@ -110,19 +97,18 @@
         #produccion-logos .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* ---------------------------------------------------- */
-        /* id="posters-options" (CALIBRADO SEPARACIÓN TOP 20px) */
+        /* id="posters-options" (MÁRGENES DE 30px CALIBRADOS)   */
         /* ---------------------------------------------------- */
         #posters-options {
-            width: 100%; background-color: var(--white-pure); 
-            padding: 20px 5% 70px 5%; /* Separación top 20px solicitado */
+            width: 100%; background-color: var(--white-pure); padding: 20px 5% 70px 5%; 
             display: flex; justify-content: center; gap: 130px; align-items: start; border: none;
         }
         .option-side { display: flex; flex-direction: column; align-items: center; text-align: center; width: 407px; position: relative; }
         
-        /* Caja contenedora de títulos calibrada a 10px de separación hacia el póster */
+        /* Modificación: Separación top de imágenes con respecto a títulos fijada en 30px */
         .title-container { 
             width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            margin-bottom: 10px; /* Separación top entre imágenes y títulos de 10px */
+            margin-bottom: 30px; /* Aire visual estricto de 30px solicitado */
             position: relative; 
         }
         .option-side h2 { font-family: var(--font-anton); font-size: 40pt; color: var(--black-base); text-transform: uppercase; line-height: 1; }
@@ -130,24 +116,25 @@
         .poster-btn-trigger { background: none; border: none; cursor: pointer; width: 407px; padding: 0; display: block; outline: none; }
         .poster-stage { position: relative; width: 407px; height: 630px; display: flex; justify-content: center; align-items: flex-start; }
         
-        /* Carga de assets de la raíz activa con opacidad limpia */
         .poster-stage img {
             position: absolute; width: 100% !important; height: 100% !important; object-fit: cover;
             box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 1;
-            transform: translate3d(0, 0, 0) rotate(0deg); /* Estado base a 0 grados */
+            transform: translate3d(0, 0, 0) rotate(0deg); 
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
         }
         .poster-stage .img-back-left { z-index: 1; }
         .poster-stage .img-back-right { z-index: 2; }
         .poster-stage .img-front-vtr { z-index: 3; }
 
-        /* Físicas de rotación controlada e inyección de assets de la carpeta raíz */
-        #posters-options.animate #posters-cursos .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); }
-        #posters-options.animate #posters-cursos .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); }
+        /* Animación inicial al hacer scroll (Aparición recta limpia) */
+        #posters-options.animate #posters-cursos .img-back-left { transform: translate3d(0, 0, 0) rotate(0deg); }
+        #posters-options.animate #posters-cursos .img-back-right { transform: translate3d(0, 0, 0) rotate(0deg); }
         
-        .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
-        .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
+        /* Modificación: Grados de rotación reducidos a la mitad y aplicados en hover unificado */
+        .poster-btn-trigger:hover #posters-cursos .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-9deg); } /* Menor rotación */
+        .poster-btn-trigger:hover #posters-cursos .img-back-right { transform: translate3d(35px, 10px, 0) rotate(12deg); } /* Menor rotación */
         .poster-btn-trigger:hover #posters-cursos .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        
         .poster-btn-trigger:hover #posters-comedia img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* ---------------------------------------------------- */
@@ -234,12 +221,7 @@
             
             #city-title { padding-top: 0px; }
             #city-name { font-size: 3.2rem; }
-            
-            /* CELULAR CORREGIDO: id="main-title" baja de 30vw a 27vw fijos */
             #main-title { font-size: 27vw; white-space: normal; line-height: 0.9; width: 95vw; max-width: 95vw; letter-spacing: -0.04em; }
-            
-            #author-name { font-size: 1.6rem; margin-top: 5px; }
-            #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 5px; }
 
             .web-only { display: none; }
             .intro-actual-text { font-size: 15pt; }
@@ -251,8 +233,10 @@
 
             #posters-options { flex-direction: column; align-items: center; gap: 60px; padding: 20px 24px 40px 24px; }
             .option-side { width: 100%; max-width: 280px; }
-            .poster-btn-trigger, .poster-stage { width: 280px; height: 433px; }
+            .poster-btn-trigger { width: 280px; height: 433px; }
+            .poster-stage { width: 280px; height: 433px; }
             .poster-stage img { width: 280px !important; height: 433px !important; }
+            .title-container { margin-bottom: 30px; }
 
             .accordion-bar-header h3, .precios-bar-header h3 { font-size: 32px; line-height: 30px; letter-spacing: -1px !important; }
             .precios-bar-header p { font-size: 14px; letter-spacing: -0.5px; }
