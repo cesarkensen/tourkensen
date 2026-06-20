@@ -36,12 +36,14 @@
         }
         .nav-logo-link { display: inline-block; line-height: 0; }
         .nav-logo { height: 60px; width: auto; cursor: pointer; transition: transform 0.3s ease; }
+        .nav-logo:hover { transform: scale(1.03); }
         .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
         .nav-links a { font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+        .nav-links a:hover { color: var(--kensen-orange-hover); font-weight: 900; }
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 1: RECALIBRADA EN 2 LÍNEAS (CITY TITLE)      */
+        /* SECCIÓN 1: CITY TITLE (RECALIBRADA DE AIRE VISUAL)   */
         /* ---------------------------------------------------- */
         #city-title {
             width: 100%; background-color: var(--white-pure); padding: 20px 0 45px 0; 
@@ -51,7 +53,6 @@
             font-family: var(--font-outfit); font-weight: 900; color: var(--kensen-red);
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
-        /* Ajuste de espacio entre líneas 20% mayor (line-height: 1.02) */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); width: 90vw; 
             font-size: 8vw; text-transform: uppercase; line-height: 1.02; margin-top: 4px;
@@ -110,6 +111,41 @@
         }
 
         /* ---------------------------------------------------- */
+        /* SECCIÓN 4: POSTERS-OPTIONS                           */
+        /* ---------------------------------------------------- */
+        .posters-options {
+            width: 100%; background-color: var(--white-pure); padding: 10px 5% 70px 5%; 
+            display: flex; justify-content: center; gap: 130px; align-items: start; border: none;
+        }
+        .option-side { display: flex; flex-direction: column; align-items: center; text-align: center; width: 407px; position: relative; }
+        .title-container { width: 100%; height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-bottom: 50px; position: relative; }
+        .option-side h2 { font-family: var(--font-anton); font-size: 40pt; color: var(--black-base); text-transform: uppercase; line-height: 1; }
+        .light-title {
+            font-family: var(--font-outfit); font-weight: 300; font-size: 20pt; color: #000000; 
+            text-transform: uppercase; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            line-height: 1; margin-bottom: 35px; 
+        }
+        .poster-btn-trigger { background: none; border: none; cursor: pointer; width: 407px; padding: 0; display: block; outline: none; }
+        .poster-link-trigger { text-decoration: none; width: 407px; display: block; }
+        .poster-stage { position: relative; width: 407px; height: 630px; display: flex; justify-content: center; align-items: flex-start; }
+        .poster-stage img {
+            position: absolute; width: 407px !important; height: 630px !important; object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25); will-change: transform, opacity; opacity: 0;
+            transform: translate3d(0, 30px, 0) rotate(0deg); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-out;
+        }
+        .poster-stage .img-back-left { z-index: 1; }
+        .poster-stage .img-back-right { z-index: 2; }
+        .poster-stage .img-front-vtr { z-index: 3; }
+
+        .posters-options.animate .poster-stage img { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+        .posters-options.animate .left-stage .img-back-left { transform: translate3d(-35px, -10px, 0) rotate(-13deg); transition-delay: 0.1s; }
+        .posters-options.animate .left-stage .img-back-right { transform: translate3d(35px, 10px, 0) rotate(20deg); transition-delay: 0.15s; }
+        .poster-btn-trigger:hover .left-stage .img-back-left { transform: translate3d(-40px, -12px, 0) rotate(-18deg) scale(1.02); }
+        .poster-btn-trigger:hover .left-stage .img-back-right { transform: translate3d(40px, 12px, 0) rotate(25deg) scale(1.02); }
+        .poster-btn-trigger:hover .left-stage .img-front-vtr { transform: translate3d(0, -5px, 0) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .poster-link-trigger:hover .right-stage img { transform: translate3d(0, -5px, 0) rotate(5deg) scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        /* ---------------------------------------------------- */
         /* SECCIÓN 5: PRODUCCIÓN LOGOS                          */
         /* ---------------------------------------------------- */
         .produccion-logos { 
@@ -134,20 +170,14 @@
         .cronograma-accordion { width: 100%; display: flex; flex-direction: column; border: none; }
         .accordion-bar-item { width: 100%; border: none; outline: none; }
         
-        .accordion-bar-header {
-            width: 100%; padding: 40px 10%; display: flex; justify-content: flex-start; align-items: center; 
+        .accordion-bar-header, .precios-bar-header {
+            width: 100%; padding: 40px 10%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; 
             cursor: pointer; background: none; text-align: left; position: relative; border: none !important; outline: none !important;
         }
-        .bar-title-block { display: flex; flex-direction: column; gap: 4px; border: none; }
-        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 15px; width: auto; border: none; }
+        .title-inline-wrapper { display: inline-flex; align-items: center; gap: 20px; width: auto; border: none; }
+        .accordion-bar-header h3, .precios-bar-header h3 { font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; text-transform: uppercase; }
         
-        .accordion-bar-header h3 {
-            font-family: var(--font-anton); font-size: 70px; letter-spacing: -1.2px; line-height: 55px; text-transform: uppercase; border: none;
-        }
-        .bar-title-dark { color: var(--white-pure); } 
-        .bar-title-light { color: var(--black-base); }
-        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
-
+        /* Triángulos dinámicos unificados */
         .arrow-indicator {
             display: inline-block; width: 0; height: 0; border-left: 12px solid var(--white-pure); border-top: 9px solid transparent; border-bottom: 9px solid transparent; 
             margin-top: 5px; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
@@ -159,6 +189,7 @@
         .bar-dark-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
         .bar-light-style { background-color: var(--white-pure); color: var(--black-base); }
         .bar-light-style:hover .arrow-indicator { color: var(--kensen-red); border-left-color: var(--kensen-red); }
+        .accordion-bar-header p { font-family: var(--font-outfit); font-weight: 300; font-size: 25px; color: var(--kensen-red); letter-spacing: -1px; text-transform: uppercase; }
 
         .accordion-bar-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); padding: 0 10%; border: none; }
         .accordion-bar-content-inner { text-align: left; margin: 0 auto; width: 100%; max-width: 1100px; border: none; }
@@ -167,11 +198,10 @@
         .bar-dark-style .accordion-bar-content { background-color: #0a0a0a; color: var(--white-pure); }
         .bar-light-style .accordion-bar-content { background-color: #FFFFFF; color: var(--black-base); }
 
-        /* GRIDS DE CONTENIDO CRONOGRAMA */
+        /* GRIDS DEL CRONOGRAMA */
         .vtr-content-grid { display: grid; grid-template-columns: 350px 1fr; gap: 70px; align-items: start; border: none; }
         .vtr-left-col { display: flex; flex-direction: column; align-items: center; width: 100%; border: none; }
         .vtr-scaled-poster { width: 325px; height: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.4); margin-bottom: 25px; display: block; border: none; }
-        
         .vtr-buy-btn {
             width: 325px; background-color: var(--kensen-red); color: var(--white-pure); font-family: var(--font-anton);
             font-size: 2.5rem; text-transform: uppercase; text-align: center; padding: 14px 0; cursor: pointer; 
@@ -197,7 +227,6 @@
         .vtr-block-text .black-title { font-weight: 900; font-size: 24px; display: block; }
         .vtr-block-text .light-desc { font-weight: 300; font-size: 19px; display: block; margin-top: 4px; }
         .vtr-block-text .highlight-pink-anton { font-family: var(--font-anton); font-weight: 400; font-size: 32px; color: var(--kensen-red); display: block; margin-bottom: 12px; letter-spacing: 1px; }
-        
         .vtr-learn-list { display: flex; flex-direction: column; gap: 18px; list-style: none; }
         .vtr-learn-list li { font-family: var(--font-outfit); font-weight: 300; font-size: 18px; line-height: 1.3; }
         .vtr-learn-list li strong { font-weight: 900; }
@@ -216,7 +245,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 8: INFO-EVENTO-VENDIDAS                      */
+        /* SECCIÓN 8: PLACA INFO VENDIDAS                       */
         /* ---------------------------------------------------- */
         .info-evento-vendidas {
             width: 100%; background-color: var(--kensen-red); padding: 55px 5%; display: flex; justify-content: center; align-items: center; border: none;
@@ -296,6 +325,7 @@
         /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
             nav { justify-content: center; padding: 15px 20px; }
+            .nav-links { display: none; }
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
             .header-spacer { height: 78px; }
             
@@ -317,6 +347,12 @@
             .vendidas-wrapper-block { flex-direction: column; text-align: center; gap: 30px; }
             .vendidas-left-data-panel { text-align: center; align-items: center; width: 100%; }
             .vendidas-right-counter-panel { text-align: center; align-items: center; width: 100%; }
+
+            .vtr-content-grid { grid-template-columns: 1fr; gap: 35px; justify-items: center; }
+            .vtr-scaled-poster, .vtr-buy-btn, .networking-poster-wrapper { width: 280px; }
+            .vtr-buy-btn { font-size: 1.8rem; }
+            .fucsia-bar-networking { font-size: 1.3rem; padding: 10px 0; }
+            .access-special-label { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -346,16 +382,383 @@
         <img src="kensen-foto-vtr.jpg" alt="Cesar Kensen" class="parallax-img" id="hero-img">
     </section>
 
-    <script>
-        // SCRIPT RECONECTADO: CÁLCULO DE TRASLACIÓN PARALLAX EN TIEMPO REAL
+    <section class="contador-maracay">
+        <p class="contador-intro-text">Un fin de semana de <span>capacitación</span> + <span>networking</span> + <span>comedia</span></p>
+        <div class="countdown-layout">
+            <div class="countdown-side-title">conteo<br>para el evento</div>
+            <div class="timer-grid-white">
+                <div class="time-block"><div class="black-number-box" id="days">00</div><span class="time-label-below">Días</span></div>
+                <div class="time-block"><div class="black-number-box" id="hours">00</div><span class="time-label-below">Horas</span></div>
+                <div class="time-block"><div class="black-number-box" id="minutes">00</div><span class="time-label-below">Min</span></div>
+                <div class="time-block"><div class="black-number-box" id="seconds">00</div><span class="time-label-below">Seg</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="produccion-logos">
+        <div class="logos-wrapper">
+            <p class="produccion-title">una producción de:</p>
+            <div class="logos-container">
+                <img src="mediopalo-logo.png" alt="Logo MP">
+                <img src="vsmedia-logo.png" alt="Logo VS">
+                <img src="veronicasifontes-logo.png" alt="Logo VSI">
+            </div>
+        </div>
+    </section>
+
+    <section class="seccion-eventos-cronograma" id="seccion-eventos-cronograma">
+        <h2 class="eventos-main-heading">Cuáles son los eventos<br>del <span>Kensen Weekend</span></h2>
+        <div class="cronograma-accordion">
+            
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Masterclass Público</h3><span class="arrow-indicator"></span></div>
+                        <p>hacer dinero con redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vtr-stacks.png" alt="VTR" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption">(Hay planes para empresas y precios grupales)</p>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">Un negocio que no factura,</span><span class="black-title">Desaparece</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">Que tu equipo <strong>aprenda un sistema</strong></span><span class="light-desc">para <strong>potenciar tu marca y ventas</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">Aprenderán a:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>Diseñar y posicionar tu <strong>propuesta de valor y modelo de negocio</strong></li>
+                                        <li>Planificar una estrategia de <strong>publicidad Meta Ads</strong></li>
+                                        <li>Integrar en tus procesos la <strong>inteligencia artificial</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">Fecha:</span><span class="meta-val">18 de Julio (Sábado)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Hora:</span><span class="meta-val">9:00 A.M. a 1:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">Lugar:</span><span class="meta-val">Supercines Los Aviadores</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Masterclass Privado</h3><span class="arrow-indicator"></span></div>
+                        <p>volver viral tus redes sociales</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-vv-stacks.png" alt="Videos Virales" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base); font-size: 9px;">(HAY PRECIOS ESPECIALES PARA EMPRESAS PATROCINANTES)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">PUBLICAR VIDEOS SIN RETENCIÓN</span><span class="black-title">ES DILUIR TU MARCA Y ALCANCE</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">QUE TU EQUIPO <strong>APRENDA LAS CLAVES</strong></span><span class="light-desc">PARA <strong>DOMINAR EL ALGORITMO</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">APRENDERÁN A:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>IDEAR Y ESCRIBIR <strong>IDEAS PARA GUIONES</strong> CON GANCHOS PODEROSOS</li>
+                                        <li>GRABAR CON TU EQUIPO ACTUAL CON <strong>RETENCIÓN PSICOLÓGICA</strong></li>
+                                        <li>EDITAR VIDEOS CON <strong>CALIDAD CINE</strong> Y DE IMPACTO VIRAL</li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">A CONVENIR (DÍAS PREVIOS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">A CONVENIR (DURACIÓN 4 HORAS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">TUS INSTALACIONES</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-dark-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-dark">Evento Networking</h3><span class="arrow-indicator"></span></div>
+                        <p>lograr contactos & negocios</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <div class="networking-poster-wrapper">
+                                    <img src="poster-vtr-stacks.png" alt="Networking" class="vtr-scaled-poster">
+                                    <div class="fucsia-bar-networking">EVENTO NETWORKING</div>
+                                </div>
+                                <div class="access-special-label">CON LA COMPRA DEL MASTERCLASS PÚBLICO</div>
+                            </div>
+                            <div class="vtr-right-col">
+                                <div class="vtr-block-text"><span class="black-title">UN NEGOCIO CON ALIANZAS</span><span class="black-title">CRECE MÁS RÁPIDO QUE SU COMPETENCIA</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">UN ESPACIO PERFECTO PARA HACER <strong>CONTACTOS Y NEGOCIOS</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">PODRÁS:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>CONSEGUIR CONTACTOS PARA <strong>ALIANZAS Y NEGOCIOS FUTUROS</strong></li>
+                                        <li>CONVERSAR WITH KENSEN PARA <strong>IDEAS Y DUDAS SOBRE TU NEGOCIO</strong></li>
+                                        <li>BRINDAR Y COMPARTIR <strong>ES UN ESPACIO POST-EVENTO</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (DESPUÉS DEL MASTERCLASS)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">1:00 P.M. A 3:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">EN LA SALIDA DEL EVENTO</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-bar-item bar-light-style">
+                <button class="accordion-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3 class="bar-title-light">Show de Comedia</h3><span class="arrow-indicator"></span></div>
+                        <p>Show de Cesar Kensen para cerrar el día</p>
+                    </div>
+                </button>
+                <div class="accordion-bar-content">
+                    <div class="accordion-bar-content-inner">
+                        <div class="vtr-content-grid">
+                            <div class="vtr-left-col">
+                                <img src="poster-mev-stacks.png" alt="Show Comedia" class="vtr-scaled-poster">
+                                <button onclick="smoothScrollFastIn('precios-planes')" class="vtr-buy-btn">Comprar</button>
+                                <p class="vtr-legal-caption" style="color: var(--black-base);">(HAY PRECIOS ESPECIALES PARA ASISTENTES AL MASTERCLASS PÚBLICO)</p>
+                            </div>
+                            <div class="vtr-right-col" style="color: var(--black-base);">
+                                <div class="vtr-block-text"><span class="black-title">UN SHOW DE COMEDIA ÚNICO</span><span class="black-title">PARA CERRAR EL DÍA CON HUMOR</span></div>
+                                <div class="vtr-block-text"><span class="light-desc">LA OPORTUNIDAD PERFECTA PARA <strong>COMPARTIR FUERA DE LA OFICINA</strong></span></div>
+                                <div class="vtr-block-text">
+                                    <span class="highlight-pink-anton">UN SHOW SOBRE:</span>
+                                    <ul class="vtr-learn-list">
+                                        <li>RELACIONES ACTUALES <strong>(TRÍOS, INFIDELIDADES, ETC)</strong></li>
+                                        <li>EL CICLO DE LA VIDA <strong>LA COMEDIA ENTRE LA VIDA Y LA MUERTE</strong></li>
+                                        <li>SOBRE SER PADRE DE ADOLESCENTES <strong>E HIJO DE PADRES VIEJOS</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="vtr-meta-info-block">
+                                    <div class="vtr-meta-item"><span class="meta-label">FECHA:</span><span class="meta-val">18 DE JULIO (SÁBADO)</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">HORA:</span><span class="meta-val">9:00 P.M.</span></div>
+                                    <div class="vtr-meta-item"><span class="meta-label">LUGAR:</span><span class="meta-val">RESERVA 3+3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="patrocinantes-logos">
+        <div class="logos-wrapper">
+            <p class="produccion-title">patrocinado por:</p>
+            <div class="logos-container">
+                <img src="mediopalo-logo.png" alt="Patro 1">
+                <img src="vsmedia-logo.png" alt="Patro 2">
+                <img src="veronicasifontes-logo.png" alt="Patro 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="info-evento-vendidas">
+        <div class="vendidas-wrapper-block">
+            <div class="vendidas-left-data-panel">
+                <span class="vendidas-main-heading-panel">
+                    <span class="weight-black">Maracay</span> <span class="weight-light">18 de Julio</span>
+                </span>
+                <span class="vendidas-tag-masterclass">Masterclass</span>
+                <span class="vendidas-course-title-panel">Vende tus redes</span>
+                <div class="vendidas-meta-logistics">
+                    <span class="vendidas-logistics-line"><span class="label-black">Lugar:</span> Supercines Los Aviadores</span>
+                    <span class="vendidas-logistics-line"><span class="label-black">Hora:</span> 9:00 A.M. A 1:00 P.M.</span>
+                </div>
+            </div>
+            <div class="vendidas-right-counter-panel">
+                <div class="vendidas-counter-label-block">
+                    <div>Entradas</div>
+                    <div>Vendidas</div>
+                </div>
+                <div class="vendidas-percentage-huge">76%</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios-planes" class="precios-planes-wrapper">
+        <div class="precios-main-title-block"><h2>Precios & Patrocinios</h2></div>
+        <section class="precios-accordion-container" id="precios-entradas">
+            
+            <div class="precios-accordion-bar">
+                <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3>Precios de Entradas</h3><span class="arrow-indicator"></span></div>
+                        <p>costo de entradas y precios grupales</p>
+                    </div>
+                </button>
+                <div class="precios-bar-content">
+                    <div class="pricing-grid">
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Entrada<br>Individual</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€40</span>
+                                <span class="price-card-subtext">(Cada Una)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Masterclass Público</div>
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Evento Networking</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Entrada<br>Grupal</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€30</span>
+                                <span class="price-card-subtext">(Cada Una)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item red-tag">A partir de 3 entradas</div>
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Masterclass Público</div>
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Evento Networking</div>
+                                <div class="feature-item red-tag">Descuento en entradas para Show de Comedia</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Entrada<br>Adicional</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€20</span>
+                                <span class="price-card-subtext">(Cada Una)</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item red-tag">Con la compra de un plan para empresas</div>
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Masterclass Público</div>
+                                <div class="feature-item light">Acceso al</div>
+                                <div class="feature-item bold">Evento Networking</div>
+                                <div class="feature-item red-tag">Entradas de obsequio y descuento en entradas para Show de Comedia</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="precios-accordion-bar-named" id="precios-planes">
+                <button class="precios-bar-header" onclick="handleAccordionToggle(this)">
+                    <div class="bar-title-block">
+                        <div class="title-inline-wrapper"><h3>Planes de Patrocinios</h3><span class="arrow-indicator"></span></div>
+                        <p>costo de planes para marcas y empresas</p>
+                    </div>
+                </button>
+                <div class="precios-bar-content">
+                    <div class="pricing-grid">
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Plan<br>Alpha</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€390</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
+                                <div class="feature-item light">Stand físico + Promotoras + Pendones</div>
+                                <div class="feature-item red-tag">Activación de marca durante el evento (Cupos limitados)</div>
+                                <div class="feature-item light">Video comercial estilo Trailer en pantalla (en breaks) de 30 segundos</div>
+                                <div class="feature-item bold">Cuatro (4) entradas para Vende Tus Redes como Kensen</div>
+                                <div class="feature-item light">Volantería + Material P.O.P.</div>
+                                <div class="feature-item bold">Entrega de Obsequios al ponente</div>
+                                <div class="feature-item light">Acceso al Evento Networking</div>
+                                <div class="feature-item bold">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
+                                <div class="feature-item light">Volantería + Promotoras en el show de comedia</div>
+                                <div class="feature-item red-tag">Opcional: compra del Masterclass privado Video Virales como Kensen</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Plan<br>Bravo</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€190</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
+                                <div class="feature-item light">Stand físico + Promotoras + Pendones</div>
+                                <div class="feature-item bold">Dos (2) entradas para Vende Tus Redes como Kensen</div>
+                                <div class="feature-item light">Volantería + Material P.O.P.</div>
+                                <div class="feature-item light">Acceso al Evento Networking</div>
+                                <div class="feature-item bold">Dos (2) entradas al show de comedia Mira Esta Vaina</div>
+                                <div class="feature-item red-tag">Opcional: compra del Masterclass privado Video Virales como Kensen</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                        <div class="price-card price-card-white-bg">
+                            <div class="price-card-header">Plan<br>Charlie</div>
+                            <div class="price-card-amount-box">
+                                <span class="price-card-value">€90</span>
+                                <span class="price-card-subtext" style="color: var(--white-pure);">Incluye</span>
+                            </div>
+                            <div class="price-card-features">
+                                <div class="feature-item light">Logo en artes en pantalla, redes y web</div>
+                                <div class="feature-item light">Volantería + Material P.O.P.</div>
+                                <div class="feature-item bold">Acceso al Evento Networking</div>
+                            </div>
+                            <button class="price-card-buy-btn">COMPRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </section>
+
+    <div class="cta-grid">
+        <button class="cta-btn" onclick="smoothScrollFastIn('seccion-eventos-cronograma')"><img src="btn-todos-eventos.png" alt="Todos"></button>
+        <button class="cta-btn"><img src="btn-solo-comedia.png" alt="Comedia"></button>
+    </div>
+
+    <script {nonce}>
+        // CÁLCULO DE TRASLACIÓN PARALLAX EN TIEMPO REAL POR HARDWARE GPU
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            // Se inyecta la transformación 3D por hardware
             heroImg.style.transform = `translate3d(0, ${scrollTop * 0.15}px, 0)`;
         });
 
         function handleAccordionToggle(btn) { btn.parentElement.classList.toggle('active'); }
+
+        function smoothScrollFastIn(id) {
+            const target = document.getElementById(id);
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 850; 
+            let start = null;
+            function cubicEaseOut(t, b, c, d) { t /= d; t--; return c * (t * t * t + 1) + b; }
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = cubicEaseOut(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            requestAnimationFrame(animation);
+        }
     </script>
 </body>
 </html>
