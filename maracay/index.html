@@ -27,7 +27,7 @@
         body { background-color: var(--black-base); color: var(--white-pure); font-family: var(--font-outfit); }
 
         /* ---------------------------------------------------- */
-        /* id="header-nav" (ESCRITORIO NATIVO)                 */
+        /* id="header-nav"                                      */
         /* ---------------------------------------------------- */
         #header-nav {
             position: fixed; top: 0; width: 100%; z-index: 100;
@@ -40,13 +40,16 @@
         .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
         .nav-links a { font-family: var(--font-outfit); font-weight: 300; color: var(--menu-gray); text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
         .nav-links a:hover { color: var(--kensen-orange-hover); font-weight: 900; }
+        
+        /* CALIBRACIÓN DE SEPARACIÓN INMEDIATA (20px estricto) */
         .header-spacer { height: 84px; width: 100%; }
 
         /* ---------------------------------------------------- */
-        /* id="city-title"                                      */
+        /* id="city-title" (REDUCIDA SEPARACIÓN SUPERIOR)       */
         /* ---------------------------------------------------- */
         #city-title {
-            width: 100%; background-color: var(--white-pure); padding: 20px 0 45px 0; 
+            width: 100%; background-color: var(--white-pure); 
+            padding: 20px 0 45px 0; /* padding-top calibrado para mantener la tensión visual */
             text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #city-name {
@@ -210,13 +213,15 @@
         /* MEDIA QUERIES RESPONSIVAS AJUSTADAS                  */
         /* ---------------------------------------------------- */
         @media (max-width: 1024px) {
-            /* AJUSTE id="header-nav" PARA CELULARES Y TABLETS */
             #header-nav { justify-content: center; padding: 15px 20px; }
             .nav-logo-link { width: 30vw !important; display: flex; justify-content: center; align-items: center; margin: 0 auto; }
             .nav-logo { height: 48px; margin: 0 auto; display: block; }
-            .nav-links { display: none !important; } /* Desaparece por completo en móvil */
-            .header-spacer { height: 78px; }
+            .nav-links { display: none !important; } 
             
+            /* Ajuste compensatorio de espaciador en móviles */
+            .header-spacer { height: 68px; }
+            #city-title { padding-top: 15px; }
+
             #city-name { font-size: 3.2rem; }
             #main-title { font-size: 13.8vw; white-space: normal; line-height: 1.02; width: 95vw; max-width: 95vw; }
             #author-name { font-size: 1.6rem; margin-top: 6px; }
