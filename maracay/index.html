@@ -54,8 +54,7 @@
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: -1.6px; line-height: 1;
         }
         
-        /* CAJA MODIFICADA: id="main-title" */
-        /* Escalado un 40% mayor para ocupar estrictamente el 90% del ancho de pantalla */
+        /* CAJA ALINEADA EN ESCRITORIO */
         #main-title {
             font-family: var(--font-anton); color: var(--black-base); 
             width: 90vw; max-width: 90vw;
@@ -127,7 +126,7 @@
         .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* ---------------------------------------------------- */
-        /* SECCIÓN 6: BLOQUE DESPLEGABLE EVENTOS                */
+        /* SECCIÓN 6: ACORDEÓN CRONOGRAMA DE EVENTOS            */
         /* ---------------------------------------------------- */
         .seccion-eventos-cronograma { width: 100%; background-color: var(--white-pure); margin-top: 5px; padding: 5px 0 30px 0; border: none; }
         .eventos-main-heading {
@@ -299,7 +298,11 @@
             .header-spacer { height: 78px; }
             
             #city-name { font-size: 3.2rem; }
-            #main-title { font-size: 11.2vw; white-space: normal; line-height: 1.02; width: 95vw; }
+            
+            /* MODIFICACIÓN DE ESCALA RESPONSIVA EN NODO id="main-title" */
+            /* Se eleva el viewport-width para forzar de manera estricta el 95% solicitado en celulares y tablets */
+            #main-title { font-size: 13.8vw; white-space: normal; line-height: 1.02; width: 95vw; max-width: 95vw; }
+            
             #author-name { font-size: 1.6rem; margin-top: 6px; }
             #author-emmy { font-size: 0.8rem; letter-spacing: 1px; margin-top: 4px; }
 
@@ -535,10 +538,10 @@
     <section class="patrocinantes-logos">
         <div class="logos-wrapper">
             <p class="produccion-title">patrocinado por:</p>
-            <div class="logos-container">
-                <img src="mediopalo-logo.png" alt="Patro 1">
-                <img src="vsmedia-logo.png" alt="Patro 2">
-                <img src="veronicasifontes-logo.png" alt="Patro 3">
+            <div class="logos-container" id="container-patro">
+                <img src="mediopalo-logo.png" alt="Patro 1" style="animation-delay: 0s;">
+                <img src="vsmedia-logo.png" alt="Patro 2" style="animation-delay: 4s;">
+                <img src="veronicasifontes-logo.png" alt="Patro 3" style="animation-delay: 8s;">
             </div>
         </div>
     </section>
@@ -702,7 +705,7 @@
     </div>
 
     <script {nonce}>
-        // CÁLCULO DE TRASLACIÓN PARALLAX EN TIEMPO REAL POR HARDWARE GPU
+        // SCRIPT RECONECTADO: CÁLCULO DE TRASLACIÓN PARALLAX EN TIEMPO REAL
         const heroImg = document.getElementById('hero-img');
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
