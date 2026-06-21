@@ -87,14 +87,16 @@
         .web-only { display: inline; }
         .mobile-only { display: none; }
 
-        /* PRODUCCION LOGOS */
+        /* ---------------------------------------------------- */
+        /* id="produccion-logos"                                */
+        /* ---------------------------------------------------- */
         #produccion-logos { 
-            width: 100%; background-color: var(--black-base); padding: 40px 5%; display: flex; justify-content: center; align-items: center;
+            width: 100%; background-color: var(--black-base); padding: 30px 5%; display: flex; justify-content: center; align-items: center; border: none; 
         }
-        #produccion-logos .logos-container { 
-            display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; 
-        }
-        #produccion-logos img { height: 50px; width: auto; object-fit: contain; }
+        #produccion-logos .logos-wrapper { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 1200px; }
+        #produccion-logos .produccion-title { font-family: var(--font-outfit); font-weight: 900; font-size: 1.1rem; color: var(--white-pure); text-transform: uppercase; letter-spacing: 1px; margin-right: 50px; }
+        #produccion-logos .logos-container { display: flex; align-items: center; gap: 50px; position: relative; }
+        #produccion-logos .logos-container img { height: 45px; width: auto; object-fit: contain; display: block; border: none; }
 
         /* POSTERS OPTIONS */
         #posters-options {
